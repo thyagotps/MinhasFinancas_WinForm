@@ -6,21 +6,22 @@ namespace View
 {
     public partial class Form1 : Form
     {
-        private ICategoriaController categoriaController;
+        private readonly ICategoriaController _categoriaController;
 
         public Form1()
         {
-            this.categoriaController = NinjectKernel.Resolve<ICategoriaController>();
+            _categoriaController = NinjectKernel.Resolve<ICategoriaController>();
             InitializeComponent();
         }
 
-        
-
-        
-
+        /// <summary>
+        /// Ação do botão Categoria
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCategoria_Click_1(object sender, EventArgs e)
         {
-            CategoriaView form = new CategoriaView(categoriaController);
+            CategoriaView form = new CategoriaView(_categoriaController);
             form.ShowDialog();
         }
     }

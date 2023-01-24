@@ -1,10 +1,4 @@
-﻿using Ado;
-using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dapper;
 
 namespace Model
 {
@@ -16,13 +10,6 @@ namespace Model
         {
             _ado = ado;
         }
-
-      
-
-        //public CategoriaRepository()
-        //{
-        //    _ado= new Ado.Ado();
-        //}
 
         public List<Categoria> GetCategorias()
         {

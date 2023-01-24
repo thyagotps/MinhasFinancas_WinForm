@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Controller.Profiles;
 using Model;
-using System.CodeDom;
-using System.Data;
 
 namespace Controller
 {

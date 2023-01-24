@@ -1,13 +1,4 @@
 ﻿using Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace View
 {
@@ -21,9 +12,9 @@ namespace View
         {
             InitializeComponent();
             _categoriaController = categoriaController;
-
-           
         }
+
+        #region Eventos da view
 
         /// <summary>
         /// Botão salvar categoria
@@ -35,12 +26,26 @@ namespace View
             if (Codigo == -1)
                 Novo();
             else
-            {
-                
                 Editar();
+        }
+
+        /// <summary>
+        /// Ação load da view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CategoriaForm_Load(object sender, EventArgs e)
+        {
+            if (Codigo != -1)
+            {
+                var categoriaDto = GetCategoriaById(Codigo);
+                PopularComponentesFormulario(categoriaDto);
             }
         }
 
+        #endregion
+
+        #region Métodos
         private void Novo()
         {
             var categoriaDto = PopularCategoriaDto();
@@ -88,14 +93,8 @@ namespace View
             else
                 MessageBox.Show("Erro", "Info", MessageBoxButtons.OK);
         }
+        #endregion
 
-        private void CategoriaForm_Load(object sender, EventArgs e)
-        {
-            if (Codigo != -1)
-            {
-                var categoriaDto = GetCategoriaById(Codigo);
-                PopularComponentesFormulario(categoriaDto);
-            }
-        }
+
     }
 }
