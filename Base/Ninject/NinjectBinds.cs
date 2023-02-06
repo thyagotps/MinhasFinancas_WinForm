@@ -15,8 +15,13 @@ namespace Base.Ninject
         public override void Load()
         {
             Bind(typeof(IAdo)).To(typeof(Ado.Ado));
+            Bind(typeof(DAL.IAdo)).To(typeof(DAL.Ado));
+
             Bind(typeof(ICategoriaController)).To(typeof(CategoriaController));
             Bind(typeof(ICategoriaRepository)).To(typeof(CategoriaRepository));
+
+            Bind(typeof(IPagamentoController)).To(typeof(PagamentoController));
+            Bind(typeof(IPagamentoRepository)).To(typeof(PagamentoRepository));
         }
     }
 }

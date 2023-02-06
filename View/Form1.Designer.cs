@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnCategoria = new System.Windows.Forms.Button();
+            this.btnPagamento = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCategoria
@@ -41,11 +42,22 @@
             this.btnCategoria.UseVisualStyleBackColor = true;
             this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click_1);
             // 
+            // btnPagamento
+            // 
+            this.btnPagamento.Location = new System.Drawing.Point(93, 12);
+            this.btnPagamento.Name = "btnPagamento";
+            this.btnPagamento.Size = new System.Drawing.Size(109, 23);
+            this.btnPagamento.TabIndex = 1;
+            this.btnPagamento.Text = "Pagamentos";
+            this.btnPagamento.UseVisualStyleBackColor = true;
+            this.btnPagamento.Click += new System.EventHandler(this.btnPagamento_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPagamento);
             this.Controls.Add(this.btnCategoria);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -59,5 +71,6 @@
         #endregion
 
         private Button btnCategoria;
+        private Button btnPagamento;
     }
 }
