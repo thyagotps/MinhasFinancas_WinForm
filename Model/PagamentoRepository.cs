@@ -33,7 +33,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "select * from Pagamento where Codigo = @id";
+                string query = "select * from Pagamento where Id = @id";
                 var pagamento = conn.QueryFirstOrDefault<Pagamento>(sql: query, param: new { id });
                 return pagamento;
             }

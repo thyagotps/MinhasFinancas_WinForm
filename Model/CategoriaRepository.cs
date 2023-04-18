@@ -26,7 +26,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "select * from Categoria where Codigo = @id";
+                string query = "select * from Categoria where Id = @id";
                 var categoria = conn.QueryFirstOrDefault<Categoria>(sql: query, param: new { id });
                 return categoria;
             }

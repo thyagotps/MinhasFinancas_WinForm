@@ -13,47 +13,42 @@ namespace Model
     public class MovimentoRepository : IMovimentoRepository
     {
         private readonly Ado _ado;
+        private readonly CategoriaRepository _categoriaRepository;
+        private readonly PagamentoRepository _pagamentoRepository;
 
-        public MovimentoRepository(Ado ado)
+        public MovimentoRepository(Ado ado, 
+                                   CategoriaRepository categoriaRepository,
+                                   PagamentoRepository pagamentoRepository)
         {
             _ado = ado;
+            _categoriaRepository = categoriaRepository;
+            _pagamentoRepository = pagamentoRepository;
         }
 
         public List<Movimento> GetAll()
         {
             using (var conn = _ado.Conectar())
             {
-                string query = @"
-                                select
-	                                mov.Id as Id,
-	                                mov.DataCompra as DataCompra,
-	                                mov.Descricao as Descricao,
-	                                mov.Parcelas as Parcelas,
-	                                mov.Valor as Valor,
-	                                mov.DataVencimento as DataVencimento,
-	                                mov.Situacao as Situacao,
-	                                mov.Id as CategoriaId,
-	                                mov.Pagamento as PagamentoId,
+                var query = @"select 
+                                Id,
+                                DataCompra,
+                                Descricao,
+                                Parcelas,
+                                Valor,
+                                DataVencimento,
+                                Situacao,
+                                Categoria as CategoriaId,
+                                Pagamento as PagamentoId 
+                              from Movimento";
 
-	                                cat.Id,
-	                                cat.Descricao as Descricao,
-	                                cat.Sinal,
+                List<Movimento> source = conn.Query<Movimento>(sql: query).ToList();
 
-	                                pag.Id,
-	                                pag.Descricao
-                                from Movimento mov
-                                inner join Categoria cat on mov.Categoria = cat.Id
-                                inner join Pagamento pag on mov.Pagamento = pag.Id";
-
-                List<Movimento> source = conn.Query<Movimento, Categoria, Pagamento, Movimento>(sql: query, (movimento, categoria, pagamento) =>
+                foreach (var mov in source)
                 {
-                    movimento.Categoria = categoria;
-                    movimento.Pagamento = pagamento;
-                    return movimento;
-                }, splitOn: "Id,Id"
+                    mov.Categoria = _categoriaRepository.GetCategoriaById(mov.CategoriaId);
+                    mov.Pagamento = _pagamentoRepository.GetById(mov.PagamentoId);
+                }
 
-
-                ).ToList();
                 return source;
             }
         }
