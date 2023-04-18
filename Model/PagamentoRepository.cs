@@ -23,7 +23,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "select * from FormaPagamento";
+                string query = "select * from Pagamento";
                 List<Pagamento> source = conn.Query<Pagamento>(sql: query).ToList();
                 return source;
             }
@@ -33,7 +33,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "select * from FormaPagamento where Codigo = @id";
+                string query = "select * from Pagamento where Codigo = @id";
                 var pagamento = conn.QueryFirstOrDefault<Pagamento>(sql: query, param: new { id });
                 return pagamento;
             }
@@ -43,7 +43,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "insert into FormaPagamento (Descricao) values (@Descricao)";
+                string query = "insert into Pagamento (Descricao) values (@Descricao)";
                 var result = conn.Execute(sql: query, param: pagamento);
                 return result;
             }
@@ -53,7 +53,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = @"update FormaPagamento 
+                string query = @"update Pagamento 
                                  set Descricao = @Descricao
                                  where Codigo = @Codigo";
                 var result = conn.Execute(sql: query, param: pagamento);
@@ -65,7 +65,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "delete from FormaPagamento where Codigo = @id";
+                string query = "delete from Pagamento where Codigo = @id";
                 var result = conn.Execute(sql: query, param: new { id });
                 return result;
             }

@@ -8,11 +8,13 @@ namespace View
     {
         private readonly ICategoriaController _categoriaController;
         private readonly IPagamentoController _pagamentoController;
+        private readonly IMovimentoController _movimentoController;
 
         public Form1()
         {
             _categoriaController = NinjectKernel.Resolve<ICategoriaController>();
             _pagamentoController = NinjectKernel.Resolve<IPagamentoController>();
+            _movimentoController = NinjectKernel.Resolve<IMovimentoController>();
             InitializeComponent();
         }
 
@@ -36,6 +38,17 @@ namespace View
         {
             PagamentoView pagamentoView = new PagamentoView(_pagamentoController);
             pagamentoView.ShowDialog();
+        }
+
+        /// <summary>
+        /// Ação do botão Movimento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMovimento_Click(object sender, EventArgs e)
+        {
+            MovimentoView movimentoView = new MovimentoView(_movimentoController, _categoriaController,_pagamentoController);
+            movimentoView.ShowDialog();
         }
     }
 }

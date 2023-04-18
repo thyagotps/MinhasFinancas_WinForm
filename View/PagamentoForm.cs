@@ -64,14 +64,14 @@ namespace View
         private PagamentoDto PopularPagamentoDto()
         {
             PagamentoDto pagamentoDto = new PagamentoDto();
-            pagamentoDto.Codigo = Codigo;
+            pagamentoDto.Id = Codigo;
             pagamentoDto.Descricao = txtDescricao.Text;
             return pagamentoDto;
         }
 
         private void PopularComponentesFormulario(PagamentoDto pagamentoDto)
         {
-            txtCodigo.Text = pagamentoDto.Codigo.ToString();
+            txtCodigo.Text = pagamentoDto.Id.ToString();
             txtDescricao.Text = pagamentoDto.Descricao;
         }
 

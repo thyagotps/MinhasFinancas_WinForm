@@ -64,7 +64,7 @@ namespace View
         private CategoriaDto PopularCategoriaDto()
         {
             CategoriaDto categoriaDto = new CategoriaDto();
-            categoriaDto.Codigo = Codigo;
+            categoriaDto.Id = Codigo;
             categoriaDto.Descricao = txtDescricao.Text;
             categoriaDto.Sinal = cboSinal.Text;
             return categoriaDto;
@@ -72,7 +72,7 @@ namespace View
 
         private void PopularComponentesFormulario(CategoriaDto categoriaDto)
         {
-            txtCodigo.Text = categoriaDto.Codigo.ToString();
+            txtCodigo.Text = categoriaDto.Id.ToString();
             txtDescricao.Text = categoriaDto.Descricao;
             cboSinal.Text = categoriaDto.Sinal;
         }

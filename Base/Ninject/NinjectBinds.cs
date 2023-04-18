@@ -1,12 +1,7 @@
-﻿using Ado;
-using Controller;
+﻿using Controller;
+using DAL;
 using Model;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Base.Ninject
 {
@@ -14,7 +9,7 @@ namespace Base.Ninject
     {
         public override void Load()
         {
-            Bind(typeof(IAdo)).To(typeof(Ado.Ado));
+            Bind(typeof(IAdo)).To(typeof(Ado));
             Bind(typeof(DAL.IAdo)).To(typeof(DAL.Ado));
 
             Bind(typeof(ICategoriaController)).To(typeof(CategoriaController));
@@ -22,6 +17,9 @@ namespace Base.Ninject
 
             Bind(typeof(IPagamentoController)).To(typeof(PagamentoController));
             Bind(typeof(IPagamentoRepository)).To(typeof(PagamentoRepository));
+
+            Bind(typeof(IMovimentoController)).To(typeof(MovimentoController));
+            Bind(typeof(IMovimentoRepository)).To(typeof(MovimentoRepository));
         }
     }
 }

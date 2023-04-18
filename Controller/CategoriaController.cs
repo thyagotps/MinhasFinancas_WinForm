@@ -16,6 +16,7 @@ namespace Controller
             MapperConfiguration config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new CategoriaProfile());
+                
             });
             _mapper = new Mapper(config);
         }

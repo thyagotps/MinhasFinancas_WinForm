@@ -1,12 +1,13 @@
-﻿using Dapper;
+﻿using DAL;
+using Dapper;
 
 namespace Model
 {
     public class CategoriaRepository : ICategoriaRepository
     {
-        private readonly Ado.Ado _ado;
+        private readonly Ado _ado;
 
-        public CategoriaRepository(Ado.Ado ado)
+        public CategoriaRepository(Ado ado)
         {
             _ado = ado;
         }

@@ -30,6 +30,7 @@
         {
             this.btnCategoria = new System.Windows.Forms.Button();
             this.btnPagamento = new System.Windows.Forms.Button();
+            this.btnMovimento = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCategoria
@@ -52,11 +53,22 @@
             this.btnPagamento.UseVisualStyleBackColor = true;
             this.btnPagamento.Click += new System.EventHandler(this.btnPagamento_Click);
             // 
+            // btnMovimento
+            // 
+            this.btnMovimento.Location = new System.Drawing.Point(208, 12);
+            this.btnMovimento.Name = "btnMovimento";
+            this.btnMovimento.Size = new System.Drawing.Size(109, 23);
+            this.btnMovimento.TabIndex = 2;
+            this.btnMovimento.Text = "Movimento";
+            this.btnMovimento.UseVisualStyleBackColor = true;
+            this.btnMovimento.Click += new System.EventHandler(this.btnMovimento_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnMovimento);
             this.Controls.Add(this.btnPagamento);
             this.Controls.Add(this.btnCategoria);
             this.Name = "Form1";
@@ -72,5 +84,6 @@
 
         private Button btnCategoria;
         private Button btnPagamento;
+        private Button btnMovimento;
     }
 }
