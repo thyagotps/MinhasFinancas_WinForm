@@ -25,10 +25,28 @@ namespace View
             _movimentoController = movimentoController;
             _categoriaController = categoriaController;
             _pagamentoController= pagamentoController;
-           
+
+            PopularListaCategoria();
+            PopularListaPagamento();
+
         }
 
-      
+        private void PopularListaPagamento()
+        {
+            var source = _pagamentoController.GetAll();
+            cboFormaPagamentoFiltro.DataSource = source.ToList();
+            cboFormaPagamentoFiltro.DisplayMember = "Descricao";
+            cboFormaPagamentoFiltro.ValueMember = "Id";
+        }
+
+        private void PopularListaCategoria()
+        {
+            var source = _categoriaController.GetAll();
+            cboCategoriaFiltro.DataSource = source.ToList();
+            cboCategoriaFiltro.DisplayMember = "Descricao";
+            cboCategoriaFiltro.ValueMember = "Id";
+        }
+
 
         #region Eventos da view
         /// <summary>
@@ -102,8 +120,18 @@ namespace View
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            var movimentoFiltroDto = new MovimentoFiltroDto() { DataCompra = new DateTime(2022, 01, 07) };
-            _movimentoController.BuscarMovimento(movimentoFiltroDto);
+            //var movimentoFiltroDto = new MovimentoFiltroDto() { DataCompra = new DateTime(2022, 01, 07) };
+
+            var movimentoFiltroDto = new MovimentoFiltroDto();
+            movimentoFiltroDto.DataCompra = new DateTime(dtpDataCompraFiltro.Value.Year, dtpDataCompraFiltro.Value.Month, dtpDataCompraFiltro.Value.Day);
+            movimentoFiltroDto.Categoria = cboCategoriaFiltro.SelectedValue.ToString();
+            movimentoFiltroDto.Pagamento = cboFormaPagamentoFiltro.SelectedValue.ToString();
+
+            
+
+            var source = _movimentoController.BuscarMovimento(movimentoFiltroDto);
+            dgvMovimento.ReadOnly = true;
+            dgvMovimento.DataSource = source;
         }
     }
 }

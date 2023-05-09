@@ -28,26 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cboSinal = new System.Windows.Forms.ComboBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // cboSinal
-            // 
-            this.cboSinal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSinal.FormattingEnabled = true;
-            this.cboSinal.Items.AddRange(new object[] {
-            "D",
-            "C"});
-            this.cboSinal.Location = new System.Drawing.Point(12, 141);
-            this.cboSinal.Name = "cboSinal";
-            this.cboSinal.Size = new System.Drawing.Size(177, 23);
-            this.cboSinal.TabIndex = 6;
             // 
             // txtDescricao
             // 
@@ -56,22 +42,13 @@
             this.txtDescricao.Size = new System.Drawing.Size(177, 23);
             this.txtDescricao.TabIndex = 5;
             // 
-            // txtCodigo
+            // txtId
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(12, 27);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(177, 23);
-            this.txtCodigo.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Sinal:";
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(12, 27);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(177, 23);
+            this.txtId.TabIndex = 3;
             // 
             // label1
             // 
@@ -86,7 +63,7 @@
             // 
             this.btnSalvar.Image = global::View.Properties.Resources.salvar3;
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(12, 198);
+            this.btnSalvar.Location = new System.Drawing.Point(12, 126);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(177, 46);
             this.btnSalvar.TabIndex = 2;
@@ -107,13 +84,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(201, 256);
+            this.ClientSize = new System.Drawing.Size(201, 189);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cboSinal);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.txtDescricao);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "CategoriaForm";
@@ -126,11 +101,9 @@
         }
 
         #endregion
-        private Label label3;
         private Label label1;
-        private ComboBox cboSinal;
         private TextBox txtDescricao;
-        private TextBox txtCodigo;
+        private TextBox txtId;
         private Button btnSalvar;
         private Label label2;
     }

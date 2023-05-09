@@ -8,8 +8,8 @@ namespace Model
 {
     public interface ICategoriaRepository
     {
-        public List<Categoria> GetCategorias();
-        public Categoria GetCategoriaById(int id);
+        public List<Categoria> GetAll();
+        public Categoria GetById(int id);
         public int Insert(Categoria categoria);
         public int Update(Categoria categoria);
         public int Delete(int id);

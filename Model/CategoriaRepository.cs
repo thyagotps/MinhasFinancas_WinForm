@@ -12,21 +12,21 @@ namespace Model
             _ado = ado;
         }
 
-        public List<Categoria> GetCategorias()
+        public List<Categoria> GetAll()
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "select * from Categoria";
+                string query = "select Id, Descricao from Categoria order by Id;";
                 List<Categoria> categorias = conn.Query<Categoria>(sql: query).ToList();
                 return categorias;
             }
         }
 
-        public Categoria GetCategoriaById(int id)
+        public Categoria GetById(int id)
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "select * from Categoria where Id = @id";
+                string query = "select Id, Descricao from Categoria where Id = @id order by Id";
                 var categoria = conn.QueryFirstOrDefault<Categoria>(sql: query, param: new { id });
                 return categoria;
             }
@@ -36,7 +36,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "insert into Categoria (Descricao, Sinal) values (@Descricao, @Sinal)";
+                string query = "insert into Categoria (Descricao) values (@Descricao)";
                 var result = conn.Execute(sql: query, param: categoria);
                 return result;
             }
@@ -47,9 +47,8 @@ namespace Model
             using (var conn = _ado.Conectar())
             {
                 string query = @"update Categoria 
-                                 set Descricao = @Descricao,
-                                     Sinal = @Sinal
-                                 where Codigo = @Codigo";
+                                 set Descricao = @Descricao
+                                 where Id = @Id";
                 var result = conn.Execute(sql: query, param: categoria);
                 return result;
             }
@@ -59,7 +58,7 @@ namespace Model
         {
             using (var conn = _ado.Conectar())
             {
-                string query = "delete from Categoria where Codigo = @id";
+                string query = "delete from Categoria where Id = @id";
                 var result = conn.Execute(sql: query, param: new { id });
                 return result;
             }

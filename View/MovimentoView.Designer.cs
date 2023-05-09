@@ -33,6 +33,12 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpDataCompraFiltro = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboFormaPagamentoFiltro = new System.Windows.Forms.ComboBox();
+            this.cboCategoriaFiltro = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,10 +46,10 @@
             // 
             this.dgvMovimento.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMovimento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMovimento.Location = new System.Drawing.Point(12, 47);
+            this.dgvMovimento.Location = new System.Drawing.Point(12, 126);
             this.dgvMovimento.Name = "dgvMovimento";
             this.dgvMovimento.RowTemplate.Height = 25;
-            this.dgvMovimento.Size = new System.Drawing.Size(776, 391);
+            this.dgvMovimento.Size = new System.Drawing.Size(994, 312);
             this.dgvMovimento.TabIndex = 11;
             this.dgvMovimento.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMovimento_CellMouseClick);
             // 
@@ -88,9 +94,8 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Image = global::View.Properties.Resources.excluir;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(350, 11);
+            this.btnBuscar.Location = new System.Drawing.Point(318, 47);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(65, 30);
             this.btnBuscar.TabIndex = 12;
@@ -99,11 +104,67 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 15);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Data Compra:";
+            // 
+            // dtpDataCompraFiltro
+            // 
+            this.dtpDataCompraFiltro.Location = new System.Drawing.Point(98, 49);
+            this.dtpDataCompraFiltro.Name = "dtpDataCompraFiltro";
+            this.dtpDataCompraFiltro.Size = new System.Drawing.Size(200, 23);
+            this.dtpDataCompraFiltro.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(154, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 15);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Pagamento";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 72);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 15);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Categoria";
+            // 
+            // cboFormaPagamentoFiltro
+            // 
+            this.cboFormaPagamentoFiltro.FormattingEnabled = true;
+            this.cboFormaPagamentoFiltro.Location = new System.Drawing.Point(154, 90);
+            this.cboFormaPagamentoFiltro.Name = "cboFormaPagamentoFiltro";
+            this.cboFormaPagamentoFiltro.Size = new System.Drawing.Size(121, 23);
+            this.cboFormaPagamentoFiltro.TabIndex = 19;
+            // 
+            // cboCategoriaFiltro
+            // 
+            this.cboCategoriaFiltro.FormattingEnabled = true;
+            this.cboCategoriaFiltro.Location = new System.Drawing.Point(19, 90);
+            this.cboCategoriaFiltro.Name = "cboCategoriaFiltro";
+            this.cboCategoriaFiltro.Size = new System.Drawing.Size(121, 23);
+            this.cboCategoriaFiltro.TabIndex = 18;
+            // 
             // MovimentoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1018, 450);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.cboFormaPagamentoFiltro);
+            this.Controls.Add(this.cboCategoriaFiltro);
+            this.Controls.Add(this.dtpDataCompraFiltro);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.dgvMovimento);
             this.Controls.Add(this.btnExcluir);
@@ -114,6 +175,7 @@
             this.Load += new System.EventHandler(this.MovimentoView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimento)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -124,5 +186,13 @@
         private Button btnEditar;
         private Button btnNovo;
         private Button btnBuscar;
+        private Label label1;
+        private DateTimePicker dtpDataCompraFiltro;
+        private Label label2;
+        private DateTimePicker dtpDataVencimentoFiltro;
+        private Label label8;
+        private Label label7;
+        private ComboBox cboFormaPagamentoFiltro;
+        private ComboBox cboCategoriaFiltro;
     }
 }

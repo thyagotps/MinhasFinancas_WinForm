@@ -9,9 +9,7 @@ namespace Controller
     public class MovimentoFiltroDto
     {
         public DateTime DataCompra { get; set; }
-        public DateTime? DataVencimento { get; set; }
-        public int? Situacao { get; set; }
-        public int? Categoria { get; set; }
-        public int? Pagamento { get; set; }
+        public string Categoria { get; set; }
+        public string Pagamento { get; set; }
     }
 }

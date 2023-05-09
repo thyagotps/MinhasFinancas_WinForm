@@ -45,7 +45,7 @@ namespace Model
 
                 foreach (var mov in source)
                 {
-                    mov.Categoria = _categoriaRepository.GetCategoriaById(mov.CategoriaId);
+                    mov.Categoria = _categoriaRepository.GetById(mov.CategoriaId);
                     mov.Pagamento = _pagamentoRepository.GetById(mov.PagamentoId);
                 }
 
@@ -145,8 +145,6 @@ namespace Model
                 var param = new
                 {
                     DataCompra = movimentoFiltro.DataCompra,
-                    DataVencimento = movimentoFiltro.DataVencimento,
-                    Situacao = movimentoFiltro.Situacao,
                     Categoria = movimentoFiltro.Categoria,
                     Pagamento = movimentoFiltro.Pagamento
                 };

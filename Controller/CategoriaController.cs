@@ -24,16 +24,14 @@ namespace Controller
         
         public List<CategoriaDto> GetAll()
         {
-            var categorias = _categoriaRepository.GetCategorias();
-
+            var categorias = _categoriaRepository.GetAll();
             var categoriasDtos = _mapper.Map<IEnumerable<CategoriaDto>>(categorias).ToList();
-
             return categoriasDtos;
         }
 
-        public CategoriaDto GetCategoriaById(int id)
+        public CategoriaDto GetById(int id)
         {
-            var categoria = _categoriaRepository.GetCategoriaById(id);
+            var categoria = _categoriaRepository.GetById(id);
             var categoriaDto = _mapper.Map<CategoriaDto>(categoria);
             return categoriaDto;
         }
@@ -41,9 +39,7 @@ namespace Controller
         public bool Insert(CategoriaDto categoriaDto)
         {
             var categoria = _mapper.Map<Categoria>(categoriaDto);
-
             var result = _categoriaRepository.Insert(categoria);
-
             return result > 0 ? true : false;
         }
 
