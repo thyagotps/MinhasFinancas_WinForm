@@ -12,6 +12,7 @@ namespace View
         {
             InitializeComponent();
             _categoriaController = categoriaController;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
         #region Eventos da view
