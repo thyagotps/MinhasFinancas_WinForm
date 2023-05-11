@@ -69,13 +69,15 @@ namespace View
         {
             if (result)
             {
-                MessageBox.Show("Sucesso", "Info", MessageBoxButtons.OK);
+                MessageBox.Show($"Operação realizada com sucesso!", "Sucesso", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
-                MessageBox.Show("Erro", "Info", MessageBoxButtons.OK);
+                MessageBox.Show("Erro ao realizar operação!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        
         #endregion
 
 
