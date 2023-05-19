@@ -1,4 +1,4 @@
-﻿using Controller;
+﻿using Controller.FormaPagamentos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace View
 {
-    public partial class PagamentoForm : Form
+    public partial class PagamentoFormBkup : Form
     {
         public int Codigo { get; set; }
-        private readonly IPagamentoController _pagamentoController;
+        private readonly IFormaPagamentoController _pagamentoController;
 
-        public PagamentoForm(IPagamentoController pagamentoController)
+        public PagamentoFormBkup(IFormaPagamentoController pagamentoController)
         {
             InitializeComponent();
             _pagamentoController = pagamentoController;
@@ -61,21 +61,21 @@ namespace View
             Message(result);
         }
 
-        private PagamentoDto PopularPagamentoDto()
+        private FormaPagamentoDto PopularPagamentoDto()
         {
-            PagamentoDto pagamentoDto = new PagamentoDto();
+            FormaPagamentoDto pagamentoDto = new FormaPagamentoDto();
             pagamentoDto.Id = Codigo;
             pagamentoDto.Descricao = txtDescricao.Text;
             return pagamentoDto;
         }
 
-        private void PopularComponentesFormulario(PagamentoDto pagamentoDto)
+        private void PopularComponentesFormulario(FormaPagamentoDto pagamentoDto)
         {
             txtCodigo.Text = pagamentoDto.Id.ToString();
             txtDescricao.Text = pagamentoDto.Descricao;
         }
 
-        private PagamentoDto GetPagamentoById(int id)
+        private FormaPagamentoDto GetPagamentoById(int id)
         {
             return _pagamentoController.GetById(id);
         }

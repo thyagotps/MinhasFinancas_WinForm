@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Model;
+using Controller.FormaPagamentos;
+using Model.FormaPagamentos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Controller.Profiles
     {
         public PagamentoProfile()
         {
-            CreateMap<Pagamento, PagamentoDto>().ReverseMap();
+            CreateMap<FormaPagamento, FormaPagamentoDto>().ReverseMap();
         }
     }
 }

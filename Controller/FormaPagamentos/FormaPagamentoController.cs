@@ -1,20 +1,15 @@
 ﻿using AutoMapper;
 using Controller.Profiles;
-using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Model.FormaPagamentos;
 
-namespace Controller
+namespace Controller.FormaPagamentos
 {
-    public class PagamentoController : IPagamentoController
+    public class FormaPagamentoController : IFormaPagamentoController
     {
-        private readonly IPagamentoRepository _pagamentoRepository;
+        private readonly IFormaPagamentoRepository _pagamentoRepository;
         private readonly IMapper _mapper;
 
-        public PagamentoController(IPagamentoRepository pagamentoRepository)
+        public FormaPagamentoController(IFormaPagamentoRepository pagamentoRepository)
         {
             _pagamentoRepository = pagamentoRepository;
             MapperConfiguration config = new MapperConfiguration(cfg =>
@@ -24,32 +19,30 @@ namespace Controller
             _mapper = new Mapper(config);
         }
 
-        public List<PagamentoDto> GetAll()
+        public List<FormaPagamentoDto> GetAll()
         {
             var source = _pagamentoRepository.GetAll();
-
-            var pagamentosDtos = _mapper.Map<IEnumerable<PagamentoDto>>(source).ToList();
-
+            var pagamentosDtos = _mapper.Map<IEnumerable<FormaPagamentoDto>>(source).ToList();
             return pagamentosDtos;
         }
 
-        public PagamentoDto GetById(int id)
+        public FormaPagamentoDto GetById(int id)
         {
             var pagamento = _pagamentoRepository.GetById(id);
-            var pagamentoDto = _mapper.Map<PagamentoDto>(pagamento);
+            var pagamentoDto = _mapper.Map<FormaPagamentoDto>(pagamento);
             return pagamentoDto;
         }
 
-        public bool Insert(PagamentoDto pagamentoDto)
+        public bool Insert(FormaPagamentoDto pagamentoDto)
         {
-            var pagamento = _mapper.Map<Pagamento>(pagamentoDto);
+            var pagamento = _mapper.Map<FormaPagamento>(pagamentoDto);
             var result = _pagamentoRepository.Insert(pagamento);
             return result > 0 ? true : false;
         }
 
-        public bool Update(PagamentoDto pagamentoDto)
+        public bool Update(FormaPagamentoDto pagamentoDto)
         {
-            var pagamento = _mapper.Map<Pagamento>(pagamentoDto);
+            var pagamento = _mapper.Map<FormaPagamento>(pagamentoDto);
             var result = _pagamentoRepository.Update(pagamento);
             return result > 0 ? true : false;
         }

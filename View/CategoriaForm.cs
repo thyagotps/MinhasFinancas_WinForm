@@ -2,7 +2,7 @@
 
 namespace View
 {
-    public partial class CategoriaForm : Form
+    public partial class CategoriaForm : BaseView
     {
 
         public int Id { get; set; }
@@ -41,14 +41,16 @@ namespace View
         {
             var categoriaDto = PopularCategoriaDto();
             var result = _categoriaController.Insert(categoriaDto);
-            Message(result);
+            base.Message(result);
+            this.Close();
         }
 
         private void Editar()
         {
             var categoriaDto = PopularCategoriaDto();
             var result = _categoriaController.Update(categoriaDto);
-            Message(result);
+            base.Message(result);
+            this.Close();
         }
 
         private CategoriaDto PopularCategoriaDto()
@@ -63,18 +65,6 @@ namespace View
         {
             txtId.Text = categoriaDto.Id.ToString();
             txtDescricao.Text = categoriaDto.Descricao;
-        }
-
-        private void Message(bool result)
-        {
-            if (result)
-            {
-                MessageBox.Show($"Operação realizada com sucesso!", "Sucesso", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-                MessageBox.Show("Erro ao realizar operação!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         

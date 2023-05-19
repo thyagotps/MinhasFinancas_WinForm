@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controller
+namespace Model.FormaPagamentos
 {
-    public class PagamentoDto
+    public class FormaPagamento
     {
         public int Id { get; set; }
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
     }
 }

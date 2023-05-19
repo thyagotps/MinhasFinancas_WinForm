@@ -1,9 +1,10 @@
-﻿using Controller;
+﻿using Base.Ninject;
+using Controller;
 using System.Windows.Forms;
 
 namespace View
 {
-    public partial class CategoriaView : Form
+    public partial class CategoriaView : BaseView
     {
         private int _id { get; set; }
         private readonly ICategoriaController _categoriaController;
@@ -75,25 +76,25 @@ namespace View
 
         private void Novo()
         {
-            CategoriaForm form = new CategoriaForm(_categoriaController);
+            //CategoriaForm form = new CategoriaForm(_categoriaController);
+            var form = NinjectKernel.Resolve<CategoriaForm>();
             form.Id = -1;
             form.ShowDialog();
-            if (form.DialogResult == DialogResult.OK)
-                Buscar();
+            Buscar();
         }
 
         private void Editar()
         {
-            CategoriaForm form = new CategoriaForm(_categoriaController);
+            //CategoriaForm form = new CategoriaForm(_categoriaController);
+            var form = NinjectKernel.Resolve<CategoriaForm>();
             form.Id = _id;
             form.ShowDialog();
-            if (form.DialogResult == DialogResult.OK)
-                Buscar();
+            Buscar();
         }
 
         private void Excluir()
         {
-            var result = MessageBox.Show("Deseja realmente excluir o registro de código: " + _id.ToString() + "?","Atenção",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            var result = base.MessageDelete(_id);
             if (result == DialogResult.Yes)
                 _categoriaController.Delete(_id);
             Buscar();  

@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class PagamentoForm
+    partial class PagamentoFormBkup
     {
         /// <summary>
         /// Required designer variable.

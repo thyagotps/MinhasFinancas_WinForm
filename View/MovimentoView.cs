@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Controller.FormaPagamentos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +17,10 @@ namespace View
         private int _codigo { get; set; }
         private readonly IMovimentoController _movimentoController;
         private readonly ICategoriaController _categoriaController;
-        private readonly IPagamentoController _pagamentoController;
+        private readonly IFormaPagamentoController _pagamentoController;
 
         public MovimentoView(IMovimentoController movimentoController,
-            ICategoriaController categoriaController,IPagamentoController pagamentoController)
+            ICategoriaController categoriaController,IFormaPagamentoController pagamentoController)
         {
             InitializeComponent();
             _movimentoController = movimentoController;

@@ -1,19 +1,21 @@
 using Base.Ninject;
 using Controller;
+using Controller.FormaPagamentos;
 using Model;
+using View.FormaPagamentos;
 
 namespace View
 {
     public partial class Form1 : Form
     {
         private readonly ICategoriaController _categoriaController;
-        private readonly IPagamentoController _pagamentoController;
+        private readonly IFormaPagamentoController _pagamentoController;
         private readonly IMovimentoController _movimentoController;
 
         public Form1()
         {
             _categoriaController = NinjectKernel.Resolve<ICategoriaController>();
-            _pagamentoController = NinjectKernel.Resolve<IPagamentoController>();
+            _pagamentoController = NinjectKernel.Resolve<IFormaPagamentoController>();
             _movimentoController = NinjectKernel.Resolve<IMovimentoController>();
             InitializeComponent();
         }
@@ -25,7 +27,8 @@ namespace View
         /// <param name="e"></param>
         private void btnCategoria_Click_1(object sender, EventArgs e)
         {
-            CategoriaView form = new CategoriaView(_categoriaController);
+            //CategoriaView form = new CategoriaView(_categoriaController);
+            var form = NinjectKernel.Resolve<CategoriaView>();
             form.ShowDialog();
         }
 
@@ -36,8 +39,9 @@ namespace View
         /// <param name="e"></param>
         private void btnPagamento_Click(object sender, EventArgs e)
         {
-            PagamentoView pagamentoView = new PagamentoView(_pagamentoController);
-            pagamentoView.ShowDialog();
+            //FormaPagamentoView pagamentoView = new FormaPagamentoView(_pagamentoController);
+            var view = NinjectKernel.Resolve<FormaPagamentoView>();
+            view.ShowDialog();
         }
 
         /// <summary>

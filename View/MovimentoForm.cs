@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Controller.FormaPagamentos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,11 @@ namespace View
         public int Codigo { get; set; }
         private readonly IMovimentoController _movimentoController;
         private readonly ICategoriaController _categoriaController;
-        private readonly IPagamentoController _pagamentoController;
+        private readonly IFormaPagamentoController _pagamentoController;
         
         public MovimentoForm(IMovimentoController movimentoController,
             ICategoriaController categoriaController,
-            IPagamentoController pagamentoController)
+            IFormaPagamentoController pagamentoController)
         {
             InitializeComponent();
             _movimentoController = movimentoController;

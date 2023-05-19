@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.FormaPagamentos;
 
 namespace Model
 {
@@ -20,6 +21,6 @@ namespace Model
         public Categoria Categoria { get; set; }
 
         public int PagamentoId { get; set; }
-        public Pagamento Pagamento { get; set; }
+        public FormaPagamento Pagamento { get; set; }
     }
 }

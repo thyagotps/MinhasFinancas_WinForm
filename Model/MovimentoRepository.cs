@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using Dapper;
+using Model.FormaPagamentos;
 
 namespace Model
 {
@@ -14,11 +15,11 @@ namespace Model
     {
         private readonly Ado _ado;
         private readonly CategoriaRepository _categoriaRepository;
-        private readonly PagamentoRepository _pagamentoRepository;
+        private readonly FormaPagamentoRepository _pagamentoRepository;
 
         public MovimentoRepository(Ado ado, 
                                    CategoriaRepository categoriaRepository,
-                                   PagamentoRepository pagamentoRepository)
+                                   FormaPagamentoRepository pagamentoRepository)
         {
             _ado = ado;
             _categoriaRepository = categoriaRepository;
@@ -81,7 +82,7 @@ namespace Model
                                 where mov.Id = @Id";
                 //var movimento = conn.QueryFirstOrDefault<Movimento>(sql: query, param: new { id });
                 //return movimento;
-                var source = conn.Query<Movimento, Categoria, Pagamento, Movimento>(sql: query, (movimento, categoria, pagamento) =>
+                var source = conn.Query<Movimento, Categoria, FormaPagamento, Movimento>(sql: query, (movimento, categoria, pagamento) =>
                 {
                     movimento.Categoria = categoria;
                     movimento.Pagamento = pagamento;
