@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Controller.Categorias;
 using Controller.FormaPagamentos;
 using System;
 using System.Collections.Generic;

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using Model;
+using Controller.Categorias;
+using Model.Categorias;
 
 namespace Controller.Profiles
 {

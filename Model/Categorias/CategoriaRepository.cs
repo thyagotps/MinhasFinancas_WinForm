@@ -1,7 +1,7 @@
 ﻿using DAL;
 using Dapper;
 
-namespace Model
+namespace Model.Categorias
 {
     public class CategoriaRepository : ICategoriaRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace Controller
+﻿namespace Controller.Categorias
 {
     public interface ICategoriaController
     {

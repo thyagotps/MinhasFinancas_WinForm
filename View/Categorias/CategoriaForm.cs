@@ -1,10 +1,18 @@
-﻿using Controller;
+﻿using Controller.Categorias;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace View
+namespace View.Categorias
 {
     public partial class CategoriaForm : BaseView
     {
-
         public int Id { get; set; }
         private readonly ICategoriaController _categoriaController;
 
@@ -67,9 +75,7 @@ namespace View
             txtDescricao.Text = categoriaDto.Descricao;
         }
 
-        
+
         #endregion
-
-
     }
 }

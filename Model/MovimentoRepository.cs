@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using Dapper;
+using Model.Categorias;
 using Model.FormaPagamentos;
 
 namespace Model

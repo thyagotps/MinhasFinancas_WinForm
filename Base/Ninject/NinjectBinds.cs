@@ -1,7 +1,9 @@
 ﻿using Controller;
+using Controller.Categorias;
 using Controller.FormaPagamentos;
 using DAL;
 using Model;
+using Model.Categorias;
 using Model.FormaPagamentos;
 using Ninject.Modules;
 

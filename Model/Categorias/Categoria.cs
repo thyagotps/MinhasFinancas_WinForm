@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace Model.Categorias
 {
     public class Categoria
     {

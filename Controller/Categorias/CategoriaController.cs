@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Controller.Profiles;
-using Model;
+using Model.Categorias;
 
-namespace Controller
+namespace Controller.Categorias
 {
     public class CategoriaController : ICategoriaController
     {
@@ -16,12 +16,12 @@ namespace Controller
             MapperConfiguration config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new CategoriaProfile());
-                
+
             });
             _mapper = new Mapper(config);
         }
 
-        
+
         public List<CategoriaDto> GetAll()
         {
             var categorias = _categoriaRepository.GetAll();

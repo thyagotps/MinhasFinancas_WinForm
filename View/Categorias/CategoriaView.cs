@@ -1,8 +1,16 @@
 ﻿using Base.Ninject;
-using Controller;
+using Controller.Categorias;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace View
+namespace View.Categorias
 {
     public partial class CategoriaView : BaseView
     {
@@ -13,10 +21,8 @@ namespace View
         {
             InitializeComponent();
             _categoriaController = categoriaController;
-            this.FormBorderStyle= FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
-
-        #region Eventos da view
 
         private void CategoriaView_Load(object sender, EventArgs e)
         {
@@ -54,10 +60,6 @@ namespace View
             _id = Convert.ToInt32(rowData.Cells[0].Value.ToString());
         }
 
-        #endregion
-
-        #region Métodos
-
         private void Buscar()
         {
             var source = _categoriaController.GetAll();
@@ -71,7 +73,7 @@ namespace View
             dgvCategoria.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
             dgvCategoria.RowsDefaultCellStyle.SelectionBackColor = Color.NavajoWhite;
-            dgvCategoria.RowsDefaultCellStyle.SelectionForeColor= Color.Black;
+            dgvCategoria.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         private void Novo()
@@ -97,11 +99,7 @@ namespace View
             var result = base.MessageDelete(_id);
             if (result == DialogResult.Yes)
                 _categoriaController.Delete(_id);
-            Buscar();  
+            Buscar();
         }
-
-        #endregion
-
-      
     }
 }

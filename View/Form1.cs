@@ -1,7 +1,9 @@
 using Base.Ninject;
 using Controller;
+using Controller.Categorias;
 using Controller.FormaPagamentos;
 using Model;
+using View.Categorias;
 using View.FormaPagamentos;
 
 namespace View
@@ -51,8 +53,8 @@ namespace View
         /// <param name="e"></param>
         private void btnMovimento_Click(object sender, EventArgs e)
         {
-            MovimentoView movimentoView = new MovimentoView(_movimentoController, _categoriaController,_pagamentoController);
-            movimentoView.ShowDialog();
+            //MovimentoView movimentoView = new MovimentoView(_movimentoController, _categoriaController,_pagamentoController);
+            //movimentoView.ShowDialog();
         }
     }
 }
