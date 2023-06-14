@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.MovimentosAnaliticos
 {
-    public class MovimentoFiltro
+    public class MovimentoAnaliticoFiltro
     {
         public DateTime DataCompra { get; set; }
         public string Categoria { get; set; }

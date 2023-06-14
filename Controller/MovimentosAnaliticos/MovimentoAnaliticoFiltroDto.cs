@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controller
+namespace Controller.MovimentosAnaliticos
 {
-    public class MovimentoFiltroDto
+    public class MovimentoAnaliticoFiltroDto
     {
         public DateTime DataCompra { get; set; }
         public string Categoria { get; set; }

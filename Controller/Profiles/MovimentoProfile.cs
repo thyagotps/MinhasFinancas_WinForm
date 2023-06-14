@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Model;
+using Controller.MovimentosAnaliticos;
+using Model.MovimentosAnaliticos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +13,16 @@ namespace Controller.Profiles
     {
         public MovimentoProfile()
         {
-            CreateMap<Movimento, MovimentoDto>().ReverseMap();
+            CreateMap<MovimentoAnalitico, MovimentoAnaliticoDto>().ReverseMap();
 
-            CreateMap<Movimento, MovimentoDto>()
+            CreateMap<MovimentoAnalitico, MovimentoAnaliticoDto>()
                 .ForMember(dto => dto.CategoriaDescricao, mov => mov.MapFrom(src => src.Categoria.Descricao))
-                .ForMember(dto => dto.PagamentoDescricao, mov => mov.MapFrom(src => src.Pagamento.Descricao))
+                .ForMember(dto => dto.FormaPagamentoDescricao, mov => mov.MapFrom(src => src.FormaPagamento.Descricao))
                 .ReverseMap();
 
-            CreateMap<Movimento, MovimentoDto>()
+            CreateMap<MovimentoAnalitico, MovimentoAnaliticoDto>()
                .ForMember(dto => dto.CategoriaId, mov => mov.MapFrom(src => src.Categoria.Id))
-               .ForMember(dto => dto.PagamentoId, mov => mov.MapFrom(src => src.Pagamento.Id))
+               .ForMember(dto => dto.PagamentoId, mov => mov.MapFrom(src => src.FormaPagamento.Id))
                .ReverseMap();
         }
     }

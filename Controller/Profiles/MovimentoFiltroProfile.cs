@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Model;
+using Controller.MovimentosAnaliticos;
+using Model.MovimentosAnaliticos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Controller.Profiles
     {
         public MovimentoFiltroProfile()
         {
-            CreateMap<MovimentoFiltro, MovimentoFiltroDto>().ReverseMap();
+            CreateMap<MovimentoAnaliticoFiltro, MovimentoAnaliticoFiltroDto>().ReverseMap();
         }
     }
 }

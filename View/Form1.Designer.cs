@@ -28,54 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCategoria = new System.Windows.Forms.Button();
-            this.btnPagamento = new System.Windows.Forms.Button();
-            this.btnMovimento = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            btnCategoria = new Button();
+            btnPagamento = new Button();
+            btnMovimento = new Button();
+            SuspendLayout();
             // 
             // btnCategoria
             // 
-            this.btnCategoria.Location = new System.Drawing.Point(12, 12);
-            this.btnCategoria.Name = "btnCategoria";
-            this.btnCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnCategoria.TabIndex = 0;
-            this.btnCategoria.Text = "Categoria";
-            this.btnCategoria.UseVisualStyleBackColor = true;
-            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click_1);
+            btnCategoria.Location = new Point(12, 12);
+            btnCategoria.Name = "btnCategoria";
+            btnCategoria.Size = new Size(75, 23);
+            btnCategoria.TabIndex = 0;
+            btnCategoria.Text = "Categoria";
+            btnCategoria.UseVisualStyleBackColor = true;
+            btnCategoria.Click += btnCategoria_Click_1;
             // 
             // btnPagamento
             // 
-            this.btnPagamento.Location = new System.Drawing.Point(93, 12);
-            this.btnPagamento.Name = "btnPagamento";
-            this.btnPagamento.Size = new System.Drawing.Size(109, 23);
-            this.btnPagamento.TabIndex = 1;
-            this.btnPagamento.Text = "Pagamentos";
-            this.btnPagamento.UseVisualStyleBackColor = true;
-            this.btnPagamento.Click += new System.EventHandler(this.btnPagamento_Click);
+            btnPagamento.Location = new Point(93, 12);
+            btnPagamento.Name = "btnPagamento";
+            btnPagamento.Size = new Size(109, 23);
+            btnPagamento.TabIndex = 1;
+            btnPagamento.Text = "Pagamentos";
+            btnPagamento.UseVisualStyleBackColor = true;
+            btnPagamento.Click += btnPagamento_Click;
             // 
             // btnMovimento
             // 
-            this.btnMovimento.Location = new System.Drawing.Point(208, 12);
-            this.btnMovimento.Name = "btnMovimento";
-            this.btnMovimento.Size = new System.Drawing.Size(109, 23);
-            this.btnMovimento.TabIndex = 2;
-            this.btnMovimento.Text = "Movimento";
-            this.btnMovimento.UseVisualStyleBackColor = true;
-            this.btnMovimento.Click += new System.EventHandler(this.btnMovimento_Click);
+            btnMovimento.Location = new Point(208, 12);
+            btnMovimento.Name = "btnMovimento";
+            btnMovimento.Size = new Size(168, 23);
+            btnMovimento.TabIndex = 2;
+            btnMovimento.Text = "Movimento Analítico";
+            btnMovimento.UseVisualStyleBackColor = true;
+            btnMovimento.Click += btnMovimento_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnMovimento);
-            this.Controls.Add(this.btnPagamento);
-            this.Controls.Add(this.btnCategoria);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnMovimento);
+            Controls.Add(btnPagamento);
+            Controls.Add(btnCategoria);
+            Name = "Form1";
+            Text = "Form1";
+            WindowState = FormWindowState.Maximized;
+            ResumeLayout(false);
         }
 
 

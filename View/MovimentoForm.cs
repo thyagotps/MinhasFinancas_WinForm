@@ -1,6 +1,6 @@
-﻿using Controller;
-using Controller.Categorias;
+﻿using Controller.Categorias;
 using Controller.FormaPagamentos;
+using Controller.MovimentosAnaliticos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +16,11 @@ namespace View
     public partial class MovimentoForm : Form
     {
         public int Codigo { get; set; }
-        private readonly IMovimentoController _movimentoController;
+        private readonly IMovimentoAnaliticoController _movimentoController;
         private readonly ICategoriaController _categoriaController;
         private readonly IFormaPagamentoController _pagamentoController;
         
-        public MovimentoForm(IMovimentoController movimentoController,
+        public MovimentoForm(IMovimentoAnaliticoController movimentoController,
             ICategoriaController categoriaController,
             IFormaPagamentoController pagamentoController)
         {
@@ -83,60 +83,60 @@ namespace View
             Message(result);
         }
 
-        private MovimentoDto PopularMovimentoDto()
+        private MovimentoAnaliticoDto PopularMovimentoDto()
         {
-            MovimentoDto movimentoDto = new MovimentoDto();
+            MovimentoAnaliticoDto movimentoDto = new MovimentoAnaliticoDto();
             movimentoDto.Id = Codigo;
             movimentoDto.DataCompra = dtpDataCompra.Value;
             movimentoDto.Descricao = txtDescricao.Text;
-            movimentoDto.Parcelas = txtParcelas.Text;
-            movimentoDto.Valor = Convert.ToDecimal(txtValor.Text);
-            movimentoDto.DataVencimento = dtpDataVencimento.Value;
-            movimentoDto.Situacao = rdbNaoPago.Checked ? 0 : 1;
+            //movimentoDto.Parcelas = txtParcelas.Text;
+            //movimentoDto.Valor = Convert.ToDecimal(txtValor.Text);
+            //movimentoDto.DataVencimento = dtpDataVencimento.Value;
+            //movimentoDto.Situacao = rdbNaoPago.Checked ? 0 : 1;
             movimentoDto.CategoriaId = cboCategoria.SelectedValue.ToString();
             movimentoDto.PagamentoId = cboFormaPagamento.SelectedValue.ToString();
             return movimentoDto;
         }
 
-        private MovimentoDto GetMovimentoById(int id)
+        private MovimentoAnaliticoDto GetMovimentoById(int id)
         {
             return _movimentoController.GetById(id);
         }
 
-        private void PopularComponentesFormulario(MovimentoDto movimentoDto)
+        private void PopularComponentesFormulario(MovimentoAnaliticoDto movimentoDto)
         {
-            txtCodigo.Text = movimentoDto.Id.ToString();
-            dtpDataCompra.Value = movimentoDto.DataCompra;
+            //txtCodigo.Text = movimentoDto.Id.ToString();
+            //dtpDataCompra.Value = movimentoDto.DataCompra;
             
             
 
-            if (movimentoDto.DataVencimento.HasValue)
-            {
-                dtpDataVencimento.Value = movimentoDto.DataVencimento.Value;
-            }
-            else
-            {
-                dtpDataVencimento.CustomFormat = " ";
-                dtpDataVencimento.Format = DateTimePickerFormat.Custom;
+            //if (movimentoDto.DataVencimento.HasValue)
+            //{
+            //    dtpDataVencimento.Value = movimentoDto.DataVencimento.Value;
+            //}
+            //else
+            //{
+            //    dtpDataVencimento.CustomFormat = " ";
+            //    dtpDataVencimento.Format = DateTimePickerFormat.Custom;
 
-            }
+            //}
 
-            txtDescricao.Text = movimentoDto.Descricao;
-            txtParcelas.Text = movimentoDto.Parcelas;
-            txtValor.Text = movimentoDto.Valor.ToString();
-            if (movimentoDto.Situacao == 0)
-            {
-                rdbNaoPago.Checked = false;
-                rdbPago.Checked = true;
-            }
+            //txtDescricao.Text = movimentoDto.Descricao;
+            //txtParcelas.Text = movimentoDto.Parcelas;
+            //txtValor.Text = movimentoDto.Valor.ToString();
+            //if (movimentoDto.Situacao == 0)
+            //{
+            //    rdbNaoPago.Checked = false;
+            //    rdbPago.Checked = true;
+            //}
 
-            else
-            {
-                rdbNaoPago.Checked = true;
-                rdbPago.Checked = false;
-            }
-            cboCategoria.SelectedIndex = cboCategoria.FindString(movimentoDto.CategoriaDescricao);
-            cboFormaPagamento.SelectedIndex = cboFormaPagamento.FindString(movimentoDto.PagamentoDescricao);
+            //else
+            //{
+            //    rdbNaoPago.Checked = true;
+            //    rdbPago.Checked = false;
+            //}
+            //cboCategoria.SelectedIndex = cboCategoria.FindString(movimentoDto.CategoriaDescricao);
+            //cboFormaPagamento.SelectedIndex = cboFormaPagamento.FindString(movimentoDto.PagamentoDescricao);
 
 
         }

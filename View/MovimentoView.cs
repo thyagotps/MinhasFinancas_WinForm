@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Controller.Categorias;
 using Controller.FormaPagamentos;
+using Controller.MovimentosAnaliticos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,11 @@ namespace View
     public partial class MovimentoView : Form
     {
         private int _codigo { get; set; }
-        private readonly IMovimentoController _movimentoController;
+        private readonly IMovimentoAnaliticoController _movimentoController;
         private readonly ICategoriaController _categoriaController;
         private readonly IFormaPagamentoController _pagamentoController;
 
-        public MovimentoView(IMovimentoController movimentoController,
+        public MovimentoView(IMovimentoAnaliticoController movimentoController,
             ICategoriaController categoriaController,IFormaPagamentoController pagamentoController)
         {
             InitializeComponent();
@@ -124,16 +125,16 @@ namespace View
         {
             //var movimentoFiltroDto = new MovimentoFiltroDto() { DataCompra = new DateTime(2022, 01, 07) };
 
-            var movimentoFiltroDto = new MovimentoFiltroDto();
-            movimentoFiltroDto.DataCompra = new DateTime(dtpDataCompraFiltro.Value.Year, dtpDataCompraFiltro.Value.Month, dtpDataCompraFiltro.Value.Day);
-            movimentoFiltroDto.Categoria = cboCategoriaFiltro.SelectedValue.ToString();
-            movimentoFiltroDto.Pagamento = cboFormaPagamentoFiltro.SelectedValue.ToString();
+            //var movimentoFiltroDto = new MovimentoAnaliticoFiltroDto();
+            //movimentoFiltroDto.DataCompra = new DateTime(dtpDataCompraFiltro.Value.Year, dtpDataCompraFiltro.Value.Month, dtpDataCompraFiltro.Value.Day);
+            //movimentoFiltroDto.Categoria = cboCategoriaFiltro.SelectedValue.ToString();
+            //movimentoFiltroDto.Pagamento = cboFormaPagamentoFiltro.SelectedValue.ToString();
 
             
 
-            var source = _movimentoController.BuscarMovimento(movimentoFiltroDto);
-            dgvMovimento.ReadOnly = true;
-            dgvMovimento.DataSource = source;
+            ////var source = _movimentoController.BuscarMovimento(movimentoFiltroDto);
+            //dgvMovimento.ReadOnly = true;
+            //dgvMovimento.DataSource = source;
         }
     }
 }
