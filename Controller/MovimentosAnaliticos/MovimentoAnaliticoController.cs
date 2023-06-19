@@ -20,7 +20,7 @@ namespace Controller.MovimentosAnaliticos
             MapperConfiguration config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MovimentoProfile());
-                cfg.AddProfile(new MovimentoFiltroProfile());
+                cfg.AddProfile(new MovimentoAnaliticoFiltroProfile());
             });
             _mapper = new Mapper(config);
         }
@@ -62,11 +62,13 @@ namespace Controller.MovimentosAnaliticos
             return result > 0 ? true : false;
         }
 
-        public List<MovimentoAnalitico> BuscarMovimentosAnaliticos(MovimentoAnaliticoFiltroDto movimentoFiltroDto)
+        public List<MovimentoAnaliticoDto> BuscarMovimentosAnaliticos(MovimentoAnaliticoFiltroDto movimentoFiltroDto)
         {
             var movimentoFiltro = _mapper.Map<MovimentoAnaliticoFiltro>(movimentoFiltroDto);
             var result = _movimentoRepository.BuscarMovimentosAnaliticos(movimentoFiltro);
-            return result;
+
+            var movimentosDtos = _mapper.Map<IEnumerable<MovimentoAnaliticoDto>>(result).ToList();
+            return movimentosDtos;
         }
 
         public List<MovimentoAnaliticoDto> GetByMonth(int month)

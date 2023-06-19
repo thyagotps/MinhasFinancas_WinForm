@@ -11,6 +11,7 @@ namespace Controller.MovimentosAnaliticos
     {
         public int Id { get; set; }
         public DateTime DataCompra { get; set; }
+        public decimal Valor { get; set; }
         public string Descricao { get; set; }
         public string CategoriaId { get; set; }
         public string CategoriaDescricao { get; set; }

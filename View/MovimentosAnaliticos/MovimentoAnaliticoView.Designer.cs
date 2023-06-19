@@ -34,7 +34,8 @@
             btnExcluir = new Button();
             btnEditar = new Button();
             panel2 = new Panel();
-            button1 = new Button();
+            btnLimparFiltro = new Button();
+            btnBuscar = new Button();
             cboFormaPagamento = new ComboBox();
             cboCategoriaFiltro = new ComboBox();
             dtpDataCompraFiltro = new DateTimePicker();
@@ -101,7 +102,8 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(96, 109, 128);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(btnLimparFiltro);
+            panel2.Controls.Add(btnBuscar);
             panel2.Controls.Add(cboFormaPagamento);
             panel2.Controls.Add(cboCategoriaFiltro);
             panel2.Controls.Add(dtpDataCompraFiltro);
@@ -115,31 +117,47 @@
             panel2.Size = new Size(1172, 473);
             panel2.TabIndex = 12;
             // 
-            // button1
+            // btnLimparFiltro
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(672, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(67, 28);
-            button1.TabIndex = 7;
-            button1.Text = "Buscar";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = true;
+            btnLimparFiltro.Image = Properties.Resources.borracha;
+            btnLimparFiltro.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLimparFiltro.Location = new Point(666, 12);
+            btnLimparFiltro.Name = "btnLimparFiltro";
+            btnLimparFiltro.Size = new Size(72, 26);
+            btnLimparFiltro.TabIndex = 8;
+            btnLimparFiltro.Text = "Limpar";
+            btnLimparFiltro.TextAlign = ContentAlignment.MiddleRight;
+            btnLimparFiltro.UseVisualStyleBackColor = true;
+            btnLimparFiltro.Click += btnLimparFiltro_Click;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Cursor = Cursors.Hand;
+            btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
+            btnBuscar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBuscar.Location = new Point(769, 6);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(73, 39);
+            btnBuscar.TabIndex = 7;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.TextAlign = ContentAlignment.MiddleRight;
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // cboFormaPagamento
             // 
+            cboFormaPagamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFormaPagamento.FormattingEnabled = true;
-            cboFormaPagamento.Location = new Point(528, 9);
+            cboFormaPagamento.Location = new Point(535, 14);
             cboFormaPagamento.Name = "cboFormaPagamento";
             cboFormaPagamento.Size = new Size(125, 23);
             cboFormaPagamento.TabIndex = 6;
             // 
             // cboCategoriaFiltro
             // 
+            cboCategoriaFiltro.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoriaFiltro.FormattingEnabled = true;
-            cboCategoriaFiltro.Location = new Point(265, 9);
+            cboCategoriaFiltro.Location = new Point(272, 14);
             cboCategoriaFiltro.Name = "cboCategoriaFiltro";
             cboCategoriaFiltro.Size = new Size(125, 23);
             cboCategoriaFiltro.TabIndex = 5;
@@ -147,7 +165,7 @@
             // dtpDataCompraFiltro
             // 
             dtpDataCompraFiltro.Format = DateTimePickerFormat.Short;
-            dtpDataCompraFiltro.Location = new Point(88, 9);
+            dtpDataCompraFiltro.Location = new Point(95, 14);
             dtpDataCompraFiltro.Name = "dtpDataCompraFiltro";
             dtpDataCompraFiltro.Size = new Size(100, 23);
             dtpDataCompraFiltro.TabIndex = 4;
@@ -156,7 +174,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(403, 13);
+            label3.Location = new Point(410, 18);
             label3.Name = "label3";
             label3.Size = new Size(124, 15);
             label3.TabIndex = 3;
@@ -166,7 +184,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(202, 13);
+            label2.Location = new Point(209, 18);
             label2.Name = "label2";
             label2.Size = new Size(61, 15);
             label2.TabIndex = 2;
@@ -176,7 +194,7 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(5, 13);
+            label1.Location = new Point(12, 18);
             label1.Name = "label1";
             label1.Size = new Size(80, 15);
             label1.TabIndex = 1;
@@ -188,12 +206,12 @@
             dgvMovimentoAnalitico.AllowUserToDeleteRows = false;
             dgvMovimentoAnalitico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentoAnalitico.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMovimentoAnalitico.Location = new Point(12, 78);
+            dgvMovimentoAnalitico.Location = new Point(12, 51);
             dgvMovimentoAnalitico.Name = "dgvMovimentoAnalitico";
             dgvMovimentoAnalitico.ReadOnly = true;
             dgvMovimentoAnalitico.RowTemplate.Height = 25;
             dgvMovimentoAnalitico.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMovimentoAnalitico.Size = new Size(1148, 383);
+            dgvMovimentoAnalitico.Size = new Size(1148, 410);
             dgvMovimentoAnalitico.TabIndex = 0;
             // 
             // MovimentoAnaliticoView
@@ -226,8 +244,9 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private Button button1;
+        private Button btnBuscar;
         private ComboBox cboFormaPagamento;
         private ComboBox cboCategoriaFiltro;
+        private Button btnLimparFiltro;
     }
 }

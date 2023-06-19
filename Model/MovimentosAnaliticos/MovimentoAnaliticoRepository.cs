@@ -120,6 +120,11 @@ namespace Model.MovimentosAnaliticos
                     movimentoFiltro.Pagamento
                 };
                 var result = conn.Query<MovimentoAnalitico>(sql, param, commandType: CommandType.StoredProcedure).ToList();
+                foreach (var item in result)
+                {
+                    item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
+                    item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
+                }
                 return result;
             }
         }

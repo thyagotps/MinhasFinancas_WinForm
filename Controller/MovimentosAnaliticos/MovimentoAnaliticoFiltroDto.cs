@@ -9,7 +9,7 @@ namespace Controller.MovimentosAnaliticos
     public class MovimentoAnaliticoFiltroDto
     {
         public DateTime DataCompra { get; set; }
-        public string Categoria { get; set; }
-        public string Pagamento { get; set; }
+        public int? Categoria { get; set; }
+        public int? Pagamento { get; set; }
     }
 }

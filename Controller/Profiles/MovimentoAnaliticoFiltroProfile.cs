@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Controller.Profiles
 {
-    public class MovimentoFiltroProfile : Profile
+    public class MovimentoAnaliticoFiltroProfile : Profile
     {
-        public MovimentoFiltroProfile()
+        public MovimentoAnaliticoFiltroProfile()
         {
             CreateMap<MovimentoAnaliticoFiltro, MovimentoAnaliticoFiltroDto>().ReverseMap();
         }
