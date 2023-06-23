@@ -15,6 +15,7 @@ namespace Controller.MovimentosAnaliticos
         public bool Update(MovimentoAnaliticoDto movimentoDto);
         public bool Delete(int id);
         public List<MovimentoAnaliticoDto> BuscarMovimentosAnaliticos(MovimentoAnaliticoFiltroDto movimentoFiltro);
-        public List<MovimentoAnaliticoDto> GetByMonth(int month);
+        public List<MovimentoAnaliticoDto> GetByMonth(int year, int month);
+        public decimal GetTotal(MovimentoAnaliticoFiltroDto filtro);
     }
 }

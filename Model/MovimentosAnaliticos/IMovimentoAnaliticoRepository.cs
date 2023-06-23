@@ -14,6 +14,7 @@ namespace Model.MovimentosAnaliticos
         public int Update(MovimentoAnalitico movimento);
         public int Delete(int id);
         public List<MovimentoAnalitico> BuscarMovimentosAnaliticos(MovimentoAnaliticoFiltro movimentoFiltro);
-        public List<MovimentoAnalitico> GetByMonth(int month);
+        public List<MovimentoAnalitico> GetByMonth(int year, int month);
+        public decimal GetTotal(MovimentoAnaliticoFiltro filtro);
     }
 }

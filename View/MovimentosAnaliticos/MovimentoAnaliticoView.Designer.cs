@@ -43,6 +43,8 @@
             label2 = new Label();
             label1 = new Label();
             dgvMovimentoAnalitico = new DataGridView();
+            label4 = new Label();
+            lblTotal = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMovimentoAnalitico).BeginInit();
@@ -102,6 +104,8 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(96, 109, 128);
+            panel2.Controls.Add(lblTotal);
+            panel2.Controls.Add(label4);
             panel2.Controls.Add(btnLimparFiltro);
             panel2.Controls.Add(btnBuscar);
             panel2.Controls.Add(cboFormaPagamento);
@@ -214,6 +218,26 @@
             dgvMovimentoAnalitico.Size = new Size(1148, 410);
             dgvMovimentoAnalitico.TabIndex = 0;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(865, 17);
+            label4.Name = "label4";
+            label4.Size = new Size(35, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Total:";
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.ForeColor = Color.White;
+            lblTotal.Location = new Point(906, 18);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(20, 15);
+            lblTotal.TabIndex = 10;
+            lblTotal.Text = "R$";
+            // 
             // MovimentoAnaliticoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -248,5 +272,7 @@
         private ComboBox cboFormaPagamento;
         private ComboBox cboCategoriaFiltro;
         private Button btnLimparFiltro;
+        private Label label4;
+        private Label lblTotal;
     }
 }

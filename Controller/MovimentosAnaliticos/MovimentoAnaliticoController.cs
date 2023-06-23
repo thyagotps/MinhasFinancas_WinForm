@@ -71,11 +71,18 @@ namespace Controller.MovimentosAnaliticos
             return movimentosDtos;
         }
 
-        public List<MovimentoAnaliticoDto> GetByMonth(int month)
+        public List<MovimentoAnaliticoDto> GetByMonth(int year, int month)
         {
-            var source = _movimentoRepository.GetByMonth(month);
+            var source = _movimentoRepository.GetByMonth(year, month);
             var movimentosDtos = _mapper.Map<IEnumerable<MovimentoAnaliticoDto>>(source).ToList();
             return movimentosDtos;
+        }
+
+        public decimal GetTotal(MovimentoAnaliticoFiltroDto filtro)
+        {
+            var movimentoFiltro = _mapper.Map<MovimentoAnaliticoFiltro>(filtro);
+            var total = _movimentoRepository.GetTotal(movimentoFiltro);
+            return total;
         }
     }
 }

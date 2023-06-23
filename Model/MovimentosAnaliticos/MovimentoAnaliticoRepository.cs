@@ -2,6 +2,7 @@
 using Dapper;
 using Model.Categorias;
 using Model.FormaPagamentos;
+using System;
 using System.Data;
 
 namespace Model.MovimentosAnaliticos
@@ -129,7 +130,7 @@ namespace Model.MovimentosAnaliticos
             }
         }
 
-        public List<MovimentoAnalitico> GetByMonth(int month)
+        public List<MovimentoAnalitico> GetByMonth(int year, int month)
         {
             using (var conn = _ado.Conectar())
             {
@@ -141,8 +142,9 @@ namespace Model.MovimentosAnaliticos
                                     Categoria as CategoriaId,
                                     Pagamento as FormaPagamentoId
                                 from MovimentoAnalitico mov
-                                where month(DataCompra) = @month";
-                var movimentos = conn.Query<MovimentoAnalitico>(sql: query, param: new { month }).ToList();
+                                where month(DataCompra) = @month
+                                and year(DataCompra) = @year";
+                var movimentos = conn.Query<MovimentoAnalitico>(sql: query, param: new { year, month }).ToList();
 
                 foreach (var item in movimentos)
                 {
@@ -151,6 +153,31 @@ namespace Model.MovimentosAnaliticos
                 }
 
                 return movimentos;
+            }
+        }
+
+        public decimal GetTotal(MovimentoAnaliticoFiltro filtro)
+        {
+            using (var conn = _ado.Conectar())
+            {
+
+                var param = new
+                {
+                    filtro.DataCompra,
+                    filtro.Categoria,
+                    filtro.Pagamento
+                };
+
+                string query = @"select
+                                    sum(Valor) as Valor
+                                from MovimentoAnalitico mov
+                                where (@DataCompra is null or convert(varchar(6), DataCompra, 112) = convert(varchar(6), @DataCompra, 112))
+                                and (@Categoria = 0 or Categoria = @Categoria)
+                                and (@Pagamento = 0 or Pagamento = @Pagamento)
+                                group by convert(varchar(6), DataCompra, 112);";
+                var total = conn.QueryFirstOrDefault<decimal>(sql: query, param);
+
+                return total;
             }
         }
     }

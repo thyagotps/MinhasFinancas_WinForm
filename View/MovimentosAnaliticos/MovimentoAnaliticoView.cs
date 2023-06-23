@@ -33,16 +33,20 @@ namespace View.MovimentosAnaliticos
 
         private void MovimentoAnaliticoView_Load(object sender, EventArgs e)
         {
-            dtpDataCompraFiltro.Value = DateTime.Now;
-
-            PopularListaCategoria();
-            PopularListaFormaPagamento();
-            PopularMes();
-
-
+            popularListaCategoria();
+            popularListaFormaPagamento();
+            popularMes();
+            setDataCompra();
         }
 
-        private void SetGrid()
+        private void setDataCompra()
+        {
+            dtpDataCompraFiltro.Value = DateTime.Now;
+            dtpDataCompraFiltro.Format = DateTimePickerFormat.Custom;
+            dtpDataCompraFiltro.CustomFormat = "MM/yyyy";
+        }
+
+        private void setGrid()
         {
             dgvMovimentoAnalitico.ReadOnly = true;
 
@@ -72,8 +76,6 @@ namespace View.MovimentosAnaliticos
             dgvMovimentoAnalitico.Columns["FormaPagamentoDescricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvMovimentoAnalitico.Columns["FormaPagamentoDescricao"].HeaderText = "Forma de Pagamento";
 
-
-
             dgvMovimentoAnalitico.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dgvMovimentoAnalitico.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
@@ -83,40 +85,51 @@ namespace View.MovimentosAnaliticos
             dgvMovimentoAnalitico.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
-        private void PopularListaCategoria()
+        private void popularListaCategoria()
         {
             var source = _categoriaController.GetAll();
 
             cboCategoriaFiltro.DataSource = source.ToList();
             cboCategoriaFiltro.DisplayMember = "Descricao";
             cboCategoriaFiltro.ValueMember = "Id";
+            cboCategoriaFiltro.SelectedIndex = -1;
         }
 
-        private void PopularListaFormaPagamento()
+        private void popularListaFormaPagamento()
         {
             var source = _formaPagamentoController.GetAll();
             cboFormaPagamento.DataSource = source.ToList();
             cboFormaPagamento.DisplayMember = "Descricao";
             cboFormaPagamento.ValueMember = "Id";
+           
+            cboFormaPagamento.SelectedIndex = -1;
         }
 
-        private void PopularMes()
+        private void popularMes()
         {
-            var source = _movimentoAnaliticoController.GetByMonth(DateTime.Now.Month);
+            var source = _movimentoAnaliticoController.GetByMonth(DateTime.Now.Year, DateTime.Now.Month);
             dgvMovimentoAnalitico.DataSource = source.ToList();
-            SetGrid();
+            setGrid();
+            var filtro = setFiltros();
+            calcularTotal(filtro);
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private MovimentoAnaliticoFiltroDto setFiltros()
         {
             var filtro = new MovimentoAnaliticoFiltroDto();
             filtro.DataCompra = dtpDataCompraFiltro.Value;
             filtro.Pagamento = Convert.ToInt16(cboFormaPagamento.SelectedValue?.ToString());
             filtro.Categoria = Convert.ToInt16(cboCategoriaFiltro.SelectedValue?.ToString());
+            return filtro;
+        }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            var filtro = setFiltros();
             var source = _movimentoAnaliticoController.BuscarMovimentosAnaliticos(filtro);
             dgvMovimentoAnalitico.DataSource = source;
-            if (source.Count > 0) SetGrid();
+            if (source.Count > 0) setGrid();
+            calcularTotal(filtro);
         }
 
         private void btnLimparFiltro_Click(object sender, EventArgs e)
@@ -124,7 +137,13 @@ namespace View.MovimentosAnaliticos
             dtpDataCompraFiltro.ResetText();
             cboCategoriaFiltro.SelectedIndex = -1;
             cboFormaPagamento.SelectedIndex = -1;
-            PopularMes();
+            popularMes();
+        }
+
+        private void calcularTotal(MovimentoAnaliticoFiltroDto filtro)
+        {
+            var total = _movimentoAnaliticoController.GetTotal(filtro);
+            lblTotal.Text = String.Format("R$ {0}",total.ToString());
         }
     }
 }
