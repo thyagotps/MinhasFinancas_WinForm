@@ -41,6 +41,7 @@ namespace View.MovimentosAnaliticos
             popularListaFormaPagamento();
             popularMes();
             setDataCompra();
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
         private void setDataCompra()

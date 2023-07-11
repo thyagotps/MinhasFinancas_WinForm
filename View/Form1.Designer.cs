@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btnCategoria = new Button();
             btnPagamento = new Button();
             btnMovimento = new Button();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnCategoria
             // 
-            btnCategoria.Location = new Point(12, 12);
+            btnCategoria.Image = Properties.Resources.categoria1;
+            btnCategoria.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCategoria.Location = new Point(9, 8);
             btnCategoria.Name = "btnCategoria";
-            btnCategoria.Size = new Size(75, 23);
+            btnCategoria.Size = new Size(113, 34);
             btnCategoria.TabIndex = 0;
             btnCategoria.Text = "Categoria";
             btnCategoria.UseVisualStyleBackColor = true;
@@ -45,9 +50,11 @@
             // 
             // btnPagamento
             // 
-            btnPagamento.Location = new Point(93, 12);
+            btnPagamento.Image = Properties.Resources.formaPagamento1;
+            btnPagamento.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPagamento.Location = new Point(128, 8);
             btnPagamento.Name = "btnPagamento";
-            btnPagamento.Size = new Size(109, 23);
+            btnPagamento.Size = new Size(133, 34);
             btnPagamento.TabIndex = 1;
             btnPagamento.Text = "Pagamentos";
             btnPagamento.UseVisualStyleBackColor = true;
@@ -55,25 +62,39 @@
             // 
             // btnMovimento
             // 
-            btnMovimento.Location = new Point(208, 12);
+            btnMovimento.Image = Properties.Resources.movimento;
+            btnMovimento.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMovimento.Location = new Point(267, 8);
             btnMovimento.Name = "btnMovimento";
-            btnMovimento.Size = new Size(168, 23);
+            btnMovimento.Size = new Size(166, 34);
             btnMovimento.TabIndex = 2;
             btnMovimento.Text = "Movimento Analítico";
             btnMovimento.UseVisualStyleBackColor = true;
             btnMovimento.Click += btnMovimento_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(43, 76, 126);
+            panel1.Controls.Add(btnCategoria);
+            panel1.Controls.Add(btnMovimento);
+            panel1.Controls.Add(btnPagamento);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 50);
+            panel1.TabIndex = 10;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnMovimento);
-            Controls.Add(btnPagamento);
-            Controls.Add(btnCategoria);
+            Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            Text = "Minhas Finanças";
             WindowState = FormWindowState.Maximized;
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -84,5 +105,6 @@
         private Button btnCategoria;
         private Button btnPagamento;
         private Button btnMovimento;
+        private Panel panel1;
     }
 }

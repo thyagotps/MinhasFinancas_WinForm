@@ -234,12 +234,12 @@
             dgvMovimentoAnalitico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentoAnalitico.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMovimentoAnalitico.Dock = DockStyle.Bottom;
-            dgvMovimentoAnalitico.Location = new Point(0, 63);
+            dgvMovimentoAnalitico.Location = new Point(0, 51);
             dgvMovimentoAnalitico.Name = "dgvMovimentoAnalitico";
             dgvMovimentoAnalitico.ReadOnly = true;
             dgvMovimentoAnalitico.RowTemplate.Height = 25;
             dgvMovimentoAnalitico.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMovimentoAnalitico.Size = new Size(1172, 410);
+            dgvMovimentoAnalitico.Size = new Size(1172, 422);
             dgvMovimentoAnalitico.TabIndex = 0;
             dgvMovimentoAnalitico.CellClick += dgvMovimentoAnalitico_CellClick;
             // 
@@ -250,6 +250,7 @@
             ClientSize = new Size(1172, 513);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            MaximizeBox = false;
             Name = "MovimentoAnaliticoView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Movimentação Analítica";
