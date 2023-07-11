@@ -15,7 +15,7 @@ namespace Controller.MovimentosAnaliticos
         public string Descricao { get; set; }
         public string CategoriaId { get; set; }
         public string CategoriaDescricao { get; set; }
-        public string PagamentoId { get; set; }
+        public string FormaPagamentoId { get; set; }
         public string FormaPagamentoDescricao { get; set; }
     }
 }

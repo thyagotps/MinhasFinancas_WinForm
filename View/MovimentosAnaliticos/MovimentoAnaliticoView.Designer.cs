@@ -34,6 +34,8 @@
             btnExcluir = new Button();
             btnEditar = new Button();
             panel2 = new Panel();
+            lblTotal = new Label();
+            label4 = new Label();
             btnLimparFiltro = new Button();
             btnBuscar = new Button();
             cboFormaPagamento = new ComboBox();
@@ -43,8 +45,6 @@
             label2 = new Label();
             label1 = new Label();
             dgvMovimentoAnalitico = new DataGridView();
-            label4 = new Label();
-            lblTotal = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMovimentoAnalitico).BeginInit();
@@ -74,6 +74,7 @@
             btnNovo.Text = "Novo";
             btnNovo.TextAlign = ContentAlignment.MiddleRight;
             btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.Click += btnNovo_Click;
             // 
             // btnExcluir
             // 
@@ -87,6 +88,7 @@
             btnExcluir.Text = "Excluir";
             btnExcluir.TextAlign = ContentAlignment.MiddleRight;
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnEditar
             // 
@@ -100,6 +102,7 @@
             btnEditar.Text = "Editar";
             btnEditar.TextAlign = ContentAlignment.MiddleRight;
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // panel2
             // 
@@ -120,6 +123,26 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1172, 473);
             panel2.TabIndex = 12;
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.ForeColor = Color.White;
+            lblTotal.Location = new Point(906, 18);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(20, 15);
+            lblTotal.TabIndex = 10;
+            lblTotal.Text = "R$";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(865, 17);
+            label4.Name = "label4";
+            label4.Size = new Size(35, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Total:";
             // 
             // btnLimparFiltro
             // 
@@ -210,33 +233,15 @@
             dgvMovimentoAnalitico.AllowUserToDeleteRows = false;
             dgvMovimentoAnalitico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentoAnalitico.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMovimentoAnalitico.Location = new Point(12, 51);
+            dgvMovimentoAnalitico.Dock = DockStyle.Bottom;
+            dgvMovimentoAnalitico.Location = new Point(0, 63);
             dgvMovimentoAnalitico.Name = "dgvMovimentoAnalitico";
             dgvMovimentoAnalitico.ReadOnly = true;
             dgvMovimentoAnalitico.RowTemplate.Height = 25;
             dgvMovimentoAnalitico.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMovimentoAnalitico.Size = new Size(1148, 410);
+            dgvMovimentoAnalitico.Size = new Size(1172, 410);
             dgvMovimentoAnalitico.TabIndex = 0;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(865, 17);
-            label4.Name = "label4";
-            label4.Size = new Size(35, 15);
-            label4.TabIndex = 9;
-            label4.Text = "Total:";
-            // 
-            // lblTotal
-            // 
-            lblTotal.AutoSize = true;
-            lblTotal.ForeColor = Color.White;
-            lblTotal.Location = new Point(906, 18);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(20, 15);
-            lblTotal.TabIndex = 10;
-            lblTotal.Text = "R$";
+            dgvMovimentoAnalitico.CellClick += dgvMovimentoAnalitico_CellClick;
             // 
             // MovimentoAnaliticoView
             // 

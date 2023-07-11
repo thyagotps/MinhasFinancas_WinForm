@@ -75,9 +75,9 @@ namespace Model.MovimentosAnaliticos
             using (var conn = _ado.Conectar())
             {
                 string query = @"insert into MovimentoAnalitico
-                                (DataCompra, Descricao, Vlor, Categoria, Pagamento)
+                                (DataCompra, Descricao, Valor, Categoria, Pagamento)
                                 values
-                                (@DataCompra, @Descricao, @Valor, @CategoriaId, @PagamentoId)";
+                                (@DataCompra, @Descricao, @Valor, @CategoriaId, @FormaPagamentoId)";
                 var result = conn.Execute(sql: query, param: movimento);
                 return result;
             }
@@ -92,7 +92,7 @@ namespace Model.MovimentosAnaliticos
                                  Descricao = @Descricao,
                                  Valor = @Valor,
                                  Categoria = @CategoriaId,
-                                 Pagamento = @PagamentoId
+                                 Pagamento = @FormaPagamentoId
                                  where Id = @Id";
                 var result = conn.Execute(sql: query, param: movimento);
                 return result;

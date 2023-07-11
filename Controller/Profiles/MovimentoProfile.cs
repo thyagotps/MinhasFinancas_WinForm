@@ -22,7 +22,7 @@ namespace Controller.Profiles
 
             CreateMap<MovimentoAnalitico, MovimentoAnaliticoDto>()
                .ForMember(dto => dto.CategoriaId, mov => mov.MapFrom(src => src.Categoria.Id))
-               .ForMember(dto => dto.PagamentoId, mov => mov.MapFrom(src => src.FormaPagamento.Id))
+               .ForMember(dto => dto.FormaPagamentoId, mov => mov.MapFrom(src => src.FormaPagamento.Id))
                .ReverseMap();
         }
     }

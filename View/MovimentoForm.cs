@@ -94,7 +94,7 @@ namespace View
             //movimentoDto.DataVencimento = dtpDataVencimento.Value;
             //movimentoDto.Situacao = rdbNaoPago.Checked ? 0 : 1;
             movimentoDto.CategoriaId = cboCategoria.SelectedValue.ToString();
-            movimentoDto.PagamentoId = cboFormaPagamento.SelectedValue.ToString();
+            movimentoDto.FormaPagamentoId = cboFormaPagamento.SelectedValue.ToString();
             return movimentoDto;
         }
 

@@ -1,4 +1,5 @@
-﻿using Controller.Categorias;
+﻿using Base.Ninject;
+using Controller.Categorias;
 using Controller.FormaPagamentos;
 using Controller.MovimentosAnaliticos;
 using Model.FormaPagamentos;
@@ -9,14 +10,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using View.Categorias;
 
 namespace View.MovimentosAnaliticos
 {
-    public partial class MovimentoAnaliticoView : Form
+    public partial class MovimentoAnaliticoView : BaseView
     {
+        private int _id;
         private readonly ICategoriaController _categoriaController;
         private readonly IFormaPagamentoController _formaPagamentoController;
         private readonly IMovimentoAnaliticoController _movimentoAnaliticoController;
@@ -71,7 +75,7 @@ namespace View.MovimentosAnaliticos
 
             //dgvMovimentoAnalitico.Columns["PagamentoId"].Width = 70;
             //dgvMovimentoAnalitico.Columns["PagamentoId"].HeaderText = "Id Forma de Pagamento";
-            dgvMovimentoAnalitico.Columns["PagamentoId"].Visible = false;
+            dgvMovimentoAnalitico.Columns["FormaPagamentoId"].Visible = false;
 
             dgvMovimentoAnalitico.Columns["FormaPagamentoDescricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvMovimentoAnalitico.Columns["FormaPagamentoDescricao"].HeaderText = "Forma de Pagamento";
@@ -101,7 +105,7 @@ namespace View.MovimentosAnaliticos
             cboFormaPagamento.DataSource = source.ToList();
             cboFormaPagamento.DisplayMember = "Descricao";
             cboFormaPagamento.ValueMember = "Id";
-           
+
             cboFormaPagamento.SelectedIndex = -1;
         }
 
@@ -143,7 +147,53 @@ namespace View.MovimentosAnaliticos
         private void calcularTotal(MovimentoAnaliticoFiltroDto filtro)
         {
             var total = _movimentoAnaliticoController.GetTotal(filtro);
-            lblTotal.Text = String.Format("R$ {0}",total.ToString());
+            lblTotal.Text = String.Format("R$ {0}", total.ToString());
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            Novo();
+        }
+
+        private void Novo()
+        {
+            var form = NinjectKernel.Resolve<MovimentoAnaliticoForm>();
+            form.Id = -1;
+            form.ShowDialog();
+            popularMes();
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var form = NinjectKernel.Resolve<MovimentoAnaliticoForm>();
+            form.Id = _id;
+            form.ShowDialog();
+            popularMes();
+        }
+
+        private void dgvMovimentoAnalitico_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Retorna o indice da linha no qual a célula foi clicada
+            var _linhaIndice = e.RowIndex;
+
+            //Se _linhaIndice é menor que -1 então retorna
+            if (_linhaIndice == -1)
+                return;
+
+            //Cria um objeto DataGridViewRow de um indice particular
+            DataGridViewRow rowData = dgvMovimentoAnalitico.Rows[_linhaIndice];
+
+            //obtém valor
+            _id = Convert.ToInt32(rowData.Cells[0].Value.ToString());
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var result = base.MessageDelete(_id);
+            if (result == DialogResult.Yes)
+                _movimentoAnaliticoController.Delete(_id);
+            popularMes();
         }
     }
 }
