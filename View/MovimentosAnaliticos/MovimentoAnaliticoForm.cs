@@ -8,8 +8,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace View.MovimentosAnaliticos
 {
@@ -20,6 +22,7 @@ namespace View.MovimentosAnaliticos
         private readonly IMovimentoAnaliticoController _movimentoAnaliticoController;
         private readonly ICategoriaController _categoriaController;
         private readonly IFormaPagamentoController _formaPagamentoController;
+
 
         public MovimentoAnaliticoForm(IMovimentoAnaliticoController movimentoAnaliticoController,
                                       ICategoriaController categoriaController,
@@ -40,7 +43,7 @@ namespace View.MovimentosAnaliticos
 
             if (Id != -1)
             {
-                var movDto = _movimentoAnaliticoController.GetById(Id); 
+                var movDto = _movimentoAnaliticoController.GetById(Id);
                 popularComponentesFormulario(movDto);
             }
         }
@@ -116,6 +119,13 @@ namespace View.MovimentosAnaliticos
             cboFormaPagamento.SelectedIndex = cboFormaPagamento.FindString(movimentoAnaliticoDto.FormaPagamentoDescricao);
         }
 
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ',' && txtValor.Text.Contains(','))
+                e.Handled = true;
 
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',')
+                e.Handled = true;
+        }
     }
 }

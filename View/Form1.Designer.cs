@@ -38,6 +38,7 @@
             // 
             // btnCategoria
             // 
+            btnCategoria.Cursor = Cursors.Hand;
             btnCategoria.Image = Properties.Resources.categoria1;
             btnCategoria.ImageAlign = ContentAlignment.MiddleLeft;
             btnCategoria.Location = new Point(9, 8);
@@ -50,6 +51,7 @@
             // 
             // btnPagamento
             // 
+            btnPagamento.Cursor = Cursors.Hand;
             btnPagamento.Image = Properties.Resources.formaPagamento1;
             btnPagamento.ImageAlign = ContentAlignment.MiddleLeft;
             btnPagamento.Location = new Point(128, 8);
@@ -62,6 +64,7 @@
             // 
             // btnMovimento
             // 
+            btnMovimento.Cursor = Cursors.Hand;
             btnMovimento.Image = Properties.Resources.movimento;
             btnMovimento.ImageAlign = ContentAlignment.MiddleLeft;
             btnMovimento.Location = new Point(267, 8);

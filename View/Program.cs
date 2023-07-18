@@ -16,12 +16,18 @@ namespace View
             // see https://aka.ms/applicationconfiguration.
 
             NinjectKernel.Wire(new NinjectBinds());
-
+            Application.ThreadException += new ThreadExceptionEventHandler(MyCommonExceptionHandlingMethod);
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+            
         }
 
-       
+        private static void MyCommonExceptionHandlingMethod(object sender, ThreadExceptionEventArgs t)
+        {
+            MessageBox.Show(t.Exception.Message, "Erro interno!", MessageBoxButtons.OK,MessageBoxIcon.Error);
+        }
+
+
     }
 }
