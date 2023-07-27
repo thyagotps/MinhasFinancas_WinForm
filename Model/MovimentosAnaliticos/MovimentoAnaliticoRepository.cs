@@ -2,12 +2,10 @@
 using Dapper;
 using Model.Categorias;
 using Model.FormaPagamentos;
-using System;
-using System.Data;
 
 namespace Model.MovimentosAnaliticos
 {
-    public class MovimentoAnaliticoRepository : IMovimentoAnaliticoRepository
+    public class MovimentoAnaliticoRepository : BaseRepository, IMovimentoAnaliticoRepository
     {
         private readonly Ado _ado;
         private readonly CategoriaRepository _categoriaRepository;
@@ -15,170 +13,181 @@ namespace Model.MovimentosAnaliticos
 
         public MovimentoAnaliticoRepository(Ado ado,
                                             CategoriaRepository categoriaRepository,
-                                            FormaPagamentoRepository pagamentoRepository)
+                                            FormaPagamentoRepository pagamentoRepository) : base(ado)
         {
             _ado = ado;
             _categoriaRepository = categoriaRepository;
             _pagamentoRepository = pagamentoRepository;
-        }
+        } 
 
         public List<MovimentoAnalitico> GetAll()
         {
-            using (var conn = _ado.Conectar())
+            var query = @"select 
+                            Id,
+                            DataCompra,
+                            Descricao,
+                            Valor,
+                            Categoria as CategoriaId,
+                            Pagamento as FormaPagamentoId 
+                          from MovimentoAnalitico
+                          order by DataCompra desc";
+
+            var sources = base.ExecutarQuery<MovimentoAnalitico>(query: query, listaParametros: null).ToList();
+
+            foreach (var item in sources)
             {
-                var query = @"select 
+                item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
+                item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
+            }
+
+            return sources;
+        }
+
+        public MovimentoAnalitico GetById(int Id)
+        {
+            string query = @"select
                                 Id,
                                 DataCompra,
                                 Descricao,
                                 Valor,
                                 Categoria as CategoriaId,
-                                Pagamento as FormaPagamentoId 
-                              from MovimentoAnalitico";
+                                Pagamento as FormaPagamentoId
+                             from MovimentoAnalitico mov
+                             where mov.Id = @Id";
 
-                List<MovimentoAnalitico> source = conn.Query<MovimentoAnalitico>(sql: query).ToList();
+            var filtros = new DynamicParameters();
+            filtros.Add("Id", Id);
 
-                foreach (var mov in source)
-                {
-                    mov.Categoria = _categoriaRepository.GetById(mov.CategoriaId);
-                    mov.FormaPagamento = _pagamentoRepository.GetById(mov.FormaPagamentoId);
-                }
+            var source = base.ExecutarQueryFirstOrDefault<MovimentoAnalitico>(query, filtros);
 
-                return source;
-            }
-        }
-
-        
-        public MovimentoAnalitico GetById(int Id)
-        {
-            using (var conn = _ado.Conectar())
-            {
-                string query = @"select
-	                                Id,
-                                    DataCompra,
-                                    Descricao,
-                                    Valor,
-                                    Categoria as CategoriaId,
-                                    Pagamento as FormaPagamentoId
-                                from MovimentoAnalitico mov
-                                where mov.Id = @Id";
-                var movimento = conn.QueryFirstOrDefault<MovimentoAnalitico>(sql: query, param: new { Id });
-                
-                
-                movimento.Categoria = _categoriaRepository.GetById(movimento.CategoriaId);
-                movimento.FormaPagamento = _pagamentoRepository.GetById(movimento.FormaPagamentoId);
-                return movimento;
-            }
-        }
-
-        public int Insert(MovimentoAnalitico movimento)
-        {
-            using (var conn = _ado.Conectar())
-            {
-                string query = @"insert into MovimentoAnalitico
-                                (DataCompra, Descricao, Valor, Categoria, Pagamento)
-                                values
-                                (@DataCompra, @Descricao, @Valor, @CategoriaId, @FormaPagamentoId)";
-                var result = conn.Execute(sql: query, param: movimento);
-                return result;
-            }
-        }
-
-        public int Update(MovimentoAnalitico movimento)
-        {
-            using (var conn = _ado.Conectar())
-            {
-                string query = @"update MovimentoAnalitico set 
-                                 DataCompra = @DataCompra, 
-                                 Descricao = @Descricao,
-                                 Valor = @Valor,
-                                 Categoria = @CategoriaId,
-                                 Pagamento = @FormaPagamentoId
-                                 where Id = @Id";
-                var result = conn.Execute(sql: query, param: movimento);
-                return result;
-            }
-        }
-
-        public int Delete(int id)
-        {
-            using (var conn = _ado.Conectar())
-            {
-                string query = "delete from MovimentoAnalitico where Id = @id";
-                var result = conn.Execute(sql: query, param: new { id });
-                return result;
-            }
-        }
-
-        public List<MovimentoAnalitico> BuscarMovimentosAnaliticos(MovimentoAnaliticoFiltro movimentoFiltro)
-        {
-            using (var conn = _ado.Conectar())
-            {
-                var sql = "PROC_MOVIMENTO_BUSCAR";
-                var param = new
-                {
-                    movimentoFiltro.DataCompra,
-                    movimentoFiltro.Categoria,
-                    movimentoFiltro.Pagamento
-                };
-                var result = conn.Query<MovimentoAnalitico>(sql, param, commandType: CommandType.StoredProcedure).ToList();
-                foreach (var item in result)
-                {
-                    item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
-                    item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
-                }
-                return result;
-            }
+            source.Categoria = _categoriaRepository.GetById(source.CategoriaId);
+            source.FormaPagamento = _pagamentoRepository.GetById(source.FormaPagamentoId);
+            
+            return source;
         }
 
         public List<MovimentoAnalitico> GetByMonth(int year, int month)
         {
-            using (var conn = _ado.Conectar())
+            string query = @"select
+	                            Id,
+                                DataCompra,
+                                Descricao,
+                                Valor,
+                                Categoria as CategoriaId,
+                                Pagamento as FormaPagamentoId
+                            from MovimentoAnalitico mov
+                            where month(DataCompra) = @month
+                            and year(DataCompra) = @year
+                            order by DataCompra desc";
+
+            var filtros = new DynamicParameters();
+            filtros.Add("year", year);
+            filtros.Add("month", month);
+
+            var source = base.ExecutarQuery<MovimentoAnalitico>(query, filtros);
+
+            foreach (var item in source)
             {
-                string query = @"select
-	                                Id,
-                                    DataCompra,
-                                    Descricao,
-                                    Valor,
-                                    Categoria as CategoriaId,
-                                    Pagamento as FormaPagamentoId
-                                from MovimentoAnalitico mov
-                                where month(DataCompra) = @month
-                                and year(DataCompra) = @year";
-                var movimentos = conn.Query<MovimentoAnalitico>(sql: query, param: new { year, month }).ToList();
-
-                foreach (var item in movimentos)
-                {
-                    item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
-                    item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
-                }
-
-                return movimentos;
+                item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
+                item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
             }
+
+            return source.ToList();
+        }
+
+        public List<MovimentoAnalitico> BuscarMovimentosAnaliticos(MovimentoAnaliticoFiltro movimentoFiltro)
+        {
+            var nameProc = "PROC_MOVIMENTO_BUSCAR";
+
+            var filtros = new DynamicParameters();
+            filtros.Add("DataCompra", movimentoFiltro.DataCompra);
+            filtros.Add("Categoria", movimentoFiltro.Categoria);
+            filtros.Add("Pagamento", movimentoFiltro.Pagamento);
+
+            var souces = base.ExecutarProcedure<MovimentoAnalitico>(nameProc: nameProc, listaParametros: filtros).ToList();
+
+            foreach (var item in souces)
+            {
+                item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
+                item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
+            }
+
+            return souces;
         }
 
         public decimal GetTotal(MovimentoAnaliticoFiltro filtro)
         {
-            using (var conn = _ado.Conectar())
-            {
+            string query = @"select
+                                sum(Valor) as Valor
+                            from MovimentoAnalitico mov
+                            where (@DataCompra is null or convert(varchar(6), DataCompra, 112) = convert(varchar(6), @DataCompra, 112))
+                            and (@Categoria = 0 or Categoria = @Categoria)
+                            and (@Pagamento = 0 or Pagamento = @Pagamento)
+                            group by convert(varchar(6), DataCompra, 112);";
 
-                var param = new
-                {
-                    filtro.DataCompra,
-                    filtro.Categoria,
-                    filtro.Pagamento
-                };
+            var filtros = new DynamicParameters();
+            filtros.Add("DataCompra", filtro.DataCompra);
+            filtros.Add("Categoria", filtro.Categoria);
+            filtros.Add("Pagamento", filtro.Pagamento);
 
-                string query = @"select
-                                    sum(Valor) as Valor
-                                from MovimentoAnalitico mov
-                                where (@DataCompra is null or convert(varchar(6), DataCompra, 112) = convert(varchar(6), @DataCompra, 112))
-                                and (@Categoria = 0 or Categoria = @Categoria)
-                                and (@Pagamento = 0 or Pagamento = @Pagamento)
-                                group by convert(varchar(6), DataCompra, 112);";
-                var total = conn.QueryFirstOrDefault<decimal>(sql: query, param);
+            var total = base.ExecutarQueryFirstOrDefault<decimal>(query: query, listaParametros: filtros);
 
-                return total;
-            }
+            return total;
         }
+
+        public int Insert(MovimentoAnalitico movimento)
+        {
+            string query = @"insert into MovimentoAnalitico
+                            (DataCompra, Descricao, Valor, Categoria, Pagamento)
+                            values
+                            (@DataCompra, @Descricao, @Valor, @CategoriaId, @FormaPagamentoId)";
+
+            var filtros = new DynamicParameters();
+            filtros.Add("DataCompra", movimento.DataCompra);
+            filtros.Add("Descricao", movimento.Descricao);
+            filtros.Add("Valor", movimento.Valor);
+            filtros.Add("CategoriaId", movimento.CategoriaId);
+            filtros.Add("FormaPagamentoId", movimento.FormaPagamentoId);
+
+            var result = base.Executar(query: query, listaParametros: filtros);
+
+            return result;
+        }
+
+        public int Update(MovimentoAnalitico movimento)
+        {
+            string query = @"update MovimentoAnalitico set 
+                            DataCompra = @DataCompra, 
+                            Descricao = @Descricao,
+                            Valor = @Valor,
+                            Categoria = @CategoriaId,
+                            Pagamento = @FormaPagamentoId
+                            where Id = @Id";
+
+            var filtros = new DynamicParameters();
+            filtros.Add("DataCompra", movimento.DataCompra);
+            filtros.Add("Descricao", movimento.Descricao);
+            filtros.Add("Valor", movimento.Valor);
+            filtros.Add("CategoriaId", movimento.CategoriaId);
+            filtros.Add("FormaPagamentoId", movimento.FormaPagamentoId);
+            filtros.Add("Id", movimento.Id);
+
+            var result = base.Executar(query: query, listaParametros: filtros);
+
+            return result;
+        }
+
+        public int Delete(int id)
+        {
+            string query = "delete from MovimentoAnalitico where Id = @id";
+            
+            var filtros = new DynamicParameters();
+            filtros.Add("id", id);
+
+            var result = base.Executar(query: query, listaParametros: filtros);
+
+            return result;
+        }
+
     }
 }
