@@ -1,14 +1,15 @@
 ﻿using DAL;
 using Dapper;
+using Model.Categorias;
 
 namespace Model.FormaPagamentos
 {
-    public class FormaPagamentoRepository : IFormaPagamentoRepository
+    public class FormaPagamentoRepository : BaseRepository, IFormaPagamentoRepository
     {
 
         private readonly Ado _ado;
 
-        public FormaPagamentoRepository(Ado ado)
+        public FormaPagamentoRepository(Ado ado) : base(ado)
         {
             _ado = ado;
         }
@@ -16,54 +17,60 @@ namespace Model.FormaPagamentos
 
         public List<FormaPagamento> GetAll()
         {
-            using (var conn = _ado.Conectar())
-            {
-                string query = "select Id, Descricao from FormaPagamento";
-                List<FormaPagamento> source = conn.Query<FormaPagamento>(sql: query).ToList();
-                return source;
-            }
+            string query = "select Id, Descricao from FormaPagamento";
+            var source = base.ExecutarQuery<FormaPagamento>(query: query, listaParametros: null).ToList();
+            return source;
         }
 
         public FormaPagamento GetById(int id)
         {
-            using (var conn = _ado.Conectar())
-            {
-                string query = "select Id, Descricao from FormaPagamento where Id = @id";
-                var pagamento = conn.QueryFirstOrDefault<FormaPagamento>(sql: query, param: new { id });
-                return pagamento;
-            }
+            string query = "select Id, Descricao from FormaPagamento where Id = @id";
+
+            var filtros = new DynamicParameters();
+            filtros.Add("id", id);
+
+            var source = base.ExecutarQueryFirstOrDefault<FormaPagamento>(query: query, listaParametros: filtros);
+
+            return source;
         }
 
         public int Insert(FormaPagamento pagamento)
         {
-            using (var conn = _ado.Conectar())
-            {
-                string query = "insert into FormaPagamento (Descricao) values (@Descricao)";
-                var result = conn.Execute(sql: query, param: pagamento);
-                return result;
-            }
+            string query = "insert into FormaPagamento (Descricao) values (@Descricao)";
+
+            var filtros = new DynamicParameters();
+            filtros.Add("Descricao", pagamento.Descricao);
+
+            var result = base.Executar(query, filtros);
+
+            return result;
         }
 
         public int Update(FormaPagamento pagamento)
         {
-            using (var conn = _ado.Conectar())
-            {
-                string query = @"update FormaPagamento 
+            string query = @"update FormaPagamento 
                                  set Descricao = @Descricao
                                  where Id = @Id";
-                var result = conn.Execute(sql: query, param: pagamento);
-                return result;
-            }
+
+            var filtros = new DynamicParameters();
+            filtros.Add("Descricao", pagamento.Descricao);
+            filtros.Add("Id", pagamento.Id);
+
+            var result = base.Executar(query, filtros);
+
+            return result;
         }
 
         public int Delete(int id)
         {
-            using (var conn = _ado.Conectar())
-            {
-                string query = "delete from FormaPagamento where Id = @id";
-                var result = conn.Execute(sql: query, param: new { id });
-                return result;
-            }
+            string query = "delete from FormaPagamento where Id = @id";
+
+            var filtros = new DynamicParameters();
+            filtros.Add("id", id);
+
+            var result = base.Executar(query, filtros);
+
+            return result;
         }
     }
 }

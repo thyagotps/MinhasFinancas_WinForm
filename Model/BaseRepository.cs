@@ -19,6 +19,7 @@ namespace Model
             _ado = new Ado();
         }
 
+
         public IEnumerable<T> ExecutarQuery<T>(string query, DynamicParameters listaParametros)
         {
             using (var conn = _ado.Conectar())
