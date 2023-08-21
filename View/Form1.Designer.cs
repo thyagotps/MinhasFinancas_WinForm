@@ -33,6 +33,7 @@
             btnPagamento = new Button();
             btnMovimento = new Button();
             panel1 = new Panel();
+            btnContasPagar = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,6 +79,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(43, 76, 126);
+            panel1.Controls.Add(btnContasPagar);
             panel1.Controls.Add(btnCategoria);
             panel1.Controls.Add(btnMovimento);
             panel1.Controls.Add(btnPagamento);
@@ -86,6 +88,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 50);
             panel1.TabIndex = 10;
+            // 
+            // btnContasPagar
+            // 
+            btnContasPagar.Cursor = Cursors.Hand;
+            btnContasPagar.Image = (Image)resources.GetObject("btnContasPagar.Image");
+            btnContasPagar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnContasPagar.Location = new Point(439, 8);
+            btnContasPagar.Name = "btnContasPagar";
+            btnContasPagar.Size = new Size(166, 34);
+            btnContasPagar.TabIndex = 3;
+            btnContasPagar.Text = "Contas à Pagar";
+            btnContasPagar.UseVisualStyleBackColor = true;
+            btnContasPagar.Click += btnContasPagar_Click;
             // 
             // Form1
             // 
@@ -109,5 +124,6 @@
         private Button btnPagamento;
         private Button btnMovimento;
         private Panel panel1;
+        private Button btnContasPagar;
     }
 }

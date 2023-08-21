@@ -1,9 +1,11 @@
 using Base.Ninject;
 using Controller.Categorias;
+using Controller.ContasPagar;
 using Controller.FormaPagamentos;
 using Controller.MovimentosAnaliticos;
 using Model;
 using View.Categorias;
+using View.ContasPagar;
 using View.FormaPagamentos;
 using View.MovimentosAnaliticos;
 
@@ -14,12 +16,14 @@ namespace View
         private readonly ICategoriaController _categoriaController;
         private readonly IFormaPagamentoController _pagamentoController;
         private readonly IMovimentoAnaliticoController _movimentoController;
+        private readonly IContaPagarController _contaPagarController;
 
         public Form1()
         {
             _categoriaController = NinjectKernel.Resolve<ICategoriaController>();
             _pagamentoController = NinjectKernel.Resolve<IFormaPagamentoController>();
             _movimentoController = NinjectKernel.Resolve<IMovimentoAnaliticoController>();
+            _contaPagarController = NinjectKernel.Resolve<IContaPagarController>();
             InitializeComponent();
         }
 
@@ -58,6 +62,12 @@ namespace View
             view.ShowDialog();
             //MovimentoAnaliticoView movimentoView = new MovimentoView(_movimentoController, _categoriaController,_pagamentoController);
             //movimentoView.ShowDialog();
+        }
+
+        private void btnContasPagar_Click(object sender, EventArgs e)
+        {
+            var view = NinjectKernel.Resolve<ContaPagarView>();
+            view.ShowDialog();
         }
     }
 }

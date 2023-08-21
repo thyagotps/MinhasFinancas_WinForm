@@ -1,8 +1,10 @@
 ﻿using Controller.Categorias;
+using Controller.ContasPagar;
 using Controller.FormaPagamentos;
 using Controller.MovimentosAnaliticos;
 using DAL;
 using Model.Categorias;
+using Model.ContasPagar;
 using Model.FormaPagamentos;
 using Model.MovimentosAnaliticos;
 using Ninject.Modules;
@@ -25,6 +27,9 @@ namespace Base.Ninject
 
             Bind(typeof(IMovimentoAnaliticoController)).To(typeof(MovimentoAnaliticoController));
             Bind(typeof(IMovimentoAnaliticoRepository)).To(typeof(MovimentoAnaliticoRepository));
+
+            Bind(typeof(IContaPagarController)).To(typeof(ContaPagarController));
+            Bind(typeof(IContaPagarRepository)).To(typeof(ContaPagarRepository));
 
         }
     }
