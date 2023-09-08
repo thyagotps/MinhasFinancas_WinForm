@@ -22,6 +22,13 @@ namespace View.ContasPagar
             InitializeComponent();
             _contaPagarController = contaPagarController;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            AplicarEventos(txtValor);
+        }
+
+        // Aplica no form movimento analitico
+        private void AplicarEventos(TextBox txt)
+        {
+            txtValor.KeyPress += ValidaValores;
         }
 
         private void ContaPagarForm_Load(object sender, EventArgs e)
@@ -111,5 +118,7 @@ namespace View.ContasPagar
 
             return obj;
         }
+
+       
     }
 }

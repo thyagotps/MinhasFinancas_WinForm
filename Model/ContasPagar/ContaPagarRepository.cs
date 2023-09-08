@@ -25,7 +25,8 @@ namespace Model.ContasPagar
                                 DataVencimento, 
                                 Situacao 
                              from ContasPagar 
-                             where convert(varchar(6),DataVencimento,112) = convert(varchar(6),@DataVencimento,112);";
+                             where convert(varchar(6),DataVencimento,112) = convert(varchar(6),@DataVencimento,112)
+                             order by NrOrdem;";
 
             var filtros = new DynamicParameters();
             filtros.Add("DataVencimento", dtPeriodo);
@@ -54,7 +55,7 @@ namespace Model.ContasPagar
         public decimal GetTotal(DateTime dtPeriodo)
         {
             string query = @"select 
-                                sum(Valor) as Total 
+                                isnull(sum(Valor),0) as Total 
                              from ContasPagar 
                              where convert(varchar(6),DataVencimento,112) = convert(varchar(6),@Periodo,112);";
 

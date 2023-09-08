@@ -133,7 +133,6 @@
             txtValor.Name = "txtValor";
             txtValor.Size = new Size(222, 23);
             txtValor.TabIndex = 8;
-            txtValor.KeyPress += txtValor_KeyPress;
             // 
             // label4
             // 

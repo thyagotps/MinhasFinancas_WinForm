@@ -40,6 +40,7 @@ namespace View.MovimentosAnaliticos
             setDataCompra();
             popularListaCategoria();
             popularListaFormaPagamento();
+            AplicarEventos(txtValor);
 
             if (Id != -1)
             {
@@ -93,7 +94,7 @@ namespace View.MovimentosAnaliticos
 
         private void popularListaCategoria()
         {
-            var source = _categoriaController.GetAll();
+            var source = _categoriaController.GetAll().OrderBy(x => x.Descricao);
 
             cboCategoria.DataSource = source.ToList();
             cboCategoria.DisplayMember = "Descricao";
@@ -103,7 +104,7 @@ namespace View.MovimentosAnaliticos
 
         private void popularListaFormaPagamento()
         {
-            var source = _formaPagamentoController.GetAll();
+            var source = _formaPagamentoController.GetAll().OrderBy(x => x.Descricao);
             cboFormaPagamento.DataSource = source.ToList();
             cboFormaPagamento.DisplayMember = "Descricao";
             cboFormaPagamento.ValueMember = "Id";
@@ -119,13 +120,10 @@ namespace View.MovimentosAnaliticos
             cboFormaPagamento.SelectedIndex = cboFormaPagamento.FindString(movimentoAnaliticoDto.FormaPagamentoDescricao);
         }
 
-        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ',' && txtValor.Text.Contains(','))
-                e.Handled = true;
 
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',')
-                e.Handled = true;
+        private void AplicarEventos(System.Windows.Forms.TextBox txt)
+        {
+            txtValor.KeyPress += ValidaValores;
         }
     }
 }

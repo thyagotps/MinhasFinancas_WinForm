@@ -59,7 +59,8 @@ namespace View.ContasPagar
             dgvContaPagar.ReadOnly = true;
             dgvContaPagar.DataSource = dataSource;
             dgvContaPagar.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvContaPagar.Columns["NrOrdem"].Visible = false;
+            dgvContaPagar.Columns["NrOrdem"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvContaPagar.Columns["NrOrdem"].HeaderText = "Ordem";
             dgvContaPagar.Columns["Descricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvContaPagar.Columns["Descricao"].HeaderText = "Descrição";
             dgvContaPagar.Columns["Valor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -100,7 +101,8 @@ namespace View.ContasPagar
             var form = NinjectKernel.Resolve<ContaPagarForm>();
             form.Id = -1;
             form.ShowDialog();
-            buscar(DateTime.Now);
+            var dtPeriodo = dtpPeriodoFiltro.Value;
+            buscar(dtPeriodo);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -108,7 +110,8 @@ namespace View.ContasPagar
             var form = NinjectKernel.Resolve<ContaPagarForm>();
             form.Id = _id;
             form.ShowDialog();
-            buscar(DateTime.Now);
+            var dtPeriodo = dtpPeriodoFiltro.Value;
+            buscar(dtPeriodo);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -116,7 +119,8 @@ namespace View.ContasPagar
             var result = base.MessageDelete(_id);
             if (result == DialogResult.Yes)
                 _controller.DeleteById(_id);
-            buscar(DateTime.Now);
+            var dtPeriodo = dtpPeriodoFiltro.Value;
+            buscar(dtPeriodo);
         }
 
         private void dgvContaPagar_CellClick(object sender, DataGridViewCellEventArgs e)

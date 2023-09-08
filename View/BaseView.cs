@@ -21,5 +21,21 @@ namespace View
         {
             return MessageBox.Show("Deseja realmente excluir o registro de código: " + id.ToString() + "?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
+
+        public void ValidaValores(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                if (e.KeyChar == ',')
+                {
+                    e.Handled = (txt.Text.Contains(','));
+                }
+                else
+                    e.Handled = true;
+            }
+
+        }
+
     }
 }
