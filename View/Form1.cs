@@ -7,6 +7,7 @@ using Model;
 using View.Categorias;
 using View.ContasPagar;
 using View.FormaPagamentos;
+using View.ModuloFaturaEmAberto;
 using View.MovimentosAnaliticos;
 
 namespace View
@@ -67,6 +68,12 @@ namespace View
         private void btnContasPagar_Click(object sender, EventArgs e)
         {
             var view = NinjectKernel.Resolve<ContaPagarView>();
+            view.ShowDialog();
+        }
+
+        private void btnFaturaEmAberto_Click(object sender, EventArgs e)
+        {
+            var view = NinjectKernel.Resolve<FaturaEmAbertoView>();
             view.ShowDialog();
         }
     }
