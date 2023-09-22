@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -92,7 +93,7 @@ namespace View.MovimentosAnaliticos
 
         private void popularListaCategoria()
         {
-            var source = _categoriaController.GetAll();
+            var source = _categoriaController.GetAll().OrderBy(x => x.Descricao);
 
             cboCategoriaFiltro.DataSource = source.ToList();
             cboCategoriaFiltro.DisplayMember = "Descricao";
@@ -102,7 +103,7 @@ namespace View.MovimentosAnaliticos
 
         private void popularListaFormaPagamento()
         {
-            var source = _formaPagamentoController.GetAll();
+            var source = _formaPagamentoController.GetAll().OrderBy(x => x.Descricao);
             cboFormaPagamento.DataSource = source.ToList();
             cboFormaPagamento.DisplayMember = "Descricao";
             cboFormaPagamento.ValueMember = "Id";
@@ -148,7 +149,7 @@ namespace View.MovimentosAnaliticos
         private void calcularTotal(MovimentoAnaliticoFiltroDto filtro)
         {
             var total = _movimentoAnaliticoController.GetTotal(filtro);
-            lblTotal.Text = String.Format("R$ {0}", total.ToString());
+            lblTotal.Text = total.ToString("C", CultureInfo.CurrentCulture);
         }
 
         private void btnNovo_Click(object sender, EventArgs e)

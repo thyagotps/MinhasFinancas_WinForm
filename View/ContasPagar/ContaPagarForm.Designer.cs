@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContaPagarForm));
             panel2 = new Panel();
             label7 = new Label();
-            txtOrdem = new TextBox();
+            txtNrIdentificador = new TextBox();
             cboSituacao = new ComboBox();
             label5 = new Label();
             txtValor = new TextBox();
@@ -51,7 +51,7 @@
             // panel2
             // 
             panel2.Controls.Add(label7);
-            panel2.Controls.Add(txtOrdem);
+            panel2.Controls.Add(txtNrIdentificador);
             panel2.Controls.Add(cboSituacao);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(txtValor);
@@ -73,16 +73,16 @@
             label7.AutoSize = true;
             label7.Location = new Point(13, 58);
             label7.Name = "label7";
-            label7.Size = new Size(47, 15);
+            label7.Size = new Size(77, 15);
             label7.TabIndex = 13;
-            label7.Text = "Ordem:";
+            label7.Text = "Identificador:";
             // 
-            // txtOrdem
+            // txtNrIdentificador
             // 
-            txtOrdem.Location = new Point(13, 76);
-            txtOrdem.Name = "txtOrdem";
-            txtOrdem.Size = new Size(222, 23);
-            txtOrdem.TabIndex = 14;
+            txtNrIdentificador.Location = new Point(13, 76);
+            txtNrIdentificador.Name = "txtNrIdentificador";
+            txtNrIdentificador.Size = new Size(222, 23);
+            txtNrIdentificador.TabIndex = 14;
             // 
             // cboSituacao
             // 
@@ -225,6 +225,6 @@
         private Panel panel1;
         private Button btnSalvar;
         private Label label7;
-        private TextBox txtOrdem;
+        private TextBox txtNrIdentificador;
     }
 }

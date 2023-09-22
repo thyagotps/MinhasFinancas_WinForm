@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,7 +65,7 @@ namespace View.ModuloFaturaEmAberto
         private void getTotal()
         {
             var total = _controller.GetTotal();
-            lblTotal.Text = string.Format("R$ {0}", total);
+            lblTotal.Text = total.ToString("C", CultureInfo.CurrentCulture);
         }
 
         private void btnNovo_Click(object sender, EventArgs e)

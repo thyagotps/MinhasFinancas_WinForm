@@ -9,7 +9,7 @@ namespace Controller.ContasPagar
     public class ContaPagarDto
     {
         public int Id { get; set; }
-        public int NrOrdem { get; set; }
+        public int NrIdentificador { get; set; }
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
         public DateTime DataVencimento { get; set; }

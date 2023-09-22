@@ -19,14 +19,14 @@ namespace Model.ContasPagar
         {
             string query = @"select 
                                 Id, 
-                                NrOrdem, 
+                                NrIdentificador, 
                                 Descricao, 
                                 Valor, 
                                 DataVencimento, 
                                 Situacao 
                              from ContasPagar 
                              where convert(varchar(6),DataVencimento,112) = convert(varchar(6),@DataVencimento,112)
-                             order by NrOrdem;";
+                             order by NrIdentificador;";
 
             var filtros = new DynamicParameters();
             filtros.Add("DataVencimento", dtPeriodo);
@@ -41,7 +41,7 @@ namespace Model.ContasPagar
         public ContaPagar GetById(int id)
         {
             string query = @"select 
-	                            Id, NrOrdem, Descricao, Valor, DataVencimento, Situacao 
+	                            Id, NrIdentificador, Descricao, Valor, DataVencimento, Situacao 
                             from ContasPagar
                             where Id = @id";
 
@@ -70,12 +70,12 @@ namespace Model.ContasPagar
         public int Insert(ContaPagar contaPagar)
         {
             string query = @"insert into ContasPagar 
-                             (NrOrdem, Descricao, Valor, DataVencimento, Situacao) 
+                             (NrIdentificador, Descricao, Valor, DataVencimento, Situacao) 
                              values 
-                             (@NrOrdem,@Descricao,@Valor,@DataVencimento,@Situacao);";
+                             (@NrIdentificador,@Descricao,@Valor,@DataVencimento,@Situacao);";
 
             var filtros = new DynamicParameters();
-            filtros.Add("NrOrdem", contaPagar.NrOrdem);
+            filtros.Add("NrIdentificador", contaPagar.NrIdentificador);
             filtros.Add("Descricao", contaPagar.Descricao);
             filtros.Add("Valor", contaPagar.Valor);
             filtros.Add("DataVencimento", contaPagar.DataVencimento);
@@ -89,7 +89,7 @@ namespace Model.ContasPagar
         public int Update(ContaPagar contaPagar)
         {
             string query = @"update ContasPagar set
-                             NrOrdem = @NrOrdem,
+                             NrIdentificador = @NrIdentificador,
                              Descricao = @Descricao,
                              Valor = @Valor,
                              DataVencimento = @DataVencimento,
@@ -99,7 +99,7 @@ namespace Model.ContasPagar
 
             var filtros = new DynamicParameters();
             filtros.Add("Id", contaPagar.Id);
-            filtros.Add("NrOrdem", contaPagar.NrOrdem);
+            filtros.Add("NrIdentificador", contaPagar.NrIdentificador);
             filtros.Add("Descricao", contaPagar.Descricao);
             filtros.Add("Valor", contaPagar.Valor);
             filtros.Add("DataVencimento", contaPagar.DataVencimento);

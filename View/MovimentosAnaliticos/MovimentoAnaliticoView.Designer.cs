@@ -59,7 +59,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1172, 40);
+            panel1.Size = new Size(877, 40);
             panel1.TabIndex = 11;
             // 
             // btnNovo
@@ -121,38 +121,38 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1172, 473);
+            panel2.Size = new Size(877, 473);
             panel2.TabIndex = 12;
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblTotal.ForeColor = Color.White;
-            lblTotal.Location = new Point(906, 18);
+            lblTotal.Location = new Point(711, 13);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(20, 15);
+            lblTotal.Size = new Size(29, 21);
             lblTotal.TabIndex = 10;
             lblTotal.Text = "R$";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(865, 17);
+            label4.Location = new Point(664, 13);
             label4.Name = "label4";
-            label4.Size = new Size(35, 15);
+            label4.Size = new Size(52, 21);
             label4.TabIndex = 9;
             label4.Text = "Total:";
             // 
             // btnLimparFiltro
             // 
             btnLimparFiltro.Image = Properties.Resources.borracha;
-            btnLimparFiltro.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLimparFiltro.Location = new Point(666, 12);
+            btnLimparFiltro.Location = new Point(541, 49);
             btnLimparFiltro.Name = "btnLimparFiltro";
-            btnLimparFiltro.Size = new Size(72, 26);
+            btnLimparFiltro.Size = new Size(91, 38);
             btnLimparFiltro.TabIndex = 8;
-            btnLimparFiltro.Text = "Limpar";
             btnLimparFiltro.TextAlign = ContentAlignment.MiddleRight;
             btnLimparFiltro.UseVisualStyleBackColor = true;
             btnLimparFiltro.Click += btnLimparFiltro_Click;
@@ -162,9 +162,9 @@
             btnBuscar.Cursor = Cursors.Hand;
             btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
             btnBuscar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBuscar.Location = new Point(769, 6);
+            btnBuscar.Location = new Point(541, 4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(73, 39);
+            btnBuscar.Size = new Size(91, 39);
             btnBuscar.TabIndex = 7;
             btnBuscar.Text = "Buscar";
             btnBuscar.TextAlign = ContentAlignment.MiddleRight;
@@ -174,56 +174,62 @@
             // cboFormaPagamento
             // 
             cboFormaPagamento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboFormaPagamento.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cboFormaPagamento.FormattingEnabled = true;
-            cboFormaPagamento.Location = new Point(535, 14);
+            cboFormaPagamento.Location = new Point(176, 65);
             cboFormaPagamento.Name = "cboFormaPagamento";
-            cboFormaPagamento.Size = new Size(125, 23);
+            cboFormaPagamento.Size = new Size(336, 25);
             cboFormaPagamento.TabIndex = 6;
             // 
             // cboCategoriaFiltro
             // 
             cboCategoriaFiltro.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCategoriaFiltro.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cboCategoriaFiltro.FormattingEnabled = true;
-            cboCategoriaFiltro.Location = new Point(272, 14);
+            cboCategoriaFiltro.Location = new Point(176, 33);
             cboCategoriaFiltro.Name = "cboCategoriaFiltro";
-            cboCategoriaFiltro.Size = new Size(125, 23);
+            cboCategoriaFiltro.Size = new Size(336, 25);
             cboCategoriaFiltro.TabIndex = 5;
             // 
             // dtpDataCompraFiltro
             // 
+            dtpDataCompraFiltro.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDataCompraFiltro.Format = DateTimePickerFormat.Short;
-            dtpDataCompraFiltro.Location = new Point(95, 14);
+            dtpDataCompraFiltro.Location = new Point(176, 2);
             dtpDataCompraFiltro.Name = "dtpDataCompraFiltro";
-            dtpDataCompraFiltro.Size = new Size(100, 23);
+            dtpDataCompraFiltro.Size = new Size(176, 25);
             dtpDataCompraFiltro.TabIndex = 4;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(410, 18);
+            label3.Location = new Point(10, 68);
             label3.Name = "label3";
-            label3.Size = new Size(124, 15);
+            label3.Size = new Size(158, 19);
             label3.TabIndex = 3;
             label3.Text = "Forma de Pagamento:";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(209, 18);
+            label2.Location = new Point(89, 36);
             label2.Name = "label2";
-            label2.Size = new Size(61, 15);
+            label2.Size = new Size(79, 19);
             label2.TabIndex = 2;
             label2.Text = "Categoria:";
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(12, 18);
+            label1.Location = new Point(66, 5);
             label1.Name = "label1";
-            label1.Size = new Size(80, 15);
+            label1.Size = new Size(102, 19);
             label1.TabIndex = 1;
             label1.Text = "Data Compra:";
             // 
@@ -234,12 +240,12 @@
             dgvMovimentoAnalitico.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentoAnalitico.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMovimentoAnalitico.Dock = DockStyle.Bottom;
-            dgvMovimentoAnalitico.Location = new Point(0, 51);
+            dgvMovimentoAnalitico.Location = new Point(0, 96);
             dgvMovimentoAnalitico.Name = "dgvMovimentoAnalitico";
             dgvMovimentoAnalitico.ReadOnly = true;
             dgvMovimentoAnalitico.RowTemplate.Height = 25;
             dgvMovimentoAnalitico.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMovimentoAnalitico.Size = new Size(1172, 422);
+            dgvMovimentoAnalitico.Size = new Size(877, 377);
             dgvMovimentoAnalitico.TabIndex = 0;
             dgvMovimentoAnalitico.CellClick += dgvMovimentoAnalitico_CellClick;
             // 
@@ -247,7 +253,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1172, 513);
+            ClientSize = new Size(877, 513);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;

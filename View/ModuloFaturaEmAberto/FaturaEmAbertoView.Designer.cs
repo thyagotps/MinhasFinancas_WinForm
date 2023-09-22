@@ -56,20 +56,22 @@
             // lblTotal
             // 
             lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblTotal.ForeColor = Color.White;
-            lblTotal.Location = new Point(53, 13);
+            lblTotal.Location = new Point(53, 6);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(20, 15);
+            lblTotal.Size = new Size(26, 19);
             lblTotal.TabIndex = 13;
             lblTotal.Text = "R$";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(12, 12);
+            label4.Location = new Point(12, 6);
             label4.Name = "label4";
-            label4.Size = new Size(35, 15);
+            label4.Size = new Size(46, 19);
             label4.TabIndex = 12;
             label4.Text = "Total:";
             // 
@@ -77,10 +79,10 @@
             // 
             dgvFaturaEmAberto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvFaturaEmAberto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFaturaEmAberto.Location = new Point(12, 31);
+            dgvFaturaEmAberto.Location = new Point(6, 31);
             dgvFaturaEmAberto.Name = "dgvFaturaEmAberto";
             dgvFaturaEmAberto.RowTemplate.Height = 25;
-            dgvFaturaEmAberto.Size = new Size(589, 367);
+            dgvFaturaEmAberto.Size = new Size(595, 367);
             dgvFaturaEmAberto.TabIndex = 7;
             dgvFaturaEmAberto.CellMouseClick += dgvFaturaEmAberto_CellMouseClick;
             // 

@@ -64,7 +64,7 @@ namespace View.ContasPagar
         private void popularComponentesFormulario(ContaPagarDto contaPagar)
         {
             txtId.Text = contaPagar.Id.ToString();
-            txtOrdem.Text = contaPagar.NrOrdem.ToString();
+            txtNrIdentificador.Text = contaPagar.NrIdentificador.ToString();
             dtpDataVencimento.Value = contaPagar.DataVencimento;
             txtDescricao.Text = contaPagar.Descricao;
             txtValor.Text = contaPagar.Valor.ToString();
@@ -106,7 +106,7 @@ namespace View.ContasPagar
         {
             ContaPagarDto obj = new ContaPagarDto();
             obj.Id = Id;
-            obj.NrOrdem = Convert.ToInt32(txtOrdem.Text);
+            obj.NrIdentificador = Convert.ToInt32(txtNrIdentificador.Text);
             obj.Descricao = txtDescricao.Text;
             obj.Valor = Convert.ToDecimal(txtValor.Text);
             obj.DataVencimento = dtpDataVencimento.Value;
@@ -118,7 +118,5 @@ namespace View.ContasPagar
 
             return obj;
         }
-
-       
     }
 }

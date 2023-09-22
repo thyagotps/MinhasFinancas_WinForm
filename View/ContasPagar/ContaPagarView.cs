@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace View.ContasPagar
         private void getTotal(DateTime dtPeriodo)
         {
             var total = _controller.GetTotal(dtPeriodo);
-            lblTotal.Text = string.Format("R$ {0}", total);
+            lblTotal.Text = total.ToString("C", CultureInfo.CurrentCulture);
         }
 
         private void setupDataGridView(object dataSource)
@@ -59,8 +60,8 @@ namespace View.ContasPagar
             dgvContaPagar.ReadOnly = true;
             dgvContaPagar.DataSource = dataSource;
             dgvContaPagar.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvContaPagar.Columns["NrOrdem"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvContaPagar.Columns["NrOrdem"].HeaderText = "Ordem";
+            dgvContaPagar.Columns["NrIdentificador"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvContaPagar.Columns["NrIdentificador"].HeaderText = "Identificador";
             dgvContaPagar.Columns["Descricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvContaPagar.Columns["Descricao"].HeaderText = "Descrição";
             dgvContaPagar.Columns["Valor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -139,6 +140,15 @@ namespace View.ContasPagar
             _id = Convert.ToInt32(rowData.Cells[0].Value.ToString());
         }
 
+        private void btnCriarContasPagarAuto_Click(object sender, EventArgs e)
+        {
+            var resp = MessageBox.Show("Deseja criar contas à pagar padrão?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resp == DialogResult.Yes)
+            {
+                _controller.CriarContasPagarAuto(dtpPeriodoFiltro.Value);
+                buscar(dtpPeriodoFiltro.Value);
+            }
+        }
 
     }
 }

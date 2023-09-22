@@ -16,5 +16,6 @@ namespace Controller.ContasPagar
         public bool Insert(ContaPagarDto contaPagarDto);
         public bool Update(ContaPagarDto contaPagarDto);
         public bool DeleteById(int id);
+        public void CriarContasPagarAuto(DateTime periodo);
     }
 }
