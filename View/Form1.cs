@@ -8,6 +8,7 @@ using View.Categorias;
 using View.ContasPagar;
 using View.FormaPagamentos;
 using View.ModuloFaturaEmAberto;
+using View.ModuloSalario;
 using View.MovimentosAnaliticos;
 
 namespace View
@@ -74,6 +75,12 @@ namespace View
         private void btnFaturaEmAberto_Click(object sender, EventArgs e)
         {
             var view = NinjectKernel.Resolve<FaturaEmAbertoView>();
+            view.ShowDialog();
+        }
+
+        private void btnSalario_Click(object sender, EventArgs e)
+        {
+            var view = NinjectKernel.Resolve<SalarioView>();
             view.ShowDialog();
         }
     }

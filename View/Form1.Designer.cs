@@ -35,6 +35,7 @@
             panel1 = new Panel();
             btnFaturaEmAberto = new Button();
             btnContasPagar = new Button();
+            btnSalario = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -80,6 +81,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(43, 76, 126);
+            panel1.Controls.Add(btnSalario);
             panel1.Controls.Add(btnFaturaEmAberto);
             panel1.Controls.Add(btnContasPagar);
             panel1.Controls.Add(btnCategoria);
@@ -88,7 +90,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 50);
+            panel1.Size = new Size(999, 50);
             panel1.TabIndex = 10;
             // 
             // btnFaturaEmAberto
@@ -117,11 +119,24 @@
             btnContasPagar.UseVisualStyleBackColor = true;
             btnContasPagar.Click += btnContasPagar_Click;
             // 
+            // btnSalario
+            // 
+            btnSalario.Cursor = Cursors.Hand;
+            btnSalario.Image = (Image)resources.GetObject("btnSalario.Image");
+            btnSalario.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalario.Location = new Point(783, 8);
+            btnSalario.Name = "btnSalario";
+            btnSalario.Size = new Size(105, 34);
+            btnSalario.TabIndex = 5;
+            btnSalario.Text = "Salário";
+            btnSalario.UseVisualStyleBackColor = true;
+            btnSalario.Click += btnSalario_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(999, 450);
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
@@ -141,5 +156,6 @@
         private Panel panel1;
         private Button btnContasPagar;
         private Button btnFaturaEmAberto;
+        private Button btnSalario;
     }
 }

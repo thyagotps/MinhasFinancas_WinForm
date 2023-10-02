@@ -2,12 +2,14 @@
 using Controller.ContasPagar;
 using Controller.FormaPagamentos;
 using Controller.ModuloFaturaEmAberto;
+using Controller.ModuloSalario;
 using Controller.MovimentosAnaliticos;
 using DAL;
 using Model.Categorias;
 using Model.ContasPagar;
 using Model.FormaPagamentos;
 using Model.ModuloFaturaEmAberto;
+using Model.ModuloSalario;
 using Model.MovimentosAnaliticos;
 using Ninject.Modules;
 
@@ -35,6 +37,9 @@ namespace Base.Ninject
 
             Bind(typeof(IFaturaEmAbertoController)).To(typeof(FaturaEmAbertoController));
             Bind(typeof(IFaturaEmAbertoRepository)).To(typeof(FaturaEmAbertoRepository));
+
+            Bind(typeof(ISalarioController)).To(typeof(SalarioController));
+            Bind(typeof(ISalarioRepository)).To(typeof(SalarioRepository));
         }
     }
 }
