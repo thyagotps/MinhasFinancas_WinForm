@@ -1,5 +1,6 @@
 ﻿using Controller.Categorias;
 using Controller.FormaPagamentos;
+using Controller.ModuloFaturaEmAberto;
 using Controller.MovimentosAnaliticos;
 using System;
 using System.Collections.Generic;
@@ -22,16 +23,22 @@ namespace View.MovimentosAnaliticos
         private readonly IMovimentoAnaliticoController _movimentoAnaliticoController;
         private readonly ICategoriaController _categoriaController;
         private readonly IFormaPagamentoController _formaPagamentoController;
+        private readonly IFaturaEmAbertoController _faturaEmAbertoController;
 
 
-        public MovimentoAnaliticoForm(IMovimentoAnaliticoController movimentoAnaliticoController,
-                                      ICategoriaController categoriaController,
-                                      IFormaPagamentoController formaPagamentoController)
+        public MovimentoAnaliticoForm(
+            IMovimentoAnaliticoController movimentoAnaliticoController,
+            ICategoriaController categoriaController,
+            IFormaPagamentoController formaPagamentoController,
+            IFaturaEmAbertoController faturaEmAbertoController)
         {
             InitializeComponent();
+
             _movimentoAnaliticoController = movimentoAnaliticoController;
             _categoriaController = categoriaController;
             _formaPagamentoController = formaPagamentoController;
+            _faturaEmAbertoController = faturaEmAbertoController;
+
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
@@ -62,6 +69,7 @@ namespace View.MovimentosAnaliticos
             var movimentoAnaliticoDto = PopularMovimentoAnaliticoDto();
             var result = _movimentoAnaliticoController.Insert(movimentoAnaliticoDto);
             base.Message(result);
+            inserirMovimentoEmFaturaAberta(movimentoAnaliticoDto);
             this.Close();
         }
 
@@ -125,5 +133,26 @@ namespace View.MovimentosAnaliticos
         {
             txtValor.KeyPress += ValidaValores;
         }
+
+
+        private void inserirMovimentoEmFaturaAberta(MovimentoAnaliticoDto movDto)
+        {
+            var formaPagamento = _formaPagamentoController.GetById(Convert.ToInt16(movDto.FormaPagamentoId));
+
+            if (formaPagamento.Descricao == "Porto Seguro")
+            {
+                var resp = MessageBox.Show("Deseja lançar movimento em Fatura Em Aberto", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resp == DialogResult.Yes)
+                {
+                    FaturaEmAbertoDto faturaEmAbertoDto = new FaturaEmAbertoDto();
+                    faturaEmAbertoDto.Descricao = movDto.Descricao;
+                    faturaEmAbertoDto.DataCompra = movDto.DataCompra;
+                    faturaEmAbertoDto.Valor = movDto.Valor;
+                    _faturaEmAbertoController.Insert(faturaEmAbertoDto);
+                }
+            }
+        }
+
     }
 }

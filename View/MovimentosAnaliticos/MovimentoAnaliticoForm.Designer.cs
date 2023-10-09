@@ -90,7 +90,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(247, 314);
+            panel2.Size = new Size(247, 310);
             panel2.TabIndex = 10;
             // 
             // cboFormaPagamento
@@ -196,7 +196,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(247, 354);
+            ClientSize = new Size(247, 350);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
