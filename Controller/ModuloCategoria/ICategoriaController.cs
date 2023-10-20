@@ -1,4 +1,4 @@
-﻿namespace Controller.Categorias
+﻿namespace Controller.ModuloCategoria
 {
     public interface ICategoriaController
     {
@@ -6,6 +6,6 @@
         public CategoriaDto GetById(int id);
         public bool Insert(CategoriaDto categoriaDto);
         public bool Update(CategoriaDto categoriaDto);
-        public bool Delete(int id);
+        public bool DeleteById(int id);
     }
 }

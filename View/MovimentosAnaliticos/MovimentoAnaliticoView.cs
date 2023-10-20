@@ -1,21 +1,9 @@
 ﻿using Base.Ninject;
-using Controller.Categorias;
 using Controller.FormaPagamentos;
+using Controller.ModuloCategoria;
 using Controller.MovimentosAnaliticos;
-using Model.FormaPagamentos;
-using Model.MovimentosAnaliticos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using View.Categorias;
 
 namespace View.MovimentosAnaliticos
 {

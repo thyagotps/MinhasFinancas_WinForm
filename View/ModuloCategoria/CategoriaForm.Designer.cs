@@ -1,4 +1,4 @@
-﻿namespace View.Categorias
+﻿namespace View.ModuloCategoria
 {
     partial class CategoriaForm
     {
@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoriaForm));
             panel2 = new Panel();
+            cbo_Tipo = new ComboBox();
+            label3 = new Label();
             label1 = new Label();
             txtId = new TextBox();
             label2 = new Label();
@@ -42,6 +44,8 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(cbo_Tipo);
+            panel2.Controls.Add(label3);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(txtId);
             panel2.Controls.Add(label2);
@@ -49,13 +53,31 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(336, 73);
+            panel2.Size = new Size(231, 165);
             panel2.TabIndex = 9;
+            // 
+            // cbo_Tipo
+            // 
+            cbo_Tipo.FormattingEnabled = true;
+            cbo_Tipo.Items.AddRange(new object[] { "Entrada", "Saída" });
+            cbo_Tipo.Location = new Point(6, 122);
+            cbo_Tipo.Name = "cbo_Tipo";
+            cbo_Tipo.Size = new Size(216, 23);
+            cbo_Tipo.TabIndex = 7;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 104);
+            label3.Name = "label3";
+            label3.Size = new Size(33, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Tipo:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(44, 9);
+            label1.Location = new Point(6, 6);
             label1.Name = "label1";
             label1.Size = new Size(49, 15);
             label1.TabIndex = 0;
@@ -64,15 +86,15 @@
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(99, 6);
+            txtId.Location = new Point(6, 24);
             txtId.Name = "txtId";
-            txtId.Size = new Size(177, 23);
+            txtId.Size = new Size(216, 23);
             txtId.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(32, 38);
+            label2.Location = new Point(6, 55);
             label2.Name = "label2";
             label2.Size = new Size(61, 15);
             label2.TabIndex = 1;
@@ -80,9 +102,9 @@
             // 
             // txtDescricao
             // 
-            txtDescricao.Location = new Point(99, 35);
+            txtDescricao.Location = new Point(6, 73);
             txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(177, 23);
+            txtDescricao.Size = new Size(216, 23);
             txtDescricao.TabIndex = 5;
             // 
             // panel1
@@ -92,7 +114,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(336, 40);
+            panel1.Size = new Size(231, 40);
             panel1.TabIndex = 8;
             // 
             // btnSalvar
@@ -114,7 +136,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(336, 113);
+            ClientSize = new Size(231, 205);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
@@ -137,5 +159,7 @@
         private TextBox txtDescricao;
         private Panel panel1;
         private Button btnSalvar;
+        private ComboBox cbo_Tipo;
+        private Label label3;
     }
 }

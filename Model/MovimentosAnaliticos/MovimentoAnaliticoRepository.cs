@@ -1,6 +1,6 @@
 ﻿using DAL;
 using Dapper;
-using Model.Categorias;
+using Model.ModuloCategoria;
 using Model.FormaPagamentos;
 
 namespace Model.MovimentosAnaliticos

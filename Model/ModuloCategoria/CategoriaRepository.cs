@@ -1,7 +1,7 @@
 ﻿using DAL;
 using Dapper;
 
-namespace Model.Categorias
+namespace Model.ModuloCategoria
 {
     public class CategoriaRepository : BaseRepository, ICategoriaRepository
     {
@@ -14,14 +14,14 @@ namespace Model.Categorias
 
         public List<Categoria> GetAll()
         {
-            string query = "select Id, Descricao from Categoria order by Id;";
+            string query = "select Id, Descricao, Tipo from Categoria order by Tipo, Descricao;";
             var source = base.ExecutarQuery<Categoria>(query, listaParametros: null).ToList();
             return source;
         }
 
         public Categoria GetById(int id)
         {
-            string query = "select Id, Descricao from Categoria where Id = @id order by Id";
+            string query = "select Id, Descricao, Tipo from Categoria where Id = @id;";
 
             var filtros = new DynamicParameters();
             filtros.Add("id", id);
@@ -33,11 +33,12 @@ namespace Model.Categorias
 
         public int Insert(Categoria categoria)
         {
-            string query = "insert into Categoria (Descricao) values (@Descricao)";
+            string query = "insert into Categoria (Descricao, Tipo) values (@Descricao, @Tipo)";
             
             var filtros = new DynamicParameters();
             filtros.Add("Descricao", categoria.Descricao);
-            
+            filtros.Add("Tipo", categoria.Tipo);
+
             var result = base.Executar(query, filtros);
 
             return result;
@@ -46,11 +47,13 @@ namespace Model.Categorias
         public int Update(Categoria categoria)
         {
             string query = @"update Categoria 
-                             set Descricao = @Descricao
+                             set Descricao = @Descricao,
+                             Tipo = @Tipo
                              where Id = @Id";
 
             var filtros = new DynamicParameters();
             filtros.Add("Descricao", categoria.Descricao);
+            filtros.Add("Tipo", categoria.Tipo);
             filtros.Add("Id", categoria.Id);
 
             var result = base.Executar(query, filtros);
@@ -58,7 +61,7 @@ namespace Model.Categorias
             return result;
         }
 
-        public int Delete(int id)
+        public int DeleteById(int id)
         {
             string query = "delete from Categoria where Id = @id";
 

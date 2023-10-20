@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using Controller.Categorias;
-using Model.Categorias;
+﻿using AutoMapper;
+using Controller.ModuloCategoria;
+using Model.ModuloCategoria;
 
 namespace Controller.Profiles
 {

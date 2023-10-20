@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using View.Categorias;
+using View.ModuloCategoria;
 using View.ContasPagar;
 
 namespace View.ModuloFaturaEmAberto

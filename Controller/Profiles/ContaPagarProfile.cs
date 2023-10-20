@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Controller.Categorias;
+using Controller.ModuloCategoria;
 using Controller.ContasPagar;
-using Model.Categorias;
+using Model.ModuloCategoria;
 using Model.ContasPagar;
 using System;
 using System.Collections.Generic;

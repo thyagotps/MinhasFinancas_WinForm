@@ -1,4 +1,4 @@
-﻿using Controller.Categorias;
+﻿using Controller.ModuloCategoria;
 using Controller.FormaPagamentos;
 using Controller.ModuloFaturaEmAberto;
 using Controller.MovimentosAnaliticos;

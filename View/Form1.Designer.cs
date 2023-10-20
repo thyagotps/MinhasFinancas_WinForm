@@ -33,9 +33,9 @@
             btnPagamento = new Button();
             btnMovimento = new Button();
             panel1 = new Panel();
+            btnSalario = new Button();
             btnFaturaEmAberto = new Button();
             btnContasPagar = new Button();
-            btnSalario = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,6 +93,19 @@
             panel1.Size = new Size(999, 50);
             panel1.TabIndex = 10;
             // 
+            // btnSalario
+            // 
+            btnSalario.Cursor = Cursors.Hand;
+            btnSalario.Image = (Image)resources.GetObject("btnSalario.Image");
+            btnSalario.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalario.Location = new Point(783, 8);
+            btnSalario.Name = "btnSalario";
+            btnSalario.Size = new Size(105, 34);
+            btnSalario.TabIndex = 5;
+            btnSalario.Text = "Salário";
+            btnSalario.UseVisualStyleBackColor = true;
+            btnSalario.Click += btnSalario_Click;
+            // 
             // btnFaturaEmAberto
             // 
             btnFaturaEmAberto.Cursor = Cursors.Hand;
@@ -119,19 +132,6 @@
             btnContasPagar.UseVisualStyleBackColor = true;
             btnContasPagar.Click += btnContasPagar_Click;
             // 
-            // btnSalario
-            // 
-            btnSalario.Cursor = Cursors.Hand;
-            btnSalario.Image = (Image)resources.GetObject("btnSalario.Image");
-            btnSalario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalario.Location = new Point(783, 8);
-            btnSalario.Name = "btnSalario";
-            btnSalario.Size = new Size(105, 34);
-            btnSalario.TabIndex = 5;
-            btnSalario.Text = "Salário";
-            btnSalario.UseVisualStyleBackColor = true;
-            btnSalario.Click += btnSalario_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -139,6 +139,7 @@
             ClientSize = new Size(999, 450);
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            IsMdiContainer = true;
             Name = "Form1";
             Text = "Minhas Finanças";
             WindowState = FormWindowState.Maximized;

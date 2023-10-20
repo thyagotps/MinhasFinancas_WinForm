@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Categorias
+namespace Model.ModuloCategoria
 {
     public interface ICategoriaRepository
     {
@@ -12,6 +12,6 @@ namespace Model.Categorias
         public Categoria GetById(int id);
         public int Insert(Categoria categoria);
         public int Update(Categoria categoria);
-        public int Delete(int id);
+        public int DeleteById(int id);
     }
 }

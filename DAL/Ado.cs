@@ -12,7 +12,7 @@ namespace DAL
     {
         public IDbConnection Connection { get; private set; }
 
-        private string ConnectionString => @"Data Source=.\SQLEXPRESS; Initial Catalog = DB_FINANCAS_DESV; Integrated Security=true; Trusted_Connection=Yes";
+        private string ConnectionString => @"Data Source=.\SQLEXPRESS; Initial Catalog = DB_FINANCAS_DESV_2; Integrated Security=true; Trusted_Connection=Yes";
 
         public Ado()
         {

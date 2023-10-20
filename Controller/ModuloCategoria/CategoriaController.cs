@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using Controller.Profiles;
-using Model.Categorias;
+using Model.ModuloCategoria;
 
-namespace Controller.Categorias
+namespace Controller.ModuloCategoria
 {
     public class CategoriaController : ICategoriaController
     {
 
-        private readonly CategoriaRepository _categoriaRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
         private readonly IMapper _mapper;
 
-        public CategoriaController(CategoriaRepository categoriaRepository)
+        public CategoriaController(ICategoriaRepository categoriaRepository)
         {
             _categoriaRepository = categoriaRepository;
             MapperConfiguration config = new MapperConfiguration(cfg =>
@@ -50,9 +50,9 @@ namespace Controller.Categorias
             return result > 0 ? true : false;
         }
 
-        public bool Delete(int id)
+        public bool DeleteById(int id)
         {
-            var result = _categoriaRepository.Delete(id);
+            var result = _categoriaRepository.DeleteById(id);
             return result > 0 ? true : false;
         }
 

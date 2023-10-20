@@ -1,11 +1,11 @@
-﻿using Controller.Categorias;
+﻿using Controller.ModuloCategoria;
 using Controller.ContasPagar;
 using Controller.FormaPagamentos;
 using Controller.ModuloFaturaEmAberto;
 using Controller.ModuloSalario;
 using Controller.MovimentosAnaliticos;
 using DAL;
-using Model.Categorias;
+using Model.ModuloCategoria;
 using Model.ContasPagar;
 using Model.FormaPagamentos;
 using Model.ModuloFaturaEmAberto;

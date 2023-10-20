@@ -1,10 +1,10 @@
 using Base.Ninject;
-using Controller.Categorias;
+using Controller.ModuloCategoria;
 using Controller.ContasPagar;
 using Controller.FormaPagamentos;
 using Controller.MovimentosAnaliticos;
 using Model;
-using View.Categorias;
+using View.ModuloCategoria;
 using View.ContasPagar;
 using View.FormaPagamentos;
 using View.ModuloFaturaEmAberto;
@@ -38,7 +38,8 @@ namespace View
         {
             //CategoriaView form = new CategoriaView(_categoriaController);
             var form = NinjectKernel.Resolve<CategoriaView>();
-            form.ShowDialog();
+            form.MdiParent = this;
+            form.Show();
         }
 
         /// <summary>

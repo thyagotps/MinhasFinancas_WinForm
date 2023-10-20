@@ -1,4 +1,4 @@
-﻿namespace View.Categorias
+﻿namespace View.ModuloCategoria
 {
     partial class CategoriaView
     {
@@ -33,7 +33,6 @@
             panel1 = new Panel();
             btnNovo = new Button();
             btnExcluir = new Button();
-            btnEditar = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             panel1.SuspendLayout();
@@ -62,13 +61,13 @@
             dgvCategoria.Size = new Size(479, 368);
             dgvCategoria.TabIndex = 0;
             dgvCategoria.CellClick += dgvCategoria_CellClick;
+            dgvCategoria.CellMouseDoubleClick += dgvCategoria_CellMouseDoubleClick;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(43, 76, 126);
             panel1.Controls.Add(btnNovo);
             panel1.Controls.Add(btnExcluir);
-            panel1.Controls.Add(btnEditar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -94,7 +93,7 @@
             btnExcluir.Cursor = Cursors.Hand;
             btnExcluir.Image = Properties.Resources.excluir;
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExcluir.Location = new Point(149, 5);
+            btnExcluir.Location = new Point(76, 4);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(67, 29);
             btnExcluir.TabIndex = 7;
@@ -102,20 +101,6 @@
             btnExcluir.TextAlign = ContentAlignment.MiddleRight;
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
-            // 
-            // btnEditar
-            // 
-            btnEditar.Cursor = Cursors.Hand;
-            btnEditar.Image = Properties.Resources.editar;
-            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditar.Location = new Point(76, 5);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(67, 29);
-            btnEditar.TabIndex = 6;
-            btnEditar.Text = "Editar";
-            btnEditar.TextAlign = ContentAlignment.MiddleRight;
-            btnEditar.UseVisualStyleBackColor = true;
-            btnEditar.Click += btnEditar_Click;
             // 
             // CategoriaView
             // 
@@ -142,6 +127,5 @@
         private Panel panel1;
         private Button btnNovo;
         private Button btnExcluir;
-        private Button btnEditar;
     }
 }

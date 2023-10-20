@@ -9,6 +9,20 @@ namespace View
 {
     public class BaseView : Form
     {
+        public int Id {  get; set; }
+
+        public void SetIdGrid(DataGridView grid, int rowIndex)
+        {
+            if (rowIndex == -1)
+                return;
+
+            //Cria um objeto DataGridViewRow de um indice particular
+            DataGridViewRow rowData = grid.Rows[rowIndex];
+
+            //obtém valor
+            Id = Convert.ToInt32(rowData.Cells[0].Value.ToString());
+        }
+
         public void Message(bool result)
         {
             if (result)
