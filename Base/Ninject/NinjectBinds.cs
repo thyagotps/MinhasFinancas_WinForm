@@ -1,13 +1,13 @@
-﻿using Controller.ModuloCategoria;
-using Controller.ContasPagar;
-using Controller.FormaPagamentos;
+﻿using Controller.ContasPagar;
+using Controller.ModuloCartao;
+using Controller.ModuloCategoria;
 using Controller.ModuloFaturaEmAberto;
 using Controller.ModuloSalario;
 using Controller.MovimentosAnaliticos;
 using DAL;
-using Model.ModuloCategoria;
 using Model.ContasPagar;
-using Model.FormaPagamentos;
+using Model.ModuloCartao;
+using Model.ModuloCategoria;
 using Model.ModuloFaturaEmAberto;
 using Model.ModuloSalario;
 using Model.MovimentosAnaliticos;
@@ -26,8 +26,8 @@ namespace Base.Ninject
             Bind(typeof(ICategoriaController)).To(typeof(CategoriaController));
             Bind(typeof(ICategoriaRepository)).To(typeof(CategoriaRepository));
 
-            Bind(typeof(IFormaPagamentoController)).To(typeof(FormaPagamentoController));
-            Bind(typeof(IFormaPagamentoRepository)).To(typeof(FormaPagamentoRepository));
+            Bind(typeof(ICartaoController)).To(typeof(CartaoController));
+            Bind(typeof(ICartaoRepository)).To(typeof(CartaoRepository));
 
             Bind(typeof(IMovimentoAnaliticoController)).To(typeof(MovimentoAnaliticoController));
             Bind(typeof(IMovimentoAnaliticoRepository)).To(typeof(MovimentoAnaliticoRepository));

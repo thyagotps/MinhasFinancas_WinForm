@@ -1,5 +1,5 @@
 ﻿using Base.Ninject;
-using Controller.FormaPagamentos;
+using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
 using Controller.MovimentosAnaliticos;
 using System.Data;
@@ -11,11 +11,11 @@ namespace View.MovimentosAnaliticos
     {
         private int _id;
         private readonly ICategoriaController _categoriaController;
-        private readonly IFormaPagamentoController _formaPagamentoController;
+        private readonly ICartaoController _formaPagamentoController;
         private readonly IMovimentoAnaliticoController _movimentoAnaliticoController;
 
         public MovimentoAnaliticoView(ICategoriaController categoriaController,
-                                      IFormaPagamentoController formaPagamentoController,
+                                      ICartaoController formaPagamentoController,
                                       IMovimentoAnaliticoController movimentoAnaliticoController)
         {
             InitializeComponent();

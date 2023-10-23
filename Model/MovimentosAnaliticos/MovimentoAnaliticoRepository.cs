@@ -1,7 +1,7 @@
 ﻿using DAL;
 using Dapper;
 using Model.ModuloCategoria;
-using Model.FormaPagamentos;
+using Model.ModuloCartao;
 
 namespace Model.MovimentosAnaliticos
 {
@@ -9,15 +9,15 @@ namespace Model.MovimentosAnaliticos
     {
         private readonly Ado _ado;
         private readonly CategoriaRepository _categoriaRepository;
-        private readonly FormaPagamentoRepository _pagamentoRepository;
+        private readonly CartaoRepository _cartaoRepository;
 
         public MovimentoAnaliticoRepository(Ado ado,
                                             CategoriaRepository categoriaRepository,
-                                            FormaPagamentoRepository pagamentoRepository) : base(ado)
+                                            CartaoRepository cartaoRepository) : base(ado)
         {
             _ado = ado;
             _categoriaRepository = categoriaRepository;
-            _pagamentoRepository = pagamentoRepository;
+            _cartaoRepository = cartaoRepository;
         } 
 
         public List<MovimentoAnalitico> GetAll()
@@ -37,7 +37,7 @@ namespace Model.MovimentosAnaliticos
             foreach (var item in sources)
             {
                 item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
-                item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
+                item.FormaPagamento = _cartaoRepository.GetById(item.FormaPagamentoId);
             }
 
             return sources;
@@ -61,7 +61,7 @@ namespace Model.MovimentosAnaliticos
             var source = base.ExecutarQueryFirstOrDefault<MovimentoAnalitico>(query, filtros);
 
             source.Categoria = _categoriaRepository.GetById(source.CategoriaId);
-            source.FormaPagamento = _pagamentoRepository.GetById(source.FormaPagamentoId);
+            source.FormaPagamento = _cartaoRepository.GetById(source.FormaPagamentoId);
             
             return source;
         }
@@ -89,7 +89,7 @@ namespace Model.MovimentosAnaliticos
             foreach (var item in source)
             {
                 item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
-                item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
+                item.FormaPagamento = _cartaoRepository.GetById(item.FormaPagamentoId);
             }
 
             return source.ToList();
@@ -109,7 +109,7 @@ namespace Model.MovimentosAnaliticos
             foreach (var item in souces)
             {
                 item.Categoria = _categoriaRepository.GetById(item.CategoriaId);
-                item.FormaPagamento = _pagamentoRepository.GetById(item.FormaPagamentoId);
+                item.FormaPagamento = _cartaoRepository.GetById(item.FormaPagamentoId);
             }
 
             return souces;

@@ -1,17 +1,6 @@
-﻿using Controller.ContasPagar;
-using Controller.FormaPagamentos;
+﻿using Controller.ModuloCartao;
 using Controller.ModuloSalario;
-using Controller.MovimentosAnaliticos;
-using Model.ContasPagar;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace View.ModuloSalario
 {
@@ -19,11 +8,11 @@ namespace View.ModuloSalario
     {
         public int Id { get; set; }
         private readonly ISalarioController _salarioController;
-        private readonly IFormaPagamentoController _formaPagamentoController;
+        private readonly ICartaoController _formaPagamentoController;
 
         public SalarioForm(
             ISalarioController salarioController,
-            IFormaPagamentoController formaPagamentoController)
+            ICartaoController formaPagamentoController)
         {
             InitializeComponent();
             _formaPagamentoController = formaPagamentoController;

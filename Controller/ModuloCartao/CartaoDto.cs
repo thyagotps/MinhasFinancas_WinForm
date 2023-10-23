@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.FormaPagamentos
+namespace Controller.ModuloCartao
 {
-    public class FormaPagamento
+    public class CartaoDto
     {
         public int Id { get; set; }
         public string? Descricao { get; set; }

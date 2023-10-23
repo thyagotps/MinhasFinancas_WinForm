@@ -1,58 +1,49 @@
 using Base.Ninject;
 using Controller.ModuloCategoria;
 using Controller.ContasPagar;
-using Controller.FormaPagamentos;
 using Controller.MovimentosAnaliticos;
 using Model;
 using View.ModuloCategoria;
 using View.ContasPagar;
-using View.FormaPagamentos;
 using View.ModuloFaturaEmAberto;
 using View.ModuloSalario;
 using View.MovimentosAnaliticos;
+using View.ModuloCartao;
+using Controller.ModuloCartao;
+using System.Windows.Forms;
 
 namespace View
 {
     public partial class Form1 : Form
     {
         private readonly ICategoriaController _categoriaController;
-        private readonly IFormaPagamentoController _pagamentoController;
+        private readonly ICartaoController _pagamentoController;
         private readonly IMovimentoAnaliticoController _movimentoController;
         private readonly IContaPagarController _contaPagarController;
 
         public Form1()
         {
             _categoriaController = NinjectKernel.Resolve<ICategoriaController>();
-            _pagamentoController = NinjectKernel.Resolve<IFormaPagamentoController>();
+            _pagamentoController = NinjectKernel.Resolve<ICartaoController>();
             _movimentoController = NinjectKernel.Resolve<IMovimentoAnaliticoController>();
             _contaPagarController = NinjectKernel.Resolve<IContaPagarController>();
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Ação do botão Categoria
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnCategoria_Click_1(object sender, EventArgs e)
         {
-            //CategoriaView form = new CategoriaView(_categoriaController);
-            var form = NinjectKernel.Resolve<CategoriaView>();
-            form.MdiParent = this;
-            form.Show();
+            var view = NinjectKernel.Resolve<CategoriaView>();
+            view.MdiParent = this;
+            view.Show();
         }
 
-        /// <summary>
-        /// Ação do botão Pagamento
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnPagamento_Click(object sender, EventArgs e)
+        private void btnCartao_Click(object sender, EventArgs e)
         {
-            //FormaPagamentoView pagamentoView = new FormaPagamentoView(_pagamentoController);
-            var view = NinjectKernel.Resolve<FormaPagamentoView>();
-            view.ShowDialog();
+            var view = NinjectKernel.Resolve<CartaoView>();
+            view.MdiParent = this;
+            view.Show();
         }
+
 
         /// <summary>
         /// Ação do botão Movimento
@@ -84,5 +75,7 @@ namespace View
             var view = NinjectKernel.Resolve<SalarioView>();
             view.ShowDialog();
         }
+
+        
     }
 }

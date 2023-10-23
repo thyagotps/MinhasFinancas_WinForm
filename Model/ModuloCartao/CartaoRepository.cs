@@ -1,42 +1,41 @@
 ﻿using DAL;
 using Dapper;
-using Model.ModuloCategoria;
 
-namespace Model.FormaPagamentos
+namespace Model.ModuloCartao
 {
-    public class FormaPagamentoRepository : BaseRepository, IFormaPagamentoRepository
+    public class CartaoRepository : BaseRepository, ICartaoRepository
     {
 
         private readonly Ado _ado;
 
-        public FormaPagamentoRepository(Ado ado) : base(ado)
+        public CartaoRepository(Ado ado) : base(ado)
         {
             _ado = ado;
         }
 
 
-        public List<FormaPagamento> GetAll()
+        public List<Cartao> GetAll()
         {
-            string query = "select Id, Descricao from FormaPagamento";
-            var source = base.ExecutarQuery<FormaPagamento>(query: query, listaParametros: null).ToList();
+            string query = "select Id, Descricao from Cartao order by Descricao";
+            var source = base.ExecutarQuery<Cartao>(query: query, listaParametros: null).ToList();
             return source;
         }
 
-        public FormaPagamento GetById(int id)
+        public Cartao GetById(int id)
         {
-            string query = "select Id, Descricao from FormaPagamento where Id = @id";
+            string query = "select Id, Descricao from Cartao where Id = @id";
 
             var filtros = new DynamicParameters();
             filtros.Add("id", id);
 
-            var source = base.ExecutarQueryFirstOrDefault<FormaPagamento>(query: query, listaParametros: filtros);
+            var source = base.ExecutarQueryFirstOrDefault<Cartao>(query: query, listaParametros: filtros);
 
             return source;
         }
 
-        public int Insert(FormaPagamento pagamento)
+        public int Insert(Cartao pagamento)
         {
-            string query = "insert into FormaPagamento (Descricao) values (@Descricao)";
+            string query = "insert into Cartao (Descricao) values (@Descricao)";
 
             var filtros = new DynamicParameters();
             filtros.Add("Descricao", pagamento.Descricao);
@@ -46,9 +45,9 @@ namespace Model.FormaPagamentos
             return result;
         }
 
-        public int Update(FormaPagamento pagamento)
+        public int Update(Cartao pagamento)
         {
-            string query = @"update FormaPagamento 
+            string query = @"update Cartao 
                                  set Descricao = @Descricao
                                  where Id = @Id";
 
@@ -61,9 +60,9 @@ namespace Model.FormaPagamentos
             return result;
         }
 
-        public int Delete(int id)
+        public int DeleteById(int id)
         {
-            string query = "delete from FormaPagamento where Id = @id";
+            string query = "delete from Cartao where Id = @id";
 
             var filtros = new DynamicParameters();
             filtros.Add("id", id);

@@ -1,16 +1,6 @@
 ﻿using Base.Ninject;
-using Controller.FormaPagamentos;
+using Controller.ModuloCartao;
 using Controller.ModuloSalario;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using View.ContasPagar;
 
 namespace View.ModuloSalario
 {
@@ -18,11 +8,11 @@ namespace View.ModuloSalario
     {
         private int _id;
         private readonly ISalarioController _salarioController;
-        private readonly IFormaPagamentoController _formaPagamentoController;
+        private readonly ICartaoController _formaPagamentoController;
 
         public SalarioView(
             ISalarioController salarioController,
-            IFormaPagamentoController formaPagamentoController)
+            ICartaoController formaPagamentoController)
         {
             InitializeComponent();
             _salarioController = salarioController;

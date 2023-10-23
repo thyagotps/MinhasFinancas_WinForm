@@ -1,5 +1,5 @@
-﻿using Model.ModuloCategoria;
-using Model.FormaPagamentos;
+﻿using Model.ModuloCartao;
+using Model.ModuloCategoria;
 
 namespace Model.MovimentosAnaliticos
 {
@@ -12,6 +12,6 @@ namespace Model.MovimentosAnaliticos
         public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
         public int FormaPagamentoId { get; set; }
-        public FormaPagamento FormaPagamento { get; set; }
+        public Cartao FormaPagamento { get; set; }
     }
 }

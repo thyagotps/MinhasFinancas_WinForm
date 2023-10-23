@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btnCategoria = new Button();
-            btnPagamento = new Button();
+            btnCartao = new Button();
             btnMovimento = new Button();
             panel1 = new Panel();
             btnSalario = new Button();
@@ -52,18 +52,18 @@
             btnCategoria.UseVisualStyleBackColor = true;
             btnCategoria.Click += btnCategoria_Click_1;
             // 
-            // btnPagamento
+            // btnCartao
             // 
-            btnPagamento.Cursor = Cursors.Hand;
-            btnPagamento.Image = Properties.Resources.formaPagamento1;
-            btnPagamento.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPagamento.Location = new Point(128, 8);
-            btnPagamento.Name = "btnPagamento";
-            btnPagamento.Size = new Size(133, 34);
-            btnPagamento.TabIndex = 1;
-            btnPagamento.Text = "Pagamentos";
-            btnPagamento.UseVisualStyleBackColor = true;
-            btnPagamento.Click += btnPagamento_Click;
+            btnCartao.Cursor = Cursors.Hand;
+            btnCartao.Image = Properties.Resources.formaPagamento1;
+            btnCartao.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCartao.Location = new Point(128, 8);
+            btnCartao.Name = "btnCartao";
+            btnCartao.Size = new Size(133, 34);
+            btnCartao.TabIndex = 1;
+            btnCartao.Text = "Cartão";
+            btnCartao.UseVisualStyleBackColor = true;
+            btnCartao.Click += btnCartao_Click;
             // 
             // btnMovimento
             // 
@@ -86,7 +86,7 @@
             panel1.Controls.Add(btnContasPagar);
             panel1.Controls.Add(btnCategoria);
             panel1.Controls.Add(btnMovimento);
-            panel1.Controls.Add(btnPagamento);
+            panel1.Controls.Add(btnCartao);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -152,7 +152,7 @@
         #endregion
 
         private Button btnCategoria;
-        private Button btnPagamento;
+        private Button btnCartao;
         private Button btnMovimento;
         private Panel panel1;
         private Button btnContasPagar;

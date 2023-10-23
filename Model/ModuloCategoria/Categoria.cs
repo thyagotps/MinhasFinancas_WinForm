@@ -6,6 +6,6 @@
         public string? Descricao { get; set; }
         public string? Tipo { get; set; }
 
-        public string DisplayMember() => $"{Id} - {Descricao} - {Tipo}";
+        public string DisplayMember => $"{Id} - {Descricao} - {Tipo}";
     }
 }

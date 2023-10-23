@@ -1,18 +1,8 @@
-﻿using Controller.ModuloCategoria;
-using Controller.FormaPagamentos;
+﻿using Controller.ModuloCartao;
+using Controller.ModuloCategoria;
 using Controller.ModuloFaturaEmAberto;
 using Controller.MovimentosAnaliticos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace View.MovimentosAnaliticos
 {
@@ -22,14 +12,14 @@ namespace View.MovimentosAnaliticos
         public int Id { get; set; }
         private readonly IMovimentoAnaliticoController _movimentoAnaliticoController;
         private readonly ICategoriaController _categoriaController;
-        private readonly IFormaPagamentoController _formaPagamentoController;
+        private readonly ICartaoController _formaPagamentoController;
         private readonly IFaturaEmAbertoController _faturaEmAbertoController;
 
 
         public MovimentoAnaliticoForm(
             IMovimentoAnaliticoController movimentoAnaliticoController,
             ICategoriaController categoriaController,
-            IFormaPagamentoController formaPagamentoController,
+            ICartaoController formaPagamentoController,
             IFaturaEmAbertoController faturaEmAbertoController)
         {
             InitializeComponent();
