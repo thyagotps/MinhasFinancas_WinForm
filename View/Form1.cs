@@ -1,16 +1,14 @@
 using Base.Ninject;
-using Controller.ModuloCategoria;
 using Controller.ContasPagar;
-using Controller.MovimentosAnaliticos;
-using Model;
-using View.ModuloCategoria;
-using View.ContasPagar;
-using View.ModuloFaturaEmAberto;
-using View.ModuloSalario;
-using View.MovimentosAnaliticos;
-using View.ModuloCartao;
 using Controller.ModuloCartao;
-using System.Windows.Forms;
+using Controller.ModuloCategoria;
+using Controller.MovimentosAnaliticos;
+using View.ContasPagar;
+using View.ModuloCartao;
+using View.ModuloCategoria;
+using View.ModuloEntrada;
+using View.ModuloFaturaEmAberto;
+using View.MovimentosAnaliticos;
 
 namespace View
 {
@@ -43,6 +41,16 @@ namespace View
             view.MdiParent = this;
             view.Show();
         }
+        
+        private void btnEntrada_Click(object sender, EventArgs e)
+        {
+            var view = NinjectKernel.Resolve<EntradaView>();
+            view.MdiParent = this;
+            view.Show();
+        }
+
+
+
 
 
         /// <summary>
@@ -70,11 +78,7 @@ namespace View
             view.ShowDialog();
         }
 
-        private void btnSalario_Click(object sender, EventArgs e)
-        {
-            var view = NinjectKernel.Resolve<SalarioView>();
-            view.ShowDialog();
-        }
+        
 
         
     }

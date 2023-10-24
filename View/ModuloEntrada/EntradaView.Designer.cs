@@ -1,6 +1,6 @@
-﻿namespace View.ModuloSalario
+﻿namespace View.ModuloEntrada
 {
-    partial class SalarioView
+    partial class EntradaView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,40 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvSalario = new DataGridView();
             panel2 = new Panel();
+            dgvEntrada = new DataGridView();
             panel1 = new Panel();
             btnNovo = new Button();
             btnExcluir = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvSalario).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEntrada).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // dgvSalario
-            // 
-            dgvSalario.AllowUserToAddRows = false;
-            dgvSalario.AllowUserToDeleteRows = false;
-            dgvSalario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvSalario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSalario.Location = new Point(12, 12);
-            dgvSalario.Name = "dgvSalario";
-            dgvSalario.ReadOnly = true;
-            dgvSalario.RowTemplate.Height = 25;
-            dgvSalario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSalario.Size = new Size(382, 386);
-            dgvSalario.TabIndex = 0;
-            dgvSalario.CellContentDoubleClick += dgvSalario_CellContentDoubleClick;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(96, 109, 128);
-            panel2.Controls.Add(dgvSalario);
+            panel2.Controls.Add(dgvEntrada);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(404, 410);
-            panel2.TabIndex = 14;
+            panel2.Size = new Size(854, 410);
+            panel2.TabIndex = 16;
+            // 
+            // dgvEntrada
+            // 
+            dgvEntrada.AllowUserToAddRows = false;
+            dgvEntrada.AllowUserToDeleteRows = false;
+            dgvEntrada.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEntrada.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEntrada.Location = new Point(3, 6);
+            dgvEntrada.Name = "dgvEntrada";
+            dgvEntrada.ReadOnly = true;
+            dgvEntrada.RowTemplate.Height = 25;
+            dgvEntrada.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEntrada.Size = new Size(848, 401);
+            dgvEntrada.TabIndex = 0;
+            dgvEntrada.CellClick += dgvEntrada_CellClick;
+            dgvEntrada.CellMouseDoubleClick += dgvEntrada_CellMouseDoubleClick;
             // 
             // panel1
             // 
@@ -71,8 +72,8 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(404, 40);
-            panel1.TabIndex = 13;
+            panel1.Size = new Size(854, 40);
+            panel1.TabIndex = 15;
             // 
             // btnNovo
             // 
@@ -102,28 +103,28 @@
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
-            // SalarioView
+            // EntradaView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(404, 450);
+            ClientSize = new Size(854, 450);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
-            Name = "SalarioView";
+            Name = "EntradaView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Salário";
-            Load += SalarioView_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvSalario).EndInit();
+            Text = "Entradas";
+            Load += EntradaView_Load;
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvEntrada).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dgvSalario;
         private Panel panel2;
+        private DataGridView dgvEntrada;
         private Panel panel1;
         private Button btnNovo;
         private Button btnExcluir;

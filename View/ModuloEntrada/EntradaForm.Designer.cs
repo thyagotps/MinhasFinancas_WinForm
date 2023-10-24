@@ -1,6 +1,6 @@
-﻿namespace View.ModuloSalario
+﻿namespace View.ModuloEntrada
 {
-    partial class SalarioForm
+    partial class EntradaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalarioForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntradaForm));
             panel2 = new Panel();
-            cboFormaPagamento = new ComboBox();
+            cboCategoria = new ComboBox();
             label6 = new Label();
             txtValor = new TextBox();
             label4 = new Label();
             txtDescricao = new TextBox();
             label3 = new Label();
-            dtpDataSalario = new DateTimePicker();
+            dtpDataEntrada = new DateTimePicker();
             label1 = new Label();
             txtId = new TextBox();
             label2 = new Label();
@@ -48,38 +48,38 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(cboFormaPagamento);
+            panel2.Controls.Add(cboCategoria);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(txtValor);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(txtDescricao);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(dtpDataSalario);
+            panel2.Controls.Add(dtpDataEntrada);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(txtId);
             panel2.Controls.Add(label2);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(252, 298);
-            panel2.TabIndex = 16;
+            panel2.Size = new Size(254, 283);
+            panel2.TabIndex = 18;
             // 
-            // cboFormaPagamento
+            // cboCategoria
             // 
-            cboFormaPagamento.FormattingEnabled = true;
-            cboFormaPagamento.Location = new Point(13, 238);
-            cboFormaPagamento.Name = "cboFormaPagamento";
-            cboFormaPagamento.Size = new Size(222, 23);
-            cboFormaPagamento.TabIndex = 14;
+            cboCategoria.FormattingEnabled = true;
+            cboCategoria.Location = new Point(13, 238);
+            cboCategoria.Name = "cboCategoria";
+            cboCategoria.Size = new Size(222, 23);
+            cboCategoria.TabIndex = 14;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(13, 220);
             label6.Name = "label6";
-            label6.Size = new Size(108, 15);
+            label6.Size = new Size(61, 15);
             label6.TabIndex = 13;
-            label6.Text = "Forma Pagamento:";
+            label6.Text = "Categoria:";
             // 
             // txtValor
             // 
@@ -113,12 +113,12 @@
             label3.TabIndex = 5;
             label3.Text = "Descrição:";
             // 
-            // dtpDataSalario
+            // dtpDataEntrada
             // 
-            dtpDataSalario.Location = new Point(13, 133);
-            dtpDataSalario.Name = "dtpDataSalario";
-            dtpDataSalario.Size = new Size(222, 23);
-            dtpDataSalario.TabIndex = 4;
+            dtpDataEntrada.Location = new Point(13, 133);
+            dtpDataEntrada.Name = "dtpDataEntrada";
+            dtpDataEntrada.Size = new Size(222, 23);
+            dtpDataEntrada.TabIndex = 4;
             // 
             // label1
             // 
@@ -153,8 +153,8 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(252, 40);
-            panel1.TabIndex = 15;
+            panel1.Size = new Size(254, 40);
+            panel1.TabIndex = 17;
             // 
             // btnSalvar
             // 
@@ -171,18 +171,18 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // SalarioForm
+            // EntradaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(252, 338);
+            ClientSize = new Size(254, 323);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
-            Name = "SalarioForm";
+            Name = "EntradaForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Formulário";
-            Load += SalarioForm_Load;
+            Load += EntradaForm_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
@@ -192,17 +192,17 @@
         #endregion
 
         private Panel panel2;
+        private ComboBox cboCategoria;
+        private Label label6;
         private TextBox txtValor;
         private Label label4;
         private TextBox txtDescricao;
         private Label label3;
-        private DateTimePicker dtpDataSalario;
+        private DateTimePicker dtpDataEntrada;
         private Label label1;
         private TextBox txtId;
         private Label label2;
         private Panel panel1;
         private Button btnSalvar;
-        private ComboBox cboFormaPagamento;
-        private Label label6;
     }
 }

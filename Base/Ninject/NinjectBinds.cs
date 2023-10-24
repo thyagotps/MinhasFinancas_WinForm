@@ -1,6 +1,7 @@
 ﻿using Controller.ContasPagar;
 using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
+using Controller.ModuloEntrada;
 using Controller.ModuloFaturaEmAberto;
 using Controller.ModuloSalario;
 using Controller.MovimentosAnaliticos;
@@ -8,8 +9,8 @@ using DAL;
 using Model.ContasPagar;
 using Model.ModuloCartao;
 using Model.ModuloCategoria;
+using Model.ModuloEntrada;
 using Model.ModuloFaturaEmAberto;
-using Model.ModuloSalario;
 using Model.MovimentosAnaliticos;
 using Ninject.Modules;
 
@@ -29,6 +30,11 @@ namespace Base.Ninject
             Bind(typeof(ICartaoController)).To(typeof(CartaoController));
             Bind(typeof(ICartaoRepository)).To(typeof(CartaoRepository));
 
+            Bind(typeof(IEntradaController)).To(typeof(EntradaController));
+            Bind(typeof(IEntradaRepository)).To(typeof(EntradaRepository));
+
+
+
             Bind(typeof(IMovimentoAnaliticoController)).To(typeof(MovimentoAnaliticoController));
             Bind(typeof(IMovimentoAnaliticoRepository)).To(typeof(MovimentoAnaliticoRepository));
 
@@ -38,8 +44,7 @@ namespace Base.Ninject
             Bind(typeof(IFaturaEmAbertoController)).To(typeof(FaturaEmAbertoController));
             Bind(typeof(IFaturaEmAbertoRepository)).To(typeof(FaturaEmAbertoRepository));
 
-            Bind(typeof(ISalarioController)).To(typeof(SalarioController));
-            Bind(typeof(ISalarioRepository)).To(typeof(SalarioRepository));
+         
         }
     }
 }

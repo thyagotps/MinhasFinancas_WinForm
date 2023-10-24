@@ -33,7 +33,7 @@
             btnCartao = new Button();
             btnMovimento = new Button();
             panel1 = new Panel();
-            btnSalario = new Button();
+            btnEntrada = new Button();
             btnFaturaEmAberto = new Button();
             btnContasPagar = new Button();
             panel1.SuspendLayout();
@@ -59,7 +59,7 @@
             btnCartao.ImageAlign = ContentAlignment.MiddleLeft;
             btnCartao.Location = new Point(128, 8);
             btnCartao.Name = "btnCartao";
-            btnCartao.Size = new Size(133, 34);
+            btnCartao.Size = new Size(99, 34);
             btnCartao.TabIndex = 1;
             btnCartao.Text = "Cartão";
             btnCartao.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             btnMovimento.Cursor = Cursors.Hand;
             btnMovimento.Image = Properties.Resources.movimento;
             btnMovimento.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMovimento.Location = new Point(267, 8);
+            btnMovimento.Location = new Point(477, 8);
             btnMovimento.Name = "btnMovimento";
             btnMovimento.Size = new Size(166, 34);
             btnMovimento.TabIndex = 2;
@@ -81,7 +81,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(43, 76, 126);
-            panel1.Controls.Add(btnSalario);
+            panel1.Controls.Add(btnEntrada);
             panel1.Controls.Add(btnFaturaEmAberto);
             panel1.Controls.Add(btnContasPagar);
             panel1.Controls.Add(btnCategoria);
@@ -93,25 +93,25 @@
             panel1.Size = new Size(999, 50);
             panel1.TabIndex = 10;
             // 
-            // btnSalario
+            // btnEntrada
             // 
-            btnSalario.Cursor = Cursors.Hand;
-            btnSalario.Image = (Image)resources.GetObject("btnSalario.Image");
-            btnSalario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalario.Location = new Point(783, 8);
-            btnSalario.Name = "btnSalario";
-            btnSalario.Size = new Size(105, 34);
-            btnSalario.TabIndex = 5;
-            btnSalario.Text = "Salário";
-            btnSalario.UseVisualStyleBackColor = true;
-            btnSalario.Click += btnSalario_Click;
+            btnEntrada.Cursor = Cursors.Hand;
+            btnEntrada.Image = (Image)resources.GetObject("btnEntrada.Image");
+            btnEntrada.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEntrada.Location = new Point(233, 8);
+            btnEntrada.Name = "btnEntrada";
+            btnEntrada.Size = new Size(95, 34);
+            btnEntrada.TabIndex = 5;
+            btnEntrada.Text = "Entrada";
+            btnEntrada.UseVisualStyleBackColor = true;
+            btnEntrada.Click += btnEntrada_Click;
             // 
             // btnFaturaEmAberto
             // 
             btnFaturaEmAberto.Cursor = Cursors.Hand;
             btnFaturaEmAberto.Image = (Image)resources.GetObject("btnFaturaEmAberto.Image");
             btnFaturaEmAberto.ImageAlign = ContentAlignment.MiddleLeft;
-            btnFaturaEmAberto.Location = new Point(611, 8);
+            btnFaturaEmAberto.Location = new Point(821, 8);
             btnFaturaEmAberto.Name = "btnFaturaEmAberto";
             btnFaturaEmAberto.Size = new Size(166, 34);
             btnFaturaEmAberto.TabIndex = 4;
@@ -124,7 +124,7 @@
             btnContasPagar.Cursor = Cursors.Hand;
             btnContasPagar.Image = (Image)resources.GetObject("btnContasPagar.Image");
             btnContasPagar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnContasPagar.Location = new Point(439, 8);
+            btnContasPagar.Location = new Point(649, 8);
             btnContasPagar.Name = "btnContasPagar";
             btnContasPagar.Size = new Size(166, 34);
             btnContasPagar.TabIndex = 3;
@@ -157,6 +157,6 @@
         private Panel panel1;
         private Button btnContasPagar;
         private Button btnFaturaEmAberto;
-        private Button btnSalario;
+        private Button btnEntrada;
     }
 }
