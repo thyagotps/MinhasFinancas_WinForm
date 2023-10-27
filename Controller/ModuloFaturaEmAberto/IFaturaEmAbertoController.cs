@@ -1,11 +1,4 @@
-﻿using Model.ModuloFaturaEmAberto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Controller.ModuloFaturaEmAberto
+﻿namespace Controller.ModuloFaturaEmAberto
 {
     public interface IFaturaEmAbertoController
     {

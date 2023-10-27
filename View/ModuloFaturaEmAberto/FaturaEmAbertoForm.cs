@@ -14,7 +14,6 @@ namespace View.ModuloFaturaEmAberto
 {
     public partial class FaturaEmAbertoForm : BaseView
     {
-        public int Id { get; set; }
         private readonly IFaturaEmAbertoController _controller;
 
         public FaturaEmAbertoForm(IFaturaEmAbertoController controller)
@@ -41,7 +40,6 @@ namespace View.ModuloFaturaEmAberto
             }
         }
 
-        //TODO: Refatorar
         private void setDataCompra()
         {
             dtpDataCompra.Value = DateTime.Now;

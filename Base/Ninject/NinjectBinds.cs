@@ -3,15 +3,15 @@ using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
 using Controller.ModuloEntrada;
 using Controller.ModuloFaturaEmAberto;
+using Controller.ModuloSaida;
 using Controller.ModuloSalario;
-using Controller.MovimentosAnaliticos;
 using DAL;
 using Model.ContasPagar;
 using Model.ModuloCartao;
 using Model.ModuloCategoria;
 using Model.ModuloEntrada;
 using Model.ModuloFaturaEmAberto;
-using Model.MovimentosAnaliticos;
+using Model.ModuloSaida;
 using Ninject.Modules;
 
 
@@ -33,16 +33,21 @@ namespace Base.Ninject
             Bind(typeof(IEntradaController)).To(typeof(EntradaController));
             Bind(typeof(IEntradaRepository)).To(typeof(EntradaRepository));
 
+            Bind(typeof(ISaidaController)).To(typeof(SaidaController));
+            Bind(typeof(ISaidaRepository)).To(typeof(SaidaRepository));
+
+            Bind(typeof(IFaturaEmAbertoController)).To(typeof(FaturaEmAbertoController));
+            Bind(typeof(IFaturaEmAbertoRepository)).To(typeof(FaturaEmAbertoRepository));
 
 
-            Bind(typeof(IMovimentoAnaliticoController)).To(typeof(MovimentoAnaliticoController));
-            Bind(typeof(IMovimentoAnaliticoRepository)).To(typeof(MovimentoAnaliticoRepository));
+
+
+
 
             Bind(typeof(IContaPagarController)).To(typeof(ContaPagarController));
             Bind(typeof(IContaPagarRepository)).To(typeof(ContaPagarRepository));
 
-            Bind(typeof(IFaturaEmAbertoController)).To(typeof(FaturaEmAbertoController));
-            Bind(typeof(IFaturaEmAbertoRepository)).To(typeof(FaturaEmAbertoRepository));
+            
 
          
         }

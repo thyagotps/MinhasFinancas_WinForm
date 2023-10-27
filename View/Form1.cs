@@ -2,29 +2,20 @@ using Base.Ninject;
 using Controller.ContasPagar;
 using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
-using Controller.MovimentosAnaliticos;
 using View.ContasPagar;
 using View.ModuloCartao;
 using View.ModuloCategoria;
 using View.ModuloEntrada;
 using View.ModuloFaturaEmAberto;
-using View.MovimentosAnaliticos;
+using View.ModuloSaida;
 
 namespace View
 {
     public partial class Form1 : Form
     {
-        private readonly ICategoriaController _categoriaController;
-        private readonly ICartaoController _pagamentoController;
-        private readonly IMovimentoAnaliticoController _movimentoController;
-        private readonly IContaPagarController _contaPagarController;
 
         public Form1()
         {
-            _categoriaController = NinjectKernel.Resolve<ICategoriaController>();
-            _pagamentoController = NinjectKernel.Resolve<ICartaoController>();
-            _movimentoController = NinjectKernel.Resolve<IMovimentoAnaliticoController>();
-            _contaPagarController = NinjectKernel.Resolve<IContaPagarController>();
             InitializeComponent();
         }
 
@@ -41,10 +32,24 @@ namespace View
             view.MdiParent = this;
             view.Show();
         }
-        
+
         private void btnEntrada_Click(object sender, EventArgs e)
         {
             var view = NinjectKernel.Resolve<EntradaView>();
+            view.MdiParent = this;
+            view.Show();
+        }
+
+        private void btnSaida_Click(object sender, EventArgs e)
+        {
+            var view = NinjectKernel.Resolve<SaidaView>();
+            view.MdiParent = this;
+            view.Show();
+        }
+
+        private void btnFaturaEmAberto_Click(object sender, EventArgs e)
+        {
+            var view = NinjectKernel.Resolve<FaturaEmAbertoView>();
             view.MdiParent = this;
             view.Show();
         }
@@ -53,18 +58,6 @@ namespace View
 
 
 
-        /// <summary>
-        /// Ação do botão Movimento
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnMovimento_Click(object sender, EventArgs e)
-        {
-            var view = NinjectKernel.Resolve<MovimentoAnaliticoView>();
-            view.ShowDialog();
-            //MovimentoAnaliticoView movimentoView = new MovimentoView(_movimentoController, _categoriaController,_pagamentoController);
-            //movimentoView.ShowDialog();
-        }
 
         private void btnContasPagar_Click(object sender, EventArgs e)
         {
@@ -72,14 +65,8 @@ namespace View
             view.ShowDialog();
         }
 
-        private void btnFaturaEmAberto_Click(object sender, EventArgs e)
-        {
-            var view = NinjectKernel.Resolve<FaturaEmAbertoView>();
-            view.ShowDialog();
-        }
-
         
 
-        
+
     }
 }

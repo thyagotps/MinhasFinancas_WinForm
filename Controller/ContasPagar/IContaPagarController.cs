@@ -1,12 +1,4 @@
-﻿using Controller.MovimentosAnaliticos;
-using Model.ContasPagar;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Controller.ContasPagar
+﻿namespace Controller.ContasPagar
 {
     public interface IContaPagarController
     {

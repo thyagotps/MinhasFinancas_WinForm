@@ -34,7 +34,6 @@
             dgvFaturaEmAberto = new DataGridView();
             panel1 = new Panel();
             btnNovo = new Button();
-            btnEditar = new Button();
             btnExcluir = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFaturaEmAberto).BeginInit();
@@ -84,13 +83,13 @@
             dgvFaturaEmAberto.RowTemplate.Height = 25;
             dgvFaturaEmAberto.Size = new Size(595, 367);
             dgvFaturaEmAberto.TabIndex = 7;
-            dgvFaturaEmAberto.CellMouseClick += dgvFaturaEmAberto_CellMouseClick;
+            dgvFaturaEmAberto.CellMouseClick += dgvFaturaEmAberto_CellMouseClick_1;
+            dgvFaturaEmAberto.CellMouseDoubleClick += dgvFaturaEmAberto_CellMouseDoubleClick;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(43, 76, 126);
             panel1.Controls.Add(btnNovo);
-            panel1.Controls.Add(btnEditar);
             panel1.Controls.Add(btnExcluir);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -112,26 +111,12 @@
             btnNovo.UseVisualStyleBackColor = true;
             btnNovo.Click += btnNovo_Click;
             // 
-            // btnEditar
-            // 
-            btnEditar.Cursor = Cursors.Hand;
-            btnEditar.Image = Properties.Resources.editar;
-            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditar.Location = new Point(77, 4);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(65, 30);
-            btnEditar.TabIndex = 5;
-            btnEditar.Text = "Editar";
-            btnEditar.TextAlign = ContentAlignment.MiddleRight;
-            btnEditar.UseVisualStyleBackColor = true;
-            btnEditar.Click += btnEditar_Click;
-            // 
             // btnExcluir
             // 
             btnExcluir.Cursor = Cursors.Hand;
             btnExcluir.Image = Properties.Resources.excluir;
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExcluir.Location = new Point(148, 4);
+            btnExcluir.Location = new Point(77, 4);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(65, 30);
             btnExcluir.TabIndex = 6;
@@ -167,7 +152,6 @@
         private DataGridView dgvFaturaEmAberto;
         private Panel panel1;
         private Button btnNovo;
-        private Button btnEditar;
         private Button btnExcluir;
     }
 }

@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btnCategoria = new Button();
             btnCartao = new Button();
-            btnMovimento = new Button();
+            btnSaida = new Button();
             panel1 = new Panel();
             btnEntrada = new Button();
             btnFaturaEmAberto = new Button();
@@ -65,18 +65,18 @@
             btnCartao.UseVisualStyleBackColor = true;
             btnCartao.Click += btnCartao_Click;
             // 
-            // btnMovimento
+            // btnSaida
             // 
-            btnMovimento.Cursor = Cursors.Hand;
-            btnMovimento.Image = Properties.Resources.movimento;
-            btnMovimento.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMovimento.Location = new Point(477, 8);
-            btnMovimento.Name = "btnMovimento";
-            btnMovimento.Size = new Size(166, 34);
-            btnMovimento.TabIndex = 2;
-            btnMovimento.Text = "Movimento Analítico";
-            btnMovimento.UseVisualStyleBackColor = true;
-            btnMovimento.Click += btnMovimento_Click;
+            btnSaida.Cursor = Cursors.Hand;
+            btnSaida.Image = Properties.Resources.movimento;
+            btnSaida.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSaida.Location = new Point(334, 8);
+            btnSaida.Name = "btnSaida";
+            btnSaida.Size = new Size(119, 34);
+            btnSaida.TabIndex = 2;
+            btnSaida.Text = "Saída";
+            btnSaida.UseVisualStyleBackColor = true;
+            btnSaida.Click += btnSaida_Click;
             // 
             // panel1
             // 
@@ -85,7 +85,7 @@
             panel1.Controls.Add(btnFaturaEmAberto);
             panel1.Controls.Add(btnContasPagar);
             panel1.Controls.Add(btnCategoria);
-            panel1.Controls.Add(btnMovimento);
+            panel1.Controls.Add(btnSaida);
             panel1.Controls.Add(btnCartao);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -111,7 +111,7 @@
             btnFaturaEmAberto.Cursor = Cursors.Hand;
             btnFaturaEmAberto.Image = (Image)resources.GetObject("btnFaturaEmAberto.Image");
             btnFaturaEmAberto.ImageAlign = ContentAlignment.MiddleLeft;
-            btnFaturaEmAberto.Location = new Point(821, 8);
+            btnFaturaEmAberto.Location = new Point(459, 8);
             btnFaturaEmAberto.Name = "btnFaturaEmAberto";
             btnFaturaEmAberto.Size = new Size(166, 34);
             btnFaturaEmAberto.TabIndex = 4;
@@ -124,7 +124,7 @@
             btnContasPagar.Cursor = Cursors.Hand;
             btnContasPagar.Image = (Image)resources.GetObject("btnContasPagar.Image");
             btnContasPagar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnContasPagar.Location = new Point(649, 8);
+            btnContasPagar.Location = new Point(821, 8);
             btnContasPagar.Name = "btnContasPagar";
             btnContasPagar.Size = new Size(166, 34);
             btnContasPagar.TabIndex = 3;
@@ -153,7 +153,7 @@
 
         private Button btnCategoria;
         private Button btnCartao;
-        private Button btnMovimento;
+        private Button btnSaida;
         private Panel panel1;
         private Button btnContasPagar;
         private Button btnFaturaEmAberto;

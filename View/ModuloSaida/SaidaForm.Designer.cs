@@ -1,6 +1,6 @@
-﻿namespace View.MovimentosAnaliticos
+﻿namespace View.ModuloSaida
 {
-    partial class MovimentoAnaliticoForm
+    partial class SaidaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovimentoAnaliticoForm));
-            panel1 = new Panel();
-            btnSalvar = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaidaForm));
             panel2 = new Panel();
-            cboFormaPagamento = new ComboBox();
+            cboCartao = new ComboBox();
             label6 = new Label();
             cboCategoria = new ComboBox();
             label5 = new Label();
@@ -40,42 +38,19 @@
             label4 = new Label();
             txtDescricao = new TextBox();
             label3 = new Label();
-            dtpDataCompra = new DateTimePicker();
+            dtpDataSaida = new DateTimePicker();
             label1 = new Label();
             txtId = new TextBox();
             label2 = new Label();
-            panel1.SuspendLayout();
+            panel1 = new Panel();
+            btnSalvar = new Button();
             panel2.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(43, 76, 126);
-            panel1.Controls.Add(btnSalvar);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(247, 40);
-            panel1.TabIndex = 9;
-            // 
-            // btnSalvar
-            // 
-            btnSalvar.Cursor = Cursors.Hand;
-            btnSalvar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
-            btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalvar.Location = new Point(6, 7);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(64, 27);
-            btnSalvar.TabIndex = 2;
-            btnSalvar.Text = "Salvar";
-            btnSalvar.TextAlign = ContentAlignment.MiddleRight;
-            btnSalvar.UseVisualStyleBackColor = true;
-            btnSalvar.Click += btnSalvar_Click;
             // 
             // panel2
             // 
-            panel2.Controls.Add(cboFormaPagamento);
+            panel2.Controls.Add(cboCartao);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(cboCategoria);
             panel2.Controls.Add(label5);
@@ -83,32 +58,32 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(txtDescricao);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(dtpDataCompra);
+            panel2.Controls.Add(dtpDataSaida);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(txtId);
             panel2.Controls.Add(label2);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(247, 310);
-            panel2.TabIndex = 10;
+            panel2.Size = new Size(256, 312);
+            panel2.TabIndex = 12;
             // 
-            // cboFormaPagamento
+            // cboCartao
             // 
-            cboFormaPagamento.FormattingEnabled = true;
-            cboFormaPagamento.Location = new Point(13, 273);
-            cboFormaPagamento.Name = "cboFormaPagamento";
-            cboFormaPagamento.Size = new Size(222, 23);
-            cboFormaPagamento.TabIndex = 12;
+            cboCartao.FormattingEnabled = true;
+            cboCartao.Location = new Point(13, 273);
+            cboCartao.Name = "cboCartao";
+            cboCartao.Size = new Size(222, 23);
+            cboCartao.TabIndex = 12;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(13, 255);
             label6.Name = "label6";
-            label6.Size = new Size(108, 15);
+            label6.Size = new Size(45, 15);
             label6.TabIndex = 11;
-            label6.Text = "Forma Pagamento:";
+            label6.Text = "Cartão:";
             // 
             // cboCategoria
             // 
@@ -159,12 +134,12 @@
             label3.TabIndex = 5;
             label3.Text = "Descrição:";
             // 
-            // dtpDataCompra
+            // dtpDataSaida
             // 
-            dtpDataCompra.Location = new Point(13, 76);
-            dtpDataCompra.Name = "dtpDataCompra";
-            dtpDataCompra.Size = new Size(222, 23);
-            dtpDataCompra.TabIndex = 4;
+            dtpDataSaida.Location = new Point(13, 76);
+            dtpDataSaida.Name = "dtpDataSaida";
+            dtpDataSaida.Size = new Size(222, 23);
+            dtpDataSaida.TabIndex = 4;
             // 
             // label1
             // 
@@ -188,44 +163,69 @@
             label2.AutoSize = true;
             label2.Location = new Point(13, 58);
             label2.Name = "label2";
-            label2.Size = new Size(80, 15);
+            label2.Size = new Size(65, 15);
             label2.TabIndex = 1;
-            label2.Text = "Data Compra:";
+            label2.Text = "Data Saída:";
             // 
-            // MovimentoAnaliticoForm
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(43, 76, 126);
+            panel1.Controls.Add(btnSalvar);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(256, 40);
+            panel1.TabIndex = 11;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.Cursor = Cursors.Hand;
+            btnSalvar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
+            btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalvar.Location = new Point(6, 7);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(64, 27);
+            btnSalvar.TabIndex = 2;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.TextAlign = ContentAlignment.MiddleRight;
+            btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
+            // 
+            // SaidaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(247, 350);
+            ClientSize = new Size(256, 352);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
-            Name = "MovimentoAnaliticoForm";
+            Name = "SaidaForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Formulário";
-            Load += MovimentoAnaliticoForm_Load;
-            panel1.ResumeLayout(false);
+            Load += SaidaForm_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private Button btnSalvar;
         private Panel panel2;
-        private Label label1;
-        private TextBox txtId;
-        private Label label2;
-        private Label label4;
-        private TextBox txtDescricao;
-        private Label label3;
-        private DateTimePicker dtpDataCompra;
-        private ComboBox cboFormaPagamento;
+        private ComboBox cboCartao;
         private Label label6;
         private ComboBox cboCategoria;
         private Label label5;
         private TextBox txtValor;
+        private Label label4;
+        private TextBox txtDescricao;
+        private Label label3;
+        private DateTimePicker dtpDataSaida;
+        private Label label1;
+        private TextBox txtId;
+        private Label label2;
+        private Panel panel1;
+        private Button btnSalvar;
     }
 }
