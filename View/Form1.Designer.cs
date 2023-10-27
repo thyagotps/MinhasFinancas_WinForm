@@ -35,7 +35,7 @@
             panel1 = new Panel();
             btnEntrada = new Button();
             btnFaturaEmAberto = new Button();
-            btnContasPagar = new Button();
+            btnPagamento = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -83,7 +83,7 @@
             panel1.BackColor = Color.FromArgb(43, 76, 126);
             panel1.Controls.Add(btnEntrada);
             panel1.Controls.Add(btnFaturaEmAberto);
-            panel1.Controls.Add(btnContasPagar);
+            panel1.Controls.Add(btnPagamento);
             panel1.Controls.Add(btnCategoria);
             panel1.Controls.Add(btnSaida);
             panel1.Controls.Add(btnCartao);
@@ -119,18 +119,18 @@
             btnFaturaEmAberto.UseVisualStyleBackColor = true;
             btnFaturaEmAberto.Click += btnFaturaEmAberto_Click;
             // 
-            // btnContasPagar
+            // btnPagamento
             // 
-            btnContasPagar.Cursor = Cursors.Hand;
-            btnContasPagar.Image = (Image)resources.GetObject("btnContasPagar.Image");
-            btnContasPagar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnContasPagar.Location = new Point(821, 8);
-            btnContasPagar.Name = "btnContasPagar";
-            btnContasPagar.Size = new Size(166, 34);
-            btnContasPagar.TabIndex = 3;
-            btnContasPagar.Text = "Contas à Pagar";
-            btnContasPagar.UseVisualStyleBackColor = true;
-            btnContasPagar.Click += btnContasPagar_Click;
+            btnPagamento.Cursor = Cursors.Hand;
+            btnPagamento.Image = (Image)resources.GetObject("btnPagamento.Image");
+            btnPagamento.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPagamento.Location = new Point(631, 8);
+            btnPagamento.Name = "btnPagamento";
+            btnPagamento.Size = new Size(166, 34);
+            btnPagamento.TabIndex = 3;
+            btnPagamento.Text = "Pagamento";
+            btnPagamento.UseVisualStyleBackColor = true;
+            btnPagamento.Click += btnPagamento_Click;
             // 
             // Form1
             // 
@@ -155,7 +155,7 @@
         private Button btnCartao;
         private Button btnSaida;
         private Panel panel1;
-        private Button btnContasPagar;
+        private Button btnPagamento;
         private Button btnFaturaEmAberto;
         private Button btnEntrada;
     }

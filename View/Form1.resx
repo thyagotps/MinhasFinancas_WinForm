@@ -134,7 +134,7 @@
         Q7VTxQBS0gAMf/0D1Q5MSFu+zSI5IW39NhOqfWgDBgYA2lOW6c4dvE8AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnContasPagar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPagamento.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAUtJREFUOE9jGAYg6ECfb9D+3v9qk6P/C9Q4EYVBakF6QHoZIs5NPxR5cdZ/xcVp

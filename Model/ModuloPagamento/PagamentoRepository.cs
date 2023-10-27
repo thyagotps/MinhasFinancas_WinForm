@@ -1,15 +1,15 @@
 ﻿using DAL;
 using Dapper;
 
-namespace Model.ContasPagar
+namespace Model.ModuloPagamento
 {
-    public class ContaPagarRepository : BaseRepository, IContaPagarRepository
+    public class PagamentoRepository : BaseRepository, IPagamentoRepository
     {
-        public ContaPagarRepository(Ado ado) : base(ado)
+        public PagamentoRepository(Ado ado) : base(ado)
         {
         }
 
-        public List<ContaPagar> Buscar(DateTime dtPeriodo)
+        public List<Pagamento> GetByDate(DateTime dtPeriodo)
         {
             string query = @"select 
                                 Id, 
@@ -18,39 +18,39 @@ namespace Model.ContasPagar
                                 Valor, 
                                 DataVencimento, 
                                 Situacao 
-                             from ContasPagar 
+                             from Pagamento 
                              where convert(varchar(6),DataVencimento,112) = convert(varchar(6),@DataVencimento,112)
                              order by NrIdentificador;";
 
             var filtros = new DynamicParameters();
             filtros.Add("DataVencimento", dtPeriodo);
 
-            var source = base.ExecutarQuery<ContaPagar>(query, filtros);
+            var source = base.ExecutarQuery<Pagamento>(query, filtros);
 
             return source.ToList();
         }
 
        
 
-        public ContaPagar GetById(int id)
+        public Pagamento GetById(int id)
         {
             string query = @"select 
 	                            Id, NrIdentificador, Descricao, Valor, DataVencimento, Situacao 
-                            from ContasPagar
+                            from Pagamento
                             where Id = @id";
 
             var filtros = new DynamicParameters();
             filtros.Add("id", id);
 
-            var source = base.ExecutarQueryFirstOrDefault<ContaPagar>(query, filtros);
+            var source = base.ExecutarQueryFirstOrDefault<Pagamento>(query, filtros);
             return source;
         }
 
-        public decimal GetTotal(DateTime dtPeriodo)
+        public decimal GetTotalByDate(DateTime dtPeriodo)
         {
             string query = @"select 
                                 isnull(sum(Valor),0) as Total 
-                             from ContasPagar 
+                             from Pagamento 
                              where convert(varchar(6),DataVencimento,112) = convert(varchar(6),@Periodo,112);";
 
             var filtros = new DynamicParameters();
@@ -61,28 +61,28 @@ namespace Model.ContasPagar
             return total;
         }
 
-        public int Insert(ContaPagar contaPagar)
+        public int Insert(Pagamento pagamento)
         {
-            string query = @"insert into ContasPagar 
+            string query = @"insert into Pagamento 
                              (NrIdentificador, Descricao, Valor, DataVencimento, Situacao) 
                              values 
                              (@NrIdentificador,@Descricao,@Valor,@DataVencimento,@Situacao);";
 
             var filtros = new DynamicParameters();
-            filtros.Add("NrIdentificador", contaPagar.NrIdentificador);
-            filtros.Add("Descricao", contaPagar.Descricao);
-            filtros.Add("Valor", contaPagar.Valor);
-            filtros.Add("DataVencimento", contaPagar.DataVencimento);
-            filtros.Add("Situacao", contaPagar.Situacao);
+            filtros.Add("NrIdentificador", pagamento.NrIdentificador);
+            filtros.Add("Descricao", pagamento.Descricao);
+            filtros.Add("Valor", pagamento.Valor);
+            filtros.Add("DataVencimento", pagamento.DataVencimento);
+            filtros.Add("Situacao", pagamento.Situacao);
 
             var result = base.Executar(query: query, listaParametros: filtros);
 
             return result;
         }
 
-        public int Update(ContaPagar contaPagar)
+        public int Update(Pagamento pagamento)
         {
-            string query = @"update ContasPagar set
+            string query = @"update Pagamento set
                              NrIdentificador = @NrIdentificador,
                              Descricao = @Descricao,
                              Valor = @Valor,
@@ -92,12 +92,12 @@ namespace Model.ContasPagar
 
 
             var filtros = new DynamicParameters();
-            filtros.Add("Id", contaPagar.Id);
-            filtros.Add("NrIdentificador", contaPagar.NrIdentificador);
-            filtros.Add("Descricao", contaPagar.Descricao);
-            filtros.Add("Valor", contaPagar.Valor);
-            filtros.Add("DataVencimento", contaPagar.DataVencimento);
-            filtros.Add("Situacao", contaPagar.Situacao);
+            filtros.Add("Id", pagamento.Id);
+            filtros.Add("NrIdentificador", pagamento.NrIdentificador);
+            filtros.Add("Descricao", pagamento.Descricao);
+            filtros.Add("Valor", pagamento.Valor);
+            filtros.Add("DataVencimento", pagamento.DataVencimento);
+            filtros.Add("Situacao", pagamento.Situacao);
 
             var result = base.Executar(query: query, listaParametros: filtros);
 
@@ -106,7 +106,7 @@ namespace Model.ContasPagar
 
         public int DeleteById(int id)
         {
-            string query = "delete from ContasPagar where Id = @Id";
+            string query = "delete from Pagamento where Id = @Id";
 
             var filtros = new DynamicParameters();
             filtros.Add("Id", id);

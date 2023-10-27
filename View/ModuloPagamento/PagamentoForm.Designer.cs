@@ -1,6 +1,6 @@
-﻿namespace View.ContasPagar
+﻿namespace View.ModuloPagamento
 {
-    partial class ContaPagarForm
+    partial class PagamentoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContaPagarForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagamentoForm));
             panel2 = new Panel();
             label7 = new Label();
             txtNrIdentificador = new TextBox();

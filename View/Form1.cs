@@ -1,12 +1,9 @@
 using Base.Ninject;
-using Controller.ContasPagar;
-using Controller.ModuloCartao;
-using Controller.ModuloCategoria;
-using View.ContasPagar;
 using View.ModuloCartao;
 using View.ModuloCategoria;
 using View.ModuloEntrada;
 using View.ModuloFaturaEmAberto;
+using View.ModuloPagamento;
 using View.ModuloSaida;
 
 namespace View
@@ -54,19 +51,11 @@ namespace View
             view.Show();
         }
 
-
-
-
-
-
-        private void btnContasPagar_Click(object sender, EventArgs e)
+        private void btnPagamento_Click(object sender, EventArgs e)
         {
-            var view = NinjectKernel.Resolve<ContaPagarView>();
-            view.ShowDialog();
+            var view = NinjectKernel.Resolve<PagamentoView>();
+            view.MdiParent = this;
+            view.Show();
         }
-
-        
-
-
     }
 }

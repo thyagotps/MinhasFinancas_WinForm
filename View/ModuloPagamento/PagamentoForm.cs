@@ -1,21 +1,20 @@
-﻿using Controller.ContasPagar;
+﻿using Controller.ModuloPagamento;
 
-namespace View.ContasPagar
+namespace View.ModuloPagamento
 {
-    public partial class ContaPagarForm : BaseView
+    public partial class PagamentoForm : BaseView
     {
         public int Id { get; set; }
-        private readonly IContaPagarController _contaPagarController;
+        private readonly IPagamentoController _pagamentoController;
 
-        public ContaPagarForm(IContaPagarController contaPagarController)
+        public PagamentoForm(IPagamentoController contaPagarController)
         {
             InitializeComponent();
-            _contaPagarController = contaPagarController;
+            _pagamentoController = contaPagarController;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             AplicarEventos(txtValor);
         }
 
-        // Aplica no form movimento analitico
         private void AplicarEventos(TextBox txt)
         {
             txtValor.KeyPress += ValidaValores;
@@ -28,7 +27,7 @@ namespace View.ContasPagar
 
             if (Id != -1)
             {
-                var contaPagar = _contaPagarController.GetById(Id);
+                var contaPagar = _pagamentoController.GetById(Id);
                 popularComponentesFormulario(contaPagar);
             }
         }
@@ -51,7 +50,7 @@ namespace View.ContasPagar
             cboSituacao.SelectedIndex = -1;
         }
 
-        private void popularComponentesFormulario(ContaPagarDto contaPagar)
+        private void popularComponentesFormulario(PagamentoDto contaPagar)
         {
             txtId.Text = contaPagar.Id.ToString();
             txtNrIdentificador.Text = contaPagar.NrIdentificador.ToString();
@@ -79,7 +78,7 @@ namespace View.ContasPagar
         private void novo()
         {
             var contaPagarDto = popularContaPagarDto();
-            var result = _contaPagarController.Insert(contaPagarDto);
+            var result = _pagamentoController.Insert(contaPagarDto);
             base.Message(result);
             this.Close();
         }
@@ -87,14 +86,14 @@ namespace View.ContasPagar
         private void editar()
         {
             var contaPagarDto = popularContaPagarDto();
-            var result = _contaPagarController.Update(contaPagarDto);
+            var result = _pagamentoController.Update(contaPagarDto);
             base.Message(result);
             this.Close();
         }
 
-        private ContaPagarDto popularContaPagarDto()
+        private PagamentoDto popularContaPagarDto()
         {
-            ContaPagarDto obj = new ContaPagarDto();
+            PagamentoDto obj = new PagamentoDto();
             obj.Id = Id;
             obj.NrIdentificador = Convert.ToInt32(txtNrIdentificador.Text);
             obj.Descricao = txtDescricao.Text;

@@ -1,6 +1,6 @@
-﻿namespace View.ContasPagar
+﻿namespace View.ModuloPagamento
 {
-    partial class ContaPagarView
+    partial class PagamentoView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContaPagarView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagamentoView));
             panel2 = new Panel();
             label1 = new Label();
             lblTotal = new Label();
             label4 = new Label();
             btnBuscar = new Button();
             dtpPeriodoFiltro = new DateTimePicker();
-            dgvContaPagar = new DataGridView();
+            dgvPagamento = new DataGridView();
             panel1 = new Panel();
             btnCriarContasPagarAuto = new Button();
             btnNovo = new Button();
-            btnEditar = new Button();
             btnExcluir = new Button();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvContaPagar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPagamento).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,7 +53,7 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(btnBuscar);
             panel2.Controls.Add(dtpPeriodoFiltro);
-            panel2.Controls.Add(dgvContaPagar);
+            panel2.Controls.Add(dgvPagamento);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
@@ -117,24 +116,24 @@
             dtpPeriodoFiltro.Size = new Size(125, 25);
             dtpPeriodoFiltro.TabIndex = 9;
             // 
-            // dgvContaPagar
+            // dgvPagamento
             // 
-            dgvContaPagar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvContaPagar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvContaPagar.Location = new Point(12, 42);
-            dgvContaPagar.Name = "dgvContaPagar";
-            dgvContaPagar.RowTemplate.Height = 25;
-            dgvContaPagar.Size = new Size(776, 440);
-            dgvContaPagar.TabIndex = 7;
-            dgvContaPagar.CellClick += dgvContaPagar_CellClick;
-            dgvContaPagar.CellFormatting += dgvContaPagar_CellFormatting;
+            dgvPagamento.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPagamento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPagamento.Location = new Point(12, 42);
+            dgvPagamento.Name = "dgvPagamento";
+            dgvPagamento.RowTemplate.Height = 25;
+            dgvPagamento.Size = new Size(776, 440);
+            dgvPagamento.TabIndex = 7;
+            dgvPagamento.CellClick += dgvPagamento_CellClick;
+            dgvPagamento.CellFormatting += dgvPagamento_CellFormatting;
+            dgvPagamento.CellMouseDoubleClick += dgvPagamento_CellMouseDoubleClick;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(43, 76, 126);
             panel1.Controls.Add(btnCriarContasPagarAuto);
             panel1.Controls.Add(btnNovo);
-            panel1.Controls.Add(btnEditar);
             panel1.Controls.Add(btnExcluir);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -147,7 +146,7 @@
             btnCriarContasPagarAuto.Cursor = Cursors.Hand;
             btnCriarContasPagarAuto.Image = (Image)resources.GetObject("btnCriarContasPagarAuto.Image");
             btnCriarContasPagarAuto.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCriarContasPagarAuto.Location = new Point(219, 3);
+            btnCriarContasPagarAuto.Location = new Point(148, 3);
             btnCriarContasPagarAuto.Name = "btnCriarContasPagarAuto";
             btnCriarContasPagarAuto.Size = new Size(62, 30);
             btnCriarContasPagarAuto.TabIndex = 7;
@@ -170,26 +169,12 @@
             btnNovo.UseVisualStyleBackColor = true;
             btnNovo.Click += btnNovo_Click;
             // 
-            // btnEditar
-            // 
-            btnEditar.Cursor = Cursors.Hand;
-            btnEditar.Image = Properties.Resources.editar;
-            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditar.Location = new Point(77, 4);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(65, 30);
-            btnEditar.TabIndex = 5;
-            btnEditar.Text = "Editar";
-            btnEditar.TextAlign = ContentAlignment.MiddleRight;
-            btnEditar.UseVisualStyleBackColor = true;
-            btnEditar.Click += btnEditar_Click;
-            // 
             // btnExcluir
             // 
             btnExcluir.Cursor = Cursors.Hand;
             btnExcluir.Image = Properties.Resources.excluir;
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExcluir.Location = new Point(148, 4);
+            btnExcluir.Location = new Point(77, 3);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(65, 30);
             btnExcluir.TabIndex = 6;
@@ -198,7 +183,7 @@
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
-            // ContaPagarView
+            // PagamentoView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -206,13 +191,13 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
-            Name = "ContaPagarView";
+            Name = "PagamentoView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Contas à Pagar";
             Load += ContaPagarView_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvContaPagar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPagamento).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -220,10 +205,9 @@
         #endregion
 
         private Panel panel2;
-        private DataGridView dgvContaPagar;
+        private DataGridView dgvPagamento;
         private Panel panel1;
         private Button btnNovo;
-        private Button btnEditar;
         private Button btnExcluir;
         private DateTimePicker dtpPeriodoFiltro;
         private Label label1;

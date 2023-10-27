@@ -1,16 +1,16 @@
-﻿using Controller.ContasPagar;
-using Controller.ModuloCartao;
+﻿using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
 using Controller.ModuloEntrada;
 using Controller.ModuloFaturaEmAberto;
+using Controller.ModuloPagamento;
 using Controller.ModuloSaida;
 using Controller.ModuloSalario;
 using DAL;
-using Model.ContasPagar;
 using Model.ModuloCartao;
 using Model.ModuloCategoria;
 using Model.ModuloEntrada;
 using Model.ModuloFaturaEmAberto;
+using Model.ModuloPagamento;
 using Model.ModuloSaida;
 using Ninject.Modules;
 
@@ -39,17 +39,8 @@ namespace Base.Ninject
             Bind(typeof(IFaturaEmAbertoController)).To(typeof(FaturaEmAbertoController));
             Bind(typeof(IFaturaEmAbertoRepository)).To(typeof(FaturaEmAbertoRepository));
 
-
-
-
-
-
-            Bind(typeof(IContaPagarController)).To(typeof(ContaPagarController));
-            Bind(typeof(IContaPagarRepository)).To(typeof(ContaPagarRepository));
-
-            
-
-         
+            Bind(typeof(IPagamentoController)).To(typeof(PagamentoController));
+            Bind(typeof(IPagamentoRepository)).To(typeof(PagamentoRepository));
         }
     }
 }
