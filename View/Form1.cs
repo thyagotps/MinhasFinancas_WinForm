@@ -4,6 +4,7 @@ using View.ModuloCategoria;
 using View.ModuloEntrada;
 using View.ModuloFaturaEmAberto;
 using View.ModuloPagamento;
+using View.ModuloRelatorios;
 using View.ModuloSaida;
 
 namespace View
@@ -54,6 +55,13 @@ namespace View
         private void btnPagamento_Click(object sender, EventArgs e)
         {
             var view = NinjectKernel.Resolve<PagamentoView>();
+            view.MdiParent = this;
+            view.Show();
+        }
+
+        private void btnRelatorios_Click(object sender, EventArgs e)
+        {
+            var view = NinjectKernel.Resolve<RelatoriosView>();
             view.MdiParent = this;
             view.Show();
         }

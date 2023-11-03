@@ -3,6 +3,7 @@ using Controller.ModuloCategoria;
 using Controller.ModuloEntrada;
 using Controller.ModuloFaturaEmAberto;
 using Controller.ModuloPagamento;
+using Controller.ModuloRelatorios;
 using Controller.ModuloSaida;
 using Controller.ModuloSalario;
 using DAL;
@@ -11,6 +12,7 @@ using Model.ModuloCategoria;
 using Model.ModuloEntrada;
 using Model.ModuloFaturaEmAberto;
 using Model.ModuloPagamento;
+using Model.ModuloRelatorios;
 using Model.ModuloSaida;
 using Ninject.Modules;
 
@@ -41,6 +43,9 @@ namespace Base.Ninject
 
             Bind(typeof(IPagamentoController)).To(typeof(PagamentoController));
             Bind(typeof(IPagamentoRepository)).To(typeof(PagamentoRepository));
+
+            Bind(typeof(IRelatorioController)).To(typeof(RelatorioController));
+            Bind(typeof(IRelatorioRepository)).To(typeof(RelatorioRepository));
         }
     }
 }

@@ -193,7 +193,7 @@
             MaximizeBox = false;
             Name = "PagamentoView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Contas à Pagar";
+            Text = "Pagamentos";
             Load += ContaPagarView_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
