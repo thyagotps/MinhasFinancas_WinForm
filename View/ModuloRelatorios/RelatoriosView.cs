@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,11 +44,17 @@ namespace View.ModuloRelatorios
             if (relatorioDto.Id == 1)
             {
                 source = _relatorioController.GetEntradasMensais(dtpPeriodoFiltro.Value);
+                setGridViewRelatorioEntradaMensal(source);
             }
 
-            setDataGridView(source);
+        }
 
-
+        private void dgvRelatorio_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRow r = dgvRelatorio.Rows[e.RowIndex];
+            if (r.Cells[0].Value.ToString() == "TOTAL")
+                r.DefaultCellStyle.Font = new Font(e.CellStyle.Font, FontStyle.Bold);
+            
         }
 
         private void setPeriodoFiltro()
@@ -57,11 +64,20 @@ namespace View.ModuloRelatorios
             dtpPeriodoFiltro.CustomFormat = "MM/yyyy";
         }
 
-        private void setDataGridView(object source)
+
+        private void setGridViewRelatorioEntradaMensal(object dataSource)
         {
-            dgvRelatorio.DataSource = source;
+            dgvRelatorio.DataSource = dataSource;
             dgvRelatorio.ReadOnly = true;
 
+            dgvRelatorio.Columns["CategoriaDescricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvRelatorio.Columns["Valor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgvRelatorio.Columns["Valor"].DefaultCellStyle.Format = "c2";
+            dgvRelatorio.Columns["Valor"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+
         }
+
+        
     }
 }

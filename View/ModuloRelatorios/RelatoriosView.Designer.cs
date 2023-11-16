@@ -88,6 +88,7 @@
             dgvRelatorio.RowTemplate.Height = 25;
             dgvRelatorio.Size = new Size(968, 382);
             dgvRelatorio.TabIndex = 5;
+            dgvRelatorio.CellFormatting += dgvRelatorio_CellFormatting;
             // 
             // RelatoriosView
             // 
