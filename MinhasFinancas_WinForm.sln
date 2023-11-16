@@ -13,6 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base", "Base\Base.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{7ED0E902-36AE-48B9-A434-09C9FAEB617C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{46C01050-C0B8-42EC-8FFA-E9434C9FC8DF}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Database\scripts\DB_Estrutura.sql = ..\..\Database\scripts\DB_Estrutura.sql
+		..\..\Database\scripts\PROC_RELATORIO_ENTRADAS_MENSAIS.sql = ..\..\Database\scripts\PROC_RELATORIO_ENTRADAS_MENSAIS.sql
+		..\..\Database\scripts\Testes.sql = ..\..\Database\scripts\Testes.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
