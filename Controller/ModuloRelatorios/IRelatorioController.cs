@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Controller.ModuloRelatorios;
 
-namespace Controller.ModuloRelatorios
+public interface IRelatorioController
 {
-    public interface IRelatorioController
-    {
-        public List<RelatorioDto> GetAll();
-        public List<EntradaMensalDto> GetEntradasMensais(DateTime periodo);
-    }
+    public List<RelatorioDto> GetAll();
+    public List<EntradaMensalDto> GetEntradasMensais(DateTime periodo);
+    public List<EntradaAnuaisDto> GetEntradasAnuais(DateTime periodo);
 }

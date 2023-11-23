@@ -26,6 +26,7 @@ namespace Controller.ModuloRelatorios
             {
                 cfg.AddProfile(new RelatorioProfile());
                 cfg.AddProfile(new EntradaMensalProfile());
+                cfg.AddProfile(new EntradaAnuaisProfile());
             });
             _mapper = new Mapper(config);
         }
@@ -41,6 +42,13 @@ namespace Controller.ModuloRelatorios
         {
             var source = _relatorioRepository.GetEntradasMensais(periodo);
             var dtos = _mapper.Map<IEnumerable<EntradaMensalDto>>(source).ToList();
+            return dtos;
+        }
+
+        public List<EntradaAnuaisDto> GetEntradasAnuais(DateTime periodo)
+        {
+            var source = _relatorioRepository.GetEntradasAnuais(periodo);
+            var dtos = _mapper.Map<IEnumerable<EntradaAnuaisDto>>(source).ToList();
             return dtos;
         }
     }

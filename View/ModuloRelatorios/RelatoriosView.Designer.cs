@@ -86,7 +86,7 @@
             dgvRelatorio.Location = new Point(12, 56);
             dgvRelatorio.Name = "dgvRelatorio";
             dgvRelatorio.RowTemplate.Height = 25;
-            dgvRelatorio.Size = new Size(968, 382);
+            dgvRelatorio.Size = new Size(1241, 382);
             dgvRelatorio.TabIndex = 5;
             dgvRelatorio.CellFormatting += dgvRelatorio_CellFormatting;
             // 
@@ -94,13 +94,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(992, 450);
+            ClientSize = new Size(1265, 450);
             Controls.Add(dgvRelatorio);
             Controls.Add(btnGerarRelatorio);
             Controls.Add(dtpPeriodoFiltro);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(cboRelatorios);
+            MaximizeBox = false;
             Name = "RelatoriosView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Relatorios";

@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{46C01050-C0B8-42EC-8FFA-E9434C9FC8DF}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\Database\scripts\DB_Estrutura.sql = ..\..\Database\scripts\DB_Estrutura.sql
+		..\..\Database\scripts\PROC_RELATORIO_ENTRADAS_ANUAIS.sql = ..\..\Database\scripts\PROC_RELATORIO_ENTRADAS_ANUAIS.sql
 		..\..\Database\scripts\PROC_RELATORIO_ENTRADAS_MENSAIS.sql = ..\..\Database\scripts\PROC_RELATORIO_ENTRADAS_MENSAIS.sql
 		..\..\Database\scripts\Testes.sql = ..\..\Database\scripts\Testes.sql
 	EndProjectSection
