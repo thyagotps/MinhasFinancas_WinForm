@@ -59,6 +59,12 @@ namespace View.ModuloRelatorios
                 setGridViewRelatorioEntradaMensal(source);
             }
 
+            if (relatorioDto.Id == 4)
+            {
+                source = _relatorioController.GetSaidasMensaisCartao(dtpPeriodoFiltro.Value);
+                setGridViewRelatorioSaidaMensalCartao(source);
+            }
+
         }
 
 
@@ -91,6 +97,24 @@ namespace View.ModuloRelatorios
 
             dgvRelatorio.Columns["CategoriaDescricao"].HeaderText = "Categoria";
             dgvRelatorio.Columns["CategoriaDescricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvRelatorio.Columns["Valor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgvRelatorio.Columns["Valor"].DefaultCellStyle.Format = "c2";
+            dgvRelatorio.Columns["Valor"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+
+            dgvRelatorio.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
+            dgvRelatorio.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            dgvRelatorio.RowsDefaultCellStyle.SelectionBackColor = Color.NavajoWhite;
+            dgvRelatorio.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private void setGridViewRelatorioSaidaMensalCartao(object dataSource)
+        {
+            dgvRelatorio.DataSource = dataSource;
+            dgvRelatorio.ReadOnly = true;
+
+            dgvRelatorio.Columns["Descricao"].HeaderText = "Categoria";
+            dgvRelatorio.Columns["Descricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvRelatorio.Columns["Valor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgvRelatorio.Columns["Valor"].DefaultCellStyle.Format = "c2";

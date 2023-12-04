@@ -1,7 +1,7 @@
 ﻿namespace Model.ModuloRelatorios;
 
-public class EntradaMensal
+public class SaidaMensalCartao
 {
-    public string? CategoriaDescricao { get; set; }
+    public string? Descricao { get; set; }
     public decimal Valor { get; set; }
 }
