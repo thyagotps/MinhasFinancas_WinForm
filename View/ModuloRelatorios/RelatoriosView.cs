@@ -53,6 +53,12 @@ namespace View.ModuloRelatorios
                 setGridViewRelatorioEntradaAnuais(source);
             }
 
+            if (relatorioDto.Id == 3)
+            {
+                source = _relatorioController.GetSaidasMensaisCategoria(dtpPeriodoFiltro.Value);
+                setGridViewRelatorioEntradaMensal(source);
+            }
+
         }
 
 
@@ -94,7 +100,6 @@ namespace View.ModuloRelatorios
             dgvRelatorio.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
             dgvRelatorio.RowsDefaultCellStyle.SelectionBackColor = Color.NavajoWhite;
             dgvRelatorio.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
-
         }
 
         private void setGridViewRelatorioEntradaAnuais(object dataSource)

@@ -12,5 +12,6 @@ namespace Model.ModuloRelatorios
         public List<Relatorio> GetAll();
         public List<EntradaMensal> GetEntradasMensais(DateTime periodo);
         public List<EntradaAnuais> GetEntradasAnuais(DateTime periodo);
+        public List<SaidaMensalCategoria> GetSaidasMensaisCategoria(DateTime periodo);
     }
 }

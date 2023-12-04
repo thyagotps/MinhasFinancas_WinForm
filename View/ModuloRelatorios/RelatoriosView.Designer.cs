@@ -42,7 +42,7 @@
             cboRelatorios.FormattingEnabled = true;
             cboRelatorios.Location = new Point(12, 27);
             cboRelatorios.Name = "cboRelatorios";
-            cboRelatorios.Size = new Size(191, 23);
+            cboRelatorios.Size = new Size(254, 23);
             cboRelatorios.TabIndex = 0;
             // 
             // label1
@@ -57,7 +57,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(225, 9);
+            label2.Location = new Point(272, 9);
             label2.Name = "label2";
             label2.Size = new Size(51, 15);
             label2.TabIndex = 2;
@@ -65,14 +65,14 @@
             // 
             // dtpPeriodoFiltro
             // 
-            dtpPeriodoFiltro.Location = new Point(225, 27);
+            dtpPeriodoFiltro.Location = new Point(272, 27);
             dtpPeriodoFiltro.Name = "dtpPeriodoFiltro";
             dtpPeriodoFiltro.Size = new Size(200, 23);
             dtpPeriodoFiltro.TabIndex = 3;
             // 
             // btnGerarRelatorio
             // 
-            btnGerarRelatorio.Location = new Point(471, 29);
+            btnGerarRelatorio.Location = new Point(518, 29);
             btnGerarRelatorio.Name = "btnGerarRelatorio";
             btnGerarRelatorio.Size = new Size(130, 23);
             btnGerarRelatorio.TabIndex = 4;
