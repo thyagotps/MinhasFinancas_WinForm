@@ -1,10 +1,10 @@
-﻿namespace Model.ModuloRelatorios;
+﻿namespace Controller.ModuloRelatorios;
 
-public class EntradaAnuais
+public class ReportAnualDto
 {
     public int Ordem { get; set; }
-    public int IdCategoria { get; set; }
-    public string? DescricaoCategoria { get; set; }
+    public int Id { get; set; }
+    public string? Descricao { get; set; }
     public decimal? ValorJaneiro { get; set; }
     public decimal? ValorFevereiro { get; set; }
     public decimal? ValorMarco { get; set; }
@@ -17,5 +17,5 @@ public class EntradaAnuais
     public decimal? ValorOutubro { get; set; }
     public decimal? ValorNovembro { get; set; }
     public decimal? ValorDezembro { get; set; }
-    public decimal? ValorTotalCategoria { get; set; }
+    public decimal? ValorTotal { get; set; }
 }

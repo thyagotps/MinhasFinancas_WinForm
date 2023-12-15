@@ -39,30 +39,42 @@ namespace View.ModuloRelatorios
         private void btnGerarRelatorio_Click(object sender, EventArgs e)
         {
             var relatorioDto = (RelatorioDto)cboRelatorios.SelectedItem;
-            object source = null;
+            object? source = null;
 
             if (relatorioDto.Id == 1)
             {
                 source = _relatorioController.GetEntradasMensais(dtpPeriodoFiltro.Value);
-                setGridViewRelatorioEntradaMensal(source);
+                setGridViewReportMensal(source);
             }
 
             if (relatorioDto.Id == 2)
             {
                 source = _relatorioController.GetEntradasAnuais(dtpPeriodoFiltro.Value);
-                setGridViewRelatorioEntradaAnuais(source);
+                setGridViewReportAnual(source);
             }
 
             if (relatorioDto.Id == 3)
             {
                 source = _relatorioController.GetSaidasMensaisCategoria(dtpPeriodoFiltro.Value);
-                setGridViewRelatorioEntradaMensal(source);
+                setGridViewReportMensal(source);
             }
 
             if (relatorioDto.Id == 4)
             {
                 source = _relatorioController.GetSaidasMensaisCartao(dtpPeriodoFiltro.Value);
-                setGridViewRelatorioSaidaMensalCartao(source);
+                setGridViewReportMensal(source);
+            }
+
+            if (relatorioDto.Id == 5)
+            {
+                source = _relatorioController.GetSaidasAnualCategoria(dtpPeriodoFiltro.Value);
+                setGridViewReportAnual(source);
+            }
+
+            if (relatorioDto.Id == 6)
+            {
+                source = _relatorioController.GetSaidasAnualCartao(dtpPeriodoFiltro.Value);
+                setGridViewReportAnual(source); // Este será o padrão pro anual
             }
 
         }
@@ -90,30 +102,12 @@ namespace View.ModuloRelatorios
         }
 
 
-        private void setGridViewRelatorioEntradaMensal(object dataSource)
+        private void setGridViewReportMensal(object dataSource)
         {
             dgvRelatorio.DataSource = dataSource;
             dgvRelatorio.ReadOnly = true;
 
-            dgvRelatorio.Columns["CategoriaDescricao"].HeaderText = "Categoria";
-            dgvRelatorio.Columns["CategoriaDescricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvRelatorio.Columns["Valor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            dgvRelatorio.Columns["Valor"].DefaultCellStyle.Format = "c2";
-            dgvRelatorio.Columns["Valor"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
-
-            dgvRelatorio.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
-            dgvRelatorio.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
-            dgvRelatorio.RowsDefaultCellStyle.SelectionBackColor = Color.NavajoWhite;
-            dgvRelatorio.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
-        }
-
-        private void setGridViewRelatorioSaidaMensalCartao(object dataSource)
-        {
-            dgvRelatorio.DataSource = dataSource;
-            dgvRelatorio.ReadOnly = true;
-
-            dgvRelatorio.Columns["Descricao"].HeaderText = "Categoria";
+            dgvRelatorio.Columns["Descricao"].HeaderText = "Descrição";
             dgvRelatorio.Columns["Descricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvRelatorio.Columns["Valor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -126,16 +120,19 @@ namespace View.ModuloRelatorios
             dgvRelatorio.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
-        private void setGridViewRelatorioEntradaAnuais(object dataSource)
+      
+
+
+        private void setGridViewReportAnual(object dataSource)
         {
             dgvRelatorio.DataSource = dataSource;
             dgvRelatorio.ReadOnly = true;
 
             dgvRelatorio.Columns["Ordem"].Visible = false;
-            dgvRelatorio.Columns["IdCategoria"].Visible = false;
+            dgvRelatorio.Columns["Id"].Visible = false;
 
-            dgvRelatorio.Columns["DescricaoCategoria"].HeaderText = "Categoria";
-            dgvRelatorio.Columns["DescricaoCategoria"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvRelatorio.Columns["Descricao"].HeaderText = "Categoria";
+            dgvRelatorio.Columns["Descricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             dgvRelatorio.Columns["ValorJaneiro"].HeaderText = "Janeiro";
             dgvRelatorio.Columns["ValorJaneiro"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -197,10 +194,10 @@ namespace View.ModuloRelatorios
             dgvRelatorio.Columns["ValorDezembro"].DefaultCellStyle.Format = "C2";
             dgvRelatorio.Columns["ValorDezembro"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
 
-            dgvRelatorio.Columns["ValorTotalCategoria"].HeaderText = "Total";
-            dgvRelatorio.Columns["ValorTotalCategoria"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvRelatorio.Columns["ValorTotalCategoria"].DefaultCellStyle.Format = "C2";
-            dgvRelatorio.Columns["ValorTotalCategoria"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            dgvRelatorio.Columns["ValorTotal"].HeaderText = "Total";
+            dgvRelatorio.Columns["ValorTotal"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvRelatorio.Columns["ValorTotal"].DefaultCellStyle.Format = "C2";
+            dgvRelatorio.Columns["ValorTotal"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
 
             dgvRelatorio.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
             dgvRelatorio.AlternatingRowsDefaultCellStyle.BackColor = Color.White;

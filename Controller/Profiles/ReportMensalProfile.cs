@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Controller.Profiles
 {
-    public class EntradaMensalProfile : Profile
+    public class ReportMensalProfile : Profile
     {
-        public EntradaMensalProfile()
+        public ReportMensalProfile()
         {
-            CreateMap<EntradaMensal, EntradaMensalDto>().ReverseMap();
+            CreateMap<ReportMensal, ReportMensalDto>().ReverseMap();
         }
     }
 }

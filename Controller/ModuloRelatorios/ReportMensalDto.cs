@@ -1,8 +1,8 @@
 ﻿namespace Controller.ModuloRelatorios
 {
-    public class EntradaMensalDto
+    public class ReportMensalDto
     {
-        public string? CategoriaDescricao { get; set; }
+        public string? Descricao { get; set; }
         public decimal Valor { get; set; }
     }
 }

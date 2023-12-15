@@ -1,10 +1,16 @@
-﻿namespace Controller.ModuloRelatorios;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class EntradaAnuaisDto
+namespace Model.ModuloRelatorios;
+
+public class ReportAnual
 {
     public int Ordem { get; set; }
-    public int IdCategoria { get; set; }
-    public string? DescricaoCategoria { get; set; }
+    public int Id { get; set; }
+    public string? Descricao { get; set; }
     public decimal? ValorJaneiro { get; set; }
     public decimal? ValorFevereiro { get; set; }
     public decimal? ValorMarco { get; set; }
@@ -17,5 +23,5 @@ public class EntradaAnuaisDto
     public decimal? ValorOutubro { get; set; }
     public decimal? ValorNovembro { get; set; }
     public decimal? ValorDezembro { get; set; }
-    public decimal? ValorTotalCategoria { get; set; }
+    public decimal? ValorTotal { get; set; }
 }
