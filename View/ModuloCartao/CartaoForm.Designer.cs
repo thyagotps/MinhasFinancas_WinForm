@@ -36,12 +36,16 @@
             txtDescricao = new TextBox();
             panel1 = new Panel();
             btnSalvar = new Button();
+            label3 = new Label();
+            cboTipo = new ComboBox();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
             // 
+            panel2.Controls.Add(cboTipo);
+            panel2.Controls.Add(label3);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(txtId);
             panel2.Controls.Add(label2);
@@ -49,7 +53,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(268, 117);
+            panel2.Size = new Size(268, 184);
             panel2.TabIndex = 11;
             // 
             // label1
@@ -110,11 +114,28 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 115);
+            label3.Name = "label3";
+            label3.Size = new Size(33, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Tipo:";
+            // 
+            // cboTipo
+            // 
+            cboTipo.FormattingEnabled = true;
+            cboTipo.Location = new Point(12, 133);
+            cboTipo.Name = "cboTipo";
+            cboTipo.Size = new Size(244, 23);
+            cboTipo.TabIndex = 7;
+            // 
             // CartaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(268, 157);
+            ClientSize = new Size(268, 224);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
@@ -137,5 +158,7 @@
         private TextBox txtDescricao;
         private Panel panel1;
         private Button btnSalvar;
+        private ComboBox cboTipo;
+        private Label label3;
     }
 }

@@ -93,6 +93,7 @@ namespace View.ModuloCartao
 
             dgvCartao.Columns["Id"].Width = 50;
             dgvCartao.Columns["Descricao"].HeaderText = "Descrição";
+            dgvCartao.Columns["Tipo"].HeaderText = "Tipo";
 
             dgvCartao.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 

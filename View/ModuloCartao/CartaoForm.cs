@@ -23,6 +23,7 @@ namespace View.ModuloCartao
             InitializeComponent();
             _cartaoController = cartaoController;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            popularListaTipo();
         }
 
         private void CartaoForm_Load(object sender, EventArgs e)
@@ -63,6 +64,7 @@ namespace View.ModuloCartao
             CartaoDto cartaoDto = new CartaoDto();
             cartaoDto.Id = Id;
             cartaoDto.Descricao = txtDescricao.Text;
+            cartaoDto.Tipo = cboTipo.Text;
             return cartaoDto;
         }
 
@@ -70,6 +72,16 @@ namespace View.ModuloCartao
         {
             txtId.Text = cartaoDto.Id.ToString();
             txtDescricao.Text = cartaoDto.Descricao;
+            cboTipo.SelectedIndex = string.IsNullOrEmpty(cartaoDto.Tipo) ? -1 : cboTipo.FindString(cartaoDto.Tipo);
+        }
+
+        private void popularListaTipo()
+        {
+            cboTipo.Items.Add("Conta Corrente");
+            cboTipo.Items.Add("Crédito");
+            cboTipo.Items.Add("Poupança");
+            cboTipo.Items.Add("Vale Refeição");
+            cboTipo.SelectedIndex = -1;
         }
     }
 }

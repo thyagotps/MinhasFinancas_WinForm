@@ -16,14 +16,14 @@ namespace Model.ModuloCartao
 
         public List<Cartao> GetAll()
         {
-            string query = "select Id, Descricao from Cartao order by Descricao";
+            string query = "select Id, Descricao, Tipo from Cartao order by Descricao";
             var source = base.ExecutarQuery<Cartao>(query: query, listaParametros: null).ToList();
             return source;
         }
 
         public Cartao GetById(int id)
         {
-            string query = "select Id, Descricao from Cartao where Id = @id";
+            string query = "select Id, Descricao, Tipo from Cartao where Id = @id";
 
             var filtros = new DynamicParameters();
             filtros.Add("id", id);
@@ -33,27 +33,30 @@ namespace Model.ModuloCartao
             return source;
         }
 
-        public int Insert(Cartao pagamento)
+        public int Insert(Cartao cartao)
         {
-            string query = "insert into Cartao (Descricao) values (@Descricao)";
+            string query = "insert into Cartao (Descricao, Tipo) values (@Descricao, @Tipo)";
 
             var filtros = new DynamicParameters();
-            filtros.Add("Descricao", pagamento.Descricao);
+            filtros.Add("Descricao", cartao.Descricao);
+            filtros.Add("Tipo", cartao.Tipo);
 
             var result = base.Executar(query, filtros);
 
             return result;
         }
 
-        public int Update(Cartao pagamento)
+        public int Update(Cartao cartao)
         {
-            string query = @"update Cartao 
-                                 set Descricao = @Descricao
-                                 where Id = @Id";
+            string query = @"update Cartao set 
+                             Descricao = @Descricao,
+                             Tipo = @Tipo
+                             where Id = @Id";
 
             var filtros = new DynamicParameters();
-            filtros.Add("Descricao", pagamento.Descricao);
-            filtros.Add("Id", pagamento.Id);
+            filtros.Add("Descricao", cartao.Descricao);
+            filtros.Add("Tipo", cartao.Tipo);
+            filtros.Add("Id", cartao.Id);
 
             var result = base.Executar(query, filtros);
 
