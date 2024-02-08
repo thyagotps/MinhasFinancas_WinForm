@@ -1,4 +1,5 @@
-﻿using Model.ModuloCategoria;
+﻿using Model.ModuloCartao;
+using Model.ModuloCategoria;
 
 namespace Model.ModuloEntrada
 {
@@ -8,7 +9,11 @@ namespace Model.ModuloEntrada
         public string? Descricao { get; set; }
         public DateTime DataEntrada { get; set; }
         public decimal Valor { get; set; }
+
         public int IdCategoria { get; set; }
         public Categoria? Categoria { get; set; }
+
+        public int? IdCartao { get; set; }
+        public Cartao? Cartao { get; set; }
     }
 }

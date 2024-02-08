@@ -25,9 +25,7 @@ namespace Controller.ModuloSaida
         public List<SaidaDto> GetAll()
         {
             var source = _saidaRepository.GetAll();
-
             var objDtos = _mapper.Map<IEnumerable<SaidaDto>>(source).ToList();
-
             return objDtos;
         }
 
@@ -35,7 +33,6 @@ namespace Controller.ModuloSaida
         {
             var saidaFiltro = _mapper.Map<SaidaFiltro>(saidaFiltroDto);
             var result = _saidaRepository.GetByFilter(saidaFiltro);
-
             var objDtos = _mapper.Map<IEnumerable<SaidaDto>>(result).ToList();
             return objDtos;
         }

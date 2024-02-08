@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntradaForm));
             panel2 = new Panel();
+            lblErrorCartao = new Label();
+            lblErrorCategoria = new Label();
+            lblErrorValor = new Label();
+            lblErrorData = new Label();
+            lblErrorDescricao = new Label();
+            cboCartao = new ComboBox();
+            label5 = new Label();
             cboCategoria = new ComboBox();
             label6 = new Label();
             txtValor = new TextBox();
@@ -48,6 +55,13 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(lblErrorCartao);
+            panel2.Controls.Add(lblErrorCategoria);
+            panel2.Controls.Add(lblErrorValor);
+            panel2.Controls.Add(lblErrorData);
+            panel2.Controls.Add(lblErrorDescricao);
+            panel2.Controls.Add(cboCartao);
+            panel2.Controls.Add(label5);
             panel2.Controls.Add(cboCategoria);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(txtValor);
@@ -61,13 +75,85 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(254, 283);
+            panel2.Size = new Size(251, 306);
             panel2.TabIndex = 18;
+            // 
+            // lblErrorCartao
+            // 
+            lblErrorCartao.AutoSize = true;
+            lblErrorCartao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorCartao.ForeColor = Color.Red;
+            lblErrorCartao.Location = new Point(60, 252);
+            lblErrorCartao.Name = "lblErrorCartao";
+            lblErrorCartao.Size = new Size(36, 15);
+            lblErrorCartao.TabIndex = 22;
+            lblErrorCartao.Text = "error";
+            // 
+            // lblErrorCategoria
+            // 
+            lblErrorCategoria.AutoSize = true;
+            lblErrorCategoria.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorCategoria.ForeColor = Color.Red;
+            lblErrorCategoria.Location = new Point(77, 204);
+            lblErrorCategoria.Name = "lblErrorCategoria";
+            lblErrorCategoria.Size = new Size(36, 15);
+            lblErrorCategoria.TabIndex = 21;
+            lblErrorCategoria.Text = "error";
+            // 
+            // lblErrorValor
+            // 
+            lblErrorValor.AutoSize = true;
+            lblErrorValor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorValor.ForeColor = Color.Red;
+            lblErrorValor.Location = new Point(53, 155);
+            lblErrorValor.Name = "lblErrorValor";
+            lblErrorValor.Size = new Size(36, 15);
+            lblErrorValor.TabIndex = 20;
+            lblErrorValor.Text = "error";
+            // 
+            // lblErrorData
+            // 
+            lblErrorData.AutoSize = true;
+            lblErrorData.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorData.ForeColor = Color.Red;
+            lblErrorData.Location = new Point(50, 105);
+            lblErrorData.Name = "lblErrorData";
+            lblErrorData.Size = new Size(36, 15);
+            lblErrorData.TabIndex = 19;
+            lblErrorData.Text = "error";
+            // 
+            // lblErrorDescricao
+            // 
+            lblErrorDescricao.AutoSize = true;
+            lblErrorDescricao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorDescricao.ForeColor = Color.Red;
+            lblErrorDescricao.Location = new Point(77, 57);
+            lblErrorDescricao.Name = "lblErrorDescricao";
+            lblErrorDescricao.Size = new Size(36, 15);
+            lblErrorDescricao.TabIndex = 18;
+            lblErrorDescricao.Text = "error";
+            // 
+            // cboCartao
+            // 
+            cboCartao.FormattingEnabled = true;
+            cboCartao.Location = new Point(12, 270);
+            cboCartao.Name = "cboCartao";
+            cboCartao.Size = new Size(222, 23);
+            cboCartao.TabIndex = 16;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(12, 252);
+            label5.Name = "label5";
+            label5.Size = new Size(45, 15);
+            label5.TabIndex = 15;
+            label5.Text = "Cartão:";
             // 
             // cboCategoria
             // 
             cboCategoria.FormattingEnabled = true;
-            cboCategoria.Location = new Point(13, 238);
+            cboCategoria.Location = new Point(13, 222);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.Size = new Size(222, 23);
             cboCategoria.TabIndex = 14;
@@ -75,7 +161,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(13, 220);
+            label6.Location = new Point(13, 204);
             label6.Name = "label6";
             label6.Size = new Size(61, 15);
             label6.TabIndex = 13;
@@ -83,7 +169,7 @@
             // 
             // txtValor
             // 
-            txtValor.Location = new Point(13, 185);
+            txtValor.Location = new Point(13, 173);
             txtValor.Name = "txtValor";
             txtValor.Size = new Size(222, 23);
             txtValor.TabIndex = 8;
@@ -91,7 +177,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(13, 167);
+            label4.Location = new Point(13, 155);
             label4.Name = "label4";
             label4.Size = new Size(36, 15);
             label4.TabIndex = 7;
@@ -99,7 +185,7 @@
             // 
             // txtDescricao
             // 
-            txtDescricao.Location = new Point(13, 80);
+            txtDescricao.Location = new Point(13, 75);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(222, 23);
             txtDescricao.TabIndex = 6;
@@ -107,7 +193,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(13, 62);
+            label3.Location = new Point(13, 57);
             label3.Name = "label3";
             label3.Size = new Size(61, 15);
             label3.TabIndex = 5;
@@ -115,7 +201,7 @@
             // 
             // dtpDataEntrada
             // 
-            dtpDataEntrada.Location = new Point(13, 133);
+            dtpDataEntrada.Location = new Point(13, 123);
             dtpDataEntrada.Name = "dtpDataEntrada";
             dtpDataEntrada.Size = new Size(222, 23);
             dtpDataEntrada.TabIndex = 4;
@@ -140,7 +226,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(13, 115);
+            label2.Location = new Point(13, 105);
             label2.Name = "label2";
             label2.Size = new Size(34, 15);
             label2.TabIndex = 1;
@@ -153,7 +239,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(254, 40);
+            panel1.Size = new Size(251, 40);
             panel1.TabIndex = 17;
             // 
             // btnSalvar
@@ -175,7 +261,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(254, 323);
+            ClientSize = new Size(251, 346);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
@@ -204,5 +290,12 @@
         private Label label2;
         private Panel panel1;
         private Button btnSalvar;
+        private ComboBox cboCartao;
+        private Label label5;
+        private Label lblErrorDescricao;
+        private Label lblErrorData;
+        private Label lblErrorValor;
+        private Label lblErrorCartao;
+        private Label lblErrorCategoria;
     }
 }

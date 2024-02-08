@@ -1,5 +1,7 @@
 ﻿using Base.Ninject;
+using Controller.ModuloSaida;
 using Controller.ModuloSalario;
+using System.Globalization;
 
 namespace View.ModuloEntrada
 {
@@ -17,7 +19,8 @@ namespace View.ModuloEntrada
 
         private void EntradaView_Load(object sender, EventArgs e)
         {
-            buscar();
+            setDataFiltro();
+            buscar(dtpDataFiltro.Value);
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -45,10 +48,18 @@ namespace View.ModuloEntrada
             editar();
         }
 
-        private void buscar()
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
-            var source = _entradaController.GetAll();
+            buscar(dtpDataFiltro.Value);
+        }
+
+
+
+        private void buscar(DateTime periodo)
+        {
+            var source = _entradaController.GetByDate(periodo);
             setDataGridView(source);
+            calcularTotal(periodo);
         }
 
         private void novo()
@@ -56,7 +67,7 @@ namespace View.ModuloEntrada
             var form = NinjectKernel.Resolve<EntradaForm>();
             form.Id = -1;
             form.ShowDialog();
-            buscar();
+            buscar(dtpDataFiltro.Value);
         }
 
         private void editar()
@@ -64,7 +75,7 @@ namespace View.ModuloEntrada
             var form = NinjectKernel.Resolve<EntradaForm>();
             form.Id = Id;
             form.ShowDialog();
-            buscar();
+            buscar(dtpDataFiltro.Value);
         }
 
         private void excluir()
@@ -72,7 +83,14 @@ namespace View.ModuloEntrada
             var result = base.MessageDelete(Id);
             if (result == DialogResult.Yes)
                 _entradaController.DeleteById(Id);
-            buscar();
+            buscar(dtpDataFiltro.Value);
+        }
+
+        private void setDataFiltro()
+        {
+            dtpDataFiltro.Value = DateTime.Now;
+            dtpDataFiltro.Format = DateTimePickerFormat.Custom;
+            dtpDataFiltro.CustomFormat = "MM/yyyy";
         }
 
         private void setDataGridView(object source)
@@ -85,9 +103,15 @@ namespace View.ModuloEntrada
             dgvEntrada.Columns["Descricao"].HeaderText = "Descrição";
             dgvEntrada.Columns["DataEntrada"].HeaderText = "Data Entrada";
             dgvEntrada.Columns["DataEntrada"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
             dgvEntrada.Columns["Valor"].HeaderText = "Valor";
+            dgvEntrada.Columns["Valor"].DefaultCellStyle.Format = "c";
+            dgvEntrada.Columns["Valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
             dgvEntrada.Columns["CategoriaDisplayMember"].HeaderText = "Categoria";
+            dgvEntrada.Columns["CartaoDisplayMember"].HeaderText = "Cartão";
             dgvEntrada.Columns["IdCategoria"].Visible = false;
+            dgvEntrada.Columns["IdCartao"].Visible = false;
 
             dgvEntrada.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -96,6 +120,12 @@ namespace View.ModuloEntrada
 
             dgvEntrada.RowsDefaultCellStyle.SelectionBackColor = Color.NavajoWhite;
             dgvEntrada.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private void calcularTotal(DateTime periodo)
+        {
+            var total = _entradaController.GetTotal(periodo);
+            lblTotal.Text = total.ToString("C", CultureInfo.CurrentCulture);
         }
     }
 }

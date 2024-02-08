@@ -37,6 +37,13 @@ namespace Controller.ModuloEntrada
             return obj;
         }
 
+        public List<EntradaDto> GetByDate(DateTime periodo)
+        {
+            var source = _entradaRepository.GetByDate(periodo);
+            var obj = _mapper.Map<IEnumerable<EntradaDto>>(source).ToList();
+            return obj;
+        }
+
         public bool Insert(EntradaDto entradaDto)
         {
             var obj = _mapper.Map<Entrada>(entradaDto);
@@ -56,5 +63,13 @@ namespace Controller.ModuloEntrada
             var result = _entradaRepository.DeleteById(id);
             return result > 0 ? true : false;
         }
+
+        public decimal GetTotal(DateTime periodo)
+        {
+            var total = _entradaRepository.GetTotal(periodo);
+            return total;
+        }
+
+
     }
 }

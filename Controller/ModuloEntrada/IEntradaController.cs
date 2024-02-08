@@ -4,10 +4,12 @@ namespace Controller.ModuloSalario
 {
     public interface IEntradaController
     {
-        public List<EntradaDto> GetAll();
-        public EntradaDto GetById(int id);
-        public bool Insert(EntradaDto entradaDto);
-        public bool Update(EntradaDto entradaDto);
-        public bool DeleteById(int id);
+        List<EntradaDto> GetAll();
+        EntradaDto GetById(int id);
+        List<EntradaDto> GetByDate(DateTime periodo);
+        bool Insert(EntradaDto entradaDto);
+        bool Update(EntradaDto entradaDto);
+        bool DeleteById(int id);
+        decimal GetTotal(DateTime periodo);
     }
 }

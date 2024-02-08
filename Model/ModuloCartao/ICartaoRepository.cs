@@ -2,10 +2,10 @@
 {
     public interface ICartaoRepository
     {
-        public List<Cartao> GetAll();
-        public Cartao GetById(int id);
-        public int Insert(Cartao pagamento);
-        public int Update(Cartao pagamento);
-        public int DeleteById(int id);
+        List<Cartao> GetAll();
+        Cartao GetById(int? id);
+        int Insert(Cartao pagamento);
+        int Update(Cartao pagamento);
+        int DeleteById(int id);
     }
 }

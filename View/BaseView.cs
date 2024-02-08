@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -48,7 +50,12 @@ namespace View
                 else
                     e.Handled = true;
             }
+        }
 
+        public IEnumerable<ValidationResult> ValidarObjeto(object obj)
+        {
+            var erros = ValidationDtos.GetValidationErrorResults(obj);
+            return erros;
         }
 
     }

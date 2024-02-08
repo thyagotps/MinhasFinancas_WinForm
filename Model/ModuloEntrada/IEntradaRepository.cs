@@ -2,10 +2,12 @@
 {
     public interface IEntradaRepository
     {
-        public List<Entrada> GetAll();
-        public Entrada GetById(int id);
-        public int Insert(Entrada salario);
-        public int Update(Entrada salario);
-        public int DeleteById(int id);
+        List<Entrada> GetAll();
+        Entrada GetById(int id);
+        List<Entrada> GetByDate(DateTime periodo);
+        int Insert(Entrada salario);
+        int Update(Entrada salario);
+        int DeleteById(int id);
+        decimal GetTotal(DateTime periodo);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Controller.ModuloEntrada;
 using Model.ModuloEntrada;
-using System.Linq.Expressions;
 
 namespace Controller.Profiles
 {
@@ -13,10 +12,8 @@ namespace Controller.Profiles
 
             CreateMap<Entrada, EntradaDto>()
                 .ForMember(dto => dto.CategoriaDisplayMember, mov => mov.MapFrom(src => src.Categoria.DisplayMember))
+                .ForMember(dto => dto.CartaoDisplayMember, mov => mov.MapFrom(src => src.Cartao.DisplayMember))
                 .ReverseMap();
-        
         }
-
-        
     }
 }

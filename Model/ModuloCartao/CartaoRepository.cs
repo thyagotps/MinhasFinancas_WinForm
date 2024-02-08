@@ -21,7 +21,7 @@ namespace Model.ModuloCartao
             return source;
         }
 
-        public Cartao GetById(int id)
+        public Cartao GetById(int? id)
         {
             string query = "select Id, Descricao, Tipo from Cartao where Id = @id";
 
