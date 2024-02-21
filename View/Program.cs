@@ -1,5 +1,7 @@
 using AutoMapper;
 using Base.Ninject;
+using View.ModuloCategoria;
+using View.ModuloMovimentoFinanceiro;
 
 
 namespace View
@@ -19,8 +21,10 @@ namespace View
             Application.ThreadException += new ThreadExceptionEventHandler(MyCommonExceptionHandlingMethod);
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
-            
+            //Application.Run(new Form1());
+            var view = NinjectKernel.Resolve<MovimentoFinanceiroView>();
+            Application.Run(view);
+
         }
 
         private static void MyCommonExceptionHandlingMethod(object sender, ThreadExceptionEventArgs t)

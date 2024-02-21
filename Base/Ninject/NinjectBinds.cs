@@ -2,6 +2,7 @@
 using Controller.ModuloCategoria;
 using Controller.ModuloEntrada;
 using Controller.ModuloFaturaEmAberto;
+using Controller.ModuloMovimentoFinanceiro;
 using Controller.ModuloPagamento;
 using Controller.ModuloRelatorios;
 using Controller.ModuloSaida;
@@ -11,6 +12,7 @@ using Model.ModuloCartao;
 using Model.ModuloCategoria;
 using Model.ModuloEntrada;
 using Model.ModuloFaturaEmAberto;
+using Model.ModuloMovimentoFinanceiro;
 using Model.ModuloPagamento;
 using Model.ModuloRelatorios;
 using Model.ModuloSaida;
@@ -46,6 +48,9 @@ namespace Base.Ninject
 
             Bind(typeof(IRelatorioController)).To(typeof(RelatorioController));
             Bind(typeof(IRelatorioRepository)).To(typeof(RelatorioRepository));
+
+            Bind(typeof(IMovimentoFinanceiroController)).To(typeof(MovimentoFinanceiroController));
+            Bind(typeof(IMovimentoFinanceiroRepository)).To(typeof(MovimentoFinanceiroRepository));
         }
     }
 }
