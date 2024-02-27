@@ -1,19 +1,8 @@
 ﻿using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
-using Controller.ModuloEntrada;
 using Controller.ModuloFaturaEmAberto;
 using Controller.ModuloMovimentoFinanceiro;
-using Controller.ModuloSaida;
-using Model.ModuloMovimentoFinanceiro;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace View.ModuloMovimentoFinanceiro
 {
@@ -40,6 +29,8 @@ namespace View.ModuloMovimentoFinanceiro
 
         private void MovimentoFinanceiroForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+
             setDataMovimento();
             popularListaTipoMovimento();
             //popularListaCategoria();

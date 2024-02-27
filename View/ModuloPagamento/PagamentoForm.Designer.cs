@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagamentoForm));
             panel2 = new Panel();
+            lblErrorSituacao = new Label();
+            lblErrorValor = new Label();
+            lblErrorDescricao = new Label();
+            lblErrorDataVencimento = new Label();
+            lblErrorIdentificador = new Label();
             label7 = new Label();
             txtNrIdentificador = new TextBox();
             cboSituacao = new ComboBox();
@@ -50,6 +55,11 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(lblErrorSituacao);
+            panel2.Controls.Add(lblErrorValor);
+            panel2.Controls.Add(lblErrorDescricao);
+            panel2.Controls.Add(lblErrorDataVencimento);
+            panel2.Controls.Add(lblErrorIdentificador);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(txtNrIdentificador);
             panel2.Controls.Add(cboSituacao);
@@ -65,8 +75,63 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(250, 311);
+            panel2.Size = new Size(305, 311);
             panel2.TabIndex = 12;
+            // 
+            // lblErrorSituacao
+            // 
+            lblErrorSituacao.AutoSize = true;
+            lblErrorSituacao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorSituacao.ForeColor = Color.Red;
+            lblErrorSituacao.Location = new Point(74, 253);
+            lblErrorSituacao.Name = "lblErrorSituacao";
+            lblErrorSituacao.Size = new Size(36, 15);
+            lblErrorSituacao.TabIndex = 26;
+            lblErrorSituacao.Text = "error";
+            // 
+            // lblErrorValor
+            // 
+            lblErrorValor.AutoSize = true;
+            lblErrorValor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorValor.ForeColor = Color.Red;
+            lblErrorValor.Location = new Point(50, 203);
+            lblErrorValor.Name = "lblErrorValor";
+            lblErrorValor.Size = new Size(36, 15);
+            lblErrorValor.TabIndex = 25;
+            lblErrorValor.Text = "error";
+            // 
+            // lblErrorDescricao
+            // 
+            lblErrorDescricao.AutoSize = true;
+            lblErrorDescricao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorDescricao.ForeColor = Color.Red;
+            lblErrorDescricao.Location = new Point(80, 154);
+            lblErrorDescricao.Name = "lblErrorDescricao";
+            lblErrorDescricao.Size = new Size(36, 15);
+            lblErrorDescricao.TabIndex = 24;
+            lblErrorDescricao.Text = "error";
+            // 
+            // lblErrorDataVencimento
+            // 
+            lblErrorDataVencimento.AutoSize = true;
+            lblErrorDataVencimento.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorDataVencimento.ForeColor = Color.Red;
+            lblErrorDataVencimento.Location = new Point(92, 105);
+            lblErrorDataVencimento.Name = "lblErrorDataVencimento";
+            lblErrorDataVencimento.Size = new Size(36, 15);
+            lblErrorDataVencimento.TabIndex = 23;
+            lblErrorDataVencimento.Text = "error";
+            // 
+            // lblErrorIdentificador
+            // 
+            lblErrorIdentificador.AutoSize = true;
+            lblErrorIdentificador.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorIdentificador.ForeColor = Color.Red;
+            lblErrorIdentificador.Location = new Point(96, 58);
+            lblErrorIdentificador.Name = "lblErrorIdentificador";
+            lblErrorIdentificador.Size = new Size(36, 15);
+            lblErrorIdentificador.TabIndex = 22;
+            lblErrorIdentificador.Text = "error";
             // 
             // label7
             // 
@@ -81,7 +146,7 @@
             // 
             txtNrIdentificador.Location = new Point(13, 76);
             txtNrIdentificador.Name = "txtNrIdentificador";
-            txtNrIdentificador.Size = new Size(222, 23);
+            txtNrIdentificador.Size = new Size(280, 23);
             txtNrIdentificador.TabIndex = 14;
             // 
             // cboSituacao
@@ -89,7 +154,7 @@
             cboSituacao.FormattingEnabled = true;
             cboSituacao.Location = new Point(13, 271);
             cboSituacao.Name = "cboSituacao";
-            cboSituacao.Size = new Size(222, 23);
+            cboSituacao.Size = new Size(280, 23);
             cboSituacao.TabIndex = 10;
             // 
             // label5
@@ -105,7 +170,7 @@
             // 
             txtValor.Location = new Point(13, 221);
             txtValor.Name = "txtValor";
-            txtValor.Size = new Size(222, 23);
+            txtValor.Size = new Size(280, 23);
             txtValor.TabIndex = 8;
             // 
             // label4
@@ -121,7 +186,7 @@
             // 
             txtDescricao.Location = new Point(13, 172);
             txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(222, 23);
+            txtDescricao.Size = new Size(280, 23);
             txtDescricao.TabIndex = 6;
             // 
             // label3
@@ -137,7 +202,7 @@
             // 
             dtpDataVencimento.Location = new Point(13, 123);
             dtpDataVencimento.Name = "dtpDataVencimento";
-            dtpDataVencimento.Size = new Size(222, 23);
+            dtpDataVencimento.Size = new Size(280, 23);
             dtpDataVencimento.TabIndex = 4;
             // 
             // label1
@@ -154,7 +219,7 @@
             txtId.Enabled = false;
             txtId.Location = new Point(13, 27);
             txtId.Name = "txtId";
-            txtId.Size = new Size(222, 23);
+            txtId.Size = new Size(280, 23);
             txtId.TabIndex = 3;
             // 
             // label2
@@ -173,7 +238,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 40);
+            panel1.Size = new Size(305, 40);
             panel1.TabIndex = 11;
             // 
             // btnSalvar
@@ -191,15 +256,15 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // ContaPagarForm
+            // PagamentoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(250, 351);
+            ClientSize = new Size(305, 351);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
-            Name = "ContaPagarForm";
+            Name = "PagamentoForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Formulário";
             Load += ContaPagarForm_Load;
@@ -226,5 +291,10 @@
         private Button btnSalvar;
         private Label label7;
         private TextBox txtNrIdentificador;
+        private Label lblErrorSituacao;
+        private Label lblErrorValor;
+        private Label lblErrorDescricao;
+        private Label lblErrorDataVencimento;
+        private Label lblErrorIdentificador;
     }
 }

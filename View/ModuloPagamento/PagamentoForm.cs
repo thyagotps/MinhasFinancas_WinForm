@@ -1,4 +1,6 @@
-﻿using Controller.ModuloPagamento;
+﻿using Controller.ModuloCartao;
+using Controller.ModuloCategoria;
+using Controller.ModuloPagamento;
 
 namespace View.ModuloPagamento
 {
@@ -30,6 +32,8 @@ namespace View.ModuloPagamento
                 var contaPagar = _pagamentoController.GetById(Id);
                 popularComponentesFormulario(contaPagar);
             }
+
+            setLabelsMessageErrorsVisible();
         }
 
 
@@ -78,6 +82,7 @@ namespace View.ModuloPagamento
         private void novo()
         {
             var contaPagarDto = popularContaPagarDto();
+            if (mensagensErro(contaPagarDto)) return;
             var result = _pagamentoController.Insert(contaPagarDto);
             base.Message(result);
             this.Close();
@@ -86,6 +91,7 @@ namespace View.ModuloPagamento
         private void editar()
         {
             var contaPagarDto = popularContaPagarDto();
+            if (mensagensErro(contaPagarDto)) return;
             var result = _pagamentoController.Update(contaPagarDto);
             base.Message(result);
             this.Close();
@@ -95,17 +101,73 @@ namespace View.ModuloPagamento
         {
             PagamentoDto obj = new PagamentoDto();
             obj.Id = Id;
-            obj.NrIdentificador = Convert.ToInt32(txtNrIdentificador.Text);
+            obj.NrIdentificador = string.IsNullOrEmpty(txtNrIdentificador.Text) ? null : Convert.ToInt32(txtNrIdentificador.Text);
             obj.Descricao = txtDescricao.Text;
-            obj.Valor = Convert.ToDecimal(txtValor.Text);
+            obj.Valor = string.IsNullOrEmpty(txtValor.Text) ? null : Convert.ToDecimal(txtValor.Text);
             obj.DataVencimento = dtpDataVencimento.Value;
 
-            var sit = cboSituacao.SelectedValue.ToString();
+            var sit = cboSituacao.SelectedValue?.ToString();
             if (sit == "Pago") obj.Situacao = "S";
             else if (sit == "Não Pago") obj.Situacao = "N";
-            else obj.Situacao = "N";
+            else obj.Situacao = null;
 
             return obj;
+        }
+
+        private bool mensagensErro(PagamentoDto pagamentoDto)
+        {
+            setLabelsMessageErrorsVisible();
+
+            var errors = ValidarObjeto(pagamentoDto);
+            if (errors.Count() > 0)
+            {
+                foreach (var item in errors)
+                {
+                    var memberName = item.MemberNames.FirstOrDefault();
+
+                    if (memberName == "NrIdentificador")
+                    {
+                        lblErrorIdentificador.Visible = true;
+                        lblErrorIdentificador.Text = $"* {item.ErrorMessage}";
+                    }
+
+                    if (memberName == "DataVencimento")
+                    {
+                        lblErrorDataVencimento.Visible = true;
+                        lblErrorDataVencimento.Text = $"* {item.ErrorMessage}";
+                    }
+
+                    if (memberName == "Descricao")
+                    {
+                        lblErrorDescricao.Visible = true;
+                        lblErrorDescricao.Text = $"* {item.ErrorMessage}";
+                    }
+
+                    if (memberName == "Valor")
+                    {
+                        lblErrorValor.Visible = true;
+                        lblErrorValor.Text = $"* {item.ErrorMessage}";
+                    }
+
+                    if (memberName == "Situacao")
+                    {
+                        lblErrorSituacao.Visible = true;
+                        lblErrorSituacao.Text = $"* {item.ErrorMessage}";
+                    }
+
+                }
+            }
+
+            return errors.Count() > 0 ? true : false;
+        }
+
+        private void setLabelsMessageErrorsVisible()
+        {
+            lblErrorIdentificador.Visible = false;
+            lblErrorDataVencimento.Visible = false;
+            lblErrorDescricao.Visible = false;
+            lblErrorValor.Visible = false;
+            lblErrorSituacao.Visible = false;
         }
     }
 }

@@ -104,7 +104,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label12.ForeColor = Color.Gainsboro;
-            label12.Location = new Point(773, 53);
+            label12.Location = new Point(844, 53);
             label12.Name = "label12";
             label12.Size = new Size(61, 12);
             label12.TabIndex = 23;
@@ -115,7 +115,7 @@
             // 
             btnPagamentos.Cursor = Cursors.Hand;
             btnPagamentos.Image = Properties.Resources.Grafico;
-            btnPagamentos.Location = new Point(777, 10);
+            btnPagamentos.Location = new Point(849, 10);
             btnPagamentos.Name = "btnPagamentos";
             btnPagamentos.Size = new Size(50, 40);
             btnPagamentos.TabIndex = 22;
@@ -127,7 +127,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = Color.Gainsboro;
-            label11.Location = new Point(674, 53);
+            label11.Location = new Point(748, 53);
             label11.Name = "label11";
             label11.Size = new Size(86, 12);
             label11.TabIndex = 21;
@@ -138,7 +138,7 @@
             // 
             btnFaturaEmAberto.Cursor = Cursors.Hand;
             btnFaturaEmAberto.Image = Properties.Resources.Grafico;
-            btnFaturaEmAberto.Location = new Point(691, 10);
+            btnFaturaEmAberto.Location = new Point(767, 10);
             btnFaturaEmAberto.Name = "btnFaturaEmAberto";
             btnFaturaEmAberto.Size = new Size(50, 40);
             btnFaturaEmAberto.TabIndex = 20;
@@ -150,7 +150,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label10.ForeColor = Color.Gainsboro;
-            label10.Location = new Point(862, 55);
+            label10.Location = new Point(926, 53);
             label10.Name = "label10";
             label10.Size = new Size(52, 12);
             label10.TabIndex = 19;
@@ -162,7 +162,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = Color.Gainsboro;
-            label9.Location = new Point(617, 53);
+            label9.Location = new Point(694, 53);
             label9.Name = "label9";
             label9.Size = new Size(35, 12);
             label9.TabIndex = 18;
@@ -174,7 +174,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = Color.Gainsboro;
-            label8.Location = new Point(535, 53);
+            label8.Location = new Point(612, 53);
             label8.Name = "label8";
             label8.Size = new Size(49, 12);
             label8.TabIndex = 17;
@@ -198,7 +198,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.Gainsboro;
-            label6.Location = new Point(448, 53);
+            label6.Location = new Point(525, 53);
             label6.Name = "label6";
             label6.Size = new Size(74, 24);
             label6.TabIndex = 15;
@@ -210,7 +210,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.Gainsboro;
-            label5.Location = new Point(370, 53);
+            label5.Location = new Point(447, 53);
             label5.Name = "label5";
             label5.Size = new Size(74, 24);
             label5.TabIndex = 14;
@@ -232,7 +232,7 @@
             // 
             btnDeletarMovimentoFinanceiro.Cursor = Cursors.Hand;
             btnDeletarMovimentoFinanceiro.Image = Properties.Resources.Excluir2;
-            btnDeletarMovimentoFinanceiro.Location = new Point(459, 10);
+            btnDeletarMovimentoFinanceiro.Location = new Point(536, 10);
             btnDeletarMovimentoFinanceiro.Name = "btnDeletarMovimentoFinanceiro";
             btnDeletarMovimentoFinanceiro.Size = new Size(50, 40);
             btnDeletarMovimentoFinanceiro.TabIndex = 12;
@@ -244,7 +244,7 @@
             lblTotalSaldo.AutoSize = true;
             lblTotalSaldo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblTotalSaldo.ForeColor = Color.White;
-            lblTotalSaldo.Location = new Point(305, 33);
+            lblTotalSaldo.Location = new Point(369, 33);
             lblTotalSaldo.Name = "lblTotalSaldo";
             lblTotalSaldo.Size = new Size(37, 15);
             lblTotalSaldo.TabIndex = 11;
@@ -256,7 +256,7 @@
             lblTotalDespesa.AutoSize = true;
             lblTotalDespesa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblTotalDespesa.ForeColor = Color.White;
-            lblTotalDespesa.Location = new Point(241, 33);
+            lblTotalDespesa.Location = new Point(271, 33);
             lblTotalDespesa.Name = "lblTotalDespesa";
             lblTotalDespesa.Size = new Size(53, 15);
             lblTotalDespesa.TabIndex = 10;
@@ -279,7 +279,7 @@
             // 
             btnRelatorio.Cursor = Cursors.Hand;
             btnRelatorio.Image = Properties.Resources.Grafico;
-            btnRelatorio.Location = new Point(861, 12);
+            btnRelatorio.Location = new Point(925, 10);
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(50, 40);
             btnRelatorio.TabIndex = 8;
@@ -290,7 +290,7 @@
             // 
             btnCartao.Cursor = Cursors.Hand;
             btnCartao.Image = Properties.Resources.Cartao;
-            btnCartao.Location = new Point(611, 10);
+            btnCartao.Location = new Point(688, 10);
             btnCartao.Name = "btnCartao";
             btnCartao.Size = new Size(50, 40);
             btnCartao.TabIndex = 7;
@@ -301,7 +301,7 @@
             // 
             btnCategoria.Cursor = Cursors.Hand;
             btnCategoria.Image = Properties.Resources.Cateoria;
-            btnCategoria.Location = new Point(535, 10);
+            btnCategoria.Location = new Point(612, 10);
             btnCategoria.Name = "btnCategoria";
             btnCategoria.Size = new Size(50, 40);
             btnCategoria.TabIndex = 6;
@@ -313,7 +313,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(305, 10);
+            label4.Location = new Point(369, 10);
             label4.Name = "label4";
             label4.Size = new Size(37, 15);
             label4.TabIndex = 5;
@@ -325,7 +325,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(241, 10);
+            label3.Location = new Point(271, 10);
             label3.Name = "label3";
             label3.Size = new Size(53, 15);
             label3.TabIndex = 4;
@@ -366,7 +366,7 @@
             // 
             btnNovoMovimentoFinanceiro.Cursor = Cursors.Hand;
             btnNovoMovimentoFinanceiro.Image = Properties.Resources.Novo2;
-            btnNovoMovimentoFinanceiro.Location = new Point(382, 10);
+            btnNovoMovimentoFinanceiro.Location = new Point(459, 10);
             btnNovoMovimentoFinanceiro.Name = "btnNovoMovimentoFinanceiro";
             btnNovoMovimentoFinanceiro.Size = new Size(50, 40);
             btnNovoMovimentoFinanceiro.TabIndex = 0;

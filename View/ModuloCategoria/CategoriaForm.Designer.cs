@@ -38,12 +38,16 @@
             txtDescricao = new TextBox();
             panel1 = new Panel();
             btnSalvar = new Button();
+            lblErrorDescricao = new Label();
+            lblErrorTipo = new Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
             // 
+            panel2.Controls.Add(lblErrorTipo);
+            panel2.Controls.Add(lblErrorDescricao);
             panel2.Controls.Add(cbo_Tipo);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label1);
@@ -59,7 +63,7 @@
             // cbo_Tipo
             // 
             cbo_Tipo.FormattingEnabled = true;
-            cbo_Tipo.Items.AddRange(new object[] { "Entrada", "Saída" });
+            cbo_Tipo.Items.AddRange(new object[] { "Despesa", "Renda" });
             cbo_Tipo.Location = new Point(6, 122);
             cbo_Tipo.Name = "cbo_Tipo";
             cbo_Tipo.Size = new Size(216, 23);
@@ -132,6 +136,28 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
+            // lblErrorDescricao
+            // 
+            lblErrorDescricao.AutoSize = true;
+            lblErrorDescricao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorDescricao.ForeColor = Color.Red;
+            lblErrorDescricao.Location = new Point(73, 55);
+            lblErrorDescricao.Name = "lblErrorDescricao";
+            lblErrorDescricao.Size = new Size(36, 15);
+            lblErrorDescricao.TabIndex = 20;
+            lblErrorDescricao.Text = "error";
+            // 
+            // lblErrorTipo
+            // 
+            lblErrorTipo.AutoSize = true;
+            lblErrorTipo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorTipo.ForeColor = Color.Red;
+            lblErrorTipo.Location = new Point(45, 104);
+            lblErrorTipo.Name = "lblErrorTipo";
+            lblErrorTipo.Size = new Size(36, 15);
+            lblErrorTipo.TabIndex = 21;
+            lblErrorTipo.Text = "error";
+            // 
             // CategoriaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -161,5 +187,7 @@
         private Button btnSalvar;
         private ComboBox cbo_Tipo;
         private Label label3;
+        private Label lblErrorTipo;
+        private Label lblErrorDescricao;
     }
 }

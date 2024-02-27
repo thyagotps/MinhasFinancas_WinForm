@@ -40,12 +40,18 @@
             label2 = new Label();
             panel1 = new Panel();
             btnSalvar = new Button();
+            lblErrorDataCompra = new Label();
+            lblErrorDescricao = new Label();
+            lblErrorValor = new Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
             // 
+            panel2.Controls.Add(lblErrorValor);
+            panel2.Controls.Add(lblErrorDescricao);
+            panel2.Controls.Add(lblErrorDataCompra);
             panel2.Controls.Add(txtValor);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(txtDescricao);
@@ -150,6 +156,39 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
+            // lblErrorDataCompra
+            // 
+            lblErrorDataCompra.AutoSize = true;
+            lblErrorDataCompra.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorDataCompra.ForeColor = Color.Red;
+            lblErrorDataCompra.Location = new Point(72, 59);
+            lblErrorDataCompra.Name = "lblErrorDataCompra";
+            lblErrorDataCompra.Size = new Size(36, 15);
+            lblErrorDataCompra.TabIndex = 21;
+            lblErrorDataCompra.Text = "error";
+            // 
+            // lblErrorDescricao
+            // 
+            lblErrorDescricao.AutoSize = true;
+            lblErrorDescricao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorDescricao.ForeColor = Color.Red;
+            lblErrorDescricao.Location = new Point(80, 110);
+            lblErrorDescricao.Name = "lblErrorDescricao";
+            lblErrorDescricao.Size = new Size(36, 15);
+            lblErrorDescricao.TabIndex = 22;
+            lblErrorDescricao.Text = "error";
+            // 
+            // lblErrorValor
+            // 
+            lblErrorValor.AutoSize = true;
+            lblErrorValor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorValor.ForeColor = Color.Red;
+            lblErrorValor.Location = new Point(55, 159);
+            lblErrorValor.Name = "lblErrorValor";
+            lblErrorValor.Size = new Size(36, 15);
+            lblErrorValor.TabIndex = 23;
+            lblErrorValor.Text = "error";
+            // 
             // FaturaEmAbertoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -185,5 +224,8 @@
         private Label label2;
         private Panel panel1;
         private Button btnSalvar;
+        private Label lblErrorValor;
+        private Label lblErrorDescricao;
+        private Label lblErrorDataCompra;
     }
 }

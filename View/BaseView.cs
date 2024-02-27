@@ -27,9 +27,11 @@ namespace View
 
         public void Message(bool result)
         {
-            if (result)
-                MessageBox.Show($"Operação realizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
+            //if (result)
+            //    //MessageBox.Show($"Operação realizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //else
+            //    MessageBox.Show("Erro ao realizar operação!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if(!result)
                 MessageBox.Show("Erro ao realizar operação!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 

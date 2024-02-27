@@ -10,7 +10,7 @@ namespace Model
 
         public BaseRepository(Ado ado)
         {
-            _ado = new Ado();
+            _ado = ado;
         }
 
 
@@ -48,6 +48,7 @@ namespace Model
                 var result = conn.Execute(sql: query, param: listaParametros);
                 return result;
             }
+
         }
     }
 }

@@ -33,6 +33,7 @@ namespace View.ModuloCartao
                 var objectDto = _cartaoController.GetById(Id);
                 popularComponentesFormulario(objectDto);
             }
+            setLabelsMessageErrorsVisible();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -46,6 +47,7 @@ namespace View.ModuloCartao
         private void novo()
         {
             var objectDto = popularCartaoDto();
+            if (mensagensErro(objectDto)) return;
             var result = _cartaoController.Insert(objectDto);
             base.Message(result);
             this.Close();
@@ -54,6 +56,7 @@ namespace View.ModuloCartao
         private void editar()
         {
             var objectDto = popularCartaoDto();
+            if (mensagensErro(objectDto)) return;
             var result = _cartaoController.Update(objectDto);
             base.Message(result);
             this.Close();
@@ -82,6 +85,41 @@ namespace View.ModuloCartao
             cboTipo.Items.Add("Poupança");
             cboTipo.Items.Add("Vale Refeição");
             cboTipo.SelectedIndex = -1;
+        }
+
+        private bool mensagensErro(CartaoDto cartaoDto)
+        {
+            setLabelsMessageErrorsVisible();
+
+            var errors = ValidarObjeto(cartaoDto);
+            if (errors.Count() > 0)
+            {
+                foreach (var item in errors)
+                {
+                    var memberName = item.MemberNames.FirstOrDefault();
+
+                    if (memberName == "Descricao")
+                    {
+                        lblErrorDescricao.Visible = true;
+                        lblErrorDescricao.Text = $"* {item.ErrorMessage}";
+                    }
+
+                    if (memberName == "Tipo")
+                    {
+                        lblErrorTipo.Visible = true;
+                        lblErrorTipo.Text = $"* {item.ErrorMessage}";
+                    }
+
+                }
+            }
+
+            return errors.Count() > 0 ? true : false;
+        }
+
+        private void setLabelsMessageErrorsVisible()
+        {
+            lblErrorDescricao.Visible = false;
+            lblErrorTipo.Visible = false;
         }
     }
 }

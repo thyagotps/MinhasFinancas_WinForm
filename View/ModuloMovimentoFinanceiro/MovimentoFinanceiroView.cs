@@ -1,4 +1,5 @@
 ﻿using Base.Ninject;
+using Controller.ModuloCategoria;
 using Controller.ModuloMovimentoFinanceiro;
 using Model.ModuloMovimentoFinanceiro;
 using System;

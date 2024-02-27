@@ -30,20 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CartaoForm));
             panel2 = new Panel();
+            cboTipo = new ComboBox();
+            label3 = new Label();
             label1 = new Label();
             txtId = new TextBox();
             label2 = new Label();
             txtDescricao = new TextBox();
             panel1 = new Panel();
             btnSalvar = new Button();
-            label3 = new Label();
-            cboTipo = new ComboBox();
+            lblErrorDescricao = new Label();
+            lblErrorTipo = new Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
             // 
+            panel2.Controls.Add(lblErrorTipo);
+            panel2.Controls.Add(lblErrorDescricao);
             panel2.Controls.Add(cboTipo);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label1);
@@ -55,6 +59,23 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(268, 184);
             panel2.TabIndex = 11;
+            // 
+            // cboTipo
+            // 
+            cboTipo.FormattingEnabled = true;
+            cboTipo.Location = new Point(12, 133);
+            cboTipo.Name = "cboTipo";
+            cboTipo.Size = new Size(244, 23);
+            cboTipo.TabIndex = 7;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 115);
+            label3.Name = "label3";
+            label3.Size = new Size(33, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Tipo:";
             // 
             // label1
             // 
@@ -114,22 +135,27 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // label3
+            // lblErrorDescricao
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 115);
-            label3.Name = "label3";
-            label3.Size = new Size(33, 15);
-            label3.TabIndex = 6;
-            label3.Text = "Tipo:";
+            lblErrorDescricao.AutoSize = true;
+            lblErrorDescricao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorDescricao.ForeColor = Color.Red;
+            lblErrorDescricao.Location = new Point(79, 62);
+            lblErrorDescricao.Name = "lblErrorDescricao";
+            lblErrorDescricao.Size = new Size(36, 15);
+            lblErrorDescricao.TabIndex = 21;
+            lblErrorDescricao.Text = "error";
             // 
-            // cboTipo
+            // lblErrorTipo
             // 
-            cboTipo.FormattingEnabled = true;
-            cboTipo.Location = new Point(12, 133);
-            cboTipo.Name = "cboTipo";
-            cboTipo.Size = new Size(244, 23);
-            cboTipo.TabIndex = 7;
+            lblErrorTipo.AutoSize = true;
+            lblErrorTipo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblErrorTipo.ForeColor = Color.Red;
+            lblErrorTipo.Location = new Point(51, 115);
+            lblErrorTipo.Name = "lblErrorTipo";
+            lblErrorTipo.Size = new Size(36, 15);
+            lblErrorTipo.TabIndex = 22;
+            lblErrorTipo.Text = "error";
             // 
             // CartaoForm
             // 
@@ -160,5 +186,7 @@
         private Button btnSalvar;
         private ComboBox cboTipo;
         private Label label3;
+        private Label lblErrorTipo;
+        private Label lblErrorDescricao;
     }
 }

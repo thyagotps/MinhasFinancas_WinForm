@@ -22,6 +22,7 @@ namespace View.ModuloCategoria
                 var categoriaDto = _categoriaController.GetById(Id);
                 popularComponentesFormulario(categoriaDto);
             }
+            setLabelsMessageErrorsVisible();
         }
 
 
@@ -36,6 +37,7 @@ namespace View.ModuloCategoria
         private void novo()
         {
             var categoriaDto = popularCategoriaDto();
+            if (mensagensErro(categoriaDto)) return;
             var result = _categoriaController.Insert(categoriaDto);
             base.Message(result);
             this.Close();
@@ -44,6 +46,7 @@ namespace View.ModuloCategoria
         private void editar()
         {
             var categoriaDto = popularCategoriaDto();
+            if (mensagensErro(categoriaDto)) return;
             var result = _categoriaController.Update(categoriaDto);
             base.Message(result);
             this.Close();
@@ -63,6 +66,41 @@ namespace View.ModuloCategoria
             txtId.Text = categoriaDto.Id.ToString();
             txtDescricao.Text = categoriaDto.Descricao;
             cbo_Tipo.SelectedItem = categoriaDto.Tipo;
+        }
+
+        private bool mensagensErro(CategoriaDto categoriaDto)
+        {
+            setLabelsMessageErrorsVisible();
+
+            var errors = ValidarObjeto(categoriaDto);
+            if (errors.Count() > 0)
+            {
+                foreach (var item in errors)
+                {
+                    var memberName = item.MemberNames.FirstOrDefault();
+
+                    if (memberName == "Descricao")
+                    {
+                        lblErrorDescricao.Visible = true;
+                        lblErrorDescricao.Text = $"* {item.ErrorMessage}";
+                    }
+
+                    if (memberName == "Tipo")
+                    {
+                        lblErrorTipo.Visible = true;
+                        lblErrorTipo.Text = $"* {item.ErrorMessage}";
+                    }
+
+                }
+            }
+
+            return errors.Count() > 0 ? true : false;
+        }
+
+        private void setLabelsMessageErrorsVisible()
+        {
+            lblErrorDescricao.Visible = false;
+            lblErrorTipo.Visible = false;
         }
 
 

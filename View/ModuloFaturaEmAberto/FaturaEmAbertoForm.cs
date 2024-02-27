@@ -1,4 +1,5 @@
-﻿using Controller.ModuloFaturaEmAberto;
+﻿using Controller.ModuloCategoria;
+using Controller.ModuloFaturaEmAberto;
 
 namespace View.ModuloFaturaEmAberto
 {
@@ -28,6 +29,8 @@ namespace View.ModuloFaturaEmAberto
                 var contaPagar = _controller.GetById(Id);
                 popularComponentesFormulario(contaPagar);
             }
+
+            setLabelsMessageErrorsVisible();
         }
 
         private void setDataCompra()
@@ -56,6 +59,7 @@ namespace View.ModuloFaturaEmAberto
         private void novo()
         {
             var faturaEmAbertoDto = popularFaturaEmAbertoDto();
+            if (mensagensErro(faturaEmAbertoDto)) return;
             var result = _controller.Insert(faturaEmAbertoDto);
             base.Message(result);
             this.Close();
@@ -66,7 +70,7 @@ namespace View.ModuloFaturaEmAberto
             FaturaEmAbertoDto obj = new FaturaEmAbertoDto();
             obj.Id = Id;
             obj.Descricao = txtDescricao.Text;
-            obj.Valor = Convert.ToDecimal(txtValor.Text);
+            obj.Valor = string.IsNullOrEmpty(txtValor.Text) ? null : Convert.ToDecimal(txtValor.Text);
             obj.DataCompra = dtpDataCompra.Value;
             return obj;
         }
@@ -74,9 +78,52 @@ namespace View.ModuloFaturaEmAberto
         private void editar()
         {
             var faturaEmAbertoDto = popularFaturaEmAbertoDto();
+            if (mensagensErro(faturaEmAbertoDto)) return;
             var result = _controller.Update(faturaEmAbertoDto);
             base.Message(result);
             this.Close();
+        }
+
+        private bool mensagensErro(FaturaEmAbertoDto objectDto)
+        {
+            setLabelsMessageErrorsVisible();
+
+            var errors = ValidarObjeto(objectDto);
+            if (errors.Count() > 0)
+            {
+                foreach (var item in errors)
+                {
+                    var memberName = item.MemberNames.FirstOrDefault();
+                    
+                    if (memberName == "DataCompra")
+                    {
+                        lblErrorDataCompra.Visible = true;
+                        lblErrorDataCompra.Text = $"* {item.ErrorMessage}";
+                    }
+
+                    if (memberName == "Descricao")
+                    {
+                        lblErrorDescricao.Visible = true;
+                        lblErrorDescricao.Text = $"* {item.ErrorMessage}";
+                    }
+
+                    if (memberName == "Valor")
+                    {
+                        lblErrorValor.Visible = true;
+                        lblErrorValor.Text = $"* {item.ErrorMessage}";
+                    }
+
+                }
+            }
+
+            return errors.Count() > 0 ? true : false;
+        }
+
+        private void setLabelsMessageErrorsVisible()
+        {
+            lblErrorDataCompra.Visible = false;
+            lblErrorDescricao.Visible = false;
+            lblErrorValor.Visible = false;
         }
     }
 }
