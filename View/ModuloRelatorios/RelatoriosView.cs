@@ -43,37 +43,37 @@ namespace View.ModuloRelatorios
 
             if (relatorioDto.Id == 1)
             {
-                source = _relatorioController.GetEntradasMensais(dtpPeriodoFiltro.Value);
+                source = _relatorioController.GetRendasMensais(dtpPeriodoFiltro.Value);
                 setGridViewReportMensal(source);
             }
 
             if (relatorioDto.Id == 2)
             {
-                source = _relatorioController.GetEntradasAnuais(dtpPeriodoFiltro.Value);
+                source = _relatorioController.GetRendasAnuais(dtpPeriodoFiltro.Value);
                 setGridViewReportAnual(source);
             }
 
             if (relatorioDto.Id == 3)
             {
-                source = _relatorioController.GetSaidasMensaisCategoria(dtpPeriodoFiltro.Value);
+                source = _relatorioController.GetDespesasMensaisCategoria(dtpPeriodoFiltro.Value);
                 setGridViewReportMensal(source);
             }
 
             if (relatorioDto.Id == 4)
             {
-                source = _relatorioController.GetSaidasMensaisCartao(dtpPeriodoFiltro.Value);
-                setGridViewReportMensal(source);
+                source = _relatorioController.GetDespesasAnualCategoria(dtpPeriodoFiltro.Value);
+                setGridViewReportAnual(source);
             }
 
             if (relatorioDto.Id == 5)
             {
-                source = _relatorioController.GetSaidasAnualCategoria(dtpPeriodoFiltro.Value);
-                setGridViewReportAnual(source);
+                source = _relatorioController.GetDespesasMensaisCartao(dtpPeriodoFiltro.Value);
+                setGridViewReportMensal(source);
             }
 
             if (relatorioDto.Id == 6)
             {
-                source = _relatorioController.GetSaidasAnualCartao(dtpPeriodoFiltro.Value);
+                source = _relatorioController.GetDespesasAnualCartao(dtpPeriodoFiltro.Value);
                 setGridViewReportAnual(source); // Este será o padrão pro anual
             }
 

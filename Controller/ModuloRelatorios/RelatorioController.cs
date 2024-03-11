@@ -38,44 +38,48 @@ namespace Controller.ModuloRelatorios
             return dtos;
         }
 
-        public List<ReportMensalDto> GetEntradasMensais(DateTime periodo)
+        public List<ReportMensalDto> GetRendasMensais(DateTime periodo)
         {
-            var source = _relatorioRepository.GetEntradasMensais(periodo);
+            var source = _relatorioRepository.GetRendasMensais(periodo);
             var dtos = _mapper.Map<IEnumerable<ReportMensalDto>>(source).ToList();
             return dtos;
         }
 
-        public List<ReportAnualDto> GetEntradasAnuais(DateTime periodo)
+        public List<ReportAnualDto> GetRendasAnuais(DateTime periodo)
         {
-            var source = _relatorioRepository.GetEntradasAnuais(periodo);
+            var source = _relatorioRepository.GetRendasAnuais(periodo);
             var dtos = _mapper.Map<IEnumerable<ReportAnualDto>>(source).ToList();
             return dtos;
         }
 
-        public List<ReportMensalDto> GetSaidasMensaisCategoria(DateTime periodo)
+        public List<ReportMensalDto> GetDespesasMensaisCategoria(DateTime periodo)
         {
-            var source = _relatorioRepository.GetSaidasMensaisCategoria(periodo);
+            var source = _relatorioRepository.GetDespesasMensaisCategoria(periodo);
             var dtos = _mapper.Map<IEnumerable<ReportMensalDto>>(source).ToList();
             return dtos;
         }
 
-        public List<ReportMensalDto> GetSaidasMensaisCartao(DateTime periodo)
+        public List<ReportAnualDto> GetDespesasAnualCategoria(DateTime periodo)
         {
-            var source = _relatorioRepository.GetSaidasMensaisCartao(periodo);
-            var dtos = _mapper.Map<IEnumerable<ReportMensalDto>>(source).ToList();
-            return dtos;
-        }
-
-        public List<ReportAnualDto> GetSaidasAnualCategoria(DateTime periodo)
-        {
-            var source = _relatorioRepository.GetSaidasAnualCategoria(periodo);
+            var source = _relatorioRepository.GetDespesasAnualCategoria(periodo);
             var dtos = _mapper.Map<IEnumerable<ReportAnualDto>>(source).ToList();
             return dtos;
         }
 
-        public List<ReportAnualDto> GetSaidasAnualCartao(DateTime periodo)
+
+
+        public List<ReportMensalDto> GetDespesasMensaisCartao(DateTime periodo)
         {
-            var source = _relatorioRepository.GetSaidasAnualCartao(periodo);
+            var source = _relatorioRepository.GetDespesasMensaisCartao(periodo);
+            var dtos = _mapper.Map<IEnumerable<ReportMensalDto>>(source).ToList();
+            return dtos;
+        }
+
+        
+
+        public List<ReportAnualDto> GetDespesasAnualCartao(DateTime periodo)
+        {
+            var source = _relatorioRepository.GetDespesasAnualCartao(periodo);
             var dtos = _mapper.Map<IEnumerable<ReportAnualDto>>(source).ToList();
             return dtos;
         }

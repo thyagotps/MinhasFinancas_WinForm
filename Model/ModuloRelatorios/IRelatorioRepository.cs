@@ -10,11 +10,11 @@ namespace Model.ModuloRelatorios
     public interface IRelatorioRepository
     {
         public List<Relatorio> GetAll();
-        public List<ReportMensal> GetEntradasMensais(DateTime periodo);
-        public List<ReportAnual> GetEntradasAnuais(DateTime periodo);
-        public List<ReportMensal> GetSaidasMensaisCategoria(DateTime periodo);
-        public List<ReportMensal> GetSaidasMensaisCartao(DateTime periodo);
-        List<ReportAnual> GetSaidasAnualCategoria(DateTime periodo);
-        List<ReportAnual> GetSaidasAnualCartao(DateTime periodo);
+        public List<ReportMensal> GetRendasMensais(DateTime periodo);
+        public List<ReportAnual> GetRendasAnuais(DateTime periodo);
+        public List<ReportMensal> GetDespesasMensaisCategoria(DateTime periodo);
+        List<ReportAnual> GetDespesasAnualCategoria(DateTime periodo);
+        public List<ReportMensal> GetDespesasMensaisCartao(DateTime periodo);
+        List<ReportAnual> GetDespesasAnualCartao(DateTime periodo);
     }
 }

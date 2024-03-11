@@ -14,12 +14,12 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
 
     public List<Relatorio> GetAll()
     {
-        var relatorio1 = new Relatorio() { Id = 1, Nome = "Relatório Entradas Mensais", Descricao = "Este relatório tem a finalidade de exibir todas as entradas mensais"};
-        var relatorio2 = new Relatorio() { Id = 2, Nome = "Relatório Entradas Anual", Descricao = "Este relatório tem a finalidade de exibir todas as entradas anual" };
-        var relatorio3 = new Relatorio() { Id = 3, Nome = "Relatório Saídas Mensais por Categoria", Descricao = "Este relatório tem a finalidade de exibir todas as saídas mensais por categoria" };
-        var relatorio4 = new Relatorio() { Id = 4, Nome = "Relatório Saídas Mensais por Cartão", Descricao = "Este relatório tem a finalidade de exibir todas as saídas mensais por cartão" };
-        var relatorio5 = new Relatorio() { Id = 5, Nome = "Relatório Saídas Anual por Categoria", Descricao = "Este relatório tem a finalidade de exibir todas as saídas anual por categoria" };
-        var relatorio6 = new Relatorio() { Id = 6, Nome = "Relatório Saídas Anual por Cartão", Descricao = "Este relatório tem a finalidade de exibir todas as saídas anual por cartão" };
+        var relatorio1 = new Relatorio() { Id = 1, Nome = "1 - Relatório Rendas Mensais", Descricao = "Este relatório tem a finalidade de exibir todas as rendas mensais"};
+        var relatorio2 = new Relatorio() { Id = 2, Nome = "2 - Relatório Rendas Anual", Descricao = "Este relatório tem a finalidade de exibir todas as rendas anual" };
+        var relatorio3 = new Relatorio() { Id = 3, Nome = "3 - Relatório Despesas Mensais por Categoria", Descricao = "Este relatório tem a finalidade de exibir todas as despesas mensais por categoria" };
+        var relatorio4 = new Relatorio() { Id = 4, Nome = "4 - Relatório Despesas Anual por Categoria", Descricao = "Este relatório tem a finalidade de exibir todas as despesas anual por categoria" };
+        var relatorio5 = new Relatorio() { Id = 5, Nome = "5 - Relatório Despesas Mensais por Cartão", Descricao = "Este relatório tem a finalidade de exibir todas as despesas mensais por cartão" };
+        var relatorio6 = new Relatorio() { Id = 6, Nome = "6 - Relatório Despesas Anual por Cartão", Descricao = "Este relatório tem a finalidade de exibir todas as despesas anual por cartão" };
 
         var relatorios = new List<Relatorio>();
         relatorios.Add(relatorio1);
@@ -34,9 +34,9 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
 
     
 
-    public List<ReportMensal> GetEntradasMensais(DateTime periodo)
+    public List<ReportMensal> GetRendasMensais(DateTime periodo)
     {
-        string procName = @"PROC_RELATORIO_ENTRADAS_MENSAIS";
+        string procName = @"PROC_RELATORIO_RENDAS_MENSAIS";
 
         var filtros = new DynamicParameters();
         filtros.Add("pPeriodo", periodo);
@@ -46,9 +46,9 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportAnual> GetEntradasAnuais(DateTime periodo)
+    public List<ReportAnual> GetRendasAnuais(DateTime periodo)
     {
-        string procName = @"PROC_RELATORIO_ENTRADAS_ANUAIS";
+        string procName = @"PROC_RELATORIO_RENDAS_ANUAIS";
 
         var filtros = new DynamicParameters();
         filtros.Add("pAno", periodo.Year);
@@ -58,9 +58,9 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportMensal> GetSaidasMensaisCategoria(DateTime periodo)
+    public List<ReportMensal> GetDespesasMensaisCategoria(DateTime periodo)
     {
-        string procName = @"PROC_RELATORIO_SAIDAS_MENSAIS_CATEGORIA";
+        string procName = @"PROC_RELATORIO_DESPESAS_MENSAIS_CATEGORIA";
 
         var filtros = new DynamicParameters();
         filtros.Add("pPeriodo", periodo);
@@ -70,21 +70,9 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportMensal> GetSaidasMensaisCartao(DateTime periodo)
+    public List<ReportAnual> GetDespesasAnualCategoria(DateTime periodo)
     {
-        string procName = @"PROC_RELATORIO_SAIDAS_MENSAIS_CARTAO";
-
-        var filtros = new DynamicParameters();
-        filtros.Add("pPeriodo", periodo);
-
-        var source = base.ExecutarProcedure<ReportMensal>(procName, filtros).ToList();
-
-        return source;
-    }
-
-    public List<ReportAnual> GetSaidasAnualCategoria(DateTime periodo)
-    {
-        string procName = @"PROC_RELATORIO_SAIDAS_ANUAIS_CATEGORIA";
+        string procName = @"PROC_RELATORIO_DESPESAS_ANUAIS_CATEGORIA";
 
         var filtros = new DynamicParameters();
         filtros.Add("pPeriodo", periodo.Year);
@@ -94,9 +82,23 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportAnual> GetSaidasAnualCartao(DateTime periodo)
+    public List<ReportMensal> GetDespesasMensaisCartao(DateTime periodo)
     {
-        string procName = @"PROC_RELATORIO_SAIDAS_ANUAIS_CARTAO";
+        string procName = @"PROC_RELATORIO_DESPESAS_MENSAIS_CARTAO";
+
+        var filtros = new DynamicParameters();
+        filtros.Add("pPeriodo", periodo);
+
+        var source = base.ExecutarProcedure<ReportMensal>(procName, filtros).ToList();
+
+        return source;
+    }
+
+    
+
+    public List<ReportAnual> GetDespesasAnualCartao(DateTime periodo)
+    {
+        string procName = @"PROC_RELATORIO_DESPESAS_ANUAIS_CARTAO";
 
         var filtros = new DynamicParameters();
         filtros.Add("pPeriodo", periodo.Year);
