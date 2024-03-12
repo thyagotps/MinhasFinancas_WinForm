@@ -11,4 +11,5 @@ public interface IRelatorioController
     List<ReportAnualDto> GetDespesasAnualCategoria(DateTime periodo);
     List<ReportMensalDto> GetDespesasMensaisCartao(DateTime periodo);
     List<ReportAnualDto> GetDespesasAnualCartao(DateTime periodo);
+    List<ReportBalanceteDto> GetBalancete(DateTime periodo);
 }

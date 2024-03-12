@@ -27,6 +27,7 @@ namespace Controller.ModuloRelatorios
                 cfg.AddProfile(new RelatorioProfile());
                 cfg.AddProfile(new ReportMensalProfile());
                 cfg.AddProfile(new ReportAnualProfile());
+                cfg.AddProfile(new ReportBalanceteProfile());
             });
             _mapper = new Mapper(config);
         }
@@ -66,8 +67,6 @@ namespace Controller.ModuloRelatorios
             return dtos;
         }
 
-
-
         public List<ReportMensalDto> GetDespesasMensaisCartao(DateTime periodo)
         {
             var source = _relatorioRepository.GetDespesasMensaisCartao(periodo);
@@ -75,12 +74,17 @@ namespace Controller.ModuloRelatorios
             return dtos;
         }
 
-        
-
         public List<ReportAnualDto> GetDespesasAnualCartao(DateTime periodo)
         {
             var source = _relatorioRepository.GetDespesasAnualCartao(periodo);
             var dtos = _mapper.Map<IEnumerable<ReportAnualDto>>(source).ToList();
+            return dtos;
+        }
+
+        public List<ReportBalanceteDto> GetBalancete(DateTime periodo)
+        {
+            var source = _relatorioRepository.GetBalancete(periodo);
+            var dtos = _mapper.Map<IEnumerable<ReportBalanceteDto>>(source).ToList();
             return dtos;
         }
     }

@@ -16,5 +16,6 @@ namespace Model.ModuloRelatorios
         List<ReportAnual> GetDespesasAnualCategoria(DateTime periodo);
         public List<ReportMensal> GetDespesasMensaisCartao(DateTime periodo);
         List<ReportAnual> GetDespesasAnualCartao(DateTime periodo);
+        List<ReportBalancete> GetBalancete(DateTime periodo);
     }
 }

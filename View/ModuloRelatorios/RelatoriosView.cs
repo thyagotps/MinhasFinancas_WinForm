@@ -77,6 +77,12 @@ namespace View.ModuloRelatorios
                 setGridViewReportAnual(source); // Este será o padrão pro anual
             }
 
+            if (relatorioDto.Id == 7)
+            {
+                source = _relatorioController.GetBalancete(dtpPeriodoFiltro.Value);
+                setGridViewReportBalancete(source); 
+            }
+
         }
 
 
@@ -120,7 +126,35 @@ namespace View.ModuloRelatorios
             dgvRelatorio.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
-      
+        private void setGridViewReportBalancete(object dataSource)
+        {
+            dgvRelatorio.DataSource = dataSource;
+            dgvRelatorio.ReadOnly = true;
+
+            dgvRelatorio.Columns["Descricao"].HeaderText = "Descrição";
+            dgvRelatorio.Columns["Descricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgvRelatorio.Columns["ValorRenda"].HeaderText = "Valor Renda";
+            dgvRelatorio.Columns["ValorRenda"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvRelatorio.Columns["ValorRenda"].DefaultCellStyle.Format = "c2";
+            dgvRelatorio.Columns["ValorRenda"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+
+            dgvRelatorio.Columns["ValorDespesa"].HeaderText = "Valor Despesa";
+            dgvRelatorio.Columns["ValorDespesa"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvRelatorio.Columns["ValorDespesa"].DefaultCellStyle.Format = "c2";
+            dgvRelatorio.Columns["ValorDespesa"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+
+            dgvRelatorio.Columns["ValorTotal"].HeaderText = "Valor Total";
+            dgvRelatorio.Columns["ValorTotal"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvRelatorio.Columns["ValorTotal"].DefaultCellStyle.Format = "c2";
+            dgvRelatorio.Columns["ValorTotal"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+
+            dgvRelatorio.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
+            dgvRelatorio.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            dgvRelatorio.RowsDefaultCellStyle.SelectionBackColor = Color.NavajoWhite;
+            dgvRelatorio.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
 
 
         private void setGridViewReportAnual(object dataSource)

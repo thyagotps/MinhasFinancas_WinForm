@@ -20,6 +20,7 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         var relatorio4 = new Relatorio() { Id = 4, Nome = "4 - Relatório Despesas Anual por Categoria", Descricao = "Este relatório tem a finalidade de exibir todas as despesas anual por categoria" };
         var relatorio5 = new Relatorio() { Id = 5, Nome = "5 - Relatório Despesas Mensais por Cartão", Descricao = "Este relatório tem a finalidade de exibir todas as despesas mensais por cartão" };
         var relatorio6 = new Relatorio() { Id = 6, Nome = "6 - Relatório Despesas Anual por Cartão", Descricao = "Este relatório tem a finalidade de exibir todas as despesas anual por cartão" };
+        var relatorio7 = new Relatorio() { Id = 7, Nome = "7 - Relatório Balancete", Descricao = "Este relatório tem a finalidade de exibir o balancete" };
 
         var relatorios = new List<Relatorio>();
         relatorios.Add(relatorio1);
@@ -28,6 +29,7 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         relatorios.Add(relatorio4);
         relatorios.Add(relatorio5);
         relatorios.Add(relatorio6);
+        relatorios.Add(relatorio7);
 
         return relatorios;
     }
@@ -94,8 +96,6 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    
-
     public List<ReportAnual> GetDespesasAnualCartao(DateTime periodo)
     {
         string procName = @"PROC_RELATORIO_DESPESAS_ANUAIS_CARTAO";
@@ -104,6 +104,18 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         filtros.Add("pPeriodo", periodo.Year);
 
         var source = base.ExecutarProcedure<ReportAnual>(procName, filtros).ToList();
+
+        return source;
+    }
+
+    public List<ReportBalancete> GetBalancete(DateTime periodo)
+    {
+        string procName = @"PROC_RELATORIO_BALANCETE";
+
+        var filtros = new DynamicParameters();
+        filtros.Add("pPeriodo", periodo);
+
+        var source = base.ExecutarProcedure<ReportBalancete>(procName, filtros).ToList();
 
         return source;
     }
