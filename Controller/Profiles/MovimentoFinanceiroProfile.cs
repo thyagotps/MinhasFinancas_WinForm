@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Controller.ModuloMovimentoFinanceiro;
-using Controller.ModuloSaida;
 using Model.ModuloMovimentoFinanceiro;
-using Model.ModuloSaida;
 
 namespace Controller.Profiles
 {

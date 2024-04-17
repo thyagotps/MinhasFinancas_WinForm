@@ -1,13 +1,6 @@
 ﻿using AutoMapper;
-using Controller.ModuloSaida;
 using Controller.Profiles;
 using Model.ModuloMovimentoFinanceiro;
-using Model.ModuloSaida;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Controller.ModuloMovimentoFinanceiro
 {

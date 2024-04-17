@@ -1,11 +1,9 @@
 using Base.Ninject;
 using View.ModuloCartao;
 using View.ModuloCategoria;
-using View.ModuloEntrada;
 using View.ModuloFaturaEmAberto;
 using View.ModuloPagamento;
 using View.ModuloRelatorios;
-using View.ModuloSaida;
 
 namespace View
 {
@@ -31,19 +29,7 @@ namespace View
             view.Show();
         }
 
-        private void btnEntrada_Click(object sender, EventArgs e)
-        {
-            var view = NinjectKernel.Resolve<EntradaView>();
-            view.MdiParent = this;
-            view.Show();
-        }
-
-        private void btnSaida_Click(object sender, EventArgs e)
-        {
-            var view = NinjectKernel.Resolve<SaidaView>();
-            view.MdiParent = this;
-            view.Show();
-        }
+        
 
         private void btnFaturaEmAberto_Click(object sender, EventArgs e)
         {

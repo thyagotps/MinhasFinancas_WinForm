@@ -1,24 +1,11 @@
 ﻿using Base.Ninject;
-using Controller.ModuloCategoria;
 using Controller.ModuloMovimentoFinanceiro;
-using Model.ModuloMovimentoFinanceiro;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using View.ModuloCartao;
 using View.ModuloCategoria;
 using View.ModuloFaturaEmAberto;
 using View.ModuloPagamento;
 using View.ModuloRelatorios;
-using View.ModuloSaida;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace View.ModuloMovimentoFinanceiro
 {

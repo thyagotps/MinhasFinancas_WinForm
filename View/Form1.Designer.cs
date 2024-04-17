@@ -74,7 +74,6 @@
             btnSaida.TabIndex = 2;
             btnSaida.Text = "Saída";
             btnSaida.UseVisualStyleBackColor = true;
-            btnSaida.Click += btnSaida_Click;
             // 
             // panel1
             // 
@@ -114,7 +113,6 @@
             btnEntrada.TabIndex = 5;
             btnEntrada.Text = "Entrada";
             btnEntrada.UseVisualStyleBackColor = true;
-            btnEntrada.Click += btnEntrada_Click;
             // 
             // btnFaturaEmAberto
             // 
