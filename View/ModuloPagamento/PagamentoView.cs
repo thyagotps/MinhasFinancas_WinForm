@@ -1,6 +1,8 @@
 ﻿using Base.Ninject;
 using Controller.ModuloPagamento;
+using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
+using View.ModuloFaturaEmAberto;
 
 namespace View.ModuloPagamento
 {
@@ -23,8 +25,10 @@ namespace View.ModuloPagamento
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            var form = NinjectKernel.Resolve<PagamentoForm>();
-            form.Id = -1;
+            //var form = NinjectKernel.Resolve<PagamentoForm>();
+            var form = Program.ServiceProvider.GetRequiredService<PagamentoForm>();
+            form.Id = 0;
+            form.Estado = Estado.Insert;
             form.ShowDialog();
             var dtPeriodo = dtpPeriodoFiltro.Value;
             buscar(dtPeriodo);
@@ -131,8 +135,10 @@ namespace View.ModuloPagamento
 
         private void editar()
         {
-            var form = NinjectKernel.Resolve<PagamentoForm>();
+            //var form = NinjectKernel.Resolve<PagamentoForm>();
+            var form = Program.ServiceProvider.GetRequiredService<PagamentoForm>();
             form.Id = Id;
+            form.Estado = Estado.Update;
             form.ShowDialog();
             var dtPeriodo = dtpPeriodoFiltro.Value;
             buscar(dtPeriodo);

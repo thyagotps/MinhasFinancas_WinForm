@@ -1,5 +1,7 @@
-﻿using Base.Ninject;
+﻿using Base;
+using Base.Ninject;
 using Controller.ModuloMovimentoFinanceiro;
+using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using View.ModuloCartao;
 using View.ModuloCategoria;
@@ -159,16 +161,19 @@ namespace View.ModuloMovimentoFinanceiro
 
         private void novo()
         {
-            var form = NinjectKernel.Resolve<MovimentoFinanceiroForm>();
-            form.Id = -1;
+            //var form = NinjectKernel.Resolve<MovimentoFinanceiroForm>();
+            var form = Program.ServiceProvider.GetRequiredService<MovimentoFinanceiroForm>();
+            form.Id = 0;
+            form.Estado = Estado.Insert;
             form.ShowDialog();
             popularMes(dtpDataMovimentoFiltro.Value.Year, dtpDataMovimentoFiltro.Value.Month);
         }
 
         private void editar()
         {
-            var form = NinjectKernel.Resolve<MovimentoFinanceiroForm>();
+            var form = Program.ServiceProvider.GetRequiredService<MovimentoFinanceiroForm>();
             form.Id = Id;
+            form.Estado = Estado.Update;
             form.ShowDialog();
             popularMes(dtpDataMovimentoFiltro.Value.Year, dtpDataMovimentoFiltro.Value.Month);
         }
@@ -188,36 +193,42 @@ namespace View.ModuloMovimentoFinanceiro
 
         private void btnCategoria_Click(object sender, EventArgs e)
         {
-            var view = NinjectKernel.Resolve<CategoriaView>();
+            //var view = NinjectKernel.Resolve<CategoriaView>();
             //view.MdiParent = this;
+            var view = Program.ServiceProvider.GetRequiredService<CategoriaView>();
             view.Show();
         }
 
         private void btnCartao_Click(object sender, EventArgs e)
         {
-            var view = NinjectKernel.Resolve<CartaoView>();
+            //var view = NinjectKernel.Resolve<CartaoView>();
             //view.MdiParent = this;
+            
+            var view = Program.GetService<CartaoView>();
             view.Show();
         }
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
-            var view = NinjectKernel.Resolve<RelatoriosView>();
+            //var view = NinjectKernel.Resolve<RelatoriosView>();
             //view.MdiParent = this;
+            var view = Program.GetService<RelatoriosView>();
             view.Show();
         }
 
         private void btnFaturaEmAberto_Click(object sender, EventArgs e)
         {
-            var view = NinjectKernel.Resolve<FaturaEmAbertoView>();
+            //var view = NinjectKernel.Resolve<FaturaEmAbertoView>();
             //view.MdiParent = this;
+            var view = Program.GetService<FaturaEmAbertoView>();
             view.Show();
         }
 
         private void btnPagamentos_Click(object sender, EventArgs e)
         {
-            var view = NinjectKernel.Resolve<PagamentoView>();
+            //var view = NinjectKernel.Resolve<PagamentoView>();
             //view.MdiParent = this;
+            var view = Program.GetService<PagamentoView>();
             view.Show();
         }
     }

@@ -1,15 +1,31 @@
 ﻿using DAL;
 using Dapper;
+using Model.ModuloCartao;
 
 namespace Model.ModuloPagamento
 {
-    public class PagamentoRepository : BaseRepository, IPagamentoRepository
+    public class PagamentoRepository : BaseRepositoryEF<Pagamento>, IPagamentoRepository
     {
-        public PagamentoRepository(Ado ado) : base(ado)
+
+        private readonly AppDbContext _appDbContext;
+        private readonly IAdo _ado;
+
+        public PagamentoRepository(AppDbContext appDbContext, IAdo ado) : base(appDbContext, ado)
         {
+            _ado = ado;
+            _appDbContext = appDbContext;
         }
 
         public List<Pagamento> GetByDate(DateTime dtPeriodo)
+        {
+            var source = _appDbContext.Pagamento.Where
+                (x => x.DataVencimento.Year == dtPeriodo.Year
+                && x.DataVencimento.Month == dtPeriodo.Month
+                ).OrderBy(x => x.DataVencimento);
+            return source.ToList();
+        }
+
+        public List<Pagamento> GetByDate_Dapper(DateTime dtPeriodo)
         {
             string query = @"select 
                                 Id, 
@@ -30,9 +46,13 @@ namespace Model.ModuloPagamento
             return source.ToList();
         }
 
-       
-
         public Pagamento GetById(int id)
+        {
+            var source = base.GetById(id);
+            return source;
+        }
+
+        public Pagamento GetById_Dapper(int id)
         {
             string query = @"select 
 	                            Id, NrIdentificador, Descricao, Valor, DataVencimento, Situacao 
@@ -48,6 +68,12 @@ namespace Model.ModuloPagamento
 
         public decimal GetTotalByDate(DateTime dtPeriodo)
         {
+            var source = GetByDate(dtPeriodo);
+            return source.Sum(x => x.Valor);
+        }
+
+        public decimal GetTotalByDate_Dapper(DateTime dtPeriodo)
+        {
             string query = @"select 
                                 isnull(sum(Valor),0) as Total 
                              from Pagamento 
@@ -62,6 +88,11 @@ namespace Model.ModuloPagamento
         }
 
         public int Insert(Pagamento pagamento)
+        {
+            return base.Insert(pagamento);
+        }
+
+        public int Insert_Dapper(Pagamento pagamento)
         {
             string query = @"insert into Pagamento 
                              (NrIdentificador, Descricao, Valor, DataVencimento, Situacao) 
@@ -81,6 +112,11 @@ namespace Model.ModuloPagamento
         }
 
         public int Update(Pagamento pagamento)
+        {
+            return base.Update(pagamento);
+        }
+
+        public int Update_Dapper(Pagamento pagamento)
         {
             string query = @"update Pagamento set
                              NrIdentificador = @NrIdentificador,
@@ -105,6 +141,12 @@ namespace Model.ModuloPagamento
         }
 
         public int DeleteById(int id)
+        {
+            var objDelete = GetById(id);
+            return base.Delete(objDelete);
+        }
+
+        public int DeleteById_Dapper(int id)
         {
             string query = "delete from Pagamento where Id = @Id";
 

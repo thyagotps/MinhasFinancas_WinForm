@@ -38,7 +38,7 @@ namespace View.ModuloMovimentoFinanceiro
             AplicarEventos(txtValor);
             setLabelsMessageErrorsVisible();
 
-            if (Id != -1)
+            if (Estado == Estado.Update)
             {
                 var objDto = _movimentoFinanceiroController.GetById(Id);
                 popularComponentesFormulario(objDto);
@@ -47,10 +47,12 @@ namespace View.ModuloMovimentoFinanceiro
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (Id == -1)
+            if (Estado == Estado.Insert)
                 novo();
-            else
+            else if (Estado == Estado.Update)
                 editar();
+            else 
+                return;
         }
 
         private void cboTipoMovimento_SelectedIndexChanged(object sender, EventArgs e)

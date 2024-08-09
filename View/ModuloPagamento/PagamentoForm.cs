@@ -27,7 +27,7 @@ namespace View.ModuloPagamento
             setDataVencimento();
             popularListaSituacao();
 
-            if (Id != -1)
+            if (Estado == Estado.Update)
             {
                 var contaPagar = _pagamentoController.GetById(Id);
                 popularComponentesFormulario(contaPagar);

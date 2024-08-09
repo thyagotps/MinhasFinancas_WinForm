@@ -9,9 +9,17 @@ using System.Threading.Tasks;
 
 namespace View
 {
+    public enum Estado
+    {
+        Insert = 0,
+        Update = 1,
+        Delete = 2,
+    }
+
     public class BaseView : Form
     {
         public int Id {  get; set; }
+        public Estado Estado { get; set; }
 
         public void SetIdGrid(DataGridView grid, int rowIndex)
         {

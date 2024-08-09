@@ -1,5 +1,7 @@
 ﻿using Base.Ninject;
 using Controller.ModuloCategoria;
+using Microsoft.Extensions.DependencyInjection;
+using View.ModuloMovimentoFinanceiro;
 
 namespace View.ModuloCategoria
 {
@@ -54,16 +56,20 @@ namespace View.ModuloCategoria
 
         private void novo()
         {
-            var form = NinjectKernel.Resolve<CategoriaForm>();
-            form.Id = -1;
+            // var form = NinjectKernel.Resolve<CategoriaForm>();
+            //form.Id = -1;
+            var form = Program.ServiceProvider.GetRequiredService<CategoriaForm>();
+            form.Id = 0;
+            form.Estado = Estado.Insert;
             form.ShowDialog();
             buscar();
         }
 
         private void editar()
         {
-            var form = NinjectKernel.Resolve<CategoriaForm>();
+            var form = Program.ServiceProvider.GetRequiredService<CategoriaForm>();
             form.Id = Id;
+            form.Estado = Estado.Update;
             form.ShowDialog();
             buscar();
         }

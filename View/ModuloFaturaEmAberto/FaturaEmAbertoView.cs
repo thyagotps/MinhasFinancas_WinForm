@@ -1,6 +1,8 @@
 ﻿using Base.Ninject;
 using Controller.ModuloFaturaEmAberto;
+using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
+using View.ModuloMovimentoFinanceiro;
 
 namespace View.ModuloFaturaEmAberto
 {
@@ -87,16 +89,21 @@ namespace View.ModuloFaturaEmAberto
 
         private void novo()
         {
-            var form = NinjectKernel.Resolve<FaturaEmAbertoForm>();
-            form.Id = -1;
+            //var form = NinjectKernel.Resolve<FaturaEmAbertoForm>();
+            //form.Id = -1;
+            var form = Program.ServiceProvider.GetRequiredService<FaturaEmAbertoForm>();
+            form.Id = 0;
+            form.Estado = Estado.Insert;
             form.ShowDialog();
             buscar();
         }
 
         private void editar()
         {
-            var form = NinjectKernel.Resolve<FaturaEmAbertoForm>();
+            //var form = NinjectKernel.Resolve<FaturaEmAbertoForm>();
+            var form = Program.ServiceProvider.GetRequiredService<FaturaEmAbertoForm>();
             form.Id = Id;
+            form.Estado = Estado.Update;
             form.ShowDialog();
             buscar();
         }

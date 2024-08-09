@@ -56,6 +56,9 @@ namespace Controller.ModuloMovimentoFinanceiro
         public bool Insert(MovimentoFinanceiroDto movimentoFinanceiro)
         {
             var source = _mapper.Map<MovimentoFinanceiro>(movimentoFinanceiro);
+            source.Categoria = null;
+            source.Cartao = null;
+            source.Id = 0;
             var result = _movimentoFinanceiroRepository.Insert(source);
             return result > 0 ? true : false;
         }
@@ -63,6 +66,8 @@ namespace Controller.ModuloMovimentoFinanceiro
         public bool Update(MovimentoFinanceiroDto movimentoFinanceiro)
         {
             var source = _mapper.Map<MovimentoFinanceiro>(movimentoFinanceiro);
+            source.Categoria = null;
+            source.Cartao = null;
             var result = _movimentoFinanceiroRepository.Update(source);
             return result > 0 ? true : false;
         }

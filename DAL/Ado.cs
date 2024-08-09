@@ -5,16 +5,15 @@ namespace DAL
 {
     public interface IAdo
     {
-
+        IDbConnection Conectar();
     }
 
     public class Ado : IDisposable, IAdo
     {
         public IDbConnection Connection { get; private set; }
 
-        //private string ConnectionString => @"Data Source=THYAGO\SQLEXPRESS; Initial Catalog = DB_FINANCAS_DESV; Integrated Security=true; Trusted_Connection=Yes";
-        //private string ConnectionString => @"Data Source=THYAGO\SQLEXPRESS; Initial Catalog = DB_FINANCAS; Integrated Security=true; Trusted_Connection=Yes";
-        private string ConnectionString => @"Data Source=THYAGO\SQLEXPRESS; Initial Catalog = DB_GERENCIADOR_FINANCEIRO; Integrated Security=true; Trusted_Connection=Yes";
+        private string ConnectionString => @"Data Source=THYAGO\SQLEXPRESS; Initial Catalog = DB_GERENCIADOR_FINANCEIRO_DESV; Integrated Security=true; Trusted_Connection=Yes";
+        //private string ConnectionString => @"Data Source=THYAGO\SQLEXPRESS; Initial Catalog = DB_GERENCIADOR_FINANCEIRO; Integrated Security=true; Trusted_Connection=Yes";
 
         public Ado()
         {

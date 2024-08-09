@@ -1,15 +1,5 @@
-﻿using Base.Ninject;
-using Controller.ModuloCartao;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using View.ModuloCategoria;
+﻿using Controller.ModuloCartao;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace View.ModuloCartao
 {
@@ -63,16 +53,20 @@ namespace View.ModuloCartao
 
         private void novo()
         {
-            var form = NinjectKernel.Resolve<CartaoForm>();
+            //var form = NinjectKernel.Resolve<CartaoForm>();
+            var form = Program.ServiceProvider.GetRequiredService<CartaoForm>();
             form.Id = -1;
+            form.Estado = Estado.Insert;
             form.ShowDialog();
             buscar();
         }
 
         private void editar()
         {
-            var form = NinjectKernel.Resolve<CartaoForm>();
+            //var form = NinjectKernel.Resolve<CartaoForm>();
+            var form = Program.ServiceProvider.GetRequiredService<CartaoForm>();
             form.Id = Id;
+            form.Estado = Estado.Update;
             form.ShowDialog();
             buscar();
         }

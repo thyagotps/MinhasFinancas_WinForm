@@ -24,7 +24,7 @@ namespace View.ModuloFaturaEmAberto
         {
             setDataCompra();
 
-            if (Id != -1)
+            if (Estado == Estado.Update)
             {
                 var contaPagar = _controller.GetById(Id);
                 popularComponentesFormulario(contaPagar);

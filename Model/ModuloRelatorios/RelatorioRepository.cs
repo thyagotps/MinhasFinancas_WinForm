@@ -1,14 +1,19 @@
 ﻿using DAL;
 using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace Model.ModuloRelatorios;
 
-public class RelatorioRepository : BaseRepository, IRelatorioRepository
+public class RelatorioRepository : BaseRepositoryEF<Relatorio>, IRelatorioRepository
 {
+    private readonly AppDbContext _appDbContext;
+    private readonly IAdo _ado;
 
-    public RelatorioRepository(Ado ado) : base(ado)
+    public RelatorioRepository(AppDbContext appDbContext, IAdo ado) : base(appDbContext, ado)
     {
-            
+        _ado = ado;
+        _appDbContext = appDbContext;
     }
 
 
@@ -34,21 +39,34 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return relatorios;
     }
 
-    
-
-    public List<ReportMensal> GetRendasMensais(DateTime periodo)
+    public List<ReportMensal> GetRendasMensais_Dapper(DateTime periodo)
     {
         string procName = @"PROC_RELATORIO_RENDAS_MENSAIS";
 
         var filtros = new DynamicParameters();
         filtros.Add("pPeriodo", periodo);
 
-        var source = base.ExecutarProcedure<ReportMensal>(procName,filtros).ToList();
+        var source = base.ExecutarProcedure<ReportMensal>(procName, filtros).ToList();
 
         return source;
     }
 
-    public List<ReportAnual> GetRendasAnuais(DateTime periodo)
+    public List<ReportMensal> GetRendasMensais(DateTime periodo)
+    {
+        var param = new SqlParameter()
+        {
+            ParameterName = "@pPeriodo",
+            SqlDbType = System.Data.SqlDbType.DateTime,
+            Direction = System.Data.ParameterDirection.Input,
+            Value = periodo
+        };
+
+        var source = _appDbContext.ReportMensal.FromSqlRaw("PROC_RELATORIO_RENDAS_MENSAIS @pPeriodo", param).ToList();
+
+        return source;
+    }
+
+    public List<ReportAnual> GetRendasAnuais_Dapper(DateTime periodo)
     {
         string procName = @"PROC_RELATORIO_RENDAS_ANUAIS";
 
@@ -60,7 +78,22 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportMensal> GetDespesasMensaisCategoria(DateTime periodo)
+    public List<ReportAnual> GetRendasAnuais(DateTime periodo)
+    {
+        var param = new SqlParameter()
+        {
+            ParameterName = "@pPeriodo",
+            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = System.Data.ParameterDirection.Input,
+            Value = periodo.Year
+        };
+
+        var source = _appDbContext.ReportAnual.FromSqlRaw("PROC_RELATORIO_RENDAS_ANUAIS @pPeriodo", param).ToList();
+
+        return source;
+    }
+
+    public List<ReportMensal> GetDespesasMensaisCategoria_Dapper(DateTime periodo)
     {
         string procName = @"PROC_RELATORIO_DESPESAS_MENSAIS_CATEGORIA";
 
@@ -72,7 +105,22 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportAnual> GetDespesasAnualCategoria(DateTime periodo)
+    public List<ReportMensal> GetDespesasMensaisCategoria(DateTime periodo)
+    {
+        var param = new SqlParameter()
+        {
+            ParameterName = "@pPeriodo",
+            SqlDbType = System.Data.SqlDbType.DateTime,
+            Direction = System.Data.ParameterDirection.Input,
+            Value = periodo
+        };
+
+        var source = _appDbContext.ReportMensal.FromSqlRaw("PROC_RELATORIO_DESPESAS_MENSAIS_CATEGORIA @pPeriodo", param).ToList();
+
+        return source;
+    }
+
+    public List<ReportAnual> GetDespesasAnualCategoria_Dapper(DateTime periodo)
     {
         string procName = @"PROC_RELATORIO_DESPESAS_ANUAIS_CATEGORIA";
 
@@ -84,7 +132,22 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportMensal> GetDespesasMensaisCartao(DateTime periodo)
+    public List<ReportAnual> GetDespesasAnualCategoria(DateTime periodo)
+    {
+        var param = new SqlParameter()
+        {
+            ParameterName = "@pPeriodo",
+            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = System.Data.ParameterDirection.Input,
+            Value = periodo.Year
+        };
+
+        var source = _appDbContext.ReportAnual.FromSqlRaw("PROC_RELATORIO_DESPESAS_ANUAIS_CATEGORIA @pPeriodo", param).ToList();
+
+        return source;
+    }
+
+    public List<ReportMensal> GetDespesasMensaisCartao_Dapper(DateTime periodo)
     {
         string procName = @"PROC_RELATORIO_DESPESAS_MENSAIS_CARTAO";
 
@@ -96,7 +159,22 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportAnual> GetDespesasAnualCartao(DateTime periodo)
+    public List<ReportMensal> GetDespesasMensaisCartao(DateTime periodo)
+    {
+        var param = new SqlParameter()
+        {
+            ParameterName = "@pPeriodo",
+            SqlDbType = System.Data.SqlDbType.DateTime,
+            Direction = System.Data.ParameterDirection.Input,
+            Value = periodo
+        };
+
+        var source = _appDbContext.ReportMensal.FromSqlRaw("PROC_RELATORIO_DESPESAS_MENSAIS_CARTAO @pPeriodo", param).ToList();
+
+        return source;
+    }
+
+    public List<ReportAnual> GetDespesasAnualCartao_Dapper(DateTime periodo)
     {
         string procName = @"PROC_RELATORIO_DESPESAS_ANUAIS_CARTAO";
 
@@ -108,7 +186,22 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
         return source;
     }
 
-    public List<ReportBalancete> GetBalancete(DateTime periodo)
+    public List<ReportAnual> GetDespesasAnualCartao(DateTime periodo)
+    {
+        var param = new SqlParameter()
+        {
+            ParameterName = "@pPeriodo",
+            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = System.Data.ParameterDirection.Input,
+            Value = periodo.Year
+        };
+
+        var source = _appDbContext.ReportAnual.FromSqlRaw("PROC_RELATORIO_DESPESAS_ANUAIS_CARTAO @pPeriodo", param).ToList();
+
+        return source;
+    }
+
+    public List<ReportBalancete> GetBalancete_Dapper(DateTime periodo)
     {
         string procName = @"PROC_RELATORIO_BALANCETE";
 
@@ -119,4 +212,21 @@ public class RelatorioRepository : BaseRepository, IRelatorioRepository
 
         return source;
     }
+
+    public List<ReportBalancete> GetBalancete(DateTime periodo)
+    {
+        var param = new SqlParameter()
+        {
+            ParameterName = "@pPeriodo",
+            SqlDbType = System.Data.SqlDbType.DateTime,
+            Direction = System.Data.ParameterDirection.Input,
+            Value = periodo
+        };
+
+        var source = _appDbContext.ReportBalancete.FromSqlRaw("PROC_RELATORIO_BALANCETE @pPeriodo", param).ToList();
+
+        return source;
+    }
+
+
 }

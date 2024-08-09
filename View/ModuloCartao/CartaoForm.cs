@@ -28,7 +28,8 @@ namespace View.ModuloCartao
 
         private void CartaoForm_Load(object sender, EventArgs e)
         {
-            if (Id != -1)
+            //if (Id != -1)
+            if (Estado == Estado.Update)
             {
                 var objectDto = _cartaoController.GetById(Id);
                 popularComponentesFormulario(objectDto);
@@ -38,10 +39,13 @@ namespace View.ModuloCartao
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (Id == -1)
+            //if (Id == -1)
+            if (Estado == Estado.Insert)
                 novo();
-            else
+            else if (Estado == Estado.Update)
                 editar();
+            else
+                return;
         }
 
         private void novo()
@@ -65,7 +69,7 @@ namespace View.ModuloCartao
         private CartaoDto popularCartaoDto()
         {
             CartaoDto cartaoDto = new CartaoDto();
-            cartaoDto.Id = Id;
+            cartaoDto.Id = Estado == Estado.Insert ? 0 : Id;
             cartaoDto.Descricao = txtDescricao.Text;
             cartaoDto.Tipo = cboTipo.Text;
             return cartaoDto;

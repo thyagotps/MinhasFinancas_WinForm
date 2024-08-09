@@ -3,13 +3,24 @@ using Dapper;
 
 namespace Model.ModuloFaturaEmAberto
 {
-    public class FaturaEmAbertoRepository : BaseRepository, IFaturaEmAbertoRepository
+    public class FaturaEmAbertoRepository : BaseRepositoryEF<FaturaEmAberto>, IFaturaEmAbertoRepository
     {
-        public FaturaEmAbertoRepository(Ado ado) : base(ado)
+        private readonly AppDbContext _appDbContext;
+        private readonly IAdo _ado;
+
+        public FaturaEmAbertoRepository(AppDbContext appDbContext, IAdo ado) : base(appDbContext, ado)
         {
+            _ado = ado;
+            _appDbContext = appDbContext;
         }
 
         public List<FaturaEmAberto> GetAll()
+        {
+            var source = base.GetAll();
+            return source.ToList();
+        }
+
+        public List<FaturaEmAberto> GetAll_Dapper()
         {
             string query = @"select Id,Descricao,Valor,DataCompra from FaturaEmAberto order by DataCompra desc;";
             var source = base.ExecutarQuery<FaturaEmAberto>(query, null);
@@ -17,6 +28,12 @@ namespace Model.ModuloFaturaEmAberto
         }
 
         public FaturaEmAberto GetById(int id)
+        {
+            var source = base.GetById(id);
+            return source;
+        }
+
+        public FaturaEmAberto GetById_Dapper(int id)
         {
             string query = @"select 
 	                            Id,Descricao,Valor,DataCompra
@@ -33,12 +50,23 @@ namespace Model.ModuloFaturaEmAberto
 
         public decimal GetTotal()
         {
+            var source = GetAll();
+            return source.Sum(x => x.Valor);
+        }
+
+        public decimal GetTotal_Dapper()
+        {
             string query = @"select isnull(sum(Valor),0) as Total from FaturaEmAberto;";
             var total = base.ExecutarQueryFirstOrDefault<decimal>(query: query, listaParametros: null);
             return total;
         }
 
         public int Insert(FaturaEmAberto faturaEmAberto)
+        {
+            return base.Insert(faturaEmAberto);
+        }
+
+        public int Insert_Dapper(FaturaEmAberto faturaEmAberto)
         {
             string query = @"insert into FaturaEmAberto (Descricao,Valor,DataCompra) 
                              values (@Descricao,@Valor,@DataCompra);";
@@ -52,8 +80,12 @@ namespace Model.ModuloFaturaEmAberto
 
             return result;
         }
-
         public int Update(FaturaEmAberto faturaEmAberto)
+        {
+            return base.Update(faturaEmAberto);
+        }
+
+        public int Update_Dapper(FaturaEmAberto faturaEmAberto)
         {
             string query = @"update FaturaEmAberto set
                              Descricao = @Descricao,
@@ -74,6 +106,12 @@ namespace Model.ModuloFaturaEmAberto
         }
 
         public int DeleteById(int id)
+        {
+            var objDelete = GetById(id);
+            return base.Delete(objDelete);
+        }
+
+        public int DeleteById_Dapper(int id)
         {
             string query = "delete from FaturaEmAberto where Id = @Id";
 

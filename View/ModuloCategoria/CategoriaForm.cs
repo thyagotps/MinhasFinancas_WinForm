@@ -17,7 +17,7 @@ namespace View.ModuloCategoria
 
         private void CategoriaForm_Load(object sender, EventArgs e)
         {
-            if (Id != -1)
+            if (Estado == Estado.Update)
             {
                 var categoriaDto = _categoriaController.GetById(Id);
                 popularComponentesFormulario(categoriaDto);
@@ -28,10 +28,12 @@ namespace View.ModuloCategoria
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (Id == -1)
+            if (Estado == Estado.Insert)
                 novo();
-            else
+            else if (Estado == Estado.Update)
                 editar();
+            else
+                return;
         }
 
         private void novo()
