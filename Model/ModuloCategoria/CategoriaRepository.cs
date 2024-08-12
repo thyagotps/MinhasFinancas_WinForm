@@ -16,7 +16,7 @@ namespace Model.ModuloCategoria
 
         public List<Categoria> GetAll()
         {
-            var source = base.GetAll();
+            var source = base.GetAll().OrderBy(x => x.Tipo).ThenBy(x => x.Descricao);
             return source.ToList();
         }
 

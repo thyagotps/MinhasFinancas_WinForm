@@ -21,7 +21,7 @@ namespace Model.ModuloPagamento
             var source = _appDbContext.Pagamento.Where
                 (x => x.DataVencimento.Year == dtPeriodo.Year
                 && x.DataVencimento.Month == dtPeriodo.Month
-                ).OrderBy(x => x.DataVencimento);
+                ).OrderBy(x => x.NrIdentificador);
             return source.ToList();
         }
 

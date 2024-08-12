@@ -16,7 +16,7 @@ namespace Model.ModuloCartao
 
         public List<Cartao> GetAll()
         {
-            var source = base.GetAll();
+            var source = base.GetAll().OrderBy(x => x.Descricao);
             return source.ToList();
         }
 

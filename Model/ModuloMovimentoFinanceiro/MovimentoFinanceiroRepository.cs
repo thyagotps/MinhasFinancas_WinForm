@@ -93,8 +93,9 @@ namespace Model.ModuloMovimentoFinanceiro
             var source = _appDbContext.MovimentoFinanceiro
                 .Include(x => x.Cartao)
                 .Include(x => x.Categoria)
-                .Where(x => x.DataMovimento.Year == year 
-                       && x.DataMovimento.Month == month);
+                .Where(x => x.DataMovimento.Year == year
+                       && x.DataMovimento.Month == month)
+                .OrderByDescending(x => x.DataMovimento);
 
             return source.ToList();
         }

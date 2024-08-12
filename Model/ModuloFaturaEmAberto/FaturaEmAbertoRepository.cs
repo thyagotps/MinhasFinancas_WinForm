@@ -16,7 +16,7 @@ namespace Model.ModuloFaturaEmAberto
 
         public List<FaturaEmAberto> GetAll()
         {
-            var source = base.GetAll();
+            var source = base.GetAll().OrderByDescending(x => x.DataCompra);
             return source.ToList();
         }
 

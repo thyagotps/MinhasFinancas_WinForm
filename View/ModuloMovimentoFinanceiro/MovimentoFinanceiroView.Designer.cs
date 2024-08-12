@@ -102,7 +102,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label12.ForeColor = Color.Gainsboro;
             label12.Location = new Point(844, 53);
             label12.Name = "label12";
@@ -125,7 +125,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label11.ForeColor = Color.Gainsboro;
             label11.Location = new Point(748, 53);
             label11.Name = "label11";
@@ -148,7 +148,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label10.ForeColor = Color.Gainsboro;
             label10.Location = new Point(926, 53);
             label10.Name = "label10";
@@ -160,7 +160,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label9.ForeColor = Color.Gainsboro;
             label9.Location = new Point(694, 53);
             label9.Name = "label9";
@@ -172,7 +172,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label8.ForeColor = Color.Gainsboro;
             label8.Location = new Point(612, 53);
             label8.Name = "label8";
@@ -184,7 +184,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label7.ForeColor = Color.Gainsboro;
             label7.Location = new Point(129, 53);
             label7.Name = "label7";
@@ -196,7 +196,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label6.ForeColor = Color.Gainsboro;
             label6.Location = new Point(525, 53);
             label6.Name = "label6";
@@ -208,7 +208,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label5.ForeColor = Color.Gainsboro;
             label5.Location = new Point(447, 53);
             label5.Name = "label5";
@@ -242,7 +242,7 @@
             // lblTotalSaldo
             // 
             lblTotalSaldo.AutoSize = true;
-            lblTotalSaldo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTotalSaldo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblTotalSaldo.ForeColor = Color.White;
             lblTotalSaldo.Location = new Point(369, 33);
             lblTotalSaldo.Name = "lblTotalSaldo";
@@ -254,7 +254,7 @@
             // lblTotalDespesa
             // 
             lblTotalDespesa.AutoSize = true;
-            lblTotalDespesa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTotalDespesa.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblTotalDespesa.ForeColor = Color.White;
             lblTotalDespesa.Location = new Point(271, 33);
             lblTotalDespesa.Name = "lblTotalDespesa";
@@ -266,7 +266,7 @@
             // lblTotalRenda
             // 
             lblTotalRenda.AutoSize = true;
-            lblTotalRenda.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTotalRenda.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblTotalRenda.ForeColor = Color.White;
             lblTotalRenda.Location = new Point(188, 33);
             lblTotalRenda.Name = "lblTotalRenda";
@@ -311,7 +311,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label4.ForeColor = Color.White;
             label4.Location = new Point(369, 10);
             label4.Name = "label4";
@@ -323,7 +323,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label3.ForeColor = Color.White;
             label3.Location = new Point(271, 10);
             label3.Name = "label3";
@@ -335,7 +335,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label2.ForeColor = Color.White;
             label2.Location = new Point(188, 10);
             label2.Name = "label2";
@@ -354,7 +354,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label1.ForeColor = Color.White;
             label1.Location = new Point(12, 10);
             label1.Name = "label1";
@@ -394,7 +394,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MovimentoFinanceiroView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gerenciador Financeiro";
+            Text = "Gerenciador Financeiro - Versão 4.1";
             WindowState = FormWindowState.Maximized;
             Load += MovimentoFinanceiroView_Load;
             panel1.ResumeLayout(false);
