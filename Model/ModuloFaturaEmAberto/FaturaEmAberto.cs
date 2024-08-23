@@ -6,17 +6,17 @@ namespace Model.ModuloFaturaEmAberto
     [Table("FaturaEmAberto")]
     public class FaturaEmAberto
     {
-        [Key]
-        [Column("Id")]
+        //[Key]
+        //[Column("Id")]
         public int Id { get; set; }
 
-        [StringLength(100)]
+        //[StringLength(100)]
         public string Descricao { get; set; }
 
-        [Column(TypeName = "decimal(19, 2)")]
+        //[Column(TypeName = "decimal(19, 2)")]
         public decimal Valor { get; set; }
 
-        [Column(TypeName = "datetime")]
+        //[Column(TypeName = "datetime")]
         public DateTime DataCompra { get; set; }
     }
 }

@@ -6,23 +6,23 @@ namespace Model.ModuloPagamento
     [Table("Pagamento")]
     public class Pagamento
     {
-        [Key]
-        [Column("Id")]
+        //[Key]
+        //[Column("Id")]
         public int Id { get; set; }
 
-        [Column(TypeName = "int")]
+        //[Column(TypeName = "int")]
         public int NrIdentificador { get; set; }
 
-        [StringLength(100)]
+        //[StringLength(100)]
         public string? Descricao { get; set; }
 
-        [Column(TypeName = "decimal(19,2)")]
+        //[Column(TypeName = "decimal(19,2)")]
         public decimal Valor { get; set; }
 
-        [Column(TypeName = "datetime")]
+        //[Column(TypeName = "datetime")]
         public DateTime DataVencimento { get; set; }
 
-        [StringLength(1)]
+        //[StringLength(1)]
         public string? Situacao { get; set; }
     }
 }

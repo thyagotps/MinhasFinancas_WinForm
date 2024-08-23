@@ -4,18 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.ModuloCategoria
 {
-    [Table("Categoria")]
+    //[Table("Categoria")]
     public class Categoria
     {
-        [Key]
-        [Column("Id")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[Key]
+        //[Column("Id")]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [StringLength(100)]
+        //[StringLength(100)]
         public string? Descricao { get; set; }
 
-        [StringLength(100)]
+        //[StringLength(100)]
         public string? Tipo { get; set; }
 
         public ICollection<MovimentoFinanceiro> MovimentoFinanceiros { get; set; }

@@ -28,37 +28,49 @@ namespace Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cartao>(entity =>
-            {
-                entity.HasKey(prop => prop.Id);
-                entity.Property(p => p.Id).UseIdentityColumn();
-                entity.HasMany(prop => prop.MovimentoFinanceiros);
-            });
+            modelBuilder.ApplyConfiguration(new CartaoMap());
+            //modelBuilder.Entity<Cartao>(entity =>
+            //{
+            //    entity.HasKey(prop => prop.Id);
+            //    entity.Property(p => p.Id).UseIdentityColumn();
+            //    entity.HasMany(prop => prop.MovimentoFinanceiros);
+            //});
 
-            modelBuilder.Entity<Categoria>(entity =>
-            {
-                entity.HasKey(prop => prop.Id);
-                entity.Property(p => p.Id).UseIdentityColumn();
-                entity.HasMany(prop => prop.MovimentoFinanceiros);
-            });
+            modelBuilder.ApplyConfiguration(new CategoriaMap());
+            //modelBuilder.Entity<Categoria>(entity =>
+            //{
+            //    entity.HasKey(prop => prop.Id);
+            //    entity.Property(p => p.Id).UseIdentityColumn();
+            //    entity.HasMany(prop => prop.MovimentoFinanceiros);
+            //});
 
-            modelBuilder.Entity<MovimentoFinanceiro>(entity =>
-            {
-                entity.HasKey(prop => prop.Id);
-                entity.Property(p => p.Id).UseIdentityColumn();
+            modelBuilder.ApplyConfiguration(new MovimentoFinanceiroMap());
+            //modelBuilder.Entity<MovimentoFinanceiro>(entity =>
+            //{
+            //    entity.HasKey(prop => prop.Id);
+            //    entity.Property(p => p.Id).UseIdentityColumn();
 
-                entity.HasOne(prop => prop.Cartao)
-                .WithMany(p => p.MovimentoFinanceiros)
-                .HasForeignKey(p => p.IdCartao);
+            //    entity.HasOne(prop => prop.Cartao)
+            //    .WithMany(p => p.MovimentoFinanceiros)
+            //    .HasForeignKey(p => p.IdCartao);
 
-                entity.HasOne(prop => prop.Categoria)
-                .WithMany(p => p.MovimentoFinanceiros)
-                .HasForeignKey(p => p.IdCategoria);
-            });
+            //    entity.HasOne(prop => prop.Categoria)
+            //    .WithMany(p => p.MovimentoFinanceiros)
+            //    .HasForeignKey(p => p.IdCategoria);
+            //});
 
-            modelBuilder.Entity<ReportMensal>().HasNoKey();
-            modelBuilder.Entity<ReportAnual>().HasNoKey();
-            modelBuilder.Entity<ReportBalancete>().HasNoKey();
+            modelBuilder.ApplyConfiguration(new FaturaEmAbertoMap());
+
+            modelBuilder.ApplyConfiguration(new PagamentoMap());
+
+            modelBuilder.ApplyConfiguration(new ReportMensalMap());
+            //modelBuilder.Entity<ReportMensal>().HasNoKey();
+
+            modelBuilder.ApplyConfiguration(new ReportAnualMap());
+            //modelBuilder.Entity<ReportAnual>().HasNoKey();
+
+            modelBuilder.ApplyConfiguration(new ReportBalanceteMap());
+            //modelBuilder.Entity<ReportBalancete>().HasNoKey();
         }
     }
 }

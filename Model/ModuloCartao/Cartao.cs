@@ -4,18 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.ModuloCartao
 {
-    [Table("Cartao")]
+    //[Table("Cartao")]
     public class Cartao
     {
-        [Key]
-        [Column("Id")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[Key]
+        //[Column("Id")]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         
-        [StringLength(100)]
+        //[StringLength(100)]
         public string? Descricao { get; set; }
 
-        [StringLength(50)]
+        //[StringLength(50)]
         public string? Tipo { get; set; }
 
         public ICollection<MovimentoFinanceiro> MovimentoFinanceiros { get; set; }
