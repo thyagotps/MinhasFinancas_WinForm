@@ -1,19 +1,18 @@
 ﻿using AutoMapper;
-using Controller.ModuloMovimentoFinanceiro;
+using Controller.ModuloContaPadrao;
 using Model.ModuloContaPadrao;
-using Model.ModuloMovimentoFinanceiro;
 
 namespace Controller.Profiles
 {
-    public class MovimentoFinanceiroProfile : Profile
+    public class ContaPadraoProfile : Profile
     {
         
-        public MovimentoFinanceiroProfile()
+        public ContaPadraoProfile()
         {
 
-            CreateMap<MovimentoFinanceiro, MovimentoFinanceiroDto>().ReverseMap();
+            CreateMap<ContaPadrao, ContaPadraoDto>().ReverseMap();
 
-            CreateMap<MovimentoFinanceiro, MovimentoFinanceiroDto>()
+            CreateMap<ContaPadrao, ContaPadraoDto>()
                 .ForMember(dto => dto.CategoriaDisplayMember, mov => mov.MapFrom(src => src.Categoria.DisplayMember))
                 .ForMember(dto => dto.CartaoDisplayMember, mov => mov.MapFrom(src => src.Cartao.DisplayMember))
                 .ForMember(dto => dto.CategoriaDescricao, mov => mov.MapFrom(src => src.Categoria.Descricao))
@@ -21,8 +20,6 @@ namespace Controller.Profiles
                 .ForMember(dto => dto.IdCartao, mov => mov.MapFrom(src => src.Cartao.Id))
                 .ForMember(dto => dto.IdCategoria, mov => mov.MapFrom(src => src.Categoria.Id))
                 .ReverseMap();
-
-            CreateMap<ContaPadrao, MovimentoFinanceiroDto>().ReverseMap();
         }
     }
 }

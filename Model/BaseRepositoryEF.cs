@@ -73,7 +73,7 @@ namespace Model
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual T GetById(int id)
+        public virtual T GetById(int? id)
         {
             return _dbSet.Find(id);
         }

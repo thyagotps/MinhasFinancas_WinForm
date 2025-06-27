@@ -31,30 +31,34 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovimentoFinanceiroView));
             panel1 = new Panel();
+            panel3 = new Panel();
+            btnCategoria = new Button();
+            btnCartao = new Button();
             label12 = new Label();
-            btnPagamentos = new Button();
+            btnRelatorio = new Button();
+            btnGerenciarContasPadrao = new Button();
+            label8 = new Label();
             label11 = new Label();
+            label9 = new Label();
             btnFaturaEmAberto = new Button();
             label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            btnBuscar = new Button();
+            panel2 = new Panel();
+            btnNovoMovimentoFinanceiro = new Button();
             btnDeletarMovimentoFinanceiro = new Button();
+            label13 = new Label();
+            label5 = new Label();
+            btnCriarContasPagarAuto = new Button();
+            label6 = new Label();
+            label7 = new Label();
+            btnBuscar = new Button();
             lblTotalSaldo = new Label();
             lblTotalDespesa = new Label();
             lblTotalRenda = new Label();
-            btnRelatorio = new Button();
-            btnCartao = new Button();
-            btnCategoria = new Button();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             dtpDataMovimentoFiltro = new DateTimePicker();
             label1 = new Label();
-            btnNovoMovimentoFinanceiro = new Button();
             dgvMovimentoFinanceiro = new DataGridView();
             toolTip1 = new ToolTip(components);
             toolTipDelete = new ToolTip(components);
@@ -62,83 +66,150 @@
             toolTipCategoria = new ToolTip(components);
             toolTipCartao = new ToolTip(components);
             toolTipRelatorio = new ToolTip(components);
+            toolTipContasPadrao = new ToolTip(components);
+            toolTipGerenciarContasPadrao = new ToolTip(components);
             panel1.SuspendLayout();
+            panel3.SuspendLayout();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMovimentoFinanceiro).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(43, 76, 126);
-            panel1.Controls.Add(label12);
-            panel1.Controls.Add(btnPagamentos);
-            panel1.Controls.Add(label11);
-            panel1.Controls.Add(btnFaturaEmAberto);
-            panel1.Controls.Add(label10);
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label8);
+            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(panel2);
             panel1.Controls.Add(label7);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label5);
             panel1.Controls.Add(btnBuscar);
-            panel1.Controls.Add(btnDeletarMovimentoFinanceiro);
             panel1.Controls.Add(lblTotalSaldo);
             panel1.Controls.Add(lblTotalDespesa);
             panel1.Controls.Add(lblTotalRenda);
-            panel1.Controls.Add(btnRelatorio);
-            panel1.Controls.Add(btnCartao);
-            panel1.Controls.Add(btnCategoria);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(dtpDataMovimentoFiltro);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(btnNovoMovimentoFinanceiro);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1051, 82);
+            panel1.Size = new Size(1051, 105);
             panel1.TabIndex = 11;
+            // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Controls.Add(btnCategoria);
+            panel3.Controls.Add(btnCartao);
+            panel3.Controls.Add(label12);
+            panel3.Controls.Add(btnRelatorio);
+            panel3.Controls.Add(btnGerenciarContasPadrao);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(label11);
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(btnFaturaEmAberto);
+            panel3.Controls.Add(label10);
+            panel3.Location = new Point(678, 10);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(347, 85);
+            panel3.TabIndex = 27;
+            // 
+            // btnCategoria
+            // 
+            btnCategoria.Cursor = Cursors.Hand;
+            btnCategoria.Image = Properties.Resources.Cateoria;
+            btnCategoria.Location = new Point(7, 13);
+            btnCategoria.Name = "btnCategoria";
+            btnCategoria.Size = new Size(50, 40);
+            btnCategoria.TabIndex = 6;
+            btnCategoria.UseVisualStyleBackColor = true;
+            btnCategoria.Click += btnCategoria_Click;
+            // 
+            // btnCartao
+            // 
+            btnCartao.Cursor = Cursors.Hand;
+            btnCartao.Image = Properties.Resources.Cartao;
+            btnCartao.Location = new Point(71, 13);
+            btnCartao.Name = "btnCartao";
+            btnCartao.Size = new Size(50, 40);
+            btnCartao.TabIndex = 7;
+            btnCartao.UseVisualStyleBackColor = true;
+            btnCartao.Click += btnCartao_Click;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label12.ForeColor = Color.Gainsboro;
-            label12.Location = new Point(844, 53);
+            label12.Location = new Point(287, 58);
             label12.Name = "label12";
-            label12.Size = new Size(61, 12);
+            label12.Size = new Size(49, 12);
             label12.TabIndex = 23;
-            label12.Text = "Pagamentos";
+            label12.Text = "Gerenciar";
             label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // btnPagamentos
+            // btnRelatorio
             // 
-            btnPagamentos.Cursor = Cursors.Hand;
-            btnPagamentos.Image = Properties.Resources.Grafico;
-            btnPagamentos.Location = new Point(849, 10);
-            btnPagamentos.Name = "btnPagamentos";
-            btnPagamentos.Size = new Size(50, 40);
-            btnPagamentos.TabIndex = 22;
-            btnPagamentos.UseVisualStyleBackColor = true;
-            btnPagamentos.Click += btnPagamentos_Click;
+            btnRelatorio.Cursor = Cursors.Hand;
+            btnRelatorio.Image = Properties.Resources.Grafico;
+            btnRelatorio.Location = new Point(219, 13);
+            btnRelatorio.Name = "btnRelatorio";
+            btnRelatorio.Size = new Size(50, 40);
+            btnRelatorio.TabIndex = 8;
+            btnRelatorio.UseVisualStyleBackColor = true;
+            btnRelatorio.Click += btnRelatorio_Click;
+            // 
+            // btnGerenciarContasPadrao
+            // 
+            btnGerenciarContasPadrao.Cursor = Cursors.Hand;
+            btnGerenciarContasPadrao.Image = Properties.Resources.ContasPadrao;
+            btnGerenciarContasPadrao.Location = new Point(287, 13);
+            btnGerenciarContasPadrao.Name = "btnGerenciarContasPadrao";
+            btnGerenciarContasPadrao.Size = new Size(50, 40);
+            btnGerenciarContasPadrao.TabIndex = 22;
+            btnGerenciarContasPadrao.UseVisualStyleBackColor = true;
+            btnGerenciarContasPadrao.Click += btnPagamentos_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
+            label8.ForeColor = Color.Gainsboro;
+            label8.Location = new Point(7, 58);
+            label8.Name = "label8";
+            label8.Size = new Size(49, 12);
+            label8.TabIndex = 17;
+            label8.Text = "Categoria";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label11.ForeColor = Color.Gainsboro;
-            label11.Location = new Point(748, 53);
+            label11.Location = new Point(126, 58);
             label11.Name = "label11";
             label11.Size = new Size(86, 12);
             label11.TabIndex = 21;
             label11.Text = "Fatura Em Aberto";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
+            label9.ForeColor = Color.Gainsboro;
+            label9.Location = new Point(77, 58);
+            label9.Name = "label9";
+            label9.Size = new Size(35, 12);
+            label9.TabIndex = 18;
+            label9.Text = "Cartão";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // btnFaturaEmAberto
             // 
             btnFaturaEmAberto.Cursor = Cursors.Hand;
             btnFaturaEmAberto.Image = Properties.Resources.Grafico;
-            btnFaturaEmAberto.Location = new Point(767, 10);
+            btnFaturaEmAberto.Location = new Point(142, 13);
             btnFaturaEmAberto.Name = "btnFaturaEmAberto";
             btnFaturaEmAberto.Size = new Size(50, 40);
             btnFaturaEmAberto.TabIndex = 20;
@@ -150,36 +221,95 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
             label10.ForeColor = Color.Gainsboro;
-            label10.Location = new Point(926, 53);
+            label10.Location = new Point(219, 58);
             label10.Name = "label10";
             label10.Size = new Size(52, 12);
             label10.TabIndex = 19;
             label10.Text = "Relatórios";
             label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label9
+            // panel2
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
-            label9.ForeColor = Color.Gainsboro;
-            label9.Location = new Point(694, 53);
-            label9.Name = "label9";
-            label9.Size = new Size(35, 12);
-            label9.TabIndex = 18;
-            label9.Text = "Cartão";
-            label9.TextAlign = ContentAlignment.MiddleCenter;
+            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(btnNovoMovimentoFinanceiro);
+            panel2.Controls.Add(btnDeletarMovimentoFinanceiro);
+            panel2.Controls.Add(label13);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(btnCriarContasPagarAuto);
+            panel2.Controls.Add(label6);
+            panel2.Location = new Point(430, 10);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(242, 85);
+            panel2.TabIndex = 26;
             // 
-            // label8
+            // btnNovoMovimentoFinanceiro
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
-            label8.ForeColor = Color.Gainsboro;
-            label8.Location = new Point(612, 53);
-            label8.Name = "label8";
-            label8.Size = new Size(49, 12);
-            label8.TabIndex = 17;
-            label8.Text = "Categoria";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
+            btnNovoMovimentoFinanceiro.Cursor = Cursors.Hand;
+            btnNovoMovimentoFinanceiro.Image = Properties.Resources.Novo2;
+            btnNovoMovimentoFinanceiro.Location = new Point(18, 11);
+            btnNovoMovimentoFinanceiro.Name = "btnNovoMovimentoFinanceiro";
+            btnNovoMovimentoFinanceiro.Size = new Size(50, 40);
+            btnNovoMovimentoFinanceiro.TabIndex = 0;
+            btnNovoMovimentoFinanceiro.UseVisualStyleBackColor = true;
+            btnNovoMovimentoFinanceiro.Click += btnNovoMovimentoFinanceiro_Click;
+            // 
+            // btnDeletarMovimentoFinanceiro
+            // 
+            btnDeletarMovimentoFinanceiro.Cursor = Cursors.Hand;
+            btnDeletarMovimentoFinanceiro.Image = Properties.Resources.Excluir2;
+            btnDeletarMovimentoFinanceiro.Location = new Point(96, 11);
+            btnDeletarMovimentoFinanceiro.Name = "btnDeletarMovimentoFinanceiro";
+            btnDeletarMovimentoFinanceiro.Size = new Size(50, 40);
+            btnDeletarMovimentoFinanceiro.TabIndex = 12;
+            btnDeletarMovimentoFinanceiro.UseVisualStyleBackColor = true;
+            btnDeletarMovimentoFinanceiro.Click += btnDeletarMovimentoFinanceiro_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
+            label13.ForeColor = Color.Gainsboro;
+            label13.Location = new Point(162, 57);
+            label13.Name = "label13";
+            label13.Size = new Size(71, 12);
+            label13.TabIndex = 25;
+            label13.Text = "Contas Padrão";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
+            label5.ForeColor = Color.Gainsboro;
+            label5.Location = new Point(6, 51);
+            label5.Name = "label5";
+            label5.Size = new Size(74, 24);
+            label5.TabIndex = 14;
+            label5.Text = "Inserir\r\nRenda/Despesa";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnCriarContasPagarAuto
+            // 
+            btnCriarContasPagarAuto.Cursor = Cursors.Hand;
+            btnCriarContasPagarAuto.Image = Properties.Resources.ContasPadrao;
+            btnCriarContasPagarAuto.Location = new Point(169, 11);
+            btnCriarContasPagarAuto.Name = "btnCriarContasPagarAuto";
+            btnCriarContasPagarAuto.Size = new Size(50, 40);
+            btnCriarContasPagarAuto.TabIndex = 24;
+            btnCriarContasPagarAuto.UseVisualStyleBackColor = true;
+            btnCriarContasPagarAuto.Click += btnCriarContasPagarAuto_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
+            label6.ForeColor = Color.Gainsboro;
+            label6.Location = new Point(86, 51);
+            label6.Name = "label6";
+            label6.Size = new Size(74, 24);
+            label6.TabIndex = 15;
+            label6.Text = "Deletar \nRenda/Despesa";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -193,30 +323,6 @@
             label7.Text = "Buscar";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
-            label6.ForeColor = Color.Gainsboro;
-            label6.Location = new Point(525, 53);
-            label6.Name = "label6";
-            label6.Size = new Size(74, 24);
-            label6.TabIndex = 15;
-            label6.Text = "Deletar \nRenda/Despesa";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 7F, FontStyle.Bold);
-            label5.ForeColor = Color.Gainsboro;
-            label5.Location = new Point(447, 53);
-            label5.Name = "label5";
-            label5.Size = new Size(74, 24);
-            label5.TabIndex = 14;
-            label5.Text = "Inserir\r\nRenda/Despesa";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // btnBuscar
             // 
             btnBuscar.Cursor = Cursors.Hand;
@@ -227,17 +333,6 @@
             btnBuscar.TabIndex = 13;
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
-            // 
-            // btnDeletarMovimentoFinanceiro
-            // 
-            btnDeletarMovimentoFinanceiro.Cursor = Cursors.Hand;
-            btnDeletarMovimentoFinanceiro.Image = Properties.Resources.Excluir2;
-            btnDeletarMovimentoFinanceiro.Location = new Point(536, 10);
-            btnDeletarMovimentoFinanceiro.Name = "btnDeletarMovimentoFinanceiro";
-            btnDeletarMovimentoFinanceiro.Size = new Size(50, 40);
-            btnDeletarMovimentoFinanceiro.TabIndex = 12;
-            btnDeletarMovimentoFinanceiro.UseVisualStyleBackColor = true;
-            btnDeletarMovimentoFinanceiro.Click += btnDeletarMovimentoFinanceiro_Click;
             // 
             // lblTotalSaldo
             // 
@@ -274,39 +369,6 @@
             lblTotalRenda.TabIndex = 9;
             lblTotalRenda.Text = "Renda";
             lblTotalRenda.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // btnRelatorio
-            // 
-            btnRelatorio.Cursor = Cursors.Hand;
-            btnRelatorio.Image = Properties.Resources.Grafico;
-            btnRelatorio.Location = new Point(925, 10);
-            btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(50, 40);
-            btnRelatorio.TabIndex = 8;
-            btnRelatorio.UseVisualStyleBackColor = true;
-            btnRelatorio.Click += btnRelatorio_Click;
-            // 
-            // btnCartao
-            // 
-            btnCartao.Cursor = Cursors.Hand;
-            btnCartao.Image = Properties.Resources.Cartao;
-            btnCartao.Location = new Point(688, 10);
-            btnCartao.Name = "btnCartao";
-            btnCartao.Size = new Size(50, 40);
-            btnCartao.TabIndex = 7;
-            btnCartao.UseVisualStyleBackColor = true;
-            btnCartao.Click += btnCartao_Click;
-            // 
-            // btnCategoria
-            // 
-            btnCategoria.Cursor = Cursors.Hand;
-            btnCategoria.Image = Properties.Resources.Cateoria;
-            btnCategoria.Location = new Point(612, 10);
-            btnCategoria.Name = "btnCategoria";
-            btnCategoria.Size = new Size(50, 40);
-            btnCategoria.TabIndex = 6;
-            btnCategoria.UseVisualStyleBackColor = true;
-            btnCategoria.Click += btnCategoria_Click;
             // 
             // label4
             // 
@@ -362,27 +424,18 @@
             label1.TabIndex = 1;
             label1.Text = "Período";
             // 
-            // btnNovoMovimentoFinanceiro
-            // 
-            btnNovoMovimentoFinanceiro.Cursor = Cursors.Hand;
-            btnNovoMovimentoFinanceiro.Image = Properties.Resources.Novo2;
-            btnNovoMovimentoFinanceiro.Location = new Point(459, 10);
-            btnNovoMovimentoFinanceiro.Name = "btnNovoMovimentoFinanceiro";
-            btnNovoMovimentoFinanceiro.Size = new Size(50, 40);
-            btnNovoMovimentoFinanceiro.TabIndex = 0;
-            btnNovoMovimentoFinanceiro.UseVisualStyleBackColor = true;
-            btnNovoMovimentoFinanceiro.Click += btnNovoMovimentoFinanceiro_Click;
-            // 
             // dgvMovimentoFinanceiro
             // 
             dgvMovimentoFinanceiro.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMovimentoFinanceiro.Dock = DockStyle.Fill;
-            dgvMovimentoFinanceiro.Location = new Point(0, 82);
+            dgvMovimentoFinanceiro.Location = new Point(0, 105);
             dgvMovimentoFinanceiro.Name = "dgvMovimentoFinanceiro";
-            dgvMovimentoFinanceiro.Size = new Size(1051, 368);
+            dgvMovimentoFinanceiro.Size = new Size(1051, 345);
             dgvMovimentoFinanceiro.TabIndex = 12;
             dgvMovimentoFinanceiro.CellClick += dgvMovimentoFinanceiro_CellClick;
+            dgvMovimentoFinanceiro.CellFormatting += dgvMovimentoFinanceiro_CellFormatting;
             dgvMovimentoFinanceiro.CellMouseDoubleClick += dgvMovimentoFinanceiro_CellMouseDoubleClick;
+            dgvMovimentoFinanceiro.CellPainting += dgvMovimentoFinanceiro_CellPainting;
             // 
             // MovimentoFinanceiroView
             // 
@@ -399,6 +452,10 @@
             Load += MovimentoFinanceiroView_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMovimentoFinanceiro).EndInit();
             ResumeLayout(false);
         }
@@ -434,8 +491,14 @@
         private Label label10;
         private ToolTip toolTipRelatorio;
         private Label label12;
-        private Button btnPagamentos;
+        private Button btnGerenciarContasPadrao;
         private Label label11;
         private Button btnFaturaEmAberto;
+        private Label label13;
+        private Button btnCriarContasPagarAuto;
+        private ToolTip toolTipContasPadrao;
+        private ToolTip toolTipGerenciarContasPadrao;
+        private Panel panel2;
+        private Panel panel3;
     }
 }

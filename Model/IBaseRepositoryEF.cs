@@ -9,7 +9,7 @@ namespace Model
         int Update(T entity);
         int Delete(T entity);
         IEnumerable<T> GetAll();
-        T GetById(int id);
+        T GetById(int? id);
         //IEnumerable<T> GetWithFilter(
         //    Expression<Func<T, bool>> filter = null,
         //    Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,

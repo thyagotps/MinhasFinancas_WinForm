@@ -5,7 +5,7 @@
         List<Categoria> GetAll();
         List<Categoria> GetAll_Dapper();
 
-        Categoria GetById(int id);
+        Categoria GetById(int? id);
         Categoria GetById_Dapper(int id);
 
         int Insert(Categoria categoria);

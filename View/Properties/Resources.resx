@@ -145,6 +145,9 @@
   <data name="Novo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Novo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Grafico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Grafico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="novo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\novo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,7 +175,7 @@
   <data name="salvar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\salvar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Grafico" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Grafico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ContasPadrao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ContasPadrao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

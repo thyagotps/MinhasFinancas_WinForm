@@ -1,51 +1,52 @@
 ﻿using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
-using Controller.ModuloFaturaEmAberto;
+using Controller.ModuloContaPadrao;
 using Controller.ModuloMovimentoFinanceiro;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace View.ModuloMovimentoFinanceiro
+namespace View.ModuloContaPadrao
 {
-    public partial class MovimentoFinanceiroForm : BaseView
+    public partial class ContaPadraoForm : BaseView
     {
-        private readonly IMovimentoFinanceiroController _movimentoFinanceiroController;
-        private readonly ICategoriaController _categoriaController;
-        private readonly ICartaoController _cartaoController;
-        private readonly IFaturaEmAbertoController _faturaEmAbertoController;
 
-        public MovimentoFinanceiroForm(
-            IMovimentoFinanceiroController movimentoFinanceiroController,
-            ICategoriaController categoriaController,
+        private readonly IContaPadraoController _contaPadraoController;
+        private readonly ICartaoController _cartaoController;
+        private readonly ICategoriaController _categoriaController;
+
+        public ContaPadraoForm(IContaPadraoController contaPadraoController,
             ICartaoController cartaoController,
-            IFaturaEmAbertoController faturaEmAbertoController)
+            ICategoriaController categoriaController)
         {
             InitializeComponent();
-
-            _movimentoFinanceiroController = movimentoFinanceiroController;
-            _categoriaController = categoriaController;
+            _contaPadraoController = contaPadraoController;
             _cartaoController = cartaoController;
-            _faturaEmAbertoController = faturaEmAbertoController;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            _categoriaController = categoriaController;
         }
 
-        private void MovimentoFinanceiroForm_Load(object sender, EventArgs e)
+        private void ContaPadraoForm_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-
             setDataMovimento();
             setDataVencimento();
             popularListaTipoMovimento();
-            //popularListaCategoria();
             popularListaCartao();
-            AplicarEventos(txtValor);
             setLabelsMessageErrorsVisible();
             popularListaSituacao();
-        
 
             if (Estado == Estado.Update)
             {
-                var objDto = _movimentoFinanceiroController.GetById(Id);
-                popularComponentesFormulario(objDto);
+                var contaPadraDto = _contaPadraoController.GetById(Id);
+                popularComponentesFormulario(contaPadraDto);
             }
+            setLabelsMessageErrorsVisible();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -54,7 +55,7 @@ namespace View.ModuloMovimentoFinanceiro
                 novo();
             else if (Estado == Estado.Update)
                 editar();
-            else 
+            else
                 return;
         }
 
@@ -65,46 +66,11 @@ namespace View.ModuloMovimentoFinanceiro
             setDataVencimentoByTipoMovimento(tipoMov);
         }
 
-
-
-
-
-
-        private void setDataMovimento()
-        {
-            dtpDataMovimento.Value = DateTime.Now;
-            dtpDataMovimento.Format = DateTimePickerFormat.Custom;
-            dtpDataMovimento.CustomFormat = "dd/MM/yyyy";
-        }
-
-        private void setDataVencimento()
-        {
-            dtpDataVencimento.Value = DateTime.Now;
-            dtpDataVencimento.Format = DateTimePickerFormat.Custom;
-            dtpDataVencimento.CustomFormat = "dd/MM/yyyy";
-        }
-
-        private void popularListaTipoMovimento()
-        {
-            List<string> lista = new List<string>() { "Renda", "Despesa" };
-            cboTipoMovimento.DataSource = lista;
-        }
-
-        private void popularListaCategoria(string tipoMov)
-        {
-            var source = _categoriaController.GetAll().Where(x => x.Tipo == tipoMov).OrderBy(x => x.Descricao);
-
-            cboCategoria.DataSource = source.ToList();
-            cboCategoria.DisplayMember = "Descricao";
-            cboCategoria.ValueMember = "Id";
-            cboCategoria.SelectedIndex = -1;
-        }
-
         private void setDataVencimentoByTipoMovimento(string tipoMov)
         {
-            if(tipoMov == "Renda")
+            if (tipoMov == "Renda")
             {
-                dtpDataVencimento.Value = new DateTime(1900,1,1);
+                dtpDataVencimento.Value = new DateTime(1900, 1, 1);
                 dtpDataVencimento.Enabled = false;
                 dtpDataVencimento.Format = DateTimePickerFormat.Custom;
                 dtpDataVencimento.CustomFormat = " "; // Define um espaço em branco
@@ -117,70 +83,37 @@ namespace View.ModuloMovimentoFinanceiro
             }
         }
 
-        private void popularListaCartao()
+        private void popularListaCategoria(string tipoMov)
         {
-            var source = _cartaoController.GetAll().OrderBy(x => x.Descricao);
-            cboCartao.DataSource = source.ToList();
-            cboCartao.DisplayMember = "Descricao";
-            cboCartao.ValueMember = "Id";
-            cboCartao.SelectedIndex = -1;
-        }
+            var source = _categoriaController.GetAll().Where(x => x.Tipo == tipoMov).OrderBy(x => x.Descricao);
 
-        private void AplicarEventos(System.Windows.Forms.TextBox txt)
-        {
-            txtValor.KeyPress += ValidaValores;
-        }
-
-        private void popularComponentesFormulario(MovimentoFinanceiroDto objDto)
-        {
-            txtId.Text = objDto.Id.ToString();
-            cboTipoMovimento.SelectedIndex = cboTipoMovimento.FindString(objDto.TipoMovimento);
-            dtpDataMovimento.Value = objDto.DataMovimento;
-            dtpDataVencimento.Value = (DateTime)objDto.DataVencimento;
-            txtDescricao.Text = objDto.Descricao;
-            txtValor.Text = objDto.Valor.ToString();
-            cboCategoria.SelectedIndex = cboCategoria.FindString(objDto.CategoriaDescricao);
-            cboCartao.SelectedIndex = cboCartao.FindString(objDto.CartaoDescricao);
-            
-            if (objDto.Situacao == "S")
-                cboSituacao.SelectedIndex = cboSituacao.FindString("Pago");
-            else if (objDto.Situacao == "N")
-                cboSituacao.SelectedIndex = cboSituacao.FindString("Não Pago");
-            else
-                cboSituacao.SelectedIndex = -1;
-        }
-
-        private void popularListaSituacao()
-        {
-            List<String> listaSituacoes = new List<string>();
-            listaSituacoes.Add("Pago");
-            listaSituacoes.Add("Não Pago");
-            cboSituacao.DataSource = listaSituacoes;
-            cboSituacao.SelectedIndex = -1;
+            cboCategoria.DataSource = source.ToList();
+            cboCategoria.DisplayMember = "Descricao";
+            cboCategoria.ValueMember = "Id";
+            cboCategoria.SelectedIndex = -1;
         }
 
         private void novo()
         {
-            var objDto = PopularMovimentoFinanceiroDto();
+            var objDto = PopularContaPadraoDto();
             if (mensagensErro(objDto)) return;
-            var result = _movimentoFinanceiroController.Insert(objDto);
+            var result = _contaPadraoController.Insert(objDto);
             base.Message(result);
-            inserirEmFaturaAberta(objDto);
             this.Close();
         }
 
         private void editar()
         {
-            var objDto = PopularMovimentoFinanceiroDto();
+            var objDto = PopularContaPadraoDto();
             if (mensagensErro(objDto)) return;
-            var result = _movimentoFinanceiroController.Update(objDto);
+            var result = _contaPadraoController.Update(objDto);
             base.Message(result);
             this.Close();
         }
 
-        private MovimentoFinanceiroDto PopularMovimentoFinanceiroDto()
+        private ContaPadraoDto PopularContaPadraoDto()
         {
-            MovimentoFinanceiroDto mov = new MovimentoFinanceiroDto();
+            ContaPadraoDto mov = new ContaPadraoDto();
             mov.Id = Id;
             mov.TipoMovimento = cboTipoMovimento.SelectedValue?.ToString();
             mov.DataMovimento = dtpDataMovimento.Value;
@@ -197,26 +130,7 @@ namespace View.ModuloMovimentoFinanceiro
             return mov;
         }
 
-        private void inserirEmFaturaAberta(MovimentoFinanceiroDto mov)
-        {
-            var cartao = _cartaoController.GetById(Convert.ToInt16(mov.IdCartao));
-
-            if (cartao.Descricao == "Porto Seguro")
-            {
-                var resp = MessageBox.Show("Deseja lançar movimento em Fatura Em Aberto", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (resp == DialogResult.Yes)
-                {
-                    FaturaEmAbertoDto faturaEmAbertoDto = new FaturaEmAbertoDto();
-                    faturaEmAbertoDto.Descricao = mov.Descricao;
-                    faturaEmAbertoDto.DataCompra = mov.DataMovimento;
-                    faturaEmAbertoDto.Valor = mov.Valor.Value;
-                    _faturaEmAbertoController.Insert(faturaEmAbertoDto);
-                }
-            }
-        }
-
-        private bool mensagensErro(MovimentoFinanceiroDto entradaDto)
+        private bool mensagensErro(ContaPadraoDto entradaDto)
         {
             setLabelsMessageErrorsVisible();
 
@@ -282,6 +196,38 @@ namespace View.ModuloMovimentoFinanceiro
             return errors.Count() > 0 ? true : false;
         }
 
+
+
+
+        private void popularListaTipoMovimento()
+        {
+            List<string> lista = new List<string>() { "Renda", "Despesa" };
+            cboTipoMovimento.DataSource = lista;
+        }
+
+        private void setDataMovimento()
+        {
+            dtpDataMovimento.Value = DateTime.Now;
+            dtpDataMovimento.Format = DateTimePickerFormat.Custom;
+            dtpDataMovimento.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void setDataVencimento()
+        {
+            dtpDataVencimento.Value = DateTime.Now;
+            dtpDataVencimento.Format = DateTimePickerFormat.Custom;
+            dtpDataVencimento.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void popularListaCartao()
+        {
+            var source = _cartaoController.GetAll().OrderBy(x => x.Descricao);
+            cboCartao.DataSource = source.ToList();
+            cboCartao.DisplayMember = "Descricao";
+            cboCartao.ValueMember = "Id";
+            cboCartao.SelectedIndex = -1;
+        }
+
         private void setLabelsMessageErrorsVisible()
         {
             lblErrorTipoMovimento.Visible = false;
@@ -294,6 +240,34 @@ namespace View.ModuloMovimentoFinanceiro
             lblErrorSituacao.Visible = false;
         }
 
+        private void popularListaSituacao()
+        {
+            List<String> listaSituacoes = new List<string>();
+            listaSituacoes.Add("Pago");
+            listaSituacoes.Add("Não Pago");
+            cboSituacao.DataSource = listaSituacoes;
+            cboSituacao.SelectedIndex = -1;
+        }
 
+        private void popularComponentesFormulario(ContaPadraoDto objDto)
+        {
+            txtId.Text = objDto.Id.ToString();
+            cboTipoMovimento.SelectedIndex = cboTipoMovimento.FindString(objDto.TipoMovimento);
+            dtpDataMovimento.Value = objDto.DataMovimento;
+            dtpDataVencimento.Value = (DateTime)objDto.DataVencimento;
+            txtDescricao.Text = objDto.Descricao;
+            txtValor.Text = objDto.Valor.ToString();
+            cboCategoria.SelectedIndex = cboCategoria.FindString(objDto.CategoriaDescricao);
+            cboCartao.SelectedIndex = cboCartao.FindString(objDto.CartaoDescricao);
+
+            if (objDto.Situacao == "S")
+                cboSituacao.SelectedIndex = cboSituacao.FindString("Pago");
+            else if (objDto.Situacao == "N")
+                cboSituacao.SelectedIndex = cboSituacao.FindString("Não Pago");
+            else
+                cboSituacao.SelectedIndex = -1;
+        }
+
+        
     }
 }

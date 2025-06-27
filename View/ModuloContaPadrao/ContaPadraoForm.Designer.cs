@@ -1,6 +1,6 @@
-﻿namespace View.ModuloMovimentoFinanceiro
+﻿namespace View.ModuloContaPadrao
 {
-    partial class MovimentoFinanceiroForm
+    partial class ContaPadraoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovimentoFinanceiroForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContaPadraoForm));
             panel2 = new Panel();
             lblErrorSituacao = new Label();
             cboSituacao = new ComboBox();
@@ -93,8 +93,8 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(279, 464);
-            panel2.TabIndex = 14;
+            panel2.Size = new Size(284, 467);
+            panel2.TabIndex = 16;
             // 
             // lblErrorSituacao
             // 
@@ -341,8 +341,8 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(279, 40);
-            panel1.TabIndex = 13;
+            panel1.Size = new Size(284, 40);
+            panel1.TabIndex = 15;
             // 
             // btnSalvar
             // 
@@ -359,18 +359,18 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // MovimentoFinanceiroForm
+            // ContaPadraoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(279, 504);
+            ClientSize = new Size(284, 507);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
-            Name = "MovimentoFinanceiroForm";
+            Name = "ContaPadraoForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Formulário";
-            Load += MovimentoFinanceiroForm_Load;
+            Load += ContaPadraoForm_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
@@ -380,6 +380,18 @@
         #endregion
 
         private Panel panel2;
+        private Label lblErrorSituacao;
+        private ComboBox cboSituacao;
+        private Label label8;
+        private Label lblErrorDataVencimento;
+        private DateTimePicker dtpDataVencimento;
+        private Label label9;
+        private Label lblErrorCartao;
+        private Label lblErrorCategoria;
+        private Label lblErrorValor;
+        private Label lblErrorDescricao;
+        private Label lblErrorDataMovimento;
+        private Label lblErrorTipoMovimento;
         private ComboBox cboTipoMovimento;
         private Label label7;
         private ComboBox cboCartao;
@@ -396,17 +408,5 @@
         private Label label2;
         private Panel panel1;
         private Button btnSalvar;
-        private Label lblErrorTipoMovimento;
-        private Label lblErrorDataMovimento;
-        private Label lblErrorDescricao;
-        private Label lblErrorValor;
-        private Label lblErrorCategoria;
-        private Label lblErrorCartao;
-        private Label lblErrorDataVencimento;
-        private DateTimePicker dtpDataVencimento;
-        private Label label9;
-        private Label lblErrorSituacao;
-        private ComboBox cboSituacao;
-        private Label label8;
     }
 }

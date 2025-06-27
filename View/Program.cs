@@ -1,5 +1,6 @@
 using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
+using Controller.ModuloContaPadrao;
 using Controller.ModuloFaturaEmAberto;
 using Controller.ModuloMovimentoFinanceiro;
 using Controller.ModuloPagamento;
@@ -11,12 +12,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Model;
 using Model.ModuloCartao;
 using Model.ModuloCategoria;
+using Model.ModuloContaPadrao;
 using Model.ModuloFaturaEmAberto;
 using Model.ModuloMovimentoFinanceiro;
 using Model.ModuloPagamento;
 using Model.ModuloRelatorios;
 using View.ModuloCartao;
 using View.ModuloCategoria;
+using View.ModuloContaPadrao;
 using View.ModuloFaturaEmAberto;
 using View.ModuloMovimentoFinanceiro;
 using View.ModuloPagamento;
@@ -64,6 +67,11 @@ namespace View
             services.AddTransient<IMovimentoFinanceiroRepository, MovimentoFinanceiroRepository>();
             services.AddTransient<MovimentoFinanceiroView>();
             services.AddTransient<MovimentoFinanceiroForm>();
+
+            services.AddTransient<IContaPadraoController, ContaPadraoController>();
+            services.AddTransient<IContaPadraoRepository, ContaPadraoRepository>();
+            services.AddTransient<ContaPadraoView>();
+            services.AddTransient<ContaPadraoForm>();
 
             services.AddTransient<IFaturaEmAbertoController, FaturaEmAbertoController>();
             services.AddTransient<IFaturaEmAbertoRepository, FaturaEmAbertoRepository>();

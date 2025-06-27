@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Model.ModuloMovimentoFinanceiro
+namespace Model.ModuloContaPadrao
 {
-    public class MovimentoFinanceiroMap : IEntityTypeConfiguration<MovimentoFinanceiro>
+    public class ContaPadraoMap : IEntityTypeConfiguration<ContaPadrao>
     {
-        public void Configure(EntityTypeBuilder<MovimentoFinanceiro> builder)
+        public void Configure(EntityTypeBuilder<ContaPadrao> builder)
         {
-            builder.ToTable("MovimentoFinanceiro");
+            builder.ToTable("ContaPadrao");
 
             builder.HasKey(prop => prop.Id);
             builder.Property(prop => prop.Id)
@@ -38,11 +38,11 @@ namespace Model.ModuloMovimentoFinanceiro
                 .HasPrecision(19, 2);
 
             builder.HasOne(prop => prop.Cartao)
-                .WithMany(p => p.MovimentoFinanceiros)
+                .WithMany(p => p.ContasPadrao)
                 .HasForeignKey(p => p.IdCartao);
 
             builder.HasOne(prop => prop.Categoria)
-                .WithMany(p => p.MovimentoFinanceiros)
+                .WithMany(p => p.ContasPadrao)
                 .HasForeignKey(p => p.IdCategoria);
 
             builder.Property(prop => prop.DataVencimento)

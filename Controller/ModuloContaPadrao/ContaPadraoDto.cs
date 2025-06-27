@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Controller.ModuloMovimentoFinanceiro;
+using System.ComponentModel.DataAnnotations;
 
-namespace Controller.ModuloMovimentoFinanceiro
+namespace Controller.ModuloContaPadrao
 {
-    public class MovimentoFinanceiroDto
+    public class ContaPadraoDto
     {
         public int Id { get; set; }
 

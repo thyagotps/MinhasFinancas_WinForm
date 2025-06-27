@@ -5,7 +5,7 @@
         List<Cartao> GetAll();
         List<Cartao> GetAll_Dapper();
 
-        Cartao GetById(int id);
+        Cartao GetById(int? id);
         Cartao GetById_Dapper(int? id);
 
         int Insert(Cartao pagamento);

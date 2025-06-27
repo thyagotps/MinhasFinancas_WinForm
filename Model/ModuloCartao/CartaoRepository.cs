@@ -27,7 +27,7 @@ namespace Model.ModuloCartao
             return source;
         }
 
-        public Cartao GetById(int id)
+        public Cartao GetById(int? id)
         {
             var source = base.GetById(id);
             return source;

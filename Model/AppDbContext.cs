@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model.ModuloCartao;
 using Model.ModuloCategoria;
+using Model.ModuloContaPadrao;
 using Model.ModuloFaturaEmAberto;
 using Model.ModuloMovimentoFinanceiro;
 using Model.ModuloPagamento;
@@ -25,6 +26,7 @@ namespace Model
         public DbSet<ReportMensal> ReportMensal { get; set; }
         public DbSet<ReportAnual> ReportAnual { get; set; }
         public DbSet<ReportBalancete> ReportBalancete { get; set; }
+        public DbSet<ContaPadrao> ContaPadrao { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -71,6 +73,8 @@ namespace Model
 
             modelBuilder.ApplyConfiguration(new ReportBalanceteMap());
             //modelBuilder.Entity<ReportBalancete>().HasNoKey();
+
+            modelBuilder.ApplyConfiguration(new ContaPadraoMap());
         }
     }
 }

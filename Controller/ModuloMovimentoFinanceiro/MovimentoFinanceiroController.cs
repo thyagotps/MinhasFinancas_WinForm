@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using Controller.Profiles;
+using Model.ModuloCartao;
+using Model.ModuloCategoria;
+using Model.ModuloContaPadrao;
 using Model.ModuloMovimentoFinanceiro;
 
 namespace Controller.ModuloMovimentoFinanceiro
@@ -8,8 +11,15 @@ namespace Controller.ModuloMovimentoFinanceiro
     {
         private readonly IMovimentoFinanceiroRepository _movimentoFinanceiroRepository;
         private readonly IMapper _mapper;
+        private readonly ICategoriaRepository _categoriaRepository;
+        private readonly ICartaoRepository _cartaoRepository;
+        private readonly IContaPadraoRepository _contaPadraoRepository;
 
-        public MovimentoFinanceiroController(IMovimentoFinanceiroRepository movimentoFinanceiroRepository)
+        public MovimentoFinanceiroController(
+            IMovimentoFinanceiroRepository movimentoFinanceiroRepository, 
+            ICategoriaRepository categoriaRepository, 
+            ICartaoRepository cartaoRepository, 
+            IContaPadraoRepository contaPadraoRepository)
         {
             _movimentoFinanceiroRepository = movimentoFinanceiroRepository;
 
@@ -18,6 +28,9 @@ namespace Controller.ModuloMovimentoFinanceiro
                 cfg.AddProfile(new MovimentoFinanceiroProfile());
             });
             _mapper = new Mapper(config);
+            _categoriaRepository = categoriaRepository;
+            _cartaoRepository = cartaoRepository;
+            _contaPadraoRepository = contaPadraoRepository;
         }
 
         public List<MovimentoFinanceiroDto> GetAll()
@@ -76,6 +89,18 @@ namespace Controller.ModuloMovimentoFinanceiro
         {
             var result = _movimentoFinanceiroRepository.DeleteById(id);
             return result > 0 ? true : false;
+        }
+
+        public void CriarPagamentosAutomaticos(DateTime periodo)
+        {
+            var source = _contaPadraoRepository.GetAll();
+            foreach (var item in source)
+            {
+                item.DataMovimento = new DateTime(periodo.Year, periodo.Month, 1);
+                item.DataVencimento = new DateTime(periodo.Year, periodo.Month, 1);
+                var mv = _mapper.Map<MovimentoFinanceiroDto>(item);
+                Insert(mv);
+            }
         }
     }
 }

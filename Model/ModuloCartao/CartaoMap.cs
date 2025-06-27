@@ -26,6 +26,8 @@ namespace Model.ModuloCartao
                 .HasMaxLength(50);
 
             builder.HasMany(prop => prop.MovimentoFinanceiros);
+
+            builder.HasMany(prop => prop.ContasPadrao);
         }
     }
 }

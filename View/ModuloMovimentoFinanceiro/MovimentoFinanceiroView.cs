@@ -3,8 +3,10 @@ using Base.Ninject;
 using Controller.ModuloMovimentoFinanceiro;
 using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
+using System.Windows.Forms;
 using View.ModuloCartao;
 using View.ModuloCategoria;
+using View.ModuloContaPadrao;
 using View.ModuloFaturaEmAberto;
 using View.ModuloPagamento;
 using View.ModuloRelatorios;
@@ -38,6 +40,8 @@ namespace View.ModuloMovimentoFinanceiro
             toolTipCategoria.SetToolTip(btnCategoria, "Gerenciar Categorias");
             toolTipCartao.SetToolTip(btnCartao, "Gerenciar Cartão");
             toolTipRelatorio.SetToolTip(btnRelatorio, "Gerar Relatórios");
+            toolTipContasPadrao.SetToolTip(btnCriarContasPagarAuto, "Criar Contas Padrão");
+            toolTipGerenciarContasPadrao.SetToolTip(btnGerenciarContasPadrao, "Gerenciar Contas Padrão");
         }
 
         private void btnNovoMovimentoFinanceiro_Click(object sender, EventArgs e)
@@ -103,7 +107,7 @@ namespace View.ModuloMovimentoFinanceiro
             dgvMovimentoFinanceiro.Columns["Id"].DisplayIndex = 0;
 
             dgvMovimentoFinanceiro.Columns["DataMovimento"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvMovimentoFinanceiro.Columns["DataMovimento"].HeaderText = "Data Saída";
+            dgvMovimentoFinanceiro.Columns["DataMovimento"].HeaderText = "Data Movimento";
             dgvMovimentoFinanceiro.Columns["DataMovimento"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dgvMovimentoFinanceiro.Columns["DataMovimento"].DisplayIndex = 1;
 
@@ -132,13 +136,26 @@ namespace View.ModuloMovimentoFinanceiro
             dgvMovimentoFinanceiro.Columns["CartaoDisplayMember"].HeaderText = "Cartão";
             dgvMovimentoFinanceiro.Columns["CartaoDisplayMember"].DisplayIndex = 6;
 
+            dgvMovimentoFinanceiro.Columns["DataVencimento"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvMovimentoFinanceiro.Columns["DataVencimento"].HeaderText = "Data Vencimento";
+            dgvMovimentoFinanceiro.Columns["DataVencimento"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgvMovimentoFinanceiro.Columns["DataVencimento"].DisplayIndex = 7;
+
+            dgvMovimentoFinanceiro.Columns["Situacao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvMovimentoFinanceiro.Columns["Situacao"].HeaderText = "Pago";
+            dgvMovimentoFinanceiro.Columns["Situacao"].DisplayIndex = 8;
+
             dgvMovimentoFinanceiro.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dgvMovimentoFinanceiro.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
             dgvMovimentoFinanceiro.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
-            dgvMovimentoFinanceiro.RowsDefaultCellStyle.SelectionBackColor = Color.NavajoWhite;
-            dgvMovimentoFinanceiro.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            //dgvMovimentoFinanceiro.RowsDefaultCellStyle.SelectionBackColor = Color.NavajoWhite;
+            //dgvMovimentoFinanceiro.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // Remove a cor na seleção da linha
+            dgvMovimentoFinanceiro.DefaultCellStyle.SelectionBackColor = dgvMovimentoFinanceiro.DefaultCellStyle.BackColor;
+            dgvMovimentoFinanceiro.DefaultCellStyle.SelectionForeColor = dgvMovimentoFinanceiro.DefaultCellStyle.ForeColor;
         }
 
         private void getTotalRenda(int year, int month)
@@ -203,7 +220,7 @@ namespace View.ModuloMovimentoFinanceiro
         {
             //var view = NinjectKernel.Resolve<CartaoView>();
             //view.MdiParent = this;
-            
+
             var view = Program.GetService<CartaoView>();
             view.Show();
         }
@@ -228,8 +245,72 @@ namespace View.ModuloMovimentoFinanceiro
         {
             //var view = NinjectKernel.Resolve<PagamentoView>();
             //view.MdiParent = this;
-            var view = Program.GetService<PagamentoView>();
+            //var view = Program.GetService<PagamentoView>();
+            //view.Show();
+
+            var view = Program.GetService<ContaPadraoView>();
             view.Show();
         }
+
+        private void dgvMovimentoFinanceiro_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRow r = dgvMovimentoFinanceiro.Rows[e.RowIndex];
+
+            if (r.Cells["Situacao"].Value == null) return;
+
+            if (r.Cells["Situacao"].Value.ToString() == "S")
+                r.Cells["Situacao"].Style.BackColor = Color.LightGreen;
+            else
+                r.Cells["Situacao"].Style.BackColor = Color.AliceBlue;
+        }
+
+        private void btnCriarContasPagarAuto_Click(object sender, EventArgs e)
+        {
+            var resp = MessageBox.Show("Deseja criar contas à pagar padrão?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resp == DialogResult.Yes)
+            {
+                _movimentoFinanceiroController.CriarPagamentosAutomaticos(dtpDataMovimentoFiltro.Value);
+                buscar();
+            }
+        }
+
+        private void dgvMovimentoFinanceiro_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 12) // substitua por sua lógica
+            {
+                e.Handled = true; // Impede o desenho padrão
+
+                // Fundo personalizado mesmo em seleção
+                var isSelected = dgvMovimentoFinanceiro.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected;
+                var backgroundColor = isSelected
+                    ? e.CellStyle.BackColor // mantém a cor original mesmo selecionada
+                    : e.CellStyle.BackColor;
+
+                using (SolidBrush brush = new SolidBrush(backgroundColor))
+                {
+                    e.Graphics.FillRectangle(brush, e.CellBounds);
+                }
+
+              
+
+                // Conteúdo com estilo próprio (exemplo: texto em negrito e azul)
+                TextRenderer.DrawText(
+                    e.Graphics,
+                    e.FormattedValue?.ToString() ?? "",
+                    new Font(e.CellStyle.Font, FontStyle.Regular),
+                    e.CellBounds,
+                    Color.Black,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+                );
+
+                // Borda opcional
+                using (Pen borderPen = new Pen(Color.DarkGray, 0))
+                {
+                    e.Graphics.DrawRectangle(borderPen, e.CellBounds);
+                }
+            }
+        }
+
+        
     }
 }
