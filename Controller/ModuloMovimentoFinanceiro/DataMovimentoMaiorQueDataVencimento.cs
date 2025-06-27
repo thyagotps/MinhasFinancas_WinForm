@@ -26,7 +26,7 @@ namespace Controller.ModuloMovimentoFinanceiro
 
             if (dataVencimento.HasValue
                 && dataMovimento.HasValue
-                && dataMovimento.Value >= dataVencimento.Value)
+                && dataMovimento.Value > dataVencimento.Value)
             {
                 IEnumerable<string> members = new List<string> { "DataVencimento" };
                 return new ValidationResult($"Menor que movimento!", members);

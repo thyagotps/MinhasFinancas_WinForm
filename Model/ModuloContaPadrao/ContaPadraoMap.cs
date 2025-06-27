@@ -23,7 +23,7 @@ namespace Model.ModuloContaPadrao
             builder.Property(prop => prop.DataMovimento)
                 .IsRequired()
                 .HasColumnName("DataMovimento")
-                .HasColumnType("datetime");
+                .HasColumnType("date");
 
             builder.Property(prop => prop.Descricao)
                 .IsRequired()
@@ -47,7 +47,7 @@ namespace Model.ModuloContaPadrao
 
             builder.Property(prop => prop.DataVencimento)
                 .HasColumnName("DataVencimento")
-                .HasColumnType("datetime");
+                .HasColumnType("date");
 
             builder.Property(prop => prop.Situacao)
                 .HasColumnName("Situacao")
