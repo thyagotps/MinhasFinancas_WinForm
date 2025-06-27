@@ -108,7 +108,7 @@
             panel3.Controls.Add(label9);
             panel3.Controls.Add(btnFaturaEmAberto);
             panel3.Controls.Add(label10);
-            panel3.Location = new Point(678, 10);
+            panel3.Location = new Point(697, 10);
             panel3.Name = "panel3";
             panel3.Size = new Size(347, 85);
             panel3.TabIndex = 27;
@@ -237,7 +237,7 @@
             panel2.Controls.Add(label5);
             panel2.Controls.Add(btnCriarContasPagarAuto);
             panel2.Controls.Add(label6);
-            panel2.Location = new Point(430, 10);
+            panel2.Location = new Point(448, 10);
             panel2.Name = "panel2";
             panel2.Size = new Size(242, 85);
             panel2.TabIndex = 26;
@@ -339,7 +339,7 @@
             lblTotalSaldo.AutoSize = true;
             lblTotalSaldo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblTotalSaldo.ForeColor = Color.White;
-            lblTotalSaldo.Location = new Point(369, 33);
+            lblTotalSaldo.Location = new Point(354, 33);
             lblTotalSaldo.Name = "lblTotalSaldo";
             lblTotalSaldo.Size = new Size(37, 15);
             lblTotalSaldo.TabIndex = 11;
@@ -375,7 +375,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(369, 10);
+            label4.Location = new Point(354, 10);
             label4.Name = "label4";
             label4.Size = new Size(37, 15);
             label4.TabIndex = 5;
