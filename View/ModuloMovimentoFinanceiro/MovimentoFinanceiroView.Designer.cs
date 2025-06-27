@@ -447,7 +447,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MovimentoFinanceiroView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gerenciador Financeiro - Versão 4.1";
+            Text = "Gerenciador Financeiro - Versão 4.2";
             WindowState = FormWindowState.Maximized;
             Load += MovimentoFinanceiroView_Load;
             panel1.ResumeLayout(false);
