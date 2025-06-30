@@ -3,6 +3,7 @@
     public interface IContaPadraoRepository
     {
         List<ContaPadrao> GetAll();
+        public List<ContaPadrao> GetAllWithIncludes();
         ContaPadrao GetById(int id);
         int Insert(ContaPadrao contaPadrao);
         int Update(ContaPadrao contaPadrao);

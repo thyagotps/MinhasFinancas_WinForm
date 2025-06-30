@@ -26,6 +26,16 @@ namespace Model.ModuloContaPadrao
             return source.ToList();
         }
 
+        public List<ContaPadrao> GetAllWithIncludes()
+        {
+            var source = _appDbContext.ContaPadrao
+                .Include(x => x.Cartao)
+                .Include(x => x.Categoria)
+                .OrderByDescending(x => x.DataMovimento);
+
+            return source.ToList();
+        }
+
         ContaPadrao IContaPadraoRepository.GetById(int id)
         {
             var source = _appDbContext.ContaPadrao

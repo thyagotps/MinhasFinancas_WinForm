@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Controller.ModuloMovimentoFinanceiro;
 using Controller.Profiles;
 using Model.ModuloCartao;
 using Model.ModuloCategoria;
@@ -31,7 +32,7 @@ namespace Controller.ModuloContaPadrao
 
         public List<ContaPadraoDto> GetAll()
         {
-            var source = _contaPadraoRepository.GetAll();
+            var source = _contaPadraoRepository.GetAllWithIncludes();
             var objDtos = _mapper.Map<IEnumerable<ContaPadraoDto>>(source).ToList();
             return objDtos;
         }
