@@ -13,5 +13,7 @@ namespace Controller.ModuloCartao
         [Required(ErrorMessage = "O tipo é obrigatório!", AllowEmptyStrings = false)]
         [Display(Name = "Tipo")]
         public string? Tipo { get; set; }
+
+        public decimal ValorSaldo { get; set; }
     }
 }

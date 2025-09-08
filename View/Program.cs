@@ -1,3 +1,5 @@
+using Application.Interfaces;
+using Application.Services;
 using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
 using Controller.ModuloContaPadrao;
@@ -42,10 +44,10 @@ namespace View
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
 
-            Application.ThreadException += new ThreadExceptionEventHandler(MyCommonExceptionHandlingMethod);
+            System.Windows.Forms.Application.ThreadException += new ThreadExceptionEventHandler(MyCommonExceptionHandlingMethod);
             ConfigureServices();
             ApplicationConfiguration.Initialize();
-            Application.Run(ServiceProvider.GetRequiredService<MovimentoFinanceiroView>());
+            System.Windows.Forms.Application.Run(ServiceProvider.GetRequiredService<MovimentoFinanceiroView>());
 
         }
 
@@ -92,8 +94,17 @@ namespace View
             services.AddTransient<IRelatorioRepository, RelatorioRepository>();
             services.AddTransient<RelatoriosView>();
 
+            var myHandlers = AppDomain.CurrentDomain.Load("Application");
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(myHandlers));
+
+
+            services.AddScoped<ICartaoService, CartaoService>();
+
 
             services.AddTransient<DbContext, AppDbContext>();
+
+            
+
 
 
             var config = GetConfigurationBuilder();

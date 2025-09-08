@@ -24,6 +24,7 @@ namespace View.ModuloCartao
             _cartaoController = cartaoController;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             popularListaTipo();
+            AplicarEventos(txtValorSaldo);
         }
 
         private void CartaoForm_Load(object sender, EventArgs e)
@@ -35,6 +36,11 @@ namespace View.ModuloCartao
                 popularComponentesFormulario(objectDto);
             }
             setLabelsMessageErrorsVisible();
+        }
+
+        private void AplicarEventos(System.Windows.Forms.TextBox txt)
+        {
+            txtValorSaldo.KeyPress += ValidaValores;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -72,6 +78,7 @@ namespace View.ModuloCartao
             cartaoDto.Id = Estado == Estado.Insert ? 0 : Id;
             cartaoDto.Descricao = txtDescricao.Text;
             cartaoDto.Tipo = cboTipo.Text;
+            cartaoDto.ValorSaldo = Convert.ToDecimal(txtValorSaldo.Text);
             return cartaoDto;
         }
 
@@ -79,6 +86,7 @@ namespace View.ModuloCartao
         {
             txtId.Text = cartaoDto.Id.ToString();
             txtDescricao.Text = cartaoDto.Descricao;
+            txtValorSaldo.Text = cartaoDto.ValorSaldo.ToString();
             cboTipo.SelectedIndex = string.IsNullOrEmpty(cartaoDto.Tipo) ? -1 : cboTipo.FindString(cartaoDto.Tipo);
         }
 

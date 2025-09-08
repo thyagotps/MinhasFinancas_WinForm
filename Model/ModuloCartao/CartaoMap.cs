@@ -25,6 +25,11 @@ namespace Model.ModuloCartao
                 .HasColumnType("varchar")
                 .HasMaxLength(50);
 
+            builder.Property(prop => prop.ValorSaldo)
+                .HasColumnName("ValorSaldo")
+                .HasColumnType("decimal")
+                .HasPrecision(19, 2);
+
             builder.HasMany(prop => prop.MovimentoFinanceiros);
 
             builder.HasMany(prop => prop.ContasPadrao);

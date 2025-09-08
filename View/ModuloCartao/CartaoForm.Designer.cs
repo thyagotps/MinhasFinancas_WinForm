@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CartaoForm));
             panel2 = new Panel();
+            lblErrorTipo = new Label();
+            lblErrorDescricao = new Label();
             cboTipo = new ComboBox();
             label3 = new Label();
             label1 = new Label();
@@ -38,14 +40,16 @@
             txtDescricao = new TextBox();
             panel1 = new Panel();
             btnSalvar = new Button();
-            lblErrorDescricao = new Label();
-            lblErrorTipo = new Label();
+            txtValorSaldo = new TextBox();
+            label4 = new Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
             // 
+            panel2.Controls.Add(txtValorSaldo);
+            panel2.Controls.Add(label4);
             panel2.Controls.Add(lblErrorTipo);
             panel2.Controls.Add(lblErrorDescricao);
             panel2.Controls.Add(cboTipo);
@@ -57,8 +61,30 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(268, 184);
+            panel2.Size = new Size(271, 235);
             panel2.TabIndex = 11;
+            // 
+            // lblErrorTipo
+            // 
+            lblErrorTipo.AutoSize = true;
+            lblErrorTipo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblErrorTipo.ForeColor = Color.Red;
+            lblErrorTipo.Location = new Point(51, 115);
+            lblErrorTipo.Name = "lblErrorTipo";
+            lblErrorTipo.Size = new Size(36, 15);
+            lblErrorTipo.TabIndex = 22;
+            lblErrorTipo.Text = "error";
+            // 
+            // lblErrorDescricao
+            // 
+            lblErrorDescricao.AutoSize = true;
+            lblErrorDescricao.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblErrorDescricao.ForeColor = Color.Red;
+            lblErrorDescricao.Location = new Point(79, 62);
+            lblErrorDescricao.Name = "lblErrorDescricao";
+            lblErrorDescricao.Size = new Size(36, 15);
+            lblErrorDescricao.TabIndex = 21;
+            lblErrorDescricao.Text = "error";
             // 
             // cboTipo
             // 
@@ -73,7 +99,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(12, 115);
             label3.Name = "label3";
-            label3.Size = new Size(33, 15);
+            label3.Size = new Size(34, 15);
             label3.TabIndex = 6;
             label3.Text = "Tipo:";
             // 
@@ -117,13 +143,13 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(268, 40);
+            panel1.Size = new Size(271, 40);
             panel1.TabIndex = 10;
             // 
             // btnSalvar
             // 
             btnSalvar.Cursor = Cursors.Hand;
-            btnSalvar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSalvar.Font = new Font("Segoe UI", 9F);
             btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
             btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
             btnSalvar.Location = new Point(6, 7);
@@ -135,33 +161,27 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // lblErrorDescricao
+            // txtValorSaldo
             // 
-            lblErrorDescricao.AutoSize = true;
-            lblErrorDescricao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblErrorDescricao.ForeColor = Color.Red;
-            lblErrorDescricao.Location = new Point(79, 62);
-            lblErrorDescricao.Name = "lblErrorDescricao";
-            lblErrorDescricao.Size = new Size(36, 15);
-            lblErrorDescricao.TabIndex = 21;
-            lblErrorDescricao.Text = "error";
+            txtValorSaldo.Location = new Point(12, 190);
+            txtValorSaldo.Name = "txtValorSaldo";
+            txtValorSaldo.Size = new Size(244, 23);
+            txtValorSaldo.TabIndex = 24;
             // 
-            // lblErrorTipo
+            // label4
             // 
-            lblErrorTipo.AutoSize = true;
-            lblErrorTipo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblErrorTipo.ForeColor = Color.Red;
-            lblErrorTipo.Location = new Point(51, 115);
-            lblErrorTipo.Name = "lblErrorTipo";
-            lblErrorTipo.Size = new Size(36, 15);
-            lblErrorTipo.TabIndex = 22;
-            lblErrorTipo.Text = "error";
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 172);
+            label4.Name = "label4";
+            label4.Size = new Size(68, 15);
+            label4.TabIndex = 23;
+            label4.Text = "Valor Saldo:";
             // 
             // CartaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(268, 224);
+            ClientSize = new Size(271, 275);
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
@@ -188,5 +208,7 @@
         private Label label3;
         private Label lblErrorTipo;
         private Label lblErrorDescricao;
+        private TextBox txtValorSaldo;
+        private Label label4;
     }
 }

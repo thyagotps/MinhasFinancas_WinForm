@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.Interfaces;
+using AutoMapper;
 using Controller.Profiles;
 using Model.ModuloCartao;
 using Model.ModuloCategoria;
@@ -14,12 +15,14 @@ namespace Controller.ModuloMovimentoFinanceiro
         private readonly ICategoriaRepository _categoriaRepository;
         private readonly ICartaoRepository _cartaoRepository;
         private readonly IContaPadraoRepository _contaPadraoRepository;
+        private readonly ICartaoService _cartaoService;
 
         public MovimentoFinanceiroController(
             IMovimentoFinanceiroRepository movimentoFinanceiroRepository, 
             ICategoriaRepository categoriaRepository, 
             ICartaoRepository cartaoRepository, 
-            IContaPadraoRepository contaPadraoRepository)
+            IContaPadraoRepository contaPadraoRepository,
+            ICartaoService cartaoService)
         {
             _movimentoFinanceiroRepository = movimentoFinanceiroRepository;
 
@@ -31,6 +34,7 @@ namespace Controller.ModuloMovimentoFinanceiro
             _categoriaRepository = categoriaRepository;
             _cartaoRepository = cartaoRepository;
             _contaPadraoRepository = contaPadraoRepository;
+            _cartaoService = cartaoService;
         }
 
         public List<MovimentoFinanceiroDto> GetAll()
@@ -72,6 +76,7 @@ namespace Controller.ModuloMovimentoFinanceiro
             source.Categoria = null;
             source.Cartao = null;
             source.Id = 0;
+            var resultUpdateSaldoCartao = UpdateSaldoCartao("Insert", movimentoFinanceiro.Id, movimentoFinanceiro.IdCartao, movimentoFinanceiro.Valor, movimentoFinanceiro.TipoMovimento);
             var result = _movimentoFinanceiroRepository.Insert(source);
             return result > 0 ? true : false;
         }
@@ -81,12 +86,17 @@ namespace Controller.ModuloMovimentoFinanceiro
             var source = _mapper.Map<MovimentoFinanceiro>(movimentoFinanceiro);
             source.Categoria = null;
             source.Cartao = null;
+
+            var resultUpdateSaldoCartao = UpdateSaldoCartao("Update", movimentoFinanceiro.Id, movimentoFinanceiro.IdCartao, movimentoFinanceiro.Valor, movimentoFinanceiro.TipoMovimento);
             var result = _movimentoFinanceiroRepository.Update(source);
+
             return result > 0 ? true : false;
         }
 
         public bool DeleteById(int id)
         {
+            var movimentoFinanceiro = _movimentoFinanceiroRepository.GetById(id);
+            var resultUpdateSaldoCartao = UpdateSaldoCartao("Delete", movimentoFinanceiro.Id, movimentoFinanceiro.IdCartao, movimentoFinanceiro.Valor, movimentoFinanceiro.TipoMovimento);
             var result = _movimentoFinanceiroRepository.DeleteById(id);
             return result > 0 ? true : false;
         }
@@ -101,6 +111,12 @@ namespace Controller.ModuloMovimentoFinanceiro
                 var mv = _mapper.Map<MovimentoFinanceiroDto>(item);
                 Insert(mv);
             }
+        }
+
+        private async Task<bool> UpdateSaldoCartao(string estado, int idMovimento, int? idCartao, decimal? valorAtual, string tipoMovimento)
+        {
+            var result = await _cartaoService.UpdateSaldoCartao(estado, idMovimento, idCartao, valorAtual, tipoMovimento);
+            return result;
         }
     }
 }

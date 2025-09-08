@@ -11,6 +11,8 @@ namespace Model.ModuloCartao
 
         public string? Tipo { get; set; }
 
+        public decimal ValorSaldo { get; set; }
+
         public ICollection<MovimentoFinanceiro> MovimentoFinanceiros { get; set; }
 
         public ICollection<ContaPadrao> ContasPadrao { get; set; }
