@@ -4,6 +4,7 @@ using Controller.ModuloMovimentoFinanceiro;
 using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using System.Windows.Forms;
+using View.ModuloBalancoMensal;
 using View.ModuloCartao;
 using View.ModuloCategoria;
 using View.ModuloContaPadrao;
@@ -252,6 +253,12 @@ namespace View.ModuloMovimentoFinanceiro
             view.Show();
         }
 
+        private void btnBalancoMensal_Click(object sender, EventArgs e)
+        {
+            var view = Program.ServiceProvider.GetRequiredService<BalancoMensalView>();
+            view.Show();
+        }
+
         private void dgvMovimentoFinanceiro_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRow r = dgvMovimentoFinanceiro.Rows[e.RowIndex];
@@ -291,7 +298,7 @@ namespace View.ModuloMovimentoFinanceiro
                     e.Graphics.FillRectangle(brush, e.CellBounds);
                 }
 
-              
+
 
                 // Conteúdo com estilo próprio (exemplo: texto em negrito e azul)
                 TextRenderer.DrawText(

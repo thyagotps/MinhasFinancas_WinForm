@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovimentoFinanceiroView));
             panel1 = new Panel();
+            btnBalancoMensal = new Button();
             panel3 = new Panel();
             btnCategoria = new Button();
             btnCartao = new Button();
@@ -77,6 +78,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(43, 76, 126);
+            panel1.Controls.Add(btnBalancoMensal);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(label7);
@@ -94,6 +96,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1051, 105);
             panel1.TabIndex = 11;
+            // 
+            // btnBalancoMensal
+            // 
+            btnBalancoMensal.Location = new Point(12, 72);
+            btnBalancoMensal.Name = "btnBalancoMensal";
+            btnBalancoMensal.Size = new Size(105, 23);
+            btnBalancoMensal.TabIndex = 28;
+            btnBalancoMensal.Text = "Balanço Mensal";
+            btnBalancoMensal.UseVisualStyleBackColor = true;
+            btnBalancoMensal.Click += btnBalancoMensal_Click;
             // 
             // panel3
             // 
@@ -500,5 +512,6 @@
         private ToolTip toolTipGerenciarContasPadrao;
         private Panel panel2;
         private Panel panel3;
+        private Button btnBalancoMensal;
     }
 }

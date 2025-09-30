@@ -1,5 +1,6 @@
 using Application.Interfaces;
 using Application.Services;
+using Controller.ModuloBalancoMensal;
 using Controller.ModuloCartao;
 using Controller.ModuloCategoria;
 using Controller.ModuloContaPadrao;
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Model;
+using Model.ModuloBalancoMensal;
 using Model.ModuloCartao;
 using Model.ModuloCategoria;
 using Model.ModuloContaPadrao;
@@ -19,6 +21,7 @@ using Model.ModuloFaturaEmAberto;
 using Model.ModuloMovimentoFinanceiro;
 using Model.ModuloPagamento;
 using Model.ModuloRelatorios;
+using View.ModuloBalancoMensal;
 using View.ModuloCartao;
 using View.ModuloCategoria;
 using View.ModuloContaPadrao;
@@ -93,6 +96,10 @@ namespace View
             services.AddTransient<IRelatorioController, RelatorioController>();
             services.AddTransient<IRelatorioRepository, RelatorioRepository>();
             services.AddTransient<RelatoriosView>();
+
+            services.AddTransient<IBalancoMensalController, BalancoMensalController>();
+            services.AddTransient<IBalancoMensalRepository, BalancoMensalRepository>();
+            services.AddTransient<BalancoMensalView>();
 
             var myHandlers = AppDomain.CurrentDomain.Load("Application");
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(myHandlers));
