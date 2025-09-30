@@ -99,7 +99,7 @@ namespace View.ModuloBalancoMensal
 
             listView_categorias_despesa.Columns.Clear();
             listView_categorias_despesa.Items.Clear();
-            listView_categorias_renda.FullRowSelect = true;
+            listView_categorias_despesa.FullRowSelect = true;
 
             listView_categorias_despesa.Columns.Add(new ColumnHeader
             {
